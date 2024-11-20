@@ -22,7 +22,7 @@ const Home = () => {
   const msgFrameRef = useRef(null);
   const dispatch = useDispatch();
   const { allModelTags, tags, isLoading, error } = useSelector(
-    (state) => state.home,
+    (state) => state.home
   );
 
   const handleAddModelTags = (tag) => dispatch(addModelTag(tag));
@@ -89,10 +89,10 @@ const Home = () => {
                     classNameProps="search_keyword_text text_terrtiary_regular"
                     variant={"body1"}
                   >
-                    Search Your Problem Keywords
+                    Welcome to Admin Panel
                   </SullyTypography>
                 </Box>
-                <Box className="search_box search_box_1">
+                {/* <Box className="search_box search_box_1">
                   <HomeSearch />
                 </Box>
                 <Box className="model_tags">
@@ -121,7 +121,7 @@ const Home = () => {
                       );
                     })
                   )}
-                </Box>
+                </Box> */}
               </Box>
               <Box className="bg_message_frame">
                 <img src={MsgFrame1} alt="" />

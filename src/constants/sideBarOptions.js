@@ -14,11 +14,11 @@ const sideBarOptions = [
     activeTabValue: "",
   },
   {
-    title: "Integtaion",
-    path: "comparision/feature",
+    title: "Models",
+    path: "models",
     Icon: IntegrationIcon,
     active: false,
-    activeTabValue: "comparision",
+    activeTabValue: "models",
   },
   {
     title: "Code",

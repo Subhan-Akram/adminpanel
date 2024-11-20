@@ -68,7 +68,7 @@ export const DrawerStyle = styled(MuiDrawer, {
     padding: "31px 0",
     "@media screen and (max-width:1024px)": {
       transition: "transform 0.3s ease-in-out",
-      transform: open ? "translateX(0%)" : "translateX(-120px)",
+      transform: open ? "translateX(0%)" : "translateX(-150px)",
       opacity: 1,
     },
   },
@@ -79,10 +79,10 @@ export const StyledList = styled(List, {
   return {
     display: "flex",
     flexDirection: "column",
-    gap: "0px",
+    gap: "12px",
     padding: "0 10px",
     "& .MuiListItemButton-root": {
-      padding: "16px 18px",
+      padding: "6px 4px 6px 12px",
       justifyContent: "center",
       "&:hover": {
         background: "none",
@@ -99,7 +99,7 @@ export const StyledList = styled(List, {
     "& .MuiListItemText-root": {
       marginLeft: "10px",
       // display: open ? "block" : "none",
-      display: "none",
+      // display: "none",
     },
     "& .listItemActive": {
       borderRadius: "3px",
@@ -113,12 +113,13 @@ export const StyledList = styled(List, {
 
 export const ThemeToggleContainer = styled(Box)(({ mode }) => {
   return {
+    display: "none",
     width: "32px",
     height: "108px",
 
     borderRadius: "50px",
     background: "var(--switch-bg)",
-    display: "flex",
+    // display: "flex",
     justifyContent: "space-between",
     flexDirection: "column",
     alignItems: "center",

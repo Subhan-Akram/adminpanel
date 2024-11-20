@@ -6,7 +6,7 @@ import {
   justifyBetween,
 } from "styles/GlobalStyles";
 
-export const ModelSearchWrapper = styled(Box)(() => ({
+export const ModelWrapper = styled(Box)(() => ({
   "& .model_header": {
     padding: "24px",
     ...flex,

@@ -3,9 +3,9 @@ import { styled } from "@mui/material/styles";
 
 export const MainContent = styled(Box)(({ theme }) => ({
   position: "relative",
-  marginLeft: "80px",
-  marginTop: "60px",
-  width: `calc(100% - 80px)`,
+  marginLeft: "145px",
+  marginTop: "69px",
+  width: `calc(100% - 147px)`,
   background: "var(--surface-l0)",
   zIndex: 1,
   "& .page_spacing": {
