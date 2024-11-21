@@ -20,7 +20,7 @@ export const ToolBar = styled(MuiToolBar, {
 export const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
+  zIndex: 150,
   backgroundColor: theme.custom.background,
   boxShadow: "none",
   border: "var(--border-color)",

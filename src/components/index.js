@@ -33,9 +33,11 @@ import {
   ModelDescriptionSkeleton,
 } from "./skeleton";
 import CopyText from "./CopyText";
+import { Table } from "@mui/material";
 
 export {
   CopyText,
+  Table,
   ModelDescriptionSkeleton,
   Rating,
   CodeTabSkeleton,

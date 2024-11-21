@@ -7,6 +7,7 @@ import {
 } from "styles/GlobalStyles";
 
 export const ModelWrapper = styled(Box)(() => ({
+  padding: "1rem",
   "& .model_header": {
     padding: "24px",
     ...flex,

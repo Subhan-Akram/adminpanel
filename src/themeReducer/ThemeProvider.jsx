@@ -88,6 +88,59 @@ const getDesignTokens = (mode) => {
       },
     },
     components: {
+      MuiDataGrid: {
+        styleOverrides: {
+          root: {
+            // backgroundColor: "rgb(255, 255, 255)",
+            color: "rgb(38, 38, 38)",
+            transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+            overflow: "hidden",
+            border: "1px solid var(--border-1)",
+            borderRadius: "8px",
+            boxShadow: "inherit",
+            "&.Mui-checked": {
+              color: "var(--icon-brand)",
+            },
+          },
+
+          cellCheckbox: {
+            outline: "none",
+            "& .Mui-checked": {
+              color: "var(--icon-brand)",
+            },
+          },
+          columnHeaderCheckbox: {
+            outline: "none",
+            "& .Mui-checked": {
+              color: "var(--icon-brand)",
+            },
+          },
+          cell: {
+            color: "var(--primary-1)",
+            "&:focus": {
+              outline: "none",
+            },
+            "&:focus-within": {
+              outline: "none",
+            },
+          },
+          columnHeader: {
+            "&:focus-within": {
+              outline: "none",
+            },
+            "&:focus": {
+              outline: "none",
+            },
+            backgroundColor: "var(--surfcae-l0)",
+            color: "var(--primary-1)",
+          },
+
+          columnHeaderTitle: {
+            fontWeight: "700",
+            fontSize: ".75rem",
+          },
+        },
+      },
       MuiCard: {
         styleOverrides: {
           root: {
