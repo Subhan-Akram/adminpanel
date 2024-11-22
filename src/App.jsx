@@ -13,6 +13,7 @@ import {
   LoginPage,
   ModelsPage,
   SettingPage,
+  UserPage,
 } from "./pages";
 import {
   FeatureComparision,
@@ -25,6 +26,7 @@ import { TryPrompt } from "features/compare";
 
 const routes = [
   { path: "/", element: <HomePage />, index: true },
+  { path: "/users", element: <UserPage />, index: true },
   { path: "/models", element: <ModelsPage /> },
   { path: "/home/models", element: <ModelsPage /> },
   { path: "/home/models/try-prompt/:extId", element: <TryPrompt /> },
