@@ -20,8 +20,12 @@ export const LogoFrameWrapper = styled(Box)`
     height: 36px;
   }
   & .logo_frame_large {
-    width: 110px;
-    height: 110px;
+    width: 110px !important;
+    height: 110px !important;
+  }
+  & .logo_frame_medium {
+    width: 80px !important;
+    height: 80px !important;
   }
   @media screen and (max-width: 1024px) {
     & .logo_frame_large {

@@ -16,6 +16,7 @@ export const PrimaryButtonWrapper = styled(Button, {
     fontWeight: "500 !important",
     borderRadius: "8px",
     boxShadow: "none",
+    gap: "12px",
     padding: "8px 16px !important",
     "&:hover": {
       background: "var(--brand-button-bg-hover)",

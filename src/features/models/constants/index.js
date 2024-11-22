@@ -1,5 +1,6 @@
 import modelDescriptionBreadcrumb from "./modelDescriptionBreadcrumb";
 import modelDropDownItems from "./modelDropDownItems";
+import modelInitialValues from "./modelInitialValues";
 import modelPath from "./modelPath";
 import modelSearchBreadcrumb from "./modelSearchBreadcrumb";
 
@@ -8,4 +9,5 @@ export {
   modelDropDownItems,
   modelSearchBreadcrumb,
   modelDescriptionBreadcrumb,
+  modelInitialValues,
 };

@@ -6,6 +6,8 @@ export const ModelTableWrapper = styled(Box)`
   margin-top: 2rem;
   & .model_drawer_box {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
   }
 `;

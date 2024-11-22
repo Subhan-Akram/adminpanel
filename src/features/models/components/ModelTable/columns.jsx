@@ -1,12 +1,13 @@
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { DeleteOutline } from "@mui/icons-material";
 
-const columns = ({ handleView }) => [
-  { field: "id", headerName: "ID", width: 90 },
+const columns = ({ handleView, setDeletePopover }) => [
+  // { field: "id", headerName: "ID", width: 90 },
   {
     field: "name",
     headerName: "Name",
-    width: 150,
+    width: 180,
   },
   {
     field: "description",
@@ -19,8 +20,21 @@ const columns = ({ handleView }) => [
     type: "number",
   },
   {
-    field: "modelcard",
+    field: "modelCard",
     headerName: "ModelCard",
+    sortable: false,
+    width: 180,
+  },
+
+  {
+    field: "ssbxCode",
+    headerName: "Ssbx Code",
+    sortable: false,
+    width: 180,
+  },
+  {
+    field: "license",
+    headerName: "License",
     sortable: false,
     width: 180,
   },
@@ -30,53 +44,23 @@ const columns = ({ handleView }) => [
     headerName: "Actions",
     width: 100,
     cellClassName: "actions",
-    getActions: (params) => [
+    getActions: ({ row }) => [
       <GridActionsCellItem
-        key={params.id}
-        icon={<VisibilityIcon />}
+        key={"1"}
+        icon={<VisibilityIcon sx={{ color: "var(--icon-primary)" }} />}
         label="View Details"
-        onClick={() => handleView(params.row)}
+        onClick={() => handleView(row)}
+      />,
+      <GridActionsCellItem
+        key={"2"}
+        icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
+        label="View Details"
+        onClick={(e) => {
+          setDeletePopover({ element: e.currentTarget, value: row });
+        }}
       />,
     ],
   },
 ];
 
 export default columns;
-
-export const data = [
-  {
-    id: 1,
-    name: "Model Alpha",
-    description: "High performance model for text generation.",
-    rating: 4.5,
-    modelcard: "View Details",
-  },
-  {
-    id: 2,
-    name: "Model Beta",
-    description: "Efficient model for classification tasks.",
-    rating: 4.2,
-    modelcard: "View Details",
-  },
-  {
-    id: 3,
-    name: "Model Gamma",
-    description: "Versatile model for multiple NLP tasks.",
-    rating: 4.8,
-    modelcard: "View Details",
-  },
-  {
-    id: 4,
-    name: "Model Delta",
-    description: "Optimized model for summarization.",
-    rating: 4.0,
-    modelcard: "View Details",
-  },
-  {
-    id: 5,
-    name: "Model Epsilon",
-    description: "Robust model for sentiment analysis.",
-    rating: 3.9,
-    modelcard: "View Details",
-  },
-];

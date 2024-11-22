@@ -17,8 +17,5 @@ export const DrawerWrapper = styled(Drawer)`
   & .drawer_content {
     padding: 1rem 12px;
     overflow: auto;
-    & .logo_frame_box {
-      margin-top: 6px;
-    }
   }
 `;

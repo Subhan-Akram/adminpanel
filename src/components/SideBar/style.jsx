@@ -35,6 +35,7 @@ export const DrawerStyle = styled(MuiDrawer, {
 })(({ theme, open }) => ({
   width: drawerWidth,
   flexShrink: 0,
+  border: "1px solid red",
   whiteSpace: "nowrap",
   boxSizing: "border-box",
   display: "flex",
@@ -55,9 +56,11 @@ export const DrawerStyle = styled(MuiDrawer, {
   },
   "& .MuiDrawer-paper": {
     boxSizing: "border-box",
+    zIndex: 100,
     backgroundColor: "var(--sidenav-background)",
     // backgroundColor: theme.custom.background,
     borderRight: "1px solid var(--sidenav-border)",
+    borderTop: "1px solid var(--sidenav-border)",
     marginTop: navbarHeight,
     display: "flex",
     width: drawerWidth,
@@ -113,13 +116,14 @@ export const StyledList = styled(List, {
 
 export const ThemeToggleContainer = styled(Box)(({ mode }) => {
   return {
-    display: "none",
+    // display: "none",
     width: "32px",
     height: "108px",
+    transform: "rotate(270deg)",
 
     borderRadius: "50px",
     background: "var(--switch-bg)",
-    // display: "flex",
+    display: "flex",
     justifyContent: "space-between",
     flexDirection: "column",
     alignItems: "center",

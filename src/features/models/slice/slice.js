@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSearchModels, getModel } from "../services";
+import {
+  getSearchModels,
+  getModel,
+  createModel,
+  getAllModels,
+  updateModel,
+} from "../services";
 
 const initialState = {
   models: [],
@@ -28,9 +34,7 @@ export const slice = createSlice({
       const { name, data } = action.payload;
       state[name] = data;
     },
-    removeModels: (state, action) => {
-      state.modalModels = [];
-    },
+
     addSelectedModel: (state, action) => {
       const { payload } = action;
       state.selectedModels.push(payload);
@@ -38,12 +42,51 @@ export const slice = createSlice({
     removeSelectedModel: (state, action) => {
       const { payload } = action;
       state.selectedModels = state.selectedModels.filter(
-        (val) => val.extId !== payload,
+        (val) => val.extId !== payload
       );
     },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(createModel.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(createModel.fulfilled, (state, action) => {
+        const model = action.payload;
+        state.isLoading = false;
+        state.models = [model, ...state.models];
+      })
+      .addCase(createModel.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(getAllModels.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllModels.fulfilled, (state, action) => {
+        const models = action.payload;
+        state.isLoading = false;
+        state.models = models;
+      })
+      .addCase(getAllModels.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(updateModel.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateModel.fulfilled, (state, action) => {
+        const model = action.payload;
+        state.isLoading = false;
+        const findModelIndex = state.models.findIndex(
+          (val) => val.extId === model.extId
+        );
+        state.models[findModelIndex] = model;
+      })
+      .addCase(updateModel.rejected, (state) => {
+        state.isLoading = false;
+      })
       .addCase(getSearchModels.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -57,7 +100,7 @@ export const slice = createSlice({
           state.models = models;
         }
       })
-      .addCase(getSearchModels.rejected, (state, action) => {
+      .addCase(getSearchModels.rejected, (state) => {
         state.isLoading = false;
       })
       .addCase(getModel.pending, (state) => {
@@ -68,7 +111,7 @@ export const slice = createSlice({
         state.isLoading = false;
         state.model = action.payload;
       })
-      .addCase(getModel.rejected, (state, action) => {
+      .addCase(getModel.rejected, (state) => {
         state.isLoading = false;
         state.error = "no data found";
       });

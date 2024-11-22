@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getModelById } from "apiTwg";
 import { triggerAlert } from "slice/alertSlice";
+import { createModel as createModelApi } from "apiTwg/aiModelController";
 
-const getModel = createAsyncThunk(
-  "getModel",
-  async ({ dispatch, extId }, { rejectWithValue }) => {
+const createModel = createAsyncThunk(
+  "createModel",
+  async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
-      const { data } = await getModelById(extId);
+      const { data } = await createModelApi(payload);
       return data;
     } catch (error) {
       dispatch(
@@ -21,4 +21,4 @@ const getModel = createAsyncThunk(
   }
 );
 
-export default getModel;
+export default createModel;

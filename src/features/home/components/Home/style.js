@@ -32,7 +32,7 @@ export const HeroWrapper = styled(Box, {
 })(({ theme, contentHeight }) => ({
   overflow: "hidden",
   boxSizing: "border-box",
-  height: "calc(100vh - 62px)",
+  height: "calc(100vh - 71px)",
   "& .hero_content_container": {
     position: "relative",
     width: "78%",

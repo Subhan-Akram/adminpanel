@@ -1,2 +1,18 @@
-import { getModelFeature, createSingleModelSet } from "./AiModelController";
-export { getModelFeature, createSingleModelSet };
+import {
+  getModelFeature,
+  createSingleModelSet,
+  createModel,
+  getModels,
+  deleteModel,
+  updateModel,
+  addModelTags,
+} from "./AiModelController";
+export {
+  getModelFeature,
+  createSingleModelSet,
+  createModel,
+  getModels,
+  deleteModel,
+  updateModel,
+  addModelTags,
+};

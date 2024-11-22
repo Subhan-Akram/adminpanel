@@ -4,7 +4,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ToolBar, AppBar } from "./style";
 import SullyTypography from "../SullyTypography";
 import PropTypes from "prop-types";
-import { CoinIcon, DogBoneIcon, Logo } from "sullyIcons";
+import { MoonIcon, SunIcon } from "sullyIcons";
+import { Logo } from "sullyIcons";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -14,9 +15,13 @@ import Popper from "@mui/material/Popper";
 import MenuList from "@mui/material/MenuList";
 import { useEffect, useRef, useState } from "react";
 import { SignOut } from "features/login";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ThemeToggleBox, ThemeToggleContainer } from "../SideBar/style";
+import { setThemeMode } from "../../themeReducer/ThemeReducer";
 
 const Navbar = ({ openSidebar, setOpenSidebar }) => {
+  const { mode } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     user: { name },
@@ -75,13 +80,22 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
         </Box>
         <Box className="profileRoot">
           <Box className="icon_text coint_point">
-            <CoinIcon />
-            <SullyTypography classNameProps="caption">2,015 Cr</SullyTypography>
+            <ThemeToggleBox
+              onClick={() => {
+                dispatch(setThemeMode(mode === "dark" ? "light" : "dark"));
+              }}
+            >
+              <ThemeToggleContainer mode={mode}>
+                <Box className="iconContainer-sun">
+                  <SunIcon />
+                </Box>
+                <Box className="iconContainer-moon">
+                  <MoonIcon />
+                </Box>
+              </ThemeToggleContainer>
+            </ThemeToggleBox>
           </Box>
-          <Box className="icon_text coint_point">
-            <DogBoneIcon />
-            <SullyTypography classNameProps="caption">244 pt</SullyTypography>
-          </Box>
+
           <Box className="icon_text drop_down_Box" onClick={handleToggle}>
             <Box className="profile_icon">
               <img alt="profile icon" src={ProfileIcon}></img>

@@ -1,27 +1,18 @@
-/* eslint-disable no-debugger */
 import {
-  Box,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { MoonIcon, SunIcon } from "sullyIcons";
-import {
-  DrawerStyle,
-  StyledList,
-  ThemeToggleBox,
-  ThemeToggleContainer,
-} from "./style";
+
+import { DrawerStyle, StyledList } from "./style";
 import { useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 import { sideBarOptions } from "constants";
 import { useOutsideClick } from "hooks";
 import { useRef } from "react";
 
 const SideBar = ({ openSidebar, setOpenSidebar }) => {
-  const { mode } = useSelector((state) => state.theme);
   const sidebarRef = useRef();
   useOutsideClick(sidebarRef, "app_bar", () => {
     if (openSidebar) setOpenSidebar(false);
@@ -56,7 +47,11 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
           </ListItem>
         ))}
       </StyledList>
-      <ThemeToggleBox>
+      {/* <ThemeToggleBox
+        onClick={() => {
+          dispatch(setThemeMode(mode === "dark" ? "light" : "dark"));
+        }}
+      >
         <ThemeToggleContainer mode={mode}>
           <Box className="iconContainer-sun">
             <SunIcon />
@@ -65,7 +60,7 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
             <MoonIcon />
           </Box>
         </ThemeToggleContainer>
-      </ThemeToggleBox>
+      </ThemeToggleBox> */}
     </DrawerStyle>
   );
 };

@@ -31,7 +31,7 @@ export const AppBar = styled(MuiAppBar, {
   "& .profileRoot": {
     display: "flex",
     justifyContent: "flex-start",
-    gap: "24px",
+    gap: "52px",
 
     alignItems: "center",
     "& .icon_text": {

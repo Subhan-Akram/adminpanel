@@ -1,9 +1,7 @@
-import {
-  DataGrid,
-  GridToolbarContainer,
-  GridToolbarQuickFilter,
-} from "@mui/x-data-grid";
+import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import PropTypes from "prop-types";
+import { TableWrapper } from "./style";
+import { Card, TextField } from "@mui/material";
 
 export default function Table({ rows, columns }) {
   const CustomToolbar = () => (
@@ -19,39 +17,36 @@ export default function Table({ rows, columns }) {
     </GridToolbarContainer>
   );
   return (
-    <DataGrid
-      sx={{
-        overflowX: "auto",
-        width: "100%",
-        minHeight: "250px",
-        minWidth: "500px",
-        "& .MuiDataGrid-filler": { backgroundColor: "var(--table-header)" },
-      }}
-      slots={{
-        toolbar: CustomToolbar,
-      }}
-      slotProps={{
-        toolbar: {
-          showQuickFilter: true,
-          quickFilterProps: { debounceMs: 500 },
-        },
-      }}
-      sortingOrder={["desc", "asc"]}
-      columns={columns}
-      rows={rows}
-      initialState={{
-        pagination: {
-          paginationModel: {
-            pageSize: 5,
+    <Card sx={{ paddingTop: 0 }}>
+      <TableWrapper
+        sx={{}}
+        // slots={{
+        //   toolbar: CustomToolbar,
+        // }}
+        // slotProps={{
+        //   toolbar: {
+        //     showQuickFilter: true,
+        //     quickFilterProps: { debounceMs: 500 },
+        //   },
+        // }}
+        sortingOrder={["desc", "asc"]}
+        columns={columns}
+        getRowId={(row) => row.extId} // Custom row ID
+        rows={rows}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
           },
-        },
-      }}
-      pageSizeOptions={[5, 10, 15]}
-      disableRowSelectionOnClick={true}
-      disableColumnSelector
-      disableColumnMenu
-      disableColumnResize
-    />
+        }}
+        pageSizeOptions={[5, 10, 15]}
+        disableRowSelectionOnClick={true}
+        disableColumnSelector
+        disableColumnMenu
+        disableColumnResize
+      />
+    </Card>
   );
 }
 
