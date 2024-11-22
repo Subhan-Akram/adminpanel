@@ -2,8 +2,9 @@ import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import PropTypes from "prop-types";
 import { TableWrapper } from "./style";
 import { Card, TextField } from "@mui/material";
+import SullyTypography from "../SullyTypography";
 
-export default function Table({ rows, columns }) {
+export default function Table({ rows, columns, isLoading }) {
   const CustomToolbar = () => (
     <GridToolbarContainer
       sx={{
@@ -17,36 +18,34 @@ export default function Table({ rows, columns }) {
     </GridToolbarContainer>
   );
   return (
-    <Card sx={{ paddingTop: 0 }}>
-      <TableWrapper
-        sx={{}}
-        // slots={{
-        //   toolbar: CustomToolbar,
-        // }}
-        // slotProps={{
-        //   toolbar: {
-        //     showQuickFilter: true,
-        //     quickFilterProps: { debounceMs: 500 },
-        //   },
-        // }}
-        sortingOrder={["desc", "asc"]}
-        columns={columns}
-        getRowId={(row) => row.extId} // Custom row ID
-        rows={rows}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
+    <TableWrapper
+      // slots={{
+      //   toolbar: CustomToolbar,
+      // }}
+      // slotProps={{
+      //   toolbar: {
+      //     showQuickFilter: true,
+      //     quickFilterProps: { debounceMs: 500 },
+      //   },
+      // }}
+      loading={isLoading}
+      sortingOrder={["desc", "asc"]}
+      columns={columns}
+      getRowId={(row) => row.extId} // Custom row ID
+      rows={rows}
+      initialState={{
+        pagination: {
+          paginationModel: {
+            pageSize: 5,
           },
-        }}
-        pageSizeOptions={[5, 10, 15]}
-        disableRowSelectionOnClick={true}
-        disableColumnSelector
-        disableColumnMenu
-        disableColumnResize
-      />
-    </Card>
+        },
+      }}
+      pageSizeOptions={[5, 10, 15]}
+      disableRowSelectionOnClick={true}
+      disableColumnSelector
+      disableColumnMenu
+      disableColumnResize
+    />
   );
 }
 

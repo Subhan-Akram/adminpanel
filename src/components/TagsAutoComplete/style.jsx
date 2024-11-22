@@ -9,17 +9,17 @@ import {
 export const AutoCompleteWrapper = styled(Autocomplete)(({ theme }) => ({
   fontFamily: "satoshi",
   "& .MuiAutocomplete-listbox": {
-    background: "var(--surface-l0) !important",
+    background: "var(--surface-l1) !important",
   },
   width: "97%",
-  background: "var(--surface-l0) !important",
+  background: "var(--surface-l1) !important",
 
   "& .Mui-focused": {
-    background: "var(--surface-l0) !important",
+    background: "var(--surface-l1) !important",
   },
 
   "& .MuiAutocomplete-inputFocused": {
-    background: "var(--surface-l0) !important",
+    background: "var(--surface-l1) !important",
   },
   "& .MuiAutocomplete-input": {
     background: "var(--surface-l0) !important",
@@ -38,11 +38,11 @@ export const AutoCompleteWrapper = styled(Autocomplete)(({ theme }) => ({
     background: "transparent !important",
 
     "&:hover": {
-      background: "var(--surface-l0) !important",
+      background: "var(--surface-l1) !important",
     },
   },
   "&:hover": {
-    background: "var(--surface-l0) !important",
+    background: "var(--surface-l1) !important",
   },
 }));
 

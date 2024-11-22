@@ -5,6 +5,7 @@ import {
   createModel,
   getAllModels,
   updateModel,
+  deleteModel,
 } from "../services";
 
 const initialState = {
@@ -114,6 +115,18 @@ export const slice = createSlice({
       .addCase(getModel.rejected, (state) => {
         state.isLoading = false;
         state.error = "no data found";
+      })
+      .addCase(deleteModel.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteModel.fulfilled, (state, action) => {
+        const model = action.payload;
+        state.isLoading = false;
+        state.models = state.models.filter((val) => val.extId !== model.extId);
+      })
+      .addCase(deleteModel.rejected, (state) => {
+        state.isLoading = false;
       });
   },
 });

@@ -12,8 +12,22 @@ export const DrawerWrapper = styled(Drawer)`
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid var(--border-1);
   }
+  & .btn_group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  & .chips_box {
+    display: flex;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  ,
   & .drawer_content {
     padding: 1rem 12px;
     overflow: auto;

@@ -34,8 +34,12 @@ import {
 } from "./skeleton";
 import CopyText from "./CopyText";
 import { Table } from "@mui/material";
+import ConfirmPopover from "./ConfirmPopover";
+import SearchBar from "./SearchBar";
 
 export {
+  SearchBar,
+  ConfirmPopover,
   CopyText,
   Table,
   ModelDescriptionSkeleton,

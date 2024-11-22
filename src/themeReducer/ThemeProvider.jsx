@@ -287,6 +287,15 @@ const getDesignTokens = (mode) => {
             "& .MuiAutocomplete-clearIndicator": {
               display: "none",
             },
+            "& .MuiAutocomplete-tag": {
+              fontSize: "12px",
+              fontWeight: "500",
+              fontFamily: "satoshi",
+              borderRadius: "30px",
+              background: "var(--tag-bg-color-selected)",
+              border: "1px solid var(--tag-bg-color-selected)",
+              color: "var(--tag-text-icon-selected)",
+            },
           },
         },
       },

@@ -1,9 +1,18 @@
 import PropTypes from "prop-types";
 import * as React from "react";
 import Box from "@mui/material/Box";
-
+import { TextField } from "@mui/material";
 import { DrawerWrapper } from "./style";
-import { LogoFrame, SullyTypography, TextButton } from "../../../../components";
+import {
+  LogoFrame,
+  SullyTypography,
+  TextButton,
+  OutlinedButton,
+  PrimaryButton,
+  Chip,
+  TagTooltip,
+} from "../../../../components";
+import { AutoCompleteWrapper } from "../../../../components/TagsAutoComplete/style";
 import ModelForm from "../ModelForm";
 import { useDispatch, useSelector } from "react-redux";
 import { updateModel } from "../../services";
@@ -30,7 +39,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
     setOpen(open);
     setType("view");
   };
-
+  const tags = [{ name: "Sales Funnel" }, { name: "Gpt 3.0" }];
   const modelView = () => (
     <Box className="drawer_content" role="presentation" sx={{ p: 2 }}>
       <Grid container spacing={2}>
@@ -173,6 +182,55 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
             {description}
           </SullyTypography>
         </Grid>
+        <Grid item xs={12}>
+          <SullyTypography
+            variant="body1"
+            classNameProps={"card_title_1"}
+            sx={{ mb: 1, fontWeight: 500 }}
+          >
+            Tags
+          </SullyTypography>
+          <Box className="chips_box">
+            {tags.map((val) => (
+              <Chip
+                classNameProps="modal_card_chips "
+                key={val.name}
+                label={val.name}
+              />
+            ))}
+            {tags.length > 2 ? (
+              <TagTooltip
+                placement="top-start"
+                title={
+                  <Box className="tooltip_content">
+                    {tags.slice(2).map((val) => (
+                      <Box key={val}>
+                        <SullyTypography classNameProps="sideBarTitle">
+                          <Chip
+                            classNameProps="tooltip_chips"
+                            label={val.name}
+                          />
+                        </SullyTypography>
+                      </Box>
+                    ))}
+                  </Box>
+                }
+                arrow
+              >
+                <Box>
+                  {" "}
+                  <Chip
+                    classNameProps="modal_card_chips "
+                    label={`${tags.slice(2).length}+ More`}
+                  />
+                </Box>
+              </TagTooltip>
+            ) : (
+              ""
+            )}
+            {!tags.length && <Box className="tags_not_available"></Box>}
+          </Box>
+        </Grid>
       </Grid>
     </Box>
   );
@@ -203,13 +261,15 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
             Model Details
           </SullyTypography>
           {type === "view" && (
-            <TextButton
-              onClick={() => {
-                setType("edit");
-              }}
-            >
-              Edit Model
-            </TextButton>
+            <Box className="btn_group">
+              <OutlinedButton
+                onClick={() => {
+                  setType("edit");
+                }}
+              >
+                Edit Model
+              </OutlinedButton>
+            </Box>
           )}
           {type === "edit" && (
             <TextButton

@@ -4,7 +4,7 @@ import {
   IntegrationIcon,
   CodeIntegrateIcon,
 } from "sullyIcons";
-
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 const sideBarOptions = [
   {
     title: "Home",
@@ -21,11 +21,11 @@ const sideBarOptions = [
     activeTabValue: "models",
   },
   {
-    title: "Code",
-    path: "integration",
-    Icon: CodeIntegrateIcon,
+    title: "Users",
+    path: "users",
+    Icon: PeopleAltIcon,
     active: false,
-    activeTabValue: "integration",
+    activeTabValue: "users",
   },
   {
     title: "Settings",

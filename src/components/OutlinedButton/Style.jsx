@@ -13,8 +13,6 @@ export const OutlinedButtonWrapper = styled(Button)(() => {
     fontWeight: "500 !important",
     borderRadius: "8px",
     padding: "8px 16px",
-
-    width: "100%",
     "&:hover": {
       background: "var(--tertiary-button-hover)",
       border: "1px solid var(--tertiary-button-border)",

@@ -5,19 +5,23 @@ import { DrawerWrapper } from "./style";
 import { PrimaryButton, SullyTypography } from "../../../../components";
 import ModelForm from "../ModelForm";
 import { modelInitialValues } from "../../constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createModel } from "../../services";
 import { triggerAlert } from "slice/alertSlice";
 
 const CreateModelDrawer = () => {
   const [open, setOpen] = useState(false);
+  const { isLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
   const toggleDrawer = (open) => () => {
     setOpen(open);
   };
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log("values", values);
-    const { payload } = dispatch(createModel({ dispatch, values }));
+    const { payload } = await dispatch(
+      createModel({ dispatch, payload: values })
+    );
+    console.log("payload===", payload);
     if (payload) {
       dispatch(
         triggerAlert({
@@ -26,6 +30,7 @@ const CreateModelDrawer = () => {
           alertType: "success",
         })
       );
+      setOpen(false);
     }
   };
   return (
@@ -44,13 +49,11 @@ const CreateModelDrawer = () => {
           </SullyTypography>
         </Box>
         <Box className="drawer_content">
-          {
-            <ModelForm
-              handleSubmit={handleSubmit}
-              initialValues={modelInitialValues}
-              isLoading={false}
-            />
-          }
+          <ModelForm
+            handleSubmit={handleSubmit}
+            initialValues={modelInitialValues}
+            isLoading={isLoading}
+          />
         </Box>
       </DrawerWrapper>
     </>

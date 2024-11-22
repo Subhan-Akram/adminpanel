@@ -1,13 +1,30 @@
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
+import { Avatar, Box } from "@mui/material";
+import { SullyTypography } from "../../../../components";
 
 const columns = ({ handleView, setDeletePopover }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
     field: "name",
     headerName: "Name",
-    width: 180,
+    width: 200,
+    renderCell: (params) => {
+      return (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Avatar
+            src={params.row.logoUrl}
+            alt={params.row.name}
+            sx={{ width: 30, height: 30 }}
+          />
+
+          <span style={{ fontWeight: 500, width: "120px" }}>
+            {params.row.name}
+          </span>
+        </Box>
+      );
+    },
   },
   {
     field: "description",
@@ -18,6 +35,9 @@ const columns = ({ handleView, setDeletePopover }) => [
     field: "rating",
     headerName: "Rating",
     type: "number",
+    width: 100,
+    headerAlign: "left",
+    cellClassName: "custom-align-left",
   },
   {
     field: "modelCard",
@@ -30,7 +50,7 @@ const columns = ({ handleView, setDeletePopover }) => [
     field: "ssbxCode",
     headerName: "Ssbx Code",
     sortable: false,
-    width: 180,
+    width: 200,
   },
   {
     field: "license",
@@ -56,7 +76,7 @@ const columns = ({ handleView, setDeletePopover }) => [
         icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
         label="View Details"
         onClick={(e) => {
-          setDeletePopover({ element: e.currentTarget, value: row });
+          setDeletePopover({ element: e.currentTarget, model: row });
         }}
       />,
     ],

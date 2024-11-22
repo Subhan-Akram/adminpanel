@@ -8,10 +8,13 @@ import {
   Rating,
   FormControl,
   Grid,
+  Autocomplete,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import { FormWrapper } from "./style";
 import { PrimaryButton } from "../../../../components";
-
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+const tags = [{ name: "Sales Funnel" }, { name: "Gpt 3.0" }];
 // Validation Schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -180,7 +183,35 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
             />
           </FormControl>
         </Grid>
-
+        <Grid item xs={12} md={6}>
+          <label htmlFor="createdBy">Tags</label>
+          <Autocomplete
+            multiple
+            id="tags-outlined"
+            options={tags}
+            getOptionLabel={(option) => option.name}
+            defaultValue={[tags[0]]}
+            filterSelectedOptions
+            sx={{ width: "100%", marginTop: "6px" }}
+            ChipProps={{
+              deleteIcon: (
+                <CloseOutlinedIcon
+                  style={{
+                    color: "var(--tag-text-icon-selected)",
+                    fontSize: "15px",
+                  }}
+                />
+              ),
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                // label="filterSelectedOptions"
+                placeholder="Add Tags"
+              />
+            )}
+          />
+        </Grid>
         {/* Rating Field */}
         <Grid item xs={12}>
           <Box>
@@ -222,6 +253,7 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
             />
           </FormControl>
         </Grid>
+
         {/* Submit Button */}
         <Grid item xs={12}>
           <PrimaryButton
