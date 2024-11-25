@@ -1,17 +1,46 @@
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
-import { Chip } from "@mui/material";
+import { Avatar, Box, Chip } from "@mui/material";
 import { TagsGroupStyle } from "globalStyles";
 import EditIcon from "@mui/icons-material/Edit";
 // import { Avatar, Box } from "@mui/material";
 
 const columns = ({ handleView, setDeletePopover }) => [
-  // { field: "id", headerName: "ID", width: 90 },
-
   {
     field: "fullName",
     headerName: "Full Name",
     width: 220,
+    renderCell: ({ row }) => {
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          {row.fullName && (
+            <Avatar
+              src={row?.logoUrl}
+              alt={row.fullName}
+              sx={{ width: 30, height: 30 }}
+            />
+          )}
+
+          <span
+            style={{
+              fontWeight: 500,
+              width: "120px",
+              textAlign: "cneter",
+              display: "flex",
+              justifyContent: row.fullName ? "start" : "center",
+            }}
+          >
+            {row.fullName || "-"}
+          </span>
+        </Box>
+      );
+    },
   },
   {
     field: "email",
@@ -32,13 +61,21 @@ const columns = ({ handleView, setDeletePopover }) => [
     headerName: "Teams",
     sortable: false,
     width: 200,
+    textAlign: "center",
     renderCell: ({ row }) => {
       return (
-        <TagsGroupStyle>
+        <TagsGroupStyle
+          sx={{
+            display: "flex",
+            marginLeft: row?.teams?.length ? "0" : "20px",
+          }}
+        >
           {" "}
-          {row?.teams?.map(({ name }) => (
-            <Chip classNameProps="home_chips" key={{ name }} label={name} />
-          ))}
+          {row?.teams?.length
+            ? row?.teams?.map(({ name }) => (
+                <Chip classNameProps="home_chips" key={{ name }} label={name} />
+              ))
+            : "-"}
         </TagsGroupStyle>
       );
     },
@@ -49,7 +86,9 @@ const columns = ({ handleView, setDeletePopover }) => [
     sortable: false,
     width: 200,
     renderCell: ({ row }) => {
-      return row?.roles?.map((role) => <Chip key={role} label={role} />);
+      return row?.roles?.length
+        ? row.roles.map((role) => <Chip key={role} label={role} />)
+        : "No Roles";
     },
   },
 

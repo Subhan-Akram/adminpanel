@@ -1,33 +1,24 @@
 import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import PropTypes from "prop-types";
 import { TableWrapper } from "./style";
-import { Card, TextField } from "@mui/material";
-import SullyTypography from "../SullyTypography";
 
-export default function Table({ rows, columns, isLoading }) {
-  const CustomToolbar = () => (
-    <GridToolbarContainer
-      sx={{
-        padding: "6px 0 0 0",
-        display: "flex",
-        justifyContent: "flex-end",
-        gap: "10px",
-      }}
-    >
-      <GridToolbarQuickFilter />
-    </GridToolbarContainer>
-  );
+export default function Table({
+  rows,
+  columns,
+  isLoading,
+  CustomToolbar = null,
+}) {
   return (
     <TableWrapper
-      // slots={{
-      //   toolbar: CustomToolbar,
-      // }}
-      // slotProps={{
-      //   toolbar: {
-      //     showQuickFilter: true,
-      //     quickFilterProps: { debounceMs: 500 },
-      //   },
-      // }}
+      slots={{
+        toolbar: CustomToolbar,
+      }}
+      slotProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 500 },
+        },
+      }}
       loading={isLoading}
       sortingOrder={["desc", "asc"]}
       columns={columns}
@@ -52,4 +43,6 @@ export default function Table({ rows, columns, isLoading }) {
 Table.propTypes = {
   rows: PropTypes.array,
   columns: PropTypes.array,
+  isLoading: PropTypes.bool,
+  CustomToolbar: PropTypes.any,
 };

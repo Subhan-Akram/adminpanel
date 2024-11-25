@@ -4,7 +4,7 @@ export const DrawerWrapper = styled(Drawer)`
   z-index: 180;
 
   & .MuiPaper-root {
-    width: 70%;
+    width: 700px;
     background-color: var(--surface-l1);
     background-image: none;
   }

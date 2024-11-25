@@ -15,6 +15,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteModel } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
+import {
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarQuickFilter,
+} from "@mui/x-data-grid";
 
 export default function ModelTable() {
   const [open, setOpen] = useState(false);
@@ -50,7 +55,24 @@ export default function ModelTable() {
     setOpen(true);
     console.log("view ticket ");
   };
-
+  const CustomToolbar = () => (
+    <GridToolbarContainer
+      sx={{
+        padding: "10px",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "10px",
+      }}
+    >
+      <SullyTypography classNameProps={"modaltitle1"}>
+        All Models{" "}
+      </SullyTypography>
+      <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
+        {/* <GridToolbarExport /> */}
+        <GridToolbarQuickFilter placeholder="Search LLM Models" />
+      </Box>
+    </GridToolbarContainer>
+  );
   return (
     <>
       <ConfirmDynamicModal
@@ -107,15 +129,17 @@ export default function ModelTable() {
           </Box>
         </Box>
         <Card sx={{ padding: 0 }}>
-          <Box className="card_header">
+          {/* <Box className="card_header">
             <SullyTypography classNameProps={"modaltitle1"}>
               All Models
             </SullyTypography>
             <SearchBar />
-          </Box>
+          </Box> */}
           <Table
             isLoading={isLoading}
+            showTableSearch={true}
             rows={models}
+            CustomToolbar={CustomToolbar}
             columns={columns({ handleView, setDeletePopover })}
           />
         </Card>

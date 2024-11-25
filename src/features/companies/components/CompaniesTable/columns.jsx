@@ -14,12 +14,6 @@ const columns = ({ handleView, setDeletePopover }) => [
     renderCell: (params) => {
       return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Avatar
-            src={params.row.logoUrl}
-            alt={params.row.name}
-            sx={{ width: 30, height: 30 }}
-          />
-
           <span style={{ fontWeight: 500, width: "120px" }}>
             {params.row.name}
           </span>
@@ -31,17 +25,17 @@ const columns = ({ handleView, setDeletePopover }) => [
     field: "subscriber",
     headerName: "Subscriber",
     width: 220,
+    valueGetter: (subscriber) => {
+      return subscriber ? "Yes" : "No";
+    },
   },
   {
     field: "enabled",
     headerName: "Status",
     width: 100,
-  },
-  {
-    field: "privateData",
-    headerName: "PrivateData",
-    sortable: false,
-    width: 180,
+    valueGetter: (enable) => {
+      return enable ? "Yes" : "No";
+    },
   },
 
   {
@@ -54,7 +48,7 @@ const columns = ({ handleView, setDeletePopover }) => [
         <TagsGroupStyle>
           {" "}
           {row?.organizations?.map(({ name }) => (
-            <Chip classNameProps="home_chips" key={{ name }} label={name} />
+            <Chip classNameProps="more_chips" key={{ name }} label={name} />
           ))}
         </TagsGroupStyle>
       );
@@ -79,7 +73,7 @@ const columns = ({ handleView, setDeletePopover }) => [
         icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
         label="View Details"
         onClick={(e) => {
-          setDeletePopover({ element: e.currentTarget, model: row });
+          setDeletePopover({ element: e.currentTarget, value: row.name });
         }}
       />,
     ],

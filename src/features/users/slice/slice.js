@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addUser, deleteUser, getUsers, updateUser } from "../services";
+import getUserByEmail from "../services/getUserByEmail";
 
 const initialState = {
   users: [],
@@ -35,6 +36,19 @@ export const slice = createSlice({
         state.users = users;
       })
       .addCase(getUsers.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(getUserByEmail.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getUserByEmail.fulfilled, (state, action) => {
+        const users = action.payload;
+        console.log("users", users);
+        state.isLoading = false;
+        state.users = users.email ? [users] : [];
+      })
+      .addCase(getUserByEmail.rejected, (state) => {
         state.isLoading = false;
       })
       .addCase(updateUser.pending, (state) => {

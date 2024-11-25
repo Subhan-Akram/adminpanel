@@ -21,7 +21,7 @@ export default function CompaniesTable() {
   const [open, setOpen] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
     element: null,
-    model: "",
+    value: "",
   });
   const { companies, isLoading } = useSelector((state) => state.companies);
   console.log("companies", companies);
@@ -59,12 +59,12 @@ export default function CompaniesTable() {
         isConfirmModalOpen={deletePopover.element}
         handleSubmit={handleDelete}
         setIsConfirmModalOpen={setDeletePopover}
-        title={`Delete - ${deletePopover?.model?.name || ""}`}
+        title={`Delete - ${deletePopover?.value || ""}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
             Are you sure you want to delete{" "}
             <SullyTypography variant="span" classNameProps="model_name">
-              {deletePopover?.model?.name || ""}
+              {deletePopover?.value || ""}
             </SullyTypography>{" "}
             from Models ?
           </SullyTypography>
@@ -72,12 +72,7 @@ export default function CompaniesTable() {
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
-      {/* <ConfirmPopover
-        text={`Are you sure you want to delete ${deletePopover?.model?.name} model ?`}
-        handleAction={handleDelete}
-        setPopover={setDeletePopover}
-        popover={deletePopover}
-      /> */}
+
       {/* <ModelDrawer
         setModel={setModel}
         open={open}
@@ -113,7 +108,7 @@ export default function CompaniesTable() {
             <SullyTypography classNameProps={"modaltitle1"}>
               All Companies
             </SullyTypography>
-            <SearchBar />
+            <SearchBar placeholder={"Search"} />
           </Box>
           <Table
             isLoading={isLoading}

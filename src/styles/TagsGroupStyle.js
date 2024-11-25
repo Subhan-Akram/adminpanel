@@ -12,7 +12,7 @@ const TagsGroupStyle = styled(Box)`
     box-sizing: border-box;
     font-weight: 500;
     font-family: satoshi;
-    padding: 0 !important;
+    /* padding: 0 !important; */
     height: 36px;
     background: var(--model-icon-bg) !important;
     border: 1px solid var(--model-icon-bg);

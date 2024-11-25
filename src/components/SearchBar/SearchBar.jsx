@@ -1,17 +1,24 @@
-import React from "react";
-import { Box, TextField, Button, styled } from "@mui/material";
+import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import DateRangeIcon from "@mui/icons-material/DateRange";
-import FilterListIcon from "@mui/icons-material/FilterList";
 import { StyledBox, StyledButton, StyledTextField } from "./style";
-
-export default function SearchBar() {
+import PropTypes from "prop-types";
+const SearchBar = ({ handleAction, placeholder }) => {
+  const [value, setValue] = useState("");
   return (
     <StyledBox>
       <StyledTextField
         variant="outlined"
-        placeholder="Search"
+        placeholder={placeholder}
         size="small"
+        value={value}
+        onChange={(e) => {
+          const { value } = e.target;
+          setValue(value);
+          setTimeout(() => {
+            handleAction(value);
+          }, 150);
+        }}
         InputProps={{
           startAdornment: (
             <SearchIcon sx={{ color: "text.secondary", mr: 1 }} />
@@ -28,4 +35,9 @@ export default function SearchBar() {
       </StyledButton> */}
     </StyledBox>
   );
-}
+};
+export default SearchBar;
+SearchBar.propTypes = {
+  handleAction: PropTypes.func,
+  placeholder: PropTypes.string,
+};

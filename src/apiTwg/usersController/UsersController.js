@@ -18,6 +18,9 @@ export function updateUser({ associationExtid, companyExtid, extid }) {
 export function getUsers() {
   return axios.get(`/admin/api/v1/user`);
 }
+export function getUserByEmail(email) {
+  return axios.get(`/admin/api/v1/user/email/${email}`);
+}
 
 export function addUser({ associationExtid, companyExtid }) {
   return axios.post(

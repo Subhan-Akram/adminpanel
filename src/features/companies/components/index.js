@@ -1,3 +1,4 @@
 import Companies from "./Companies";
+import CreateCompanyModal from "./CreateCompanyModal";
 
-export { Companies };
+export { Companies, CreateCompanyModal };

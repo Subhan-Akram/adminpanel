@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import { HeroWrapper, HomeWrapper } from "./style";
 import { Box, Grid } from "@mui/material";
@@ -27,10 +28,6 @@ const Home = () => {
 
   const handleAddModelTags = (tag) => dispatch(addModelTag(tag));
   const handleTagRemove = (tag) => dispatch(removeModelTag(tag));
-
-  useEffect(() => {
-    dispatch(getAllModelTags(dispatch));
-  }, [dispatch]);
 
   useEffect(() => {
     const msgFrame = msgFrameRef.current;

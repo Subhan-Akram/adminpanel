@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 import { ModelTableWrapper } from "./style";
 import Table from "components/Table";
@@ -17,6 +18,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteModel } from "../../models/services";
 import { triggerAlert } from "slice/alertSlice";
 import { PrimaryButton } from "../../../components";
+import getUserByEmail from "../services/getUserByEmail";
+import { getUsers } from "../services";
 
 export default function UsersTable() {
   const { users, isLoading } = useSelector((state) => state.users);
@@ -53,7 +56,11 @@ export default function UsersTable() {
     setOpen(true);
     console.log("view ticket ");
   };
-
+  const handleSearch = async (value) => {
+    console.log("val", value);
+    if (value) return dispatch(getUserByEmail({ email: value, dispatch }));
+    dispatch(getUsers({ dispatch }));
+  };
   return (
     <>
       <ConfirmDynamicModal
@@ -104,7 +111,10 @@ export default function UsersTable() {
             <SullyTypography classNameProps={"modaltitle1"}>
               All Users
             </SullyTypography>
-            <SearchBar />
+            <SearchBar
+              placeholder="Search By Email"
+              handleAction={handleSearch}
+            />
           </Box>
           <Table
             isLoading={isLoading}

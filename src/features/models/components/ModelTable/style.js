@@ -12,7 +12,7 @@ export const ModelTableWrapper = styled(Box)`
   }
   & .MuiCard-root {
     /* border: none; */
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
   & .card_header {
     padding: 1rem;
@@ -20,6 +20,7 @@ export const ModelTableWrapper = styled(Box)`
     justify-content: space-between;
     align-items: center;
   }
+
   @media screen and (max-width: 1024px) {
     margin-top: 3.5rem;
   }
