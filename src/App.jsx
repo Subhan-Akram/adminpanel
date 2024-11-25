@@ -1,22 +1,22 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import {
-  ComparisonPage,
   ErrorPage,
   HomePage,
   LoginPage,
   ModelsPage,
   OrganizationPage,
+  UserPage,
+  CompanyPage,
 } from "./pages";
 import { FeatureComparision, PromptComparison } from "features/compare";
 import { Alert } from "components";
-import { TryPrompt } from "features/compare";
 
 const routes = [
   { path: "/", element: <HomePage />, index: true },
+  { path: "/users", element: <UserPage />, index: true },
   { path: "/models", element: <ModelsPage /> },
-  { path: "/home/models", element: <ModelsPage /> },
-  { path: "/home/models/try-prompt/:extId", element: <TryPrompt /> },
+  { path: "/companies", element: <CompanyPage /> },
   {
     path: "/organizations/*",
     element: <OrganizationPage />,

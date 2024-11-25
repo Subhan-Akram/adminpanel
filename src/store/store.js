@@ -6,10 +6,14 @@ import { alertSlice } from "../slice";
 import { CompareReducer } from "features/compare";
 import { integrationReducer } from "features/integration";
 import { ModelsReducer } from "features/models";
+import { UserReducer } from "../features/users";
+import { CompanyReducer } from "../features/companies";
 
 const store = configureStore({
   reducer: {
+    companies: CompanyReducer,
     auth: LoginReducer,
+    users: UserReducer,
     theme: ThemeReducer,
     home: HomeReducer,
     alert: alertSlice,

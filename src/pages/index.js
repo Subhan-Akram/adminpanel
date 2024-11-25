@@ -6,8 +6,12 @@ import ComparisonPage from "./ComparisonPage";
 import IntegrationPage from "./IntegrationPage";
 import SettingPage from "./SettingPage";
 import OrganizationPage from "./OrganizationPage";
+import UserPage from "./UserPage";
+import CompanyPage from "./CompanyPage";
 
 export {
+  CompanyPage,
+  UserPage,
   OrganizationPage,
   LoginPage,
   ErrorPage,

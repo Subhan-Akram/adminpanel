@@ -34,6 +34,7 @@ export default defineConfig({
       apis: path.resolve(__dirname, "./src/apis"),
       styles: path.resolve(__dirname, "./src/styles"),
       slice: path.resolve(__dirname, "./src/slice"),
+      globalStyles: path.resolve(__dirname, "./src/styles"),
     },
   },
   optimizeDeps: {
