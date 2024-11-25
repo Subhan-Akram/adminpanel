@@ -8,7 +8,8 @@ import { modelInitialValues } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { createModel } from "../../services";
 import { triggerAlert } from "slice/alertSlice";
-
+import { IconButton } from "@mui/material";
+import { CloseIcon } from "sullyIcons";
 const CreateModelDrawer = () => {
   const [open, setOpen] = useState(false);
   const { isLoading } = useSelector((state) => state.models);
@@ -47,6 +48,15 @@ const CreateModelDrawer = () => {
           <SullyTypography classNameProps={"page_title"}>
             Create Model
           </SullyTypography>
+          <IconButton
+            className="close"
+            aria-label="close"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
         </Box>
         <Box className="drawer_content">
           <ModelForm

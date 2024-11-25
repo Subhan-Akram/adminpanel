@@ -1,26 +1,15 @@
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import {
   ComparisonPage,
   ErrorPage,
   HomePage,
-  IntegrationPage,
   LoginPage,
   ModelsPage,
-  SettingPage,
+  OrganizationPage,
 } from "./pages";
-import {
-  FeatureComparision,
-  PromptComparison,
-  CostComparision,
-} from "features/compare";
+import { FeatureComparision, PromptComparison } from "features/compare";
 import { Alert } from "components";
-import { ModelDescription } from "features/models";
 import { TryPrompt } from "features/compare";
 
 const routes = [
@@ -29,55 +18,19 @@ const routes = [
   { path: "/home/models", element: <ModelsPage /> },
   { path: "/home/models/try-prompt/:extId", element: <TryPrompt /> },
   {
-    path: "/home/models/comparision/try-prompt/:extId",
-    element: <TryPrompt />,
-  },
-  { path: "/comparision/try-prompt/:extId", element: <TryPrompt /> },
-
-  {
-    path: "/home/models/comparision/integration",
-    element: <IntegrationPage />,
-  },
-  {
-    path: "/home/models/integration",
-    element: <IntegrationPage />,
-  },
-  {
-    path: "/home/models/comparision/model-description/:extId",
-    element: <ModelDescription />,
-  },
-  {
-    path: "/home/models/model-description/:extId",
-    element: <ModelDescription />,
-  },
-  {
-    path: "/home/models/comparision/*",
-    element: <ComparisonPage />,
+    path: "/organizations/*",
+    element: <OrganizationPage />,
     children: [
-      { path: "feature", element: <FeatureComparision /> },
-      { path: "prompt", element: <PromptComparison /> },
-      { path: "cost", element: <CostComparision /> },
+      {
+        path: ":organizationId/organization-settings",
+        element: <FeatureComparision />,
+      },
+      {
+        path: ":organizationId/companies/:companyId",
+        element: <PromptComparison />,
+      },
     ],
   },
-  { path: "/settings", element: <SettingPage /> },
-  {
-    path: "/comparision/*",
-    element: <ComparisonPage />,
-    children: [
-      { path: "", element: <Navigate to="feature" replace /> },
-      { path: "feature", element: <FeatureComparision /> },
-      { path: "prompt", element: <PromptComparison /> },
-      { path: "cost", element: <CostComparision /> },
-    ],
-  },
-  {
-    path: "/comparision/model-description/:extId",
-    element: <ModelDescription />,
-  },
-  { path: "/comparision/integration", element: <IntegrationPage /> },
-  { path: "/integration", element: <IntegrationPage /> },
-
-  { path: "/model-description/:extId", element: <ModelDescription /> },
 
   { path: "*", element: <ErrorPage /> },
 ];

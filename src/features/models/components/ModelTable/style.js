@@ -3,7 +3,6 @@ import { Box, styled } from "@mui/material";
 export const ModelTableWrapper = styled(Box)`
   width: 100% !important;
   margin: auto auto;
-  margin-top: 0rem;
 
   & .model_drawer_box {
     display: flex;
@@ -13,6 +12,7 @@ export const ModelTableWrapper = styled(Box)`
   }
   & .MuiCard-root {
     /* border: none; */
+    margin-top: 2rem;
   }
   & .card_header {
     padding: 1rem;

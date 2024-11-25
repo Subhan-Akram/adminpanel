@@ -36,7 +36,7 @@ const Compare = () => {
 
       <Box className="page_title_box">
         <SullyTypography classNameProps="page_title">
-          Compare Models
+          Organzations
         </SullyTypography>
       </Box>
       {currentTab !== "prompt" && (

@@ -1,3 +1,4 @@
+import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import {
   DashboardIcon,
   SettingIcon,
@@ -26,6 +27,13 @@ const sideBarOptions = [
     Icon: PeopleAltIcon,
     active: false,
     activeTabValue: "users",
+  },
+  {
+    title: "Organizations",
+    path: "organizations",
+    Icon: CorporateFareIcon,
+    active: false,
+    activeTabValue: "organizations",
   },
   {
     title: "Settings",

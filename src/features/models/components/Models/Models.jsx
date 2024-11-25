@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { SullyTypography } from "../../../../components";
 import ModelTable from "../ModelTable";
 import { ModelWrapper } from "./style";
 import { useDispatch, useSelector } from "react-redux";

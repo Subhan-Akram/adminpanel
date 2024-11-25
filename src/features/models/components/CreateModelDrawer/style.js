@@ -12,7 +12,12 @@ export const DrawerWrapper = styled(Drawer)`
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid var(--border-1);
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
   }
   & .drawer_content {
     padding: 1rem 12px;
