@@ -305,17 +305,39 @@ const getDesignTokens = (mode) => {
             width: "100%",
             "& .MuiOutlinedInput-root": {
               borderRadius: "4px",
-              border: "1px solid var(--border-2)",
+              borderColor: "red !important",
               "&:hover fieldset": {
-                border: "1px solid var(--border-2)",
+                borderColor: "var(--border-2)",
               },
               "&.Mui-focused fieldset": {
-                border: "1px solid var(--border-2)",
+                borderColor: "white",
+                border: ".5px solid var(--border-2)",
               },
             },
           },
         },
       },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            width: "100%",
+            fontSize: "14px !important",
+            // height: "38px",
+            borderRadius: "4px",
+            "& fieldset": {
+              borderColor: "var(--border-2)", // Default border color
+            },
+            "&:hover fieldset": {
+              borderColor: "var(--border-2)", // Hover state border color
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "var(--border-2)", // Focused state border color
+              borderWidth: "0.5px", // Custom border width
+            },
+          },
+        },
+      },
+
       MuiRadio: {
         styleOverrides: {
           root: {},
@@ -417,6 +439,24 @@ const getDesignTokens = (mode) => {
             borderRadius: "8px",
             padding: "16px",
             // .MuiDivier
+          },
+        },
+      },
+      MuiSwitch: {
+        styleOverrides: {
+          switchBase: {
+            color: "var(--surface-l4)", // Thumb color when unchecked
+            "&.Mui-checked": {
+              color: "var(--green)", // Thumb color when checked
+              "& + .MuiSwitch-track": {
+                opacity: "1",
+                backgroundColor: "#bdbdbd", // Track color when checked
+              },
+            },
+          },
+          track: {
+            backgroundColor: "#bdbdbd", // Track color when unchecked
+            opacity: 1,
           },
         },
       },

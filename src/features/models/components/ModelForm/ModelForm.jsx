@@ -10,10 +10,10 @@ import {
   Grid,
   Autocomplete,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import { FormWrapper } from "./style";
 import { PrimaryButton } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { InputLabelWrapper } from "styles";
 const tags = [{ name: "Sales Funnel" }, { name: "Gpt 3.0" }];
 // Validation Schema
 const validationSchema = Yup.object().shape({
@@ -55,8 +55,10 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Name Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="name">Name</label>
+            <InputLabelWrapper>Name</InputLabelWrapper>
+
             <TextField
+              size="small"
               variant="outlined"
               placeholder="Model Name"
               id="name"
@@ -73,8 +75,9 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* SSBX Code Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="ssbxCode">SSBX Code</label>
+            <InputLabelWrapper>SSBX Code</InputLabelWrapper>
             <TextField
+              size="small"
               variant="outlined"
               placeholder="SSBX Code"
               id="ssbxCode"
@@ -91,8 +94,14 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Model Card Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="modelCard">Model Card</label>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="modelCard"
+            >
+              Model Card
+            </InputLabelWrapper>
             <TextField
+              size="small"
               variant="outlined"
               placeholder="Model Card"
               id="modelCard"
@@ -111,8 +120,14 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Origin URL Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="originUrl">Origin URL</label>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="originUrl"
+            >
+              Origin URL
+            </InputLabelWrapper>
             <TextField
+              size="small"
               placeholder="Origin URL"
               variant="outlined"
               id="originUrl"
@@ -131,8 +146,14 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Logo URL Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="logoUrl">Logo URL</label>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="logoUrl"
+            >
+              Logo URL
+            </InputLabelWrapper>
             <TextField
+              size="small"
               placeholder="Logo URL"
               variant="outlined"
               id="logoUrl"
@@ -149,8 +170,14 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Created By Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="createdBy">Created By</label>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="createdBy"
+            >
+              Created By
+            </InputLabelWrapper>
             <TextField
+              size="small"
               placeholder="Created By"
               variant="outlined"
               id="createdBy"
@@ -169,8 +196,14 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* License Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
-            <label htmlFor="license">License</label>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="license"
+            >
+              License
+            </InputLabelWrapper>
             <TextField
+              size="small"
               variant="outlined"
               placeholder="License"
               id="license"
@@ -184,9 +217,16 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
-          <label htmlFor="createdBy">Tags</label>
+          <InputLabelWrapper
+            className="InputLabelWrapper_text"
+            htmlFor="createdBy"
+          >
+            Tags
+          </InputLabelWrapper>
           <Autocomplete
+            className="autocomplete_tags"
             multiple
+            size="small"
             id="tags-outlined"
             options={tags}
             getOptionLabel={(option) => option.name}
@@ -206,7 +246,7 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
             renderInput={(params) => (
               <TextField
                 {...params}
-                // label="filterSelectedOptions"
+                // InputLabelWrapper="filterSelectedOptions"
                 placeholder="Add Tags"
               />
             )}
@@ -215,7 +255,9 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Rating Field */}
         <Grid item xs={12}>
           <Box>
-            <Typography variant="body1">Rating:</Typography>
+            <Typography className="InputLabelWrapper_text" variant="body1">
+              Rating:
+            </Typography>
             <Rating
               name="rating"
               value={formik.values.rating}
@@ -233,7 +275,9 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
         {/* Description Field */}
         <Grid item xs={12} md={12}>
           <FormControl fullWidth>
-            <label htmlFor="description">Description</label>
+            <InputLabelWrapper htmlFor="description">
+              Description
+            </InputLabelWrapper>
             <TextField
               variant="outlined"
               placeholder="Description"

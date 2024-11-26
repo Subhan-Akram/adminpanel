@@ -10,12 +10,14 @@ import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import {
   ConfirmDynamicModal,
   OutlinedButton,
+  PrimaryButton,
   SearchBar,
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCompany } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
+import CreateCompanyModal from "../CreateCompanyModal";
 
 export default function CompaniesTable() {
   const [open, setOpen] = useState(false);
@@ -99,6 +101,9 @@ export default function CompaniesTable() {
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
                 Export Csv
               </OutlinedButton>
+              <CreateCompanyModal>
+                <PrimaryButton>Create Company</PrimaryButton>
+              </CreateCompanyModal>
               {/* <CreateModelDrawer /> */}
             </Box>
           </Box>
