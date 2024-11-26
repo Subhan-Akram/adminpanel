@@ -49,6 +49,9 @@ export const TableWrapper = styled(DataGrid)`
   & .MuiDataGrid-footerContainer {
     border-color: var(--border-1) !important;
   }
+  & .MuiInput-underline:before {
+    border-bottom: none !important;
+  }
   & .MuiDataGrid-toolbarQuickFilter {
     border: 1px solid var(--border-1) !important;
     padding-bottom: 0 !important;

@@ -14,7 +14,7 @@ const TagsGroupStyle = styled(Box)`
     font-family: satoshi;
     /* padding: 0 !important; */
     height: 25px !important;
-    margin-top: -16px;
+    /* margin-top: -16px; */
     background: var(--model-icon-bg) !important;
     border: 1px solid var(--model-icon-bg);
     color: var(--text-brand);

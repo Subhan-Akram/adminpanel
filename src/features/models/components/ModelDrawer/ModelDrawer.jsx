@@ -1,18 +1,15 @@
 import PropTypes from "prop-types";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { TextField } from "@mui/material";
 import { DrawerWrapper } from "./style";
 import {
   LogoFrame,
   SullyTypography,
   TextButton,
   OutlinedButton,
-  PrimaryButton,
   Chip,
   TagTooltip,
 } from "../../../../components";
-import { AutoCompleteWrapper } from "../../../../components/TagsAutoComplete/style";
 import ModelForm from "../ModelForm";
 import { useDispatch, useSelector } from "react-redux";
 import { updateModel } from "../../services";
@@ -47,7 +44,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Name:
@@ -65,7 +62,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Model Card:
@@ -83,7 +80,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             License:
@@ -101,7 +98,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             SSBX Code:
@@ -118,7 +115,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Logo URL:
@@ -134,7 +131,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Origin URL:
@@ -152,7 +149,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={6}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Rating:
@@ -169,7 +166,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12} sm={12}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Description:
@@ -185,7 +182,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         <Grid item xs={12}>
           <SullyTypography
             variant="body1"
-            classNameProps={"card_title_1"}
+            classNameProps={"modaltitle1"}
             sx={{ mb: 1, fontWeight: 500 }}
           >
             Tags

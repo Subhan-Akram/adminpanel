@@ -1,7 +1,7 @@
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Avatar, Box, Chip } from "@mui/material";
-import { TagsGroupStyle } from "globalStyles";
+import { TagsGroupStyle } from "styles";
 import EditIcon from "@mui/icons-material/Edit";
 // import { Avatar, Box } from "@mui/material";
 
@@ -68,6 +68,8 @@ const columns = ({ handleView, setDeletePopover }) => [
           sx={{
             display: "flex",
             marginLeft: row?.teams?.length ? "0" : "20px",
+            height: "95%",
+            alignItems: "center",
           }}
         >
           {" "}

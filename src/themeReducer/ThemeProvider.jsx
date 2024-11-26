@@ -248,6 +248,10 @@ const getDesignTokens = (mode) => {
       MuiAutocomplete: {
         styleOverrides: {
           root: {
+            "& .MuiAutocomplete-listbox": {
+              border: "1px solid red",
+              background: "var(--surface-l1) !important",
+            },
             "& .MuiFilledInput-root": {
               border: "none",
               overflow: "hidden",

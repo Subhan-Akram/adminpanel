@@ -8,6 +8,8 @@ const Label = ({ children, ...props }) => {
 const InputLabelWrapper = styled(Label)`
   font-size: 14px !important;
   margin-bottom: 6px;
+  font-weight: 500;
+  font-family: "satoshi";
 `;
 
 export default InputLabelWrapper;

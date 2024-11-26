@@ -13,7 +13,7 @@ import {
 import { FormWrapper } from "./style";
 import { PrimaryButton } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { InputLabelWrapper } from "styles";
+import { InputLabelWrapper, AutoCompleteStyledPopperWrapper } from "styles";
 const tags = [{ name: "Sales Funnel" }, { name: "Gpt 3.0" }];
 // Validation Schema
 const validationSchema = Yup.object().shape({
@@ -233,6 +233,14 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
             defaultValue={[tags[0]]}
             filterSelectedOptions
             sx={{ width: "100%", marginTop: "6px" }}
+            PopperComponent={(props) => (
+              <AutoCompleteStyledPopperWrapper
+                {...props}
+                // anchorEl={box1Ref.current}
+                // width={`${searchBoxWidth}px`}
+                placement="bottom-start"
+              />
+            )}
             ChipProps={{
               deleteIcon: (
                 <CloseOutlinedIcon

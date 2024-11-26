@@ -83,9 +83,9 @@ export const StyledList = styled(List, {
     display: "flex",
     flexDirection: "column",
     gap: "12px",
-    padding: "0 10px",
+    padding: "0 9px",
     "& .MuiListItemButton-root": {
-      padding: "6px 4px 6px 4px",
+      padding: "6px 4px 6px 8px",
       justifyContent: "center",
       "&:hover": {
         background: "none",
@@ -95,12 +95,19 @@ export const StyledList = styled(List, {
       minWidth: 0,
 
       justifyContent: "center",
+      "& svg": {
+        width: "20px",
+      },
       "& svg > path": {
         fill: "var(--sidenav-icon)",
       },
     },
     "& .MuiListItemText-root": {
-      marginLeft: "10px",
+      marginLeft: "8px",
+
+      "& .MuiTypography-root": {
+        fontSize: "14px",
+      },
       // display: open ? "block" : "none",
       // display: "none",
     },
