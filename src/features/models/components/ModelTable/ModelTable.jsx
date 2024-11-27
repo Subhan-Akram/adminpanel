@@ -3,7 +3,7 @@ import Table from "../../../../components/Table";
 import columns from "./columns";
 import ModelDrawer from "../ModelDrawer/ModelDrawer";
 import { Box, Card } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
 import {
@@ -13,7 +13,7 @@ import {
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteModel } from "../../services";
+import { deleteModel, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import {
   GridToolbarContainer,
@@ -73,6 +73,13 @@ export default function ModelTable() {
       </Box>
     </GridToolbarContainer>
   );
+
+  useEffect(() => {
+    console.log("running==");
+    if (!models.length) {
+      dispatch(getAllModels({ dispatch }));
+    }
+  }, []);
   return (
     <>
       <ConfirmDynamicModal
@@ -92,12 +99,7 @@ export default function ModelTable() {
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
-      {/* <ConfirmPopover
-        text={`Are you sure you want to delete ${deletePopover?.model?.name} model ?`}
-        handleAction={handleDelete}
-        setPopover={setDeletePopover}
-        popover={deletePopover}
-      /> */}
+
       <ModelDrawer
         setModel={setModel}
         open={open}
@@ -129,12 +131,6 @@ export default function ModelTable() {
           </Box>
         </Box>
         <Card sx={{ padding: 0 }}>
-          {/* <Box className="card_header">
-            <SullyTypography classNameProps={"modaltitle1"}>
-              All Models
-            </SullyTypography>
-            <SearchBar />
-          </Box> */}
           <Table
             isLoading={isLoading}
             showTableSearch={true}

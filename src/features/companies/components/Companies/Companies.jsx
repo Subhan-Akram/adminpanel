@@ -11,6 +11,7 @@ function Comapnies() {
   }, [dispatch]);
   return (
     <CompaniesWrapper>
+      <h1>companies</h1>
       <CompaniesTable />
     </CompaniesWrapper>
   );

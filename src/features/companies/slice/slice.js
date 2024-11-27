@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   companies: [],
-  isLoading: false,
+  isLoading: true,
   error: "",
 };
 

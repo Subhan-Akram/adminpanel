@@ -1,33 +1,17 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import { HeroWrapper, HomeWrapper } from "./style";
 import { Box, Grid } from "@mui/material";
 import { MsgFrame1, CircleDog, DecorationCircle, SullyDog } from "assets";
-import { useDispatch, useSelector } from "react-redux";
-
-import { RightIcon } from "sullyIcons";
-import { SullyTypography, TagsSkeleton, Chip } from "components";
-import { tagsLoaderData } from "features/compare/constants";
-import HomeSearch from "./HomeSearch";
-import { addModelTag, removeModelTag } from "features/home/slice";
-import { getAllModelTags } from "features/home/services";
-import { getAllModelSet } from "features/integration/services";
+import { useSelector } from "react-redux";
+import { SullyTypography } from "components";
 
 const Home = () => {
   const [contentHeight, setContentHeight] = useState(400);
-  const { modelSet } = useSelector((state) => state.integration);
 
   const {
     user: { name },
   } = useSelector((state) => state.auth);
   const msgFrameRef = useRef(null);
-  const dispatch = useDispatch();
-  const { allModelTags, tags, isLoading, error } = useSelector(
-    (state) => state.home
-  );
-
-  const handleAddModelTags = (tag) => dispatch(addModelTag(tag));
-  const handleTagRemove = (tag) => dispatch(removeModelTag(tag));
 
   useEffect(() => {
     const msgFrame = msgFrameRef.current;
@@ -46,10 +30,6 @@ const Home = () => {
       resizeObserver.disconnect();
     };
   }, [contentHeight]);
-
-  useEffect(() => {
-    if (!modelSet.length) dispatch(getAllModelSet());
-  }, [dispatch, modelSet.length]);
 
   return (
     <HomeWrapper>
@@ -89,36 +69,6 @@ const Home = () => {
                     Welcome to Admin Panel
                   </SullyTypography>
                 </Box>
-                {/* <Box className="search_box search_box_1">
-                  <HomeSearch />
-                </Box>
-                <Box className="model_tags">
-                  {error ? (
-                    <></>
-                  ) : isLoading || !allModelTags.length ? (
-                    tagsLoaderData.map((val, i) => <TagsSkeleton key={val} />)
-                  ) : (
-                    allModelTags.map((modelItem) => {
-                      const isActive = tags.some(
-                        (val) => val === modelItem.name,
-                      );
-                      return (
-                        <Chip
-                          closable={isActive ? () => {} : null}
-                          key={modelItem.name}
-                          label={modelItem.name}
-                          classNameProps={`${isActive ? "home_chip_active" : ""} home_chips`}
-                          Icon={<RightIcon />}
-                          onClick={() => {
-                            isActive
-                              ? handleTagRemove(modelItem.name)
-                              : handleAddModelTags(modelItem.name);
-                          }}
-                        />
-                      );
-                    })
-                  )}
-                </Box> */}
               </Box>
               <Box className="bg_message_frame">
                 <img src={MsgFrame1} alt="" />

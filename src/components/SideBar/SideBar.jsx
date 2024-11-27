@@ -47,20 +47,6 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
           </ListItem>
         ))}
       </StyledList>
-      {/* <ThemeToggleBox
-        onClick={() => {
-          dispatch(setThemeMode(mode === "dark" ? "light" : "dark"));
-        }}
-      >
-        <ThemeToggleContainer mode={mode}>
-          <Box className="iconContainer-sun">
-            <SunIcon />
-          </Box>
-          <Box className="iconContainer-moon">
-            <MoonIcon />
-          </Box>
-        </ThemeToggleContainer>
-      </ThemeToggleBox> */}
     </DrawerStyle>
   );
 };

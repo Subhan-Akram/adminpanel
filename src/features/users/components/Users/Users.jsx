@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+/* eslint-disable no-unused-vars */
+// import { useEffect } from "react";
 import UsersTable from "../../UserTable";
 import { UserWrapper } from "./style";
 import { useDispatch } from "react-redux";
 import { getUsers } from "../../services";
+import UserTable2 from "../../UserTable/UserTable2";
+import { useEffect } from "react";
 
 function Users() {
   const dispatch = useDispatch();

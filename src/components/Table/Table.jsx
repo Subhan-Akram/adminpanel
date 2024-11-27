@@ -1,4 +1,3 @@
-import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import PropTypes from "prop-types";
 import { TableWrapper } from "./style";
 
@@ -22,7 +21,9 @@ export default function Table({
       loading={isLoading}
       sortingOrder={["desc", "asc"]}
       columns={columns}
-      getRowId={(row) => row.extId} // Custom row ID
+      getRowId={(row) => {
+        return row.extId;
+      }} // Custom row ID
       rows={rows}
       initialState={{
         pagination: {

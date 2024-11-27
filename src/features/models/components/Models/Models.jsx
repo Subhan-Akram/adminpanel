@@ -5,13 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllModels } from "../../services";
 
 function Models() {
-  const dispatch = useDispatch();
-  const { models } = useSelector((state) => state.models);
-  useEffect(() => {
-    if (!models.length) {
-      dispatch(getAllModels({ dispatch }));
-    }
-  }, []);
   return (
     <ModelWrapper>
       <ModelTable />

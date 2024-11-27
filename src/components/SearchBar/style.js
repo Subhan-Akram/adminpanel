@@ -16,7 +16,8 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
     height: "100%",
     "& fieldset": {
-      borderColor: "transparent",
+      borderColor: "var(--border-1)",
+      // borderColor: "transparent",
     },
     "&:hover fieldset": {
       borderColor: "var(--border-1)",

@@ -13,8 +13,8 @@ import { FeatureComparision, PromptComparison } from "features/compare";
 import { Alert } from "components";
 
 const routes = [
-  { path: "/", element: <HomePage />, index: true },
-  { path: "/users", element: <UserPage />, index: true },
+  { path: "/", element: <HomePage /> },
+  { path: "/users", element: <UserPage /> },
   { path: "/models", element: <ModelsPage /> },
   { path: "/companies", element: <CompanyPage /> },
   {

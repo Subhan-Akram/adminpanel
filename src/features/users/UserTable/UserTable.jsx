@@ -1,13 +1,9 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-unused-vars */
 import { ModelTableWrapper } from "./style";
 import Table from "components/Table";
 import columns from "./columns";
-// import ModelDrawer from "../ModelDrawer/ModelDrawer";
-import { Box, Button, Card } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import { useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-// import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
 import {
   ConfirmDynamicModal,
   OutlinedButton,
@@ -29,6 +25,7 @@ export default function UsersTable() {
     element: null,
     model: "",
   });
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState({
     model: "ns",
     description: "s",
