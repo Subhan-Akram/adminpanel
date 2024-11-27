@@ -6,7 +6,8 @@ const updateCompany = createAsyncThunk(
   "updateCompany",
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
-      const { data } = await updateCompanyApi(payload);
+      const { extId } = payload;
+      const { data } = await updateCompanyApi(extId, payload);
       return data;
     } catch (error) {
       dispatch(

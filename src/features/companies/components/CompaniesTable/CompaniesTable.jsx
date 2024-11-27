@@ -18,25 +18,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCompany } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import CreateCompanyModal from "../CreateCompanyModal";
+import CompanyModal from "../CompanyModal";
 
 export default function CompaniesTable() {
   const [open, setOpen] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
     element: null,
-    value: "",
+    value: {},
   });
   const { companies, isLoading } = useSelector((state) => state.companies);
   console.log("companies", companies);
-  const [model, setModel] = useState({
-    model: "ns",
-    description: "s",
-    rating: 2,
-    modelCard: "23",
-  });
+  const [company, setCompany] = useState({});
   const dispatch = useDispatch();
   const handleDelete = async () => {
-    const { model } = deletePopover;
-    const { payload } = deleteCompany();
+    const { value } = deletePopover;
+    const { payload } = await dispatch(
+      deleteCompany({ dispatch, extId: value.extId })
+    );
     if (payload) {
       dispatch(
         triggerAlert({
@@ -45,12 +43,11 @@ export default function CompaniesTable() {
           alertType: "success",
         })
       );
-      setDeletePopover({ element: null, extId: "" });
+      setDeletePopover({ element: null, value: {} });
     }
   };
   const handleView = (row) => {
-    console.log("row", row);
-    setModel(row);
+    setCompany(row);
     setOpen(true);
     console.log("view ticket ");
   };
@@ -61,12 +58,12 @@ export default function CompaniesTable() {
         isConfirmModalOpen={deletePopover.element}
         handleSubmit={handleDelete}
         setIsConfirmModalOpen={setDeletePopover}
-        title={`Delete - ${deletePopover?.value || ""}`}
+        title={`Delete - ${deletePopover?.value?.name || ""}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
             Are you sure you want to delete{" "}
             <SullyTypography variant="span" classNameProps="model_name">
-              {deletePopover?.value || ""}
+              {deletePopover?.value?.name || ""}
             </SullyTypography>{" "}
             from Models ?
           </SullyTypography>
@@ -74,13 +71,13 @@ export default function CompaniesTable() {
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
-
-      {/* <ModelDrawer
-        setModel={setModel}
+      <CompanyModal
+        type="view"
+        company={company}
         open={open}
         setOpen={setOpen}
-        model={model}
-      /> */}
+      />
+
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">
           <SullyTypography

@@ -1,7 +1,7 @@
 import axios from "../axiosConfig/axiosConfig";
 
 export function createCompany(payload) {
-  return axios.get("/admin/api/v1/company", payload);
+  return axios.post("/admin/api/v1/company", payload);
 }
 export function getCompanies() {
   return axios.get("/admin/api/v1/company");

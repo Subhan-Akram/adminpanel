@@ -4,9 +4,9 @@ import { deleteCompany as deleteCompanyApi } from "../../../apiTwg";
 
 const deleteCompany = createAsyncThunk(
   "deleteCompany",
-  async ({ dispatch, payload }, { rejectWithValue }) => {
+  async ({ dispatch, extId }, { rejectWithValue }) => {
     try {
-      const { data } = await deleteCompanyApi(payload);
+      const { data } = await deleteCompanyApi(extId);
       return data;
     } catch (error) {
       dispatch(

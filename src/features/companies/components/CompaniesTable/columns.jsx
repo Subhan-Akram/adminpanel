@@ -4,7 +4,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Avatar, Box } from "@mui/material";
 import { Chip, SullyTypography } from "../../../../components";
 import { TagsGroupStyle } from "globalStyles";
-
+import EditIcon from "@mui/icons-material/Edit";
 const columns = ({ handleView, setDeletePopover }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
@@ -40,7 +40,7 @@ const columns = ({ handleView, setDeletePopover }) => [
 
   {
     field: "organizations",
-    headerName: "Teams",
+    headerName: "Organizations",
     sortable: false,
     width: 200,
     renderCell: ({ row }) => {
@@ -64,7 +64,7 @@ const columns = ({ handleView, setDeletePopover }) => [
     getActions: ({ row }) => [
       <GridActionsCellItem
         key={"1"}
-        icon={<VisibilityIcon sx={{ color: "var(--icon-primary)" }} />}
+        icon={<EditIcon sx={{ color: "var(--icon-primary)" }} />}
         label="View Details"
         onClick={() => handleView(row)}
       />,
@@ -73,7 +73,7 @@ const columns = ({ handleView, setDeletePopover }) => [
         icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
         label="View Details"
         onClick={(e) => {
-          setDeletePopover({ element: e.currentTarget, value: row.name });
+          setDeletePopover({ element: e.currentTarget, value: row });
         }}
       />,
     ],

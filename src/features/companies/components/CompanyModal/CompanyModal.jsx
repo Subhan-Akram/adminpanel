@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useRef } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -5,24 +7,22 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import PropTypes from "prop-types";
 import CompanyForm from "../CompanyForm";
-import { companyInitialValues } from "../../constants";
 import { Box } from "@mui/material";
 import { OutlinedButton, PrimaryButton } from "../../../../components";
-import { triggerAlert } from "../../../../slice/alertSlice";
-import { createCompany } from "../../services";
 import { useDispatch, useSelector } from "react-redux";
+import { updateCompany } from "../../services";
+import { triggerAlert } from "../../../../slice/alertSlice";
 
-const CreateCompanyModal = ({ children }) => {
-  const [open, setOpen] = React.useState(false);
+const CompanyModal = ({ open, setOpen, company }) => {
   const formRef = useRef(null);
-  const dispatch = useDispatch();
   const { crudLoading } = useSelector((state) => state.companies);
+  const dispatch = useDispatch();
   const handleModal = (val) => {
     setOpen(val);
   };
   const handleSubmit = async (val) => {
     const { payload } = await dispatch(
-      createCompany({ dispatch, payload: val })
+      updateCompany({ dispatch, payload: val })
     );
     console.log("payload", payload);
     if (payload) {
@@ -40,30 +40,23 @@ const CreateCompanyModal = ({ children }) => {
   const handleFormSubmit = () => {
     formRef.current?.submitForm();
   };
+  console.log("company", company);
 
   return (
     <React.Fragment>
-      <div
-        onClick={(e) => {
-          e.stopPropagation(); // Prevent event bubbling
-          handleModal(true);
-        }}
-        style={{ display: "inline-block" }}
-      >
-        {children}
-      </div>
       <Dialog
         open={open}
         onClose={() => {
           handleModal(false);
         }}
       >
-        <DialogTitle>Create Company</DialogTitle>
+        <DialogTitle>{"Edit Company"}</DialogTitle>
         <DialogContent>
           <Box sx={{ marginTop: "1rem" }}>
             <CompanyForm
+              isEdit={true}
               ref={formRef}
-              initialValues={companyInitialValues}
+              initialValues={company}
               handleSubmit={handleSubmit}
             />
           </Box>
@@ -85,8 +78,11 @@ const CreateCompanyModal = ({ children }) => {
   );
 };
 
-CreateCompanyModal.propTypes = {
+CompanyModal.propTypes = {
   children: PropTypes.node,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func,
+  type: PropTypes.string,
 };
 
-export default CreateCompanyModal;
+export default CompanyModal;

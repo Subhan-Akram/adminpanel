@@ -14,7 +14,9 @@ import { FormWrapper } from "./style";
 import { PrimaryButton } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { InputLabelWrapper, AutoCompleteStyledPopperWrapper } from "styles";
-const tags = [{ name: "Sales Funnel" }, { name: "Gpt 3.0" }];
+import { useEffect, useState } from "react";
+import { getAllModelTags } from "../../services";
+import { useDispatch, useSelector } from "react-redux";
 // Validation Schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -36,6 +38,10 @@ const validationSchema = Yup.object().shape({
 });
 
 function ModelForm({ initialValues, handleSubmit, isLoading }) {
+  const dispatch = useDispatch();
+  const { tags } = useSelector((state) => state.models);
+
+  const [selectedTags, setSelectedTags] = useState([]);
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -44,7 +50,9 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
       setSubmitting(false);
     },
   });
-
+  useEffect(() => {
+    dispatch(getAllModelTags());
+  }, []);
   return (
     <FormWrapper
       component="form"
@@ -230,8 +238,11 @@ function ModelForm({ initialValues, handleSubmit, isLoading }) {
             id="tags-outlined"
             options={tags}
             getOptionLabel={(option) => option.name}
-            defaultValue={[tags[0]]}
-            filterSelectedOptions
+            defaultValue={[]}
+            value={selectedTags}
+            onChange={(_, val) => {
+              setSelectedTags(val);
+            }}
             sx={{ width: "100%", marginTop: "6px" }}
             PopperComponent={(props) => (
               <AutoCompleteStyledPopperWrapper

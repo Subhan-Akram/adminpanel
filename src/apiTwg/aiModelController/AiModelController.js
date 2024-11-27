@@ -5,7 +5,8 @@ export function getModelFeature(modelExtIds) {
 }
 
 export const getModelTags = () => {
-  return axios.get("/api/v1/model/tags");
+  console.log("===running");
+  return axios.get("/admin/api/v1/model/tags");
 };
 
 export const createSingleModelSet = (modelExtIds) => {

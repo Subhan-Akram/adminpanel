@@ -6,11 +6,13 @@ import {
   getAllModels,
   updateModel,
   deleteModel,
+  getAllModelTags,
 } from "../services";
 
 const initialState = {
   models: [],
   model: { features: [] },
+  tags: [],
   selectedModels: [],
   selectedModelLength: 0,
   modalModels: [],
@@ -126,6 +128,18 @@ export const slice = createSlice({
         state.models = state.models.filter((val) => val.extId !== model.extId);
       })
       .addCase(deleteModel.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(getAllModelTags.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllModelTags.fulfilled, (state, action) => {
+        const tags = action.payload;
+        state.isLoading = false;
+        state.tags = tags;
+      })
+      .addCase(getAllModelTags.rejected, (state) => {
         state.isLoading = false;
       });
   },

@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getModelTags } from "../../../apiTwg/aiModelController/AiModelController";
 import { triggerAlert } from "slice/alertSlice";
-import { createCompany as createCompanyApi } from "../../../apiTwg";
 
-const createCompany = createAsyncThunk(
-  "createCompany",
-  async ({ dispatch, payload }, { rejectWithValue }) => {
+const getAllModelTags = createAsyncThunk(
+  "getAllModelTags",
+  async (dispatch, { rejectWithValue }) => {
     try {
-      const { data } = await createCompanyApi(payload);
-      console.log("create=====data", data);
+      const response = await getModelTags();
+      const { data } = response;
       return data;
     } catch (error) {
       dispatch(
@@ -22,4 +22,4 @@ const createCompany = createAsyncThunk(
   }
 );
 
-export default createCompany;
+export default getAllModelTags;
