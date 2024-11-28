@@ -78,6 +78,7 @@ export const AppBar = styled(MuiAppBar, {
     },
     "& .logo": {
       cursor: "pointer",
+      marginTop: "4px",
       "& svg": {
         width: "100% !important",
         height: "100% !important",
