@@ -20,20 +20,20 @@ const routes = [
   { path: "/users", element: <UserPage /> },
   { path: "/models", element: <ModelsPage /> },
   { path: "/companies", element: <CompanyPage /> },
-  // {
-  //   path: "/organizations/*",
-  //   element: <OrganizationPage />,
-  //   children: [
-  //     {
-  //       path: ":organizationId/organization-settings",
-  //       element: <FeatureComparision />,
-  //     },
-  //     {
-  //       path: ":organizationId/companies/:companyId",
-  //       element: <PromptComparison />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/organizations/*",
+    element: <OrganizationPage />,
+    children: [
+      {
+        path: ":organizationId/organization-settings",
+        element: <FeatureComparision />,
+      },
+      {
+        path: ":organizationId/companies/:companyId",
+        element: <PromptComparison />,
+      },
+    ],
+  },
 
   { path: "*", element: <ErrorPage /> },
 ];
@@ -45,14 +45,14 @@ function App() {
       <Router>
         <Routes>
           <Route path={"/login"} element={<LoginPage />} />
-          <Route
+          {/* <Route
             path={"/organizations"}
             element={
               <Layout2>
                 <OrganzationPage />
               </Layout2>
             }
-          />
+          /> */}
           <Route path="/" element={<PrivateRoute />}>
             {routes.map(({ path, element, index, children }) => (
               <Route key={path} path={path} element={element} index={index}>

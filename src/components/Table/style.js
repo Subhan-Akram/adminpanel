@@ -74,6 +74,9 @@ export const TableWrapper = styled(DataGrid)`
   & .MuiInput-root:after {
     border-bottom: none;
   }
+  & .MuiDataGrid-scrollbar {
+    height: 4px !important;
+  }
   /* & .MuiButton-textPrimary {
     font-family: "satoshi";
     box-sizing: border-box;
