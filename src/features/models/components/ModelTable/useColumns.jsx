@@ -2,6 +2,7 @@
 // import { GridActionsCellItem } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
+import EditIcon from "@mui/icons-material/Edit";
 // import { Avatar, Box } from "@mui/material";
 // import { LogoFrame, SullyTypography } from "../../../../components";
 
@@ -155,7 +156,7 @@ const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
             },
             {
               label: "Edit",
-              icon: <VisibilityIcon />,
+              icon: <EditIcon />,
               onClick: () => {
                 handleEdit(row);
               },
@@ -169,11 +170,6 @@ const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
             },
           ]}
         />
-        // <ModelTableAction
-        //   row={row}
-        //   setDeletePopover={setDeletePopover}
-        //   handleView={handleView}
-        // />
       ),
       //  ({ row }) => {
       //   // State to handle menu open/close

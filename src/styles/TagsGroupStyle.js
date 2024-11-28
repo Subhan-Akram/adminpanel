@@ -3,12 +3,13 @@ import { Box, styled } from "@mui/material";
 const TagsGroupStyle = styled(Box)`
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
-  border: 1px solid red;
+  /* flex-wrap: wrap; */
+  overflow-x: auto;
   width: 100%;
   gap: 4px;
   align-items: center;
   height: 100%;
+
   & .MuiChip-root {
     border-radius: 36px !important;
     font-size: 14px;

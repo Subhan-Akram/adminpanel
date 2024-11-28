@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { ModelTableWrapper } from "./style";
 import Table from "../../../../components/Table";
+import EditIcon from "@mui/icons-material/Edit";
 import columns from "./columns";
 // import ModelDrawer from "../ModelDrawer/ModelDrawer";
 import { Box, Card } from "@mui/material";

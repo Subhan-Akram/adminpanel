@@ -2,9 +2,14 @@ import { GridActionsCellItem } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
 import { Avatar, Box, IconButton } from "@mui/material";
-import { Chip, SullyTypography, TextButton } from "../../../../components";
-import { TagsGroupStyle } from "globalStyles";
 import EditIcon from "@mui/icons-material/Edit";
+import {
+  Chip,
+  DropDown,
+  SullyTypography,
+  TextButton,
+} from "../../../../components";
+import { TagsGroupStyle } from "globalStyles";
 const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
@@ -47,20 +52,11 @@ const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
     renderCell: ({ row }) => {
       return (
         <>
-          <TagsGroupStyle
-            sx={{
-              maxWidth: "100%",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
+          <TagsGroupStyle>
             {[...row?.organizations].map(({ name }, index) => (
               <Chip classNameProps="more_chips" key={index} label={name} />
             ))}
           </TagsGroupStyle>
-
-          <TextButton>Join</TextButton>
         </>
       );
     },
@@ -72,22 +68,26 @@ const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
     headerName: "Actions",
     width: 100,
     cellClassName: "actions",
-    getActions: ({ row }) => [
-      <GridActionsCellItem
-        key={"1"}
-        icon={<EditIcon sx={{ color: "var(--icon-primary)" }} />}
-        label="View Details"
-        onClick={() => handleView(row)}
-      />,
-      <GridActionsCellItem
-        key={"2"}
-        icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
-        label="View Details"
-        onClick={(e) => {
-          setDeletePopover({ element: e.currentTarget, value: row });
-        }}
-      />,
-    ],
+    renderCell: ({ row }) => (
+      <DropDown
+        menuItems={[
+          {
+            label: "Edit",
+            icon: <EditIcon />,
+            onClick: () => {
+              handleView(row);
+            },
+          },
+          {
+            label: "Delete",
+            icon: <DeleteOutline />,
+            onClick: (e) => {
+              setDeletePopover({ element: e.currentTarget, value: row });
+            },
+          },
+        ]}
+      />
+    ),
   },
 ];
 
