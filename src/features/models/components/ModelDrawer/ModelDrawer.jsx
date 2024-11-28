@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -12,13 +13,13 @@ import {
 } from "../../../../components";
 import ModelForm from "../ModelForm";
 import { useDispatch, useSelector } from "react-redux";
-import { updateModel } from "../../services";
+import { getAllModelTags, updateModel } from "../../services";
 import { modelInitialValues } from "../../constants";
 import { triggerAlert } from "slice/alertSlice";
 import { Grid } from "@mui/material";
 
-const ModelDrawer = ({ model, open, setOpen, setModel }) => {
-  const [type, setType] = React.useState("view");
+const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
+  // const [type, setType] = React.useState("view");
   console.log("modal=", model);
   const {
     name,
@@ -251,7 +252,9 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
       setModel(payload);
     }
   };
-  console.log("type", type);
+  React.useEffect(() => {
+    dispatch(getAllModelTags());
+  }, []);
   return (
     <React.Fragment>
       <DrawerWrapper anchor={"right"} open={open} onClose={toggleDrawer(false)}>

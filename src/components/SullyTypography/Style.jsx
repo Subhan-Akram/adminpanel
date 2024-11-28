@@ -209,6 +209,12 @@ export const TypographyWrapper = styled(Typography)(() => ({
     fontWeight: "500",
     lineHeight: "var(--Typography-Fontsize-1XL, 24px)",
   },
+  "&.banner_title": {
+    color: "var(--brand-button-text-icon) !important",
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
   "&.modaltitle1_regular": {
     color: "var(--text-primary)",
     fontSize: "var(--Typography-Fontsize-L, 16px)",

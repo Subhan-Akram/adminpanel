@@ -1,6 +1,6 @@
 import { ModelTableWrapper } from "./style";
 import Table from "../../../../components/Table";
-import columns from "./columns";
+import columns from "./useColumns";
 import ModelDrawer from "../ModelDrawer/ModelDrawer";
 import { Box, Card } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -9,20 +9,16 @@ import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
 import {
   ConfirmDynamicModal,
   OutlinedButton,
-  SearchBar,
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteModel, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
-import {
-  GridToolbarContainer,
-  GridToolbarExport,
-  GridToolbarQuickFilter,
-} from "@mui/x-data-grid";
+import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 
 export default function ModelTable() {
   const [open, setOpen] = useState(false);
+  const [type, setType] = useState("view");
   const [deletePopover, setDeletePopover] = useState({
     element: null,
     model: "",
@@ -50,10 +46,13 @@ export default function ModelTable() {
     }
   };
   const handleView = (row) => {
-    console.log("row", row);
     setModel(row);
     setOpen(true);
-    console.log("view ticket ");
+  };
+  const handleEdit = (row) => {
+    setType("edit");
+    setModel(row);
+    setOpen(true);
   };
   const CustomToolbar = () => (
     <GridToolbarContainer
@@ -64,10 +63,7 @@ export default function ModelTable() {
         gap: "10px",
       }}
     >
-      <SullyTypography
-        sx={{ color: "var(--brand-button-text-icon)", fontWeight: "500" }}
-        classNameProps={"modaltitle1"}
-      >
+      <SullyTypography classNameProps={"modaltitle1"}>
         All Models
       </SullyTypography>
       <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
@@ -78,7 +74,6 @@ export default function ModelTable() {
   );
 
   useEffect(() => {
-    console.log("running==");
     if (!models.length) {
       dispatch(getAllModels({ dispatch }));
     }
@@ -106,15 +101,14 @@ export default function ModelTable() {
       <ModelDrawer
         setModel={setModel}
         open={open}
+        type={type}
+        setType={setType}
         setOpen={setOpen}
         model={model}
       />
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">
-          <SullyTypography
-            // sx={{ fontSize: "1" }}
-            classNameProps={"card_title_1"}
-          >
+          <SullyTypography classNameProps={"banner_title"}>
             LLM Models
           </SullyTypography>
           <Box>
@@ -123,7 +117,6 @@ export default function ModelTable() {
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "12px",
-                // width: "200px",
               }}
             >
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
@@ -139,7 +132,7 @@ export default function ModelTable() {
             showTableSearch={true}
             rows={models}
             CustomToolbar={CustomToolbar}
-            columns={columns({ handleView, setDeletePopover })}
+            columns={columns({ handleView, setDeletePopover, handleEdit })}
           />
         </Card>
       </ModelTableWrapper>

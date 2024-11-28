@@ -47,8 +47,8 @@ export default function DropDown({
         {menuItems.map((item, index) => (
           <StyledMenuItem
             key={index}
-            onClick={() => {
-              item.onClick();
+            onClick={(e) => {
+              item.onClick(e);
               handleClose();
             }}
           >

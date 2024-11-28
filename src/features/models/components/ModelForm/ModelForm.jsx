@@ -15,9 +15,8 @@ import { FormWrapper } from "./style";
 import { PrimaryButton } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { InputLabelWrapper, AutoCompleteStyledPopperWrapper } from "styles";
-import { useEffect, useState } from "react";
-import { getAllModelTags } from "../../services";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 // Validation Schema
 const validationSchema = Yup.object().shape({
@@ -40,7 +39,6 @@ const validationSchema = Yup.object().shape({
 });
 
 function ModelForm({ initialValues, handleSubmit, isLoading, isEdit = false }) {
-  const dispatch = useDispatch();
   const { tags } = useSelector((state) => state.models);
 
   const [selectedTags, setSelectedTags] = useState(initialValues.tags);
@@ -52,9 +50,7 @@ function ModelForm({ initialValues, handleSubmit, isLoading, isEdit = false }) {
       setSubmitting(false);
     },
   });
-  useEffect(() => {
-    dispatch(getAllModelTags());
-  }, []);
+
   return (
     <FormWrapper
       component="form"

@@ -16,11 +16,16 @@ export const DropdownWrapper = styled(Box)`
       padding: 0;
     }
   }
+  & .MuiButton-root {
+    padding: 4px 6px !important;
+    min-width: 0;
+    height: auto !important;
+  }
 `;
 
 export const StyledMenu = styled(Menu)(({ theme }) => ({
   "& .MuiPaper-root": {
-    width: "185px",
+    width: "125px",
     position: "relative",
     display: "flex",
     flexDirection: "column",
