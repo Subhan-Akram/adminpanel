@@ -108,8 +108,8 @@ export default function ModelTable() {
       />
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">
-          <SullyTypography classNameProps={"banner_title"}>
-            LLM Models
+          <SullyTypography classNameProps={"card_title1"}>
+            LLMs Models
           </SullyTypography>
           <Box>
             <Box

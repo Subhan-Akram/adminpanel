@@ -13,11 +13,12 @@ export const ModelTableWrapper = styled(Box)`
     background: var(--surface-l2);
     border-radius: 8px;
     margin-bottom: 8px;
-    background: linear-gradient(
+    /* background: linear-gradient(
       to right,
       var(--brand-primary) 3.53%,
       var(--surface-l1) 48.63%
-    );
+    ); */
+    background: linear-gradient(to right, #4f4827 3.53%, var(--surface-l1) 52%);
   }
   & .MuiCard-root {
     /* border: none; */
