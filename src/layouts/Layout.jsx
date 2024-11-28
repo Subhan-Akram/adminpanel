@@ -13,7 +13,9 @@ function Layout({ children }) {
     <Box>
       <Navbar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
       <SideBar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
-      <MainContent component={isBox}>{children}</MainContent>
+      <MainContent openSidebar={openSidebar} component={isBox}>
+        {children}
+      </MainContent>
     </Box>
   );
 }

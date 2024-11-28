@@ -6,8 +6,10 @@ import { Box } from "@mui/material";
 import { drawerWidth } from "constants";
 import { navbarHeight } from "constants";
 import zIndex from "@mui/material/styles/zIndex";
+import { fullDrawerWidth } from "../../constants/drawerAndNavbarHeight";
 
 const openedMixin = (theme) => ({
+  width: fullDrawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -17,6 +19,7 @@ const openedMixin = (theme) => ({
 
 const closedMixin = (theme) => {
   return {
+    width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -33,7 +36,6 @@ const closedMixin = (theme) => {
 export const DrawerStyle = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open" || prop !== "active",
 })(({ theme, open }) => ({
-  width: drawerWidth,
   flexShrink: 0,
   border: "1px solid red",
   whiteSpace: "nowrap",
@@ -55,6 +57,12 @@ export const DrawerStyle = styled(MuiDrawer, {
     justifyContent: "center",
   },
   "& .MuiDrawer-paper": {
+    ...(open && {
+      ...openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+    }),
     boxSizing: "border-box",
     zIndex: 100,
     backgroundColor: "var(--sidenav-background)",
@@ -63,7 +71,7 @@ export const DrawerStyle = styled(MuiDrawer, {
     borderTop: "1px solid var(--sidenav-border)",
     marginTop: navbarHeight,
     display: "flex",
-    width: drawerWidth,
+    // width: open ? fullDrawerWidth : drawerWidth,
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "space-between",
@@ -96,20 +104,20 @@ export const StyledList = styled(List, {
 
       justifyContent: "center",
       "& svg": {
-        width: "20px",
+        width: "24px",
+        height: "24px",
       },
       "& svg > path": {
         fill: "var(--sidenav-icon)",
       },
     },
     "& .MuiListItemText-root": {
-      marginLeft: "8px",
+      marginLeft: open ? "22px" : "0",
 
       "& .MuiTypography-root": {
-        fontSize: "14px",
+        fontSize: "16px",
       },
-      // display: open ? "block" : "none",
-      // display: "none",
+      display: open ? "block" : "none",
     },
     "& .listItemActive": {
       borderRadius: "3px",

@@ -1,11 +1,29 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import {
+  drawerWidth,
+  fullDrawerWidth,
+} from "../constants/drawerAndNavbarHeight";
 
-export const MainContent = styled(Box)(({ theme }) => ({
+export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
   position: "relative",
-  marginLeft: "145px",
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: drawerWidth,
+  width: `calc(100% - ${drawerWidth})`,
+  ...(openSidebar && {
+    marginLeft: fullDrawerWidth,
+    width: `calc(100% - ${fullDrawerWidth})`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+  // marginLeft: openSidebar ? fullDrawerWidth : drawerWidth,
   marginTop: "69px",
-  width: `calc(100% - 147px)`,
+  // width: `calc(100% - 147px)`,
   background: "var(--surface-l0)",
   zIndex: 1,
   "& .page_spacing": {

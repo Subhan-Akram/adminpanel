@@ -15,11 +15,11 @@ import { useRef } from "react";
 const SideBar = ({ openSidebar, setOpenSidebar }) => {
   const sidebarRef = useRef();
   useOutsideClick(sidebarRef, "app_bar", () => {
-    if (openSidebar) setOpenSidebar(false);
+    // if (openSidebar) setOpenSidebar(false);
   });
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
+  console.log("open sidebar", openSidebar);
   const getPath = () => {
     if (pathname.includes("home")) {
       return "";

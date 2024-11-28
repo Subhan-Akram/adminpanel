@@ -72,13 +72,13 @@ export const AppBar = styled(MuiAppBar, {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
-    gap: "32px",
+    gap: "16px",
     "& .menu_icon": {
       cursor: "pointer",
     },
     "& .logo": {
       cursor: "pointer",
-      marginTop: "4px",
+      marginTop: "6px",
       "& svg": {
         width: "100% !important",
         height: "100% !important",
@@ -97,7 +97,7 @@ export const AppBar = styled(MuiAppBar, {
     },
     "@media screen and (min-width:1025px)": {
       "& .menu_icon": {
-        display: "none",
+        // display: "none",
       },
     },
     "& img": {

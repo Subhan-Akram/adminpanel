@@ -21,6 +21,7 @@ export const ModelTableWrapper = styled(Box)`
   }
   & .MuiCard-root {
     /* border: none; */
+    border: 1px solid var(--border-1);
     margin-top: 1.5rem;
   }
   & .card_header {
