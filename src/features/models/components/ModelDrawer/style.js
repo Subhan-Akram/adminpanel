@@ -27,10 +27,10 @@ export const DrawerWrapper = styled(Drawer)`
     margin-top: 16px;
     flex-wrap: wrap;
   }
-  ,
+
   & .drawer_content {
-    padding: 1rem 12px;
-    overflow: auto;
+    padding: 1rem 24px;
+    /* overflow: auto; */
     & .logo_frame_box {
       margin-top: 6px;
     }

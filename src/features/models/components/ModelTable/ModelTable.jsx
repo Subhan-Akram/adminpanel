@@ -1,7 +1,7 @@
 import { ModelTableWrapper } from "./style";
 import Table from "../../../../components/Table";
 import columns from "./useColumns";
-import ModelDrawer from "../ModelDrawer/ModelDrawer";
+import ModelDrawer, { initialModel } from "../ModelDrawer/ModelDrawer";
 import { Box, Card } from "@mui/material";
 import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
@@ -104,7 +104,7 @@ export default function ModelTable() {
         type={type}
         setType={setType}
         setOpen={setOpen}
-        model={model}
+        model={initialModel}
       />
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">

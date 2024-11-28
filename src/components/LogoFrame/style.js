@@ -20,6 +20,11 @@ export const LogoFrameWrapper = styled(Box)`
     height: 36px;
     padding: 0 4px !important;
   }
+  & .logo_frame_drawer {
+    width: 46px !important;
+    height: 46px !important;
+    padding: 0 4px !important;
+  }
   & .logo_frame_large {
     width: 110px !important;
     height: 110px !important;

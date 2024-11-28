@@ -34,11 +34,15 @@ export const TableWrapper = styled(DataGrid)`
     border-radius: none !important;
     /* border-bottom: 1px solid var(--border-2) !important; */
     background-color: var(--surface-l3);
+    opacity: 0.8;
 
     border: none !important;
     & .MuiDataGrid-columnHeaderTitle {
       font-size: 15px;
       font-weight: 400;
+
+      /* opacity: 1; */
+      z-index: 200;
     }
   }
   & .MuiDataGrid-columnSeparator {

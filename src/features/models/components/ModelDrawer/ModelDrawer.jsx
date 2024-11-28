@@ -16,22 +16,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllModelTags, updateModel } from "../../services";
 import { modelInitialValues } from "../../constants";
 import { triggerAlert } from "slice/alertSlice";
-import { Grid } from "@mui/material";
 
-const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
+import DrawerView from "../DrawerView";
+
+const ModelDrawer = ({
+  model = initialModel,
+  open,
+  setOpen,
+  setModel,
+  type,
+  setType,
+}) => {
   // const [type, setType] = React.useState("view");
-  console.log("modal=", model);
-  const {
-    name,
-    description,
-    modelCard,
-    rating,
-    license,
-    logoUrl,
-    originUrl,
-    ssbxCode,
-    tags = [],
-  } = model;
+
   const { isLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
 
@@ -39,200 +36,6 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
     setOpen(open);
     setType("view");
   };
-  const modelView = () => (
-    <Box className="drawer_content" role="presentation" sx={{ p: 2 }}>
-      <Grid container spacing={2}>
-        {/* Name */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Name:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {name}
-          </SullyTypography>
-        </Grid>
-
-        {/* Model Card */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Model Card:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {modelCard}
-          </SullyTypography>
-        </Grid>
-
-        {/* License */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            License:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {license}
-          </SullyTypography>
-        </Grid>
-
-        {/* SSBX Code */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            SSBX Code:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {ssbxCode}
-          </SullyTypography>
-        </Grid>
-        {/* Logo URL */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Logo URL:
-          </SullyTypography>
-          <Box className="logo_frame_box">
-            <LogoFrame
-              className={"logo_frame_medium"}
-              imgLink={logoUrl}
-            ></LogoFrame>
-          </Box>
-        </Grid>
-        {/* Origin URL */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Origin URL:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {originUrl}
-          </SullyTypography>
-        </Grid>
-
-        {/* Rating */}
-        <Grid item xs={12} sm={6}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Rating:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {rating}
-          </SullyTypography>
-        </Grid>
-        {/* Description */}
-        <Grid item xs={12} sm={12}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Description:
-          </SullyTypography>
-          <SullyTypography
-            variant="body2"
-            classNameProps={"card_text"}
-            color="text.secondary"
-          >
-            {description}
-          </SullyTypography>
-        </Grid>
-        <Grid item xs={12}>
-          <SullyTypography
-            variant="body1"
-            classNameProps={"modaltitle1"}
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Tags
-          </SullyTypography>
-          <Box className="chips_box">
-            {tags.slice(0, 3).map((val) => (
-              <Chip
-                classNameProps="modal_card_chips "
-                key={val.name}
-                label={val.name}
-              />
-            ))}
-            {tags.length > 3 ? (
-              <TagTooltip
-                placement="top-start"
-                title={
-                  <Box className="tooltip_content">
-                    {tags.slice(3).map((val) => (
-                      <Box key={val}>
-                        <SullyTypography classNameProps="sideBarTitle">
-                          <Chip
-                            classNameProps="tooltip_chips"
-                            label={val.name}
-                          />
-                        </SullyTypography>
-                      </Box>
-                    ))}
-                  </Box>
-                }
-                arrow
-              >
-                <Box>
-                  {" "}
-                  <Chip
-                    classNameProps="modal_card_chips "
-                    label={`${tags.slice(3).length}+ More`}
-                  />
-                </Box>
-              </TagTooltip>
-            ) : (
-              ""
-            )}
-            {!tags.length && <Box className="tags_not_available"></Box>}
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
-  );
   const handleSubmit = async (values) => {
     console.log("values=", values);
     const { payload } = await dispatch(
@@ -283,7 +86,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
             </TextButton>
           )}
         </Box>
-        {type === "view" && modelView()}
+        {type === "view" && <DrawerView data={model} />}
         {type === "edit" && (
           <Box className="drawer_content">
             <ModelForm
@@ -307,3 +110,31 @@ ModelDrawer.propTypes = {
 };
 
 export default ModelDrawer;
+
+export const initialModel = {
+  name: "Amazon Titan Express",
+  description: "Titan Express from Amazon",
+  ssbxCode: "TITAN_EXPRESS_MODEL",
+  modelCard: "Titan Express from Amazon",
+  originUrl: "https://aws.amazon.com/bedrock/titan/",
+  logoUrl:
+    "https://d1.awsstatic.com/logos/aws-logo-lockups/poweredbyaws/PB_AWS_logo_RGB_stacked.547f032d90171cdea4dd90c258f47373c5573db5.png",
+  rating: 3.5,
+  createdBy: "Amazon",
+  tags: [
+    {
+      name: "transformer",
+      hint: "",
+    },
+    {
+      name: "encoder-only",
+      hint: "",
+    },
+    {
+      name: "license: Apache 2.0",
+      hint: "",
+    },
+  ],
+  extId: "c956fc34-7ca2-4537-b2ea-5ba696ac77d7",
+  enabled: true,
+};
