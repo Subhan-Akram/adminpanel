@@ -18,6 +18,8 @@ export default function Table({
           quickFilterProps: { debounceMs: 500 },
         },
       }}
+      // getRowHeight={() => "auto"}
+      // getEstimatedRowHeight={() => 700}
       loading={isLoading}
       sortingOrder={["desc", "asc"]}
       columns={columns}

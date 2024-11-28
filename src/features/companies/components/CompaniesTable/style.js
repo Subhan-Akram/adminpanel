@@ -3,6 +3,7 @@ import { Box, styled } from "@mui/material";
 export const ModelTableWrapper = styled(Box)`
   width: 100% !important;
   margin: auto auto;
+  align-items: center;
 
   & .model_drawer_box {
     display: flex;

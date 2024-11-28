@@ -1,16 +1,17 @@
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
-import { Avatar, Box } from "@mui/material";
-import { Chip, SullyTypography } from "../../../../components";
+import { Avatar, Box, IconButton } from "@mui/material";
+import { Chip, SullyTypography, TextButton } from "../../../../components";
 import { TagsGroupStyle } from "globalStyles";
 import EditIcon from "@mui/icons-material/Edit";
-const columns = ({ handleView, setDeletePopover }) => [
+const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
     field: "name",
     headerName: "Name",
     width: 200,
+    alignItems: "center",
     renderCell: (params) => {
       return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -42,15 +43,25 @@ const columns = ({ handleView, setDeletePopover }) => [
     field: "organizations",
     headerName: "Organizations",
     sortable: false,
-    width: 200,
+    width: 300,
     renderCell: ({ row }) => {
       return (
-        <TagsGroupStyle>
-          {" "}
-          {row?.organizations?.map(({ name }) => (
-            <Chip classNameProps="more_chips" key={{ name }} label={name} />
-          ))}
-        </TagsGroupStyle>
+        <>
+          <TagsGroupStyle
+            sx={{
+              maxWidth: "100%",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {[...row?.organizations].map(({ name }, index) => (
+              <Chip classNameProps="more_chips" key={index} label={name} />
+            ))}
+          </TagsGroupStyle>
+
+          <TextButton>Join</TextButton>
+        </>
       );
     },
   },

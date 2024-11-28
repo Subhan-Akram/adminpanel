@@ -2,7 +2,7 @@ import { GridActionsCellItem } from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
 import { Avatar, Box } from "@mui/material";
-import { SullyTypography } from "../../../../components";
+import { LogoFrame, SullyTypography } from "../../../../components";
 
 const columns = ({ handleView, setDeletePopover }) => [
   // { field: "id", headerName: "ID", width: 90 },
@@ -13,15 +13,11 @@ const columns = ({ handleView, setDeletePopover }) => [
     renderCell: (params) => {
       return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Avatar
-            src={params.row.logoUrl}
-            alt={params.row.name}
-            sx={{ width: 30, height: 30 }}
-          />
-
-          <span style={{ fontWeight: 500, width: "120px" }}>
-            {params.row.name}
-          </span>
+          <LogoFrame
+            imgLink={params.row.logoUrl}
+            className={"logo_frame_small"}
+          ></LogoFrame>
+          {params.row.name}
         </Box>
       );
     },
@@ -41,7 +37,7 @@ const columns = ({ handleView, setDeletePopover }) => [
   },
   {
     field: "modelCard",
-    headerName: "ModelCard",
+    headerName: "Model Card",
     sortable: false,
     width: 180,
   },

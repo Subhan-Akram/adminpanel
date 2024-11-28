@@ -64,8 +64,11 @@ export default function ModelTable() {
         gap: "10px",
       }}
     >
-      <SullyTypography classNameProps={"modaltitle1"}>
-        All Models{" "}
+      <SullyTypography
+        sx={{ color: "var(--brand-button-text-icon)", fontWeight: "500" }}
+        classNameProps={"modaltitle1"}
+      >
+        All Models
       </SullyTypography>
       <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
         {/* <GridToolbarExport /> */}
@@ -109,8 +112,8 @@ export default function ModelTable() {
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">
           <SullyTypography
-            sx={{ fontSize: "1.5rem" }}
-            classNameProps={"medium_title"}
+            // sx={{ fontSize: "1" }}
+            classNameProps={"card_title_1"}
           >
             LLM Models
           </SullyTypography>

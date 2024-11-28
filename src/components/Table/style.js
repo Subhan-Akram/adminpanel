@@ -16,7 +16,9 @@ export const TableWrapper = styled(DataGrid)`
   & .MuiDataGrid-cell {
     background-color: var(--surface-l2);
     border-top: 1px solid var(--border-1) !important;
-
+    display: flex;
+    align-items: center;
+    font-size: 14px;
     /* border: none !important; */
   }
   & .MuiDataGrid-filler {
@@ -35,8 +37,8 @@ export const TableWrapper = styled(DataGrid)`
 
     border: none !important;
     & .MuiDataGrid-columnHeaderTitle {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 400;
     }
   }
   & .MuiDataGrid-columnSeparator {
@@ -44,7 +46,7 @@ export const TableWrapper = styled(DataGrid)`
   }
   & .MuiTablePagination-toolbar {
     /* border: none !important; */
-    background-color: var(--surface-l3);
+    /* background-color: var(--surface-l3); */
   }
   & .MuiDataGrid-footerContainer {
     border-color: var(--border-1) !important;

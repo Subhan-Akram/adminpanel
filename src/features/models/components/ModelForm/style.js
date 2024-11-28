@@ -12,5 +12,14 @@ export const FormWrapper = styled(Box)`
   & .autocomplete_tags {
     height: 37.5px !important;
     margin-top: 2px !important;
+    & .MuiOutlinedInput-root {
+      padding-right: 3px !important;
+      padding-left: 3px !important;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    & .rating_box {
+      margin-top: 16px;
+    }
   }
 `;

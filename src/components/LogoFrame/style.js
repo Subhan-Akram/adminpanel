@@ -18,6 +18,7 @@ export const LogoFrameWrapper = styled(Box)`
   & .logo_frame_small {
     width: 36px;
     height: 36px;
+    padding: 0 4px !important;
   }
   & .logo_frame_large {
     width: 110px !important;

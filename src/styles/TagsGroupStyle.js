@@ -3,6 +3,9 @@ import { Box, styled } from "@mui/material";
 const TagsGroupStyle = styled(Box)`
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  border: 1px solid red;
+  width: 100%;
   gap: 4px;
   align-items: center;
   height: 100%;

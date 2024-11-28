@@ -19,6 +19,7 @@ import { Grid } from "@mui/material";
 
 const ModelDrawer = ({ model, open, setOpen, setModel }) => {
   const [type, setType] = React.useState("view");
+  console.log("modal=", model);
   const {
     name,
     description,
@@ -28,6 +29,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
     logoUrl,
     originUrl,
     ssbxCode,
+    tags = [],
   } = model;
   const { isLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
@@ -36,7 +38,6 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
     setOpen(open);
     setType("view");
   };
-  const tags = [{ name: "Sales Funnel" }, { name: "Gpt 3.0" }];
   const modelView = () => (
     <Box className="drawer_content" role="presentation" sx={{ p: 2 }}>
       <Grid container spacing={2}>
@@ -188,19 +189,19 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
             Tags
           </SullyTypography>
           <Box className="chips_box">
-            {tags.map((val) => (
+            {tags.slice(0, 3).map((val) => (
               <Chip
                 classNameProps="modal_card_chips "
                 key={val.name}
                 label={val.name}
               />
             ))}
-            {tags.length > 2 ? (
+            {tags.length > 3 ? (
               <TagTooltip
                 placement="top-start"
                 title={
                   <Box className="tooltip_content">
-                    {tags.slice(2).map((val) => (
+                    {tags.slice(3).map((val) => (
                       <Box key={val}>
                         <SullyTypography classNameProps="sideBarTitle">
                           <Chip
@@ -218,7 +219,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
                   {" "}
                   <Chip
                     classNameProps="modal_card_chips "
-                    label={`${tags.slice(2).length}+ More`}
+                    label={`${tags.slice(3).length}+ More`}
                   />
                 </Box>
               </TagTooltip>
@@ -232,6 +233,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
     </Box>
   );
   const handleSubmit = async (values) => {
+    console.log("values=", values);
     const { payload } = await dispatch(
       updateModel({ payload: values, dispatch })
     );
@@ -282,6 +284,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel }) => {
         {type === "edit" && (
           <Box className="drawer_content">
             <ModelForm
+              isEdit={true}
               isLoading={isLoading}
               handleSubmit={handleSubmit}
               initialValues={{ ...modelInitialValues, ...model }}
