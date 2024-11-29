@@ -2,14 +2,40 @@ import { styled } from "@mui/material/styles";
 import MuiToolBar from "@mui/material/Toolbar";
 import MuiAppBar from "@mui/material/AppBar";
 import { navbarHeight } from "constants";
+import {
+  drawerWidth,
+  fullDrawerWidth,
+} from "../../constants/drawerAndNavbarHeight";
 
+const openedMixin = (theme) => ({
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  width: `calc(100% - ${fullDrawerWidth})`,
+  overflowX: "hidden",
+});
+
+const closedMixin = (theme) => {
+  return {
+    // border: "1px solid yellow",
+
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: `100%`,
+    overflowX: "hidden",
+  };
+};
 export const ToolBar = styled(MuiToolBar, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme }) => ({
+})(({ theme, open }) => ({
   backgroundColor: "var( --sidenav-background)",
   borderBottom: "1px solid var(--sidenav-border)",
-
-  height: navbarHeight,
+  width: "100%",
+  height: "100%",
+  overflow: "hidden",
   display: "flex",
   justifyContent: "space-between",
   [theme.breakpoints.down("sm")]: {
@@ -21,13 +47,18 @@ export const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
   zIndex: 150,
-  backgroundColor: theme.custom.background,
+  height: navbarHeight,
+  backgroundColor: "var(--sidenav-background)",
+  ...(open && {
+    ...openedMixin(theme),
+  }),
+  ...(!open && {
+    ...closedMixin(theme),
+  }),
+
   boxShadow: "none",
   border: "var(--border-color)",
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
+
   "& .profileRoot": {
     display: "flex",
     justifyContent: "flex-start",
@@ -72,7 +103,7 @@ export const AppBar = styled(MuiAppBar, {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
-    gap: "16px",
+    gap: "30px",
     "& .menu_icon": {
       cursor: "pointer",
     },
@@ -120,5 +151,4 @@ export const AppBar = styled(MuiAppBar, {
       },
     },
   },
-  ...(open && {}),
 }));

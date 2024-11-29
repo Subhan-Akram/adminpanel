@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import { drawerWidth } from "constants";
 import { navbarHeight } from "constants";
 import { fullDrawerWidth } from "../../constants/drawerAndNavbarHeight";
+import { borderBottom, display } from "@mui/system";
 
 const openedMixin = (theme) => ({
   width: fullDrawerWidth,
@@ -36,14 +37,9 @@ export const DrawerStyle = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open" || prop !== "active",
 })(({ theme, open }) => ({
   flexShrink: 0,
-  border: "1px solid red",
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-evenly",
-  alignItems: "space-between",
-  backgroundColor: "var(--sidenav-background)",
+  // backgroundColor: "var(--sidenav-background)",
 
   opacity: 1, // Opacity transition for larger screens
 
@@ -56,6 +52,29 @@ export const DrawerStyle = styled(MuiDrawer, {
     justifyContent: "center",
   },
   "& .MuiDrawer-paper": {
+    "& .sidebar_header": {
+      height: "66.47px",
+      padding: "0 4px",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      borderBottom: "1px solid var(--border-1)",
+      "& .logo": {
+        // display: open ? "flex" : "none",
+        opacity: open ? 1 : 0,
+        cursor: "pointer",
+        marginTop: "6px",
+        "& svg": {
+          width: "100% !important",
+          height: "100% !important",
+
+          "& path": {
+            fill: "var(--logo)",
+          },
+        },
+      },
+    },
     ...(open && {
       ...openedMixin(theme),
     }),
@@ -65,17 +84,17 @@ export const DrawerStyle = styled(MuiDrawer, {
     boxSizing: "border-box",
     zIndex: 100,
     backgroundColor: "var(--sidenav-background)",
-    // backgroundColor: theme.custom.background,
     borderRight: "1px solid var(--sidenav-border)",
     borderTop: "1px solid var(--sidenav-border)",
-    marginTop: navbarHeight,
+    marginTop: 0,
     display: "flex",
     // width: open ? fullDrawerWidth : drawerWidth,
     flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "space-between",
-    height: `calc(100% - ${navbarHeight})`,
-    padding: "31px 0",
+    justifyContent: "flex-start",
+    gap: "32px",
+    alignItems: "flex-start",
+    height: `100%`,
+    padding: "0px",
     "@media screen and (max-width:1024px)": {
       transition: "transform 0.3s ease-in-out",
       transform: open ? "translateX(0%)" : "translateX(-150px)",
@@ -90,7 +109,7 @@ export const StyledList = styled(List, {
     display: "flex",
     flexDirection: "column",
     gap: "12px",
-    padding: "0 9px",
+    padding: "0 16px",
     "& .MuiListItemButton-root": {
       padding: "6px 4px 6px 8px",
       justifyContent: "center",

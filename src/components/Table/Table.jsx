@@ -1,5 +1,8 @@
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { TableWrapper } from "./style";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 export default function Table({
   rows,
@@ -7,6 +10,14 @@ export default function Table({
   isLoading,
   CustomToolbar = null,
 }) {
+  const theme = useTheme();
+
+  // Media queries to detect screen size
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  console.log("is small", isSmallScreen);
+  const [pageSize, setPageSize] = useState(5); // Default page size
+
+  console.log("page", pageSize, "isMediumScreen");
   return (
     <TableWrapper
       slots={{
@@ -18,19 +29,17 @@ export default function Table({
           quickFilterProps: { debounceMs: 500 },
         },
       }}
-      // getRowHeight={() => "auto"}
-      // getEstimatedRowHeight={() => 700}
+      rowHeight={58}
       loading={isLoading}
       sortingOrder={["desc", "asc"]}
       columns={columns}
-      getRowId={(row) => {
-        return row.extId;
-      }} // Custom row ID
+      getRowId={(row) => row.extId} // Custom row ID
       rows={rows}
+      autoPageSize={true}
       initialState={{
         pagination: {
           paginationModel: {
-            pageSize: 5,
+            pageSize: pageSize,
           },
         },
       }}

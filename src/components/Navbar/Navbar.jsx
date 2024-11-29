@@ -65,7 +65,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
 
   return (
     <AppBar id="app_bar" position="fixed" open={openSidebar}>
-      <ToolBar>
+      <ToolBar open={openSidebar}>
         <Box className="logoRoot">
           <Box className="menu_icon">
             <MenuIcon

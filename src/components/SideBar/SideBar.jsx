@@ -1,10 +1,11 @@
 import {
+  Box,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-
+import { Logo } from "sullyIcons";
 import { DrawerStyle, StyledList } from "./style";
 import { useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -29,6 +30,12 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
   };
   return (
     <DrawerStyle ref={sidebarRef} variant="permanent" open={openSidebar}>
+      <Box className="sidebar_header">
+        <Box className="logo" sx={{ width: "200px" }}>
+          {" "}
+          <Logo />
+        </Box>
+      </Box>
       <StyledList open={openSidebar}>
         {sideBarOptions.map(({ title, Icon, path, activeTabValue }) => (
           <ListItem

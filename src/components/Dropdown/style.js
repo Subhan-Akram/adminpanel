@@ -20,12 +20,16 @@ export const DropdownWrapper = styled(Box)`
     padding: 4px 6px !important;
     min-width: 0;
     height: auto !important;
+    border: transparent !important;
+    &:hover {
+      border: 1px solid var(--border-1) !important;
+    }
   }
 `;
 
 export const StyledMenu = styled(Menu, {
   shouldForwardProp: (props) => props !== "width",
-})(({ theme, width }) => ({
+})(({ width }) => ({
   "& .MuiPaper-root": {
     width: width ?? "125px",
 
@@ -35,6 +39,7 @@ export const StyledMenu = styled(Menu, {
     borderRadius: "8px",
     marginTop: "4px",
     border: "1px solid var(--border-1) !important",
+
     background: "var(--surface-l1)",
     "& .MuiMenuItem-root": {
       "&:not(:last-child)": {

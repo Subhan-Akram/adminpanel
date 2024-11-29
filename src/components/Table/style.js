@@ -7,7 +7,7 @@ export const TableWrapper = styled(DataGrid)`
   width: 100%;
   /* margin-top: 0px; */
   border: none !important;
-  min-height: 250px;
+  /* min-height: 250px; */
   min-width: 500px;
   & .custom-align-left {
     justify-content: flex-start;
@@ -23,19 +23,19 @@ export const TableWrapper = styled(DataGrid)`
   }
   & .MuiDataGrid-filler {
     border-radius: none !important;
-    background-color: var(--surface-l3);
-    opacity: 0.8;
+    background-color: #1d2431;
     /* border-bottom: 1px solid var(--border-2) !important; */
     border: none !important;
     div {
-      border-top: none;
+      background-color: var(--surface-l2);
+
+      border: none;
     }
   }
   & .MuiDataGrid-columnHeader {
     border-radius: none !important;
     /* border-bottom: 1px solid var(--border-2) !important; */
-    background-color: var(--surface-l3);
-    opacity: 0.8;
+    background-color: #1d2431;
 
     border: none !important;
     & .MuiDataGrid-columnHeaderTitle {
