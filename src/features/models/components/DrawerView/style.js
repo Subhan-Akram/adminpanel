@@ -2,6 +2,7 @@ import { Box, Drawer, styled } from "@mui/material";
 
 export const DrawerWrapper = styled(Box)`
   /* z-index: 180; */
+  padding: 0 16px !important;
   & .logo_name {
     display: flex;
     justify-content: flex-start;

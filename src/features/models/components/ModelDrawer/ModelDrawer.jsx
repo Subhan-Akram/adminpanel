@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import * as React from "react";
+import EditIcon from "@mui/icons-material/Edit";
+import { CloseIcon } from "sullyIcons";
 import Box from "@mui/material/Box";
 import { DrawerWrapper } from "./style";
 import {
@@ -18,6 +20,8 @@ import { modelInitialValues } from "../../constants";
 import { triggerAlert } from "slice/alertSlice";
 
 import DrawerView from "../DrawerView";
+import { IconButton } from "@mui/material";
+import { fontSize } from "@mui/system";
 
 const ModelDrawer = ({
   model = initialModel,
@@ -27,6 +31,7 @@ const ModelDrawer = ({
   type,
   setType,
 }) => {
+  const { logoUrl, name } = model;
   // const [type, setType] = React.useState("view");
 
   const { isLoading } = useSelector((state) => state.models);
@@ -62,27 +67,44 @@ const ModelDrawer = ({
     <React.Fragment>
       <DrawerWrapper anchor={"right"} open={open} onClose={toggleDrawer(false)}>
         <Box className="drawer_header">
-          <SullyTypography classNameProps={"page_title"}>
-            Model Details
-          </SullyTypography>
+          <Box className="logo_name">
+            <LogoFrame
+              className={"logo_frame_drawer"}
+              imgLink={logoUrl}
+            ></LogoFrame>
+            <SullyTypography
+              // sx={{ marginTop: "4px", fontSize: "20px !important" }}
+              variant="body2"
+              classNameProps={"sub_title_1_lg drawer_text"}
+            >
+              {name}
+            </SullyTypography>
+          </Box>
           {type === "view" && (
             <Box className="btn_group">
-              <OutlinedButton
+              <IconButton
                 onClick={() => {
                   setType("edit");
                 }}
               >
-                Edit Model
-              </OutlinedButton>
+                <EditIcon />
+              </IconButton>
             </Box>
           )}
           {type === "edit" && (
             <TextButton
+              className="close"
               onClick={() => {
                 setType("view");
               }}
             >
-              Go Back
+              <CloseIcon
+                style={{
+                  width: "22px",
+                  height: "22px",
+                  fontSize: "32px !important",
+                }}
+              />
             </TextButton>
           )}
         </Box>

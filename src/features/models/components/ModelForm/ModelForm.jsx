@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Grid } from "@mui/material";
 import { FormWrapper } from "./style";
-import { PrimaryButton } from "../../../../components";
+import { OutlinedButton, PrimaryButton } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import {
   InputLabelWrapper,
@@ -330,268 +330,33 @@ function ModelForm({ initialValues, handleSubmit, isLoading, isEdit = false }) {
 
         {/* Submit Button */}
         <Grid item xs={12}>
-          <PrimaryButton
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            isLoading={isLoading}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              gap: 2, // Adds spacing between buttons
+            }}
           >
-            Submit
-          </PrimaryButton>
+            <OutlinedButton
+              type="submit"
+              variant="contained"
+              color="primary"
+              isLoading={isLoading}
+            >
+              Cancel
+            </OutlinedButton>
+            <PrimaryButton
+              type="submit"
+              variant="contained"
+              color="primary"
+              isLoading={isLoading}
+            >
+              {isEdit ? "Edit" : "Save"}
+            </PrimaryButton>
+          </Box>
         </Grid>
       </Grid>
     </FormWrapper>
-
-    // <FormWrapper
-    //   component="form"
-    //   onSubmit={formik.handleSubmit}
-    //   sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-    // >
-    //   {/* Name Field */}
-    //   <Box
-    //     sx={{ display: "flex", flexDirection: "row", gap: 2, flexWrap: "wrap" }}
-    //   >
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper>Name</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         variant="outlined"
-    //         placeholder="Model Name"
-    //         id="name"
-    //         name="name"
-    //         value={formik.values.name}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.name && Boolean(formik.errors.name)}
-    //         helperText={formik.touched.name && formik.errors.name}
-    //       />
-    //     </FormControl>
-
-    //     {/* SSBX Code Field */}
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper>SSBX Code</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         variant="outlined"
-    //         placeholder="SSBX Code"
-    //         id="ssbxCode"
-    //         name="ssbxCode"
-    //         value={formik.values.ssbxCode}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.ssbxCode && Boolean(formik.errors.ssbxCode)}
-    //         helperText={formik.touched.ssbxCode && formik.errors.ssbxCode}
-    //       />
-    //     </FormControl>
-    //   </Box>
-
-    //   {/* Model Card Field */}
-    //   <Box
-    //     sx={{ display: "flex", flexDirection: "row", gap: 2, flexWrap: "wrap" }}
-    //   >
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper htmlFor="modelCard">Model Card</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         variant="outlined"
-    //         placeholder="Model Card"
-    //         id="modelCard"
-    //         name="modelCard"
-    //         value={formik.values.modelCard}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.modelCard && Boolean(formik.errors.modelCard)}
-    //         helperText={formik.touched.modelCard && formik.errors.modelCard}
-    //       />
-    //     </FormControl>
-
-    //     {/* Origin URL Field */}
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper htmlFor="originUrl">Origin URL</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         placeholder="Origin URL"
-    //         variant="outlined"
-    //         id="originUrl"
-    //         name="originUrl"
-    //         value={formik.values.originUrl}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.originUrl && Boolean(formik.errors.originUrl)}
-    //         helperText={formik.touched.originUrl && formik.errors.originUrl}
-    //       />
-    //     </FormControl>
-    //   </Box>
-
-    //   {/* Logo URL Field */}
-    //   <Box
-    //     sx={{ display: "flex", flexDirection: "row", gap: 2, flexWrap: "wrap" }}
-    //   >
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper htmlFor="logoUrl">Logo URL</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         placeholder="Logo URL"
-    //         variant="outlined"
-    //         id="logoUrl"
-    //         name="logoUrl"
-    //         value={formik.values.logoUrl}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.logoUrl && Boolean(formik.errors.logoUrl)}
-    //         helperText={formik.touched.logoUrl && formik.errors.logoUrl}
-    //       />
-    //     </FormControl>
-
-    //     {/* Created By Field */}
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper htmlFor="createdBy">Created By</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         placeholder="Created By"
-    //         variant="outlined"
-    //         id="createdBy"
-    //         name="createdBy"
-    //         value={formik.values.createdBy}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.createdBy && Boolean(formik.errors.createdBy)}
-    //         helperText={formik.touched.createdBy && formik.errors.createdBy}
-    //       />
-    //     </FormControl>
-    //   </Box>
-
-    //   {/* License Field */}
-    //   <Box
-    //     sx={{ display: "flex", flexDirection: "row", gap: 2, flexWrap: "wrap" }}
-    //   >
-    //     <FormControl fullWidth sx={{ flex: 1 }}>
-    //       <InputLabelWrapper htmlFor="license">License</InputLabelWrapper>
-    //       <TextField
-    //         size="small"
-    //         variant="outlined"
-    //         placeholder="License"
-    //         id="license"
-    //         name="license"
-    //         value={formik.values.license}
-    //         onChange={formik.handleChange}
-    //         onBlur={formik.handleBlur}
-    //         error={formik.touched.license && Boolean(formik.errors.license)}
-    //         helperText={formik.touched.license && formik.errors.license}
-    //       />
-    //     </FormControl>
-    //     {/* Tags Section (only if editing) */}
-    //     {isEdit && (
-    //       <Box
-    //         sx={{ width: "50%" }}
-    //         // sx={{
-    //         //   display: "flex",
-    //         //   flexDirection: "row",
-    //         //   gap: 2,
-    //         //   flexWrap: "wrap",
-    //         // }}
-    //       >
-    //         <InputLabelWrapper htmlFor="tags">Tags</InputLabelWrapper>
-    //         <Autocomplete
-    //           multiple
-    //           size="small"
-    //           id="tags-outlined"
-    //           options={tags}
-    //           getOptionLabel={(option) => option.name}
-    //           defaultValue={[...selectedTags, ...selectedTags]}
-    //           isOptionEqualToValue={(option, value) =>
-    //             option.name === value.name
-    //           }
-    //           value={selectedTags}
-    //           onChange={(_, val) => {
-    //             setSelectedTags(val);
-    //             formik.setFieldValue("tags", val);
-    //           }}
-    //           sx={{ width: "100%", marginTop: "6px" }}
-    //           PopperComponent={(props) => (
-    //             <AutoCompleteStyledPopperWrapper
-    //               {...props}
-    //               placement="bottom-start"
-    //             />
-    //           )}
-    //           ChipProps={{
-    //             deleteIcon: (
-    //               <CloseOutlinedIcon
-    //                 style={{
-    //                   color: "var(--tag-text-icon-selected)",
-    //                   fontSize: "15px",
-    //                 }}
-    //               />
-    //             ),
-    //           }}
-    //           renderInput={(params) => (
-    //             <TextField
-    //               sx={{ marginBottom: "1rem" }}
-    //               {...params}
-    //               placeholder="Add Tags"
-    //             />
-    //           )}
-    //         />
-    //       </Box>
-    //     )}
-    //   </Box>
-
-    //   {/* Rating Field */}
-    //   <Box
-    //     sx={{
-    //       display: "flex",
-    //       flexDirection: "column",
-    //       marginBottom: 2,
-    //       width: "50%",
-    //     }}
-    //   >
-    //     <Typography variant="body1">Rating:</Typography>
-    //     <Rating
-    //       name="rating"
-    //       value={formik.values.rating}
-    //       onChange={(_, value) => formik.setFieldValue("rating", value)}
-    //     />
-    //     {formik.touched.rating && formik.errors.rating && (
-    //       <Typography variant="caption" color="error">
-    //         {formik.errors.rating}
-    //       </Typography>
-    //     )}
-    //   </Box>
-
-    //   {/* Description Field */}
-    //   <FormControl fullWidth>
-    //     <InputLabelWrapper htmlFor="description">Description</InputLabelWrapper>
-    //     <TextField
-    //       variant="outlined"
-    //       placeholder="Description"
-    //       id="description"
-    //       name="description"
-    //       value={formik.values.description}
-    //       onChange={formik.handleChange}
-    //       onBlur={formik.handleBlur}
-    //       multiline
-    //       rows={4}
-    //       error={
-    //         formik.touched.description && Boolean(formik.errors.description)
-    //       }
-    //       helperText={formik.touched.description && formik.errors.description}
-    //     />
-    //   </FormControl>
-
-    //   {/* Submit Button */}
-    //   <Box>
-    //     <PrimaryButton
-    //       type="submit"
-    //       variant="contained"
-    //       color="primary"
-    //       fullWidth
-    //       isLoading={isLoading}
-    //     >
-    //       Submit
-    //     </PrimaryButton>
-    //   </Box>
-    // </FormWrapper>
   );
 }
 ModelForm.propTypes = {

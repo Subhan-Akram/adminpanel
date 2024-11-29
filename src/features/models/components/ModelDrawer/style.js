@@ -14,12 +14,28 @@ export const DrawerWrapper = styled(Drawer)`
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border-1);
+    & .logo_name {
+      display: flex;
+      justify-content: flex-start;
+      gap: 8px;
+      align-items: center;
+    }
+    & .close {
+      & svg {
+        width: 24px;
+        height: 24px;
+        & path {
+          fill: var(--text-primary) !important;
+        }
+      }
+    }
   }
   & .btn_group {
     display: flex;
     justify-content: flex-start;
     gap: 12px;
   }
+
   & .chips_box {
     display: flex;
     justify-content: flex-start;
@@ -29,6 +45,7 @@ export const DrawerWrapper = styled(Drawer)`
   }
 
   & .drawer_content {
+    overflow: auto;
     padding: 1rem 24px;
     /* overflow: auto; */
     & .logo_frame_box {
