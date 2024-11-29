@@ -1,15 +1,9 @@
-import { GridActionsCellItem } from "@mui/x-data-grid";
-import VisibilityIcon from "@mui/icons-material/Visibility";
+// import BusinessIcon from "@mui/icons-material/Business";
 import { DeleteOutline } from "@mui/icons-material";
-import { Avatar, Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import {
-  Chip,
-  DropDown,
-  SullyTypography,
-  TextButton,
-} from "../../../../components";
-import { TagsGroupStyle } from "globalStyles";
+import { Chip, DropDown } from "../../../../components";
+import { TagsGroupStyle } from "styles";
 const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
@@ -78,6 +72,13 @@ const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
               handleView(row);
             },
           },
+          // {
+          //   label: "Join Organization",
+          //   icon: <BusinessIcon />,
+          //   onClick: () => {
+          //     handleView(row);
+          //   },
+          // },
           {
             label: "Delete",
             icon: <DeleteOutline />,
