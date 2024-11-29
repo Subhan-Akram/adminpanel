@@ -24,6 +24,7 @@ export const TableWrapper = styled(DataGrid)`
   & .MuiDataGrid-filler {
     border-radius: none !important;
     background-color: var(--surface-l3);
+    opacity: 0.8;
     /* border-bottom: 1px solid var(--border-2) !important; */
     border: none !important;
     div {

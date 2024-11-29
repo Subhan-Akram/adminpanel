@@ -68,7 +68,7 @@ const columns = ({ handleView, setDeletePopover }) => [
           sx={{
             display: "flex",
             marginLeft: row?.teams?.length ? "0" : "20px",
-            height: "95%",
+            // height: "95%",
             alignItems: "center",
           }}
         >
