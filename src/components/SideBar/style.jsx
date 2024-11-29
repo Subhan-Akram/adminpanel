@@ -62,7 +62,7 @@ export const DrawerStyle = styled(MuiDrawer, {
       borderBottom: "1px solid var(--border-1)",
       "& .logo": {
         // display: open ? "flex" : "none",
-        opacity: open ? 1 : 0,
+        // opacity: open ? 1 : 0,
         cursor: "pointer",
         marginTop: "6px",
         "& svg": {

@@ -74,9 +74,9 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
               }}
             />{" "}
           </Box>
-          <Box className="logo" onClick={handleNavigate}>
+          {/* <Box className="logo" onClick={handleNavigate}>
             <Logo />
-          </Box>
+          </Box>  */}
         </Box>
         <Box className="profileRoot">
           <Box className="icon_text coint_point">

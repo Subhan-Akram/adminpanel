@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import { sideBarOptions } from "constants";
 import { useOutsideClick } from "hooks";
 import { useRef } from "react";
+import { LogoSign } from "../../assets";
 
 const SideBar = ({ openSidebar, setOpenSidebar }) => {
   const sidebarRef = useRef();
@@ -31,10 +32,19 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
   return (
     <DrawerStyle ref={sidebarRef} variant="permanent" open={openSidebar}>
       <Box className="sidebar_header">
-        <Box className="logo" sx={{ width: "200px" }}>
-          {" "}
-          <Logo />
-        </Box>
+        {openSidebar ? (
+          <Box className="logo" sx={{ width: "200px" }}>
+            <Logo />
+          </Box>
+        ) : (
+          <Box className="short_logo" sx={{ width: "120px", height: "40px" }}>
+            <img
+              alt="logo sign"
+              style={{ objectFit: "contain" }}
+              src={LogoSign}
+            />
+          </Box>
+        )}
       </Box>
       <StyledList open={openSidebar}>
         {sideBarOptions.map(({ title, Icon, path, activeTabValue }) => (

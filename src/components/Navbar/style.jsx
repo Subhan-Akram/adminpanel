@@ -24,7 +24,7 @@ const closedMixin = (theme) => {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: `100%`,
+    width: `calc(100% - ${drawerWidth})`,
     overflowX: "hidden",
   };
 };
