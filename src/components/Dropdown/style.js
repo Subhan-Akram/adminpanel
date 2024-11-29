@@ -23,9 +23,12 @@ export const DropdownWrapper = styled(Box)`
   }
 `;
 
-export const StyledMenu = styled(Menu)(({ theme }) => ({
+export const StyledMenu = styled(Menu, {
+  shouldForwardProp: (props) => props !== "width",
+})(({ theme, width }) => ({
   "& .MuiPaper-root": {
-    width: "125px",
+    width: width ?? "125px",
+
     position: "relative",
     display: "flex",
     flexDirection: "column",

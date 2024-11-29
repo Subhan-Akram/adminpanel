@@ -9,12 +9,14 @@ import {
   Box,
   Autocomplete,
 } from "@mui/material";
-// import { Grid } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import { Grid } from "@mui/material";
 import { FormWrapper } from "./style";
 import { PrimaryButton } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { InputLabelWrapper, AutoCompleteStyledPopperWrapper } from "styles";
+import {
+  InputLabelWrapper,
+  AutoCompleteStyledPopperWrapper,
+} from "globalStyles";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";

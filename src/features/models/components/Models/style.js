@@ -4,7 +4,7 @@ import {
   flex,
   flexEnd,
   justifyBetween,
-} from "styles/GlobalStyles";
+} from "globalStyles/GlobalStyles";
 
 export const ModelWrapper = styled(Box)(() => ({
   padding: "1rem",

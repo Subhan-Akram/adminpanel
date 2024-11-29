@@ -4,7 +4,7 @@ import {
   flex,
   flexStart,
   justifyBetween,
-} from "styles/GlobalStyles";
+} from "globalStyles/GlobalStyles";
 
 const runDogAnimation = `
   @keyframes runDog {
@@ -19,7 +19,7 @@ const runDogAnimation = `
 
 export const ModelBannerWrapper = styled(
   Box,
-  {},
+  {}
 )(() => ({
   ...flex,
   ...justifyBetween,

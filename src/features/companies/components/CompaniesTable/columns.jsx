@@ -1,10 +1,10 @@
-// import BusinessIcon from "@mui/icons-material/Business";
 import { DeleteOutline } from "@mui/icons-material";
 import { Box } from "@mui/material";
+import BusinessIcon from "@mui/icons-material/Business";
 import EditIcon from "@mui/icons-material/Edit";
 import { Chip, DropDown } from "../../../../components";
-import { TagsGroupStyle } from "styles";
-const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
+import { TagsGroupStyle } from "globalStyles";
+const columns = ({ handleView, setDeletePopover }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
     field: "name",
@@ -64,6 +64,8 @@ const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
     cellClassName: "actions",
     renderCell: ({ row }) => (
       <DropDown
+        width={"170px"}
+        className="medium"
         menuItems={[
           {
             label: "Edit",
@@ -72,13 +74,13 @@ const columns = ({ handleView, setDeletePopover, handleAddOrganization }) => [
               handleView(row);
             },
           },
-          // {
-          //   label: "Join Organization",
-          //   icon: <BusinessIcon />,
-          //   onClick: () => {
-          //     handleView(row);
-          //   },
-          // },
+          {
+            label: "Join Organization",
+            icon: <BusinessIcon />,
+            onClick: () => {
+              handleView(row);
+            },
+          },
           {
             label: "Delete",
             icon: <DeleteOutline />,

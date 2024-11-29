@@ -9,6 +9,7 @@ export default function DropDown({
   menuItems = [],
   icon = <DotIcon />,
   className,
+  width,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -35,6 +36,7 @@ export default function DropDown({
         {icon}
       </OutlinedButton>
       <StyledMenu
+        width={width}
         id="fade-menu"
         MenuListProps={{
           "aria-labelledby": "fade-button",
@@ -64,4 +66,5 @@ DropDown.propTypes = {
   icon: PropTypes.node,
   menuItems: PropTypes.array,
   className: PropTypes.string,
+  width: PropTypes.any,
 };

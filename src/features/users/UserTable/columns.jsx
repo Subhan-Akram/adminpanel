@@ -1,7 +1,7 @@
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Avatar, Box, Chip } from "@mui/material";
-import { TagsGroupStyle } from "styles";
+import { TagsGroupStyle } from "globalStyles";
 import EditIcon from "@mui/icons-material/Edit";
 // import { Avatar, Box } from "@mui/material";
 

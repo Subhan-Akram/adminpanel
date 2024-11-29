@@ -1,9 +1,5 @@
 import { Box, styled } from "@mui/material";
-import {
-  flex,
-  flexStart,
-  justifyBetween,
-} from "../../../../../../styles/GlobalStyles";
+import { flex, flexStart, justifyBetween } from "globalStyles/GlobalStyles";
 
 export const ModelCardWrapper = styled(Box)(({ theme }) => ({
   border: "1px solid var(--border-1)",

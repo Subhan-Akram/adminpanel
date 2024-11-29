@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { flex, flexStart, justifyBetween } from "styles/GlobalStyles";
+import { flex, flexStart, justifyBetween } from "globalStyles/GlobalStyles";
 
 export const LlmSelectionModelCardWrapper = styled(Box)(({ theme }) => {
   return {

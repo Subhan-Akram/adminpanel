@@ -5,7 +5,6 @@ import List from "@mui/material/List";
 import { Box } from "@mui/material";
 import { drawerWidth } from "constants";
 import { navbarHeight } from "constants";
-import zIndex from "@mui/material/styles/zIndex";
 import { fullDrawerWidth } from "../../constants/drawerAndNavbarHeight";
 
 const openedMixin = (theme) => ({

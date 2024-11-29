@@ -32,7 +32,7 @@ export default defineConfig({
       assets: path.resolve(__dirname, "./src/assets"),
       helper: path.resolve(__dirname, "./src/helper"),
       apis: path.resolve(__dirname, "./src/apis"),
-      styles: path.resolve(__dirname, "./src/styles"),
+
       slice: path.resolve(__dirname, "./src/slice"),
       globalStyles: path.resolve(__dirname, "./src/styles"),
     },
