@@ -24,7 +24,6 @@ const CompanyModal = ({ open, setOpen, company }) => {
     const { payload } = await dispatch(
       updateCompany({ dispatch, payload: val })
     );
-    console.log("payload", payload);
     if (payload) {
       dispatch(
         triggerAlert({
@@ -40,7 +39,6 @@ const CompanyModal = ({ open, setOpen, company }) => {
   const handleFormSubmit = () => {
     formRef.current?.submitForm();
   };
-  console.log("company", company);
 
   return (
     <React.Fragment>

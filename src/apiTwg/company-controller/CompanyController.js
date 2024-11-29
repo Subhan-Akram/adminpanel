@@ -3,6 +3,13 @@ import axios from "../axiosConfig/axiosConfig";
 export function createCompany(payload) {
   return axios.post("/admin/api/v1/company", payload);
 }
+
+export function joinOrganization(extId, organizationExtIds) {
+  return axios.post(`/admin/api/v1/company/${extId}/join`, {
+    organizationExtIds,
+  });
+}
+
 export function getCompanies() {
   return axios.get("/admin/api/v1/company");
 }

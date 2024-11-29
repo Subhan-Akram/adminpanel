@@ -18,9 +18,11 @@ import { deleteCompany } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import CreateCompanyModal from "../CreateCompanyModal";
 import CompanyModal from "../CompanyModal";
+import JoinOrganizationModal from "../JoinOrganizationModal";
 
 export default function CompaniesTable() {
   const [open, setOpen] = useState(false);
+  const [organizationModal, setOrganizationModal] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
     element: null,
     value: {},
@@ -50,6 +52,10 @@ export default function CompaniesTable() {
     setOpen(true);
     console.log("view ticket ");
   };
+  const handleOrgnization = (row) => {
+    setCompany(row);
+    setOrganizationModal(true);
+  };
 
   return (
     <>
@@ -70,12 +76,14 @@ export default function CompaniesTable() {
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
-      <CompanyModal
-        type="view"
-        company={company}
-        open={open}
-        setOpen={setOpen}
-      />
+      <CompanyModal company={company} open={open} setOpen={setOpen} />
+      {organizationModal && (
+        <JoinOrganizationModal
+          row={company}
+          open={organizationModal}
+          setOpen={setOrganizationModal}
+        />
+      )}
 
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">
@@ -114,7 +122,11 @@ export default function CompaniesTable() {
           <Table
             isLoading={isLoading}
             rows={companies}
-            columns={columns({ handleView, setDeletePopover })}
+            columns={columns({
+              handleView,
+              setDeletePopover,
+              handleOrgnization,
+            })}
           />
         </Card>
       </ModelTableWrapper>

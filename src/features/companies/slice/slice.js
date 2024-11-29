@@ -4,6 +4,7 @@ import {
   getCompanies,
   updateCompany,
   deleteCompany,
+  joinOrganization,
 } from "../services";
 
 const initialState = {
@@ -71,6 +72,21 @@ export const slice = createSlice({
       })
       .addCase(deleteCompany.rejected, (state) => {
         state.isLoading = false;
+      })
+      .addCase(joinOrganization.pending, (state) => {
+        state.crudLoading = true;
+        state.error = null;
+      })
+      .addCase(joinOrganization.fulfilled, (state, action) => {
+        const company = action.payload;
+        state.crudLoading = false;
+        const findIndex = state.companies.findIndex(
+          (val) => val.extId === company.extId
+        );
+        state.companies[findIndex] = company;
+      })
+      .addCase(joinOrganization.rejected, (state) => {
+        state.crudLoading = false;
       });
   },
 });

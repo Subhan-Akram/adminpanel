@@ -4,7 +4,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 import EditIcon from "@mui/icons-material/Edit";
 import { Chip, DropDown } from "../../../../components";
 import { TagsGroupStyle } from "globalStyles";
-const columns = ({ handleView, setDeletePopover }) => [
+const columns = ({ handleView, setDeletePopover, handleOrgnization }) => [
   // { field: "id", headerName: "ID", width: 90 },
   {
     field: "name",
@@ -78,7 +78,7 @@ const columns = ({ handleView, setDeletePopover }) => [
             label: "Join Organization",
             icon: <BusinessIcon />,
             onClick: () => {
-              handleView(row);
+              handleOrgnization(row);
             },
           },
           {
