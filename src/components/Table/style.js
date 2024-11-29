@@ -7,8 +7,13 @@ export const TableWrapper = styled(DataGrid)`
   width: 100%;
   /* margin-top: 0px; */
   border: none !important;
-  /* min-height: 250px; */
+  min-height: 250px;
   min-width: 500px;
+  & .MuiDataGrid-overlay {
+    background: var(--surface-l2);
+    color: var(--text-primary);
+    font-size: 16px;
+  }
   & .custom-align-left {
     justify-content: flex-start;
     text-align: left;

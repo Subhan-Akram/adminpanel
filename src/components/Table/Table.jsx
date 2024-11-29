@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { TableWrapper } from "./style";
 import useMediaQuery from "@mui/material/useMediaQuery";
