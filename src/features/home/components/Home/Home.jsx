@@ -63,7 +63,7 @@ const Home = () => {
                 </Grid>
                 <Box className="search_label">
                   <SullyTypography
-                    classNameProps="search_keyword_text text_terrtiary_regular"
+                    classNameProps=" title_lg_brand"
                     variant={"body1"}
                   >
                     Welcome to Admin Panel
