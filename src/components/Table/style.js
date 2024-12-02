@@ -9,6 +9,10 @@ export const TableWrapper = styled(DataGrid)`
   border: none !important;
   min-height: 250px;
   min-width: 500px;
+  & .MuiDataGrid-main {
+    width: 100%;
+    background-color: var(--surface-l2);
+  }
   & .MuiDataGrid-overlay {
     background: var(--surface-l2);
     color: var(--text-primary);

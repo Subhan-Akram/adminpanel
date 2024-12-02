@@ -33,7 +33,7 @@ export const ToolBar = styled(MuiToolBar, {
 })(({ theme, open }) => ({
   backgroundColor: "var( --sidenav-background)",
   borderBottom: "1px solid var(--sidenav-border)",
-  width: "100%",
+  width: "96.3%",
   height: "100%",
   overflow: "hidden",
   display: "flex",
@@ -48,6 +48,7 @@ export const AppBar = styled(MuiAppBar, {
 })(({ theme, open }) => ({
   zIndex: 150,
   height: navbarHeight,
+
   backgroundColor: "var(--sidenav-background)",
   ...(open && {
     ...openedMixin(theme),
@@ -58,7 +59,6 @@ export const AppBar = styled(MuiAppBar, {
 
   boxShadow: "none",
   border: "var(--border-color)",
-
   "& .profileRoot": {
     display: "flex",
     justifyContent: "flex-start",
@@ -141,7 +141,7 @@ export const AppBar = styled(MuiAppBar, {
       // height: "35px",
     },
     "&.MuiBox-root > :nth-of-type(1)": {
-      height: "46px",
+      height: "21px",
     },
   },
   [theme.breakpoints.down("sm")]: {

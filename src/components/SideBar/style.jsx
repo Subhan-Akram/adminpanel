@@ -7,6 +7,7 @@ import { drawerWidth } from "constants";
 import { navbarHeight } from "constants";
 import { fullDrawerWidth } from "../../constants/drawerAndNavbarHeight";
 import { borderBottom, display } from "@mui/system";
+import zIndex from "@mui/material/styles/zIndex";
 
 const openedMixin = (theme) => ({
   width: fullDrawerWidth,
@@ -42,7 +43,13 @@ export const DrawerStyle = styled(MuiDrawer, {
   // backgroundColor: "var(--sidenav-background)",
 
   opacity: 1, // Opacity transition for larger screens
-
+  "& .toggle_icon": {
+    border: "1px solid red",
+    position: "absolute",
+    top: "5rem",
+    right: "-1rem",
+    zIndex: 1000,
+  },
   "&.MuiDrawer-docked": {
     width: "0px",
   },

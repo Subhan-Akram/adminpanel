@@ -5,6 +5,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import { Logo } from "sullyIcons";
 import { DrawerStyle, StyledList } from "./style";
 import { useLocation, useNavigate } from "react-router-dom";

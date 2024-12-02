@@ -4,9 +4,11 @@ import {
   drawerWidth,
   fullDrawerWidth,
 } from "../constants/drawerAndNavbarHeight";
+import { borderRadius, display, fontSize } from "@mui/system";
 
 export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
   position: "relative",
+  zIndex: "100 !important",
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -25,19 +27,28 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
   marginTop: "69px",
   // width: `calc(100% - 147px)`,
   background: "#070B11 !important",
-  zIndex: 1,
   "& .page_spacing": {
     paddingTop: "31px",
     paddingLeft: "32px",
     paddingRight: "32px",
   },
-  "& .prompt_layout": {
-    height: "calc(100vh - 162px)",
-    overflow: "auto",
-  },
-  "& .try_prompt_layout": {
-    height: "calc(100vh - 130px)",
-    overflow: "auto",
+  "& .toggle_icon": {
+    border: "1px solid var(--model-icon-bg)",
+    position: "absolute",
+    top: "10px",
+    borderRadius: "50%",
+    width: "18px",
+    height: "18px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "var(--model-icon-bg)",
+    left: "-11px",
+    cursor: "pointer",
+    // zIndex: 50,
+    "& svg": {
+      fontSize: "18px",
+    },
   },
   ".page_title_box": {
     marginTop: "8px",
@@ -53,25 +64,12 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
       paddingLeft: "24px",
       paddingRight: "24px",
     },
-    "& .prompt_layout": {
-      height: "calc(100vh - 169px)",
-      paddingLeft: "24px",
-      paddingRight: "25px !important",
-    },
-    "& .try_prompt_layout": {
-      height: "calc(100vh - 91px)",
-    },
   },
   "@media screen and (max-width:930px)": {
     "& .page_spacing": {
       marginTop: "34px",
       paddingLeft: "24px",
       paddingRight: "24px",
-    },
-  },
-  "@media screen and (max-width:715px)": {
-    "& .prompt_layout": {
-      height: "calc(100vh - 151px)",
     },
   },
 }));

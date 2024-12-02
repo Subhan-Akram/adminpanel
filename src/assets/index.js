@@ -1,6 +1,5 @@
 import FrameBg from "./Frame.png";
 import DShape from "./DShape.png";
-import LogoText from "./LogoText.png";
 import LogoShape from "./LogoShape.svg";
 import ProfileIcon from "./ProfileIcon.png";
 import ArrowIcon from "./Arrow.svg";
@@ -27,7 +26,9 @@ import BgMsgFrame3 from "./MsgFrame3.png";
 import SullyDog from "./dog3.png";
 import MsgFrame1 from "./Msgframe1.png";
 import LogoSign from "./LogoSign.png";
+import LogoText from "./LogoTextImg.png";
 export {
+  LogoText,
   LogoSign,
   MsgFrame1,
   SullyDog,
@@ -40,7 +41,6 @@ export {
   Apple,
   FrameBg,
   DShape,
-  LogoText,
   LogoShape,
   ProfileIcon,
   ArrowIcon,

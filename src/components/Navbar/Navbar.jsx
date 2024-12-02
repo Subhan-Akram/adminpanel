@@ -18,6 +18,7 @@ import { SignOut } from "features/login";
 import { useDispatch, useSelector } from "react-redux";
 import { ThemeToggleBox, ThemeToggleContainer } from "../SideBar/style";
 import { setThemeMode } from "../../themeReducer/ThemeReducer";
+import { LogoText } from "../../assets";
 
 const Navbar = ({ openSidebar, setOpenSidebar }) => {
   const { mode } = useSelector((state) => state.theme);
@@ -68,11 +69,12 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
       <ToolBar open={openSidebar}>
         <Box className="logoRoot">
           <Box className="menu_icon">
-            <MenuIcon
+            {!openSidebar && <img src={LogoText} />}
+            {/* <MenuIcon
               onClick={() => {
                 setOpenSidebar((prev) => !prev);
               }}
-            />{" "}
+            /> */}
           </Box>
           {/* <Box className="logo" onClick={handleNavigate}>
             <Logo />
@@ -119,10 +121,12 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
                 role={undefined}
                 placement="bottom-start"
                 transition
+                sx={{ zIndex: 1000 }}
                 disablePortal
               >
                 {({ TransitionProps, placement }) => (
                   <Grow
+                    sx={{ zIndex: 1000 }}
                     {...TransitionProps}
                     style={{
                       transformOrigin:
@@ -131,7 +135,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
                           : "left bottom",
                     }}
                   >
-                    <Paper>
+                    <Paper sx={{ zIndex: 1000 }}>
                       <ClickAwayListener onClickAway={handleClose}>
                         <MenuList
                           autoFocusItem={open}
