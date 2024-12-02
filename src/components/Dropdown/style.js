@@ -5,24 +5,28 @@ export const DropdownWrapper = styled(Box)`
   &.show_only_icon {
     border: none !important;
     background: none !important;
+    padding: 0 !important;
     & svg path {
       fill: var(--icon-primary);
     }
 
     & .MuiButton-root {
-      border: none !important;
+      border: none;
       background: none !important;
       min-width: 20px;
-      padding: 0;
+      padding: 0 !important;
+      &:hover {
+        border: none !important;
+      }
     }
   }
   & .MuiButton-root {
-    padding: 4px 6px !important;
+    padding: 4px 6px;
     min-width: 0;
     height: auto !important;
     border: transparent !important;
     &:hover {
-      border: 1px solid var(--border-1) !important;
+      border: 1px solid var(--border-1);
     }
   }
 `;
@@ -32,19 +36,20 @@ export const StyledMenu = styled(Menu, {
 })(({ width }) => ({
   "& .MuiPaper-root": {
     width: width ?? "125px",
-
     position: "relative",
     display: "flex",
     flexDirection: "column",
     borderRadius: "8px",
     marginTop: "4px",
     border: "1px solid var(--border-1) !important",
-
     background: "var(--surface-l1)",
     "& .MuiMenuItem-root": {
       "&:not(:last-child)": {
         borderBottom: "1px solid var(--border-1) !important",
       },
+    },
+    "& .MuiList-root": {
+      padding: "0",
     },
   },
 }));

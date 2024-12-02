@@ -78,25 +78,24 @@ export const AppBar = styled(MuiAppBar, {
         cursor: "pointer",
       },
     },
-    "&.MuiBox-root :nth-of-type(3)": {
-      "& .MuiSvgIcon-root": {
-        color: "var(--primary-color-3)",
-      },
-    },
+    // "&.MuiBox-root :nth-of-type(3)": {
+    //   "& .MuiSvgIcon-root": {
+    //     color: "var(--primary-color-3)",
+    //   },
+    // },
     [theme.breakpoints.down("sm")]: {
       gap: "5px",
       "&.MuiBox-root :nth-of-type(3)": {
         marginLeft: "-3px",
         marginTop: "8px",
+        border: "1px solid red",
       },
     },
   },
   "& .drop_down_Box": {
     cursor: "pointer",
   },
-  "& .MuiBox-root > :nth-of-type(5)": {
-    marginTop: "5px",
-  },
+
   "& .logoRoot": {
     width: "249px",
     height: "24px",
@@ -145,10 +144,6 @@ export const AppBar = styled(MuiAppBar, {
     },
   },
   [theme.breakpoints.down("sm")]: {
-    "& .profileRoot": {
-      "& .coint_point": {
-        display: "none",
-      },
-    },
+    "& .profileRoot": {},
   },
 }));

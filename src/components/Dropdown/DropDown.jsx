@@ -37,6 +37,7 @@ export default function DropDown({
       </OutlinedButton>
       <StyledMenu
         width={width}
+        className={className}
         id="fade-menu"
         MenuListProps={{
           "aria-labelledby": "fade-button",

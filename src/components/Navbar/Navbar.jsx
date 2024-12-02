@@ -19,11 +19,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { ThemeToggleBox, ThemeToggleContainer } from "../SideBar/style";
 import { setThemeMode } from "../../themeReducer/ThemeReducer";
 import { LogoText } from "../../assets";
+import DropDown from "../Dropdown";
+import useSignOut from "../../features/login/components/SignOut";
+import { Logout } from "@mui/icons-material";
 
 const Navbar = ({ openSidebar, setOpenSidebar }) => {
   const { mode } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { handleLogout } = useSignOut();
   const {
     user: { name },
   } = useSelector((state) => state.auth);
@@ -55,14 +59,6 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
   const handleNavigate = () => {
     navigate("/");
   };
-
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
 
   return (
     <AppBar id="app_bar" position="fixed" open={openSidebar}>
@@ -112,7 +108,18 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
                 </SullyTypography>
               </SullyTypography>
             </Box>
-            <Box ref={anchorRef} className="arrow_icon">
+            <DropDown
+              className={"show_only_icon "}
+              icon={<KeyboardArrowDownIcon />}
+              menuItems={[
+                {
+                  label: "Logout",
+                  icon: <Logout />,
+                  onClick: handleLogout,
+                },
+              ]}
+            ></DropDown>
+            {/* <Box ref={anchorRef} className="arrow_icon">
               <KeyboardArrowDownIcon />
 
               <Popper
@@ -150,7 +157,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
                   </Grow>
                 )}
               </Popper>
-            </Box>
+            </Box> */}
           </Box>
         </Box>
       </ToolBar>
