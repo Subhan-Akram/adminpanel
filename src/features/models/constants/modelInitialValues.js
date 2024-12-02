@@ -16,7 +16,7 @@ const modelInitialValues = {
   rating: 0,
   modelCard: "",
   license: "",
-  createdBy: "y",
+  createdBy: "",
   ssbxCode: "",
   logoUrl: "",
   originUrl: "",
