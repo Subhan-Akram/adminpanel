@@ -12,7 +12,7 @@ import { IconButton } from "@mui/material";
 import { CloseIcon } from "sullyIcons";
 const CreateModelDrawer = () => {
   const [open, setOpen] = useState(false);
-  const { isLoading } = useSelector((state) => state.models);
+  const { crudLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
   const toggleDrawer = (open) => () => {
     setOpen(open);
@@ -62,7 +62,7 @@ const CreateModelDrawer = () => {
           <ModelForm
             handleSubmit={handleSubmit}
             initialValues={modelInitialValues}
-            isLoading={isLoading}
+            isLoading={crudLoading}
           />
         </Box>
       </DrawerWrapper>

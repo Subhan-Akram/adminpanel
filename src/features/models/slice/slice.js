@@ -18,6 +18,7 @@ const initialState = {
   modalModels: [],
   isLoading: false,
   error: "",
+  crudLoading: false,
 };
 
 export const slice = createSlice({
@@ -57,14 +58,14 @@ export const slice = createSlice({
       })
       .addCase(createModel.fulfilled, (state, action) => {
         const model = action.payload;
-        state.isLoading = false;
+        state.crudLoading = false;
         state.models = [model, ...state.models];
       })
       .addCase(createModel.rejected, (state) => {
-        state.isLoading = false;
+        state.crudLoading = false;
       })
       .addCase(getAllModels.pending, (state) => {
-        state.isLoading = true;
+        state.crudLoading = true;
         state.error = null;
       })
       .addCase(getAllModels.fulfilled, (state, action) => {
@@ -76,19 +77,19 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateModel.pending, (state) => {
-        state.isLoading = true;
+        state.crudLoading = true;
         state.error = null;
       })
       .addCase(updateModel.fulfilled, (state, action) => {
         const model = action.payload;
-        state.isLoading = false;
+        state.crudLoading = false;
         const findModelIndex = state.models.findIndex(
           (val) => val.extId === model.extId
         );
         state.models[findModelIndex] = model;
       })
       .addCase(updateModel.rejected, (state) => {
-        state.isLoading = false;
+        state.crudLoading = false;
       })
       .addCase(getSearchModels.pending, (state) => {
         state.isLoading = true;
@@ -119,16 +120,16 @@ export const slice = createSlice({
         state.error = "no data found";
       })
       .addCase(deleteModel.pending, (state) => {
-        state.isLoading = true;
+        state.crudLoading = true;
         state.error = null;
       })
       .addCase(deleteModel.fulfilled, (state, action) => {
         const model = action.payload;
-        state.isLoading = false;
+        state.crudLoading = false;
         state.models = state.models.filter((val) => val.extId !== model.extId);
       })
       .addCase(deleteModel.rejected, (state) => {
-        state.isLoading = false;
+        state.crudLoading = false;
       })
       .addCase(getAllModelTags.pending, (state) => {
         state.isLoading = true;

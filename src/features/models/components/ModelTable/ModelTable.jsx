@@ -23,7 +23,9 @@ export default function ModelTable() {
     element: null,
     model: "",
   });
-  const { models, isLoading } = useSelector((state) => state.models);
+  const { models, crudLoading, isLoading } = useSelector(
+    (state) => state.models
+  );
   const [model, setModel] = useState({
     model: "ns",
     description: "s",
@@ -94,7 +96,7 @@ export default function ModelTable() {
             from Models ?
           </SullyTypography>
         }
-        isLoading={isLoading}
+        isLoading={crudLoading}
         confirmBtnText="Delete"
       />
 

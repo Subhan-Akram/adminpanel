@@ -34,7 +34,7 @@ const ModelDrawer = ({
   const { logoUrl, name } = model;
   // const [type, setType] = React.useState("view");
 
-  const { isLoading } = useSelector((state) => state.models);
+  const { crudLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
 
   const toggleDrawer = (open) => () => {
@@ -113,7 +113,7 @@ const ModelDrawer = ({
           <Box className="drawer_content">
             <ModelForm
               isEdit={true}
-              isLoading={isLoading}
+              isLoading={crudLoading}
               handleSubmit={handleSubmit}
               initialValues={{ ...modelInitialValues, ...model }}
             />
