@@ -23,14 +23,7 @@ import DrawerView from "../DrawerView";
 import { IconButton } from "@mui/material";
 import { fontSize } from "@mui/system";
 
-const ModelDrawer = ({
-  model = initialModel,
-  open,
-  setOpen,
-  setModel,
-  type,
-  setType,
-}) => {
+const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
   const { logoUrl, name } = model;
   // const [type, setType] = React.useState("view");
 
