@@ -34,6 +34,7 @@ const CreateModelDrawer = () => {
       setOpen(false);
     }
   };
+  console.log("crudLoading", crudLoading);
   return (
     <>
       <PrimaryButton

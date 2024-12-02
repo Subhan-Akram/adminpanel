@@ -65,7 +65,7 @@ export const slice = createSlice({
         state.crudLoading = false;
       })
       .addCase(getAllModels.pending, (state) => {
-        state.crudLoading = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(getAllModels.fulfilled, (state, action) => {

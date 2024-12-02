@@ -37,7 +37,7 @@ const validationSchema = Yup.object().shape({
     .max(5, "Rating must not exceed 5")
     .required("Rating is required"),
   createdBy: Yup.string().required("Created By is required"),
-  license: Yup.string().required("License is required"),
+  license: Yup.string(),
 });
 
 function ModelForm({ initialValues, handleSubmit, isLoading, isEdit = false }) {
