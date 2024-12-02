@@ -53,7 +53,7 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createModel.pending, (state) => {
-        state.isLoading = true;
+        state.crudLoading = true;
         state.error = null;
       })
       .addCase(createModel.fulfilled, (state, action) => {
