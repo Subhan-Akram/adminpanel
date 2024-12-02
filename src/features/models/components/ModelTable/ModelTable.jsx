@@ -27,10 +27,10 @@ export default function ModelTable() {
     (state) => state.models
   );
   const [model, setModel] = useState({
-    model: "ns",
-    description: "s",
-    rating: 2,
-    modelCard: "23",
+    model: "",
+    description: "",
+    rating: 0,
+    modelCard: "",
   });
   const dispatch = useDispatch();
   const handleDelete = async () => {
@@ -106,7 +106,7 @@ export default function ModelTable() {
         type={type}
         setType={setType}
         setOpen={setOpen}
-        model={initialModel}
+        model={model}
       />
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <Box className="model_drawer_box">
