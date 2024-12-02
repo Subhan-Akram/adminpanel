@@ -40,7 +40,7 @@ export const DrawerWrapper = styled(Drawer)`
     display: flex;
     justify-content: flex-start;
     gap: 6px;
-    margin-top: 16px;
+    margin-top: 0px;
     flex-wrap: wrap;
   }
 
