@@ -64,7 +64,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
     <AppBar id="app_bar" position="fixed" open={openSidebar}>
       <ToolBar open={openSidebar}>
         <Box className="logoRoot">
-          <Box className="menu_icon">
+          <Box className="menu_icon" onClick={handleNavigate}>
             {!openSidebar && <img src={LogoText} />}
             {/* <MenuIcon
               onClick={() => {
@@ -104,7 +104,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
                   variant={"span"}
                   classNameProps="text-capitalize"
                 >
-                  {name?.toLowerCase()}
+                  {name?.toLowerCase() ?? "Twg"}
                 </SullyTypography>
               </SullyTypography>
             </Box>

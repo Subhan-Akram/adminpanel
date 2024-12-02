@@ -21,6 +21,11 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
     // if (openSidebar) setOpenSidebar(false);
   });
   const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/");
+  };
+
   const { pathname } = useLocation();
   console.log("open sidebar", openSidebar);
   const getPath = () => {
@@ -34,11 +39,19 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
     <DrawerStyle ref={sidebarRef} variant="permanent" open={openSidebar}>
       <Box className="sidebar_header">
         {openSidebar ? (
-          <Box className="logo" sx={{ width: "200px" }}>
+          <Box
+            onClick={handleNavigate}
+            className="logo"
+            sx={{ width: "200px" }}
+          >
             <Logo />
           </Box>
         ) : (
-          <Box className="short_logo" sx={{ width: "120px", height: "40px" }}>
+          <Box
+            onClick={handleNavigate}
+            className="short_logo"
+            sx={{ width: "120px", height: "40px", cursor: "pointer" }}
+          >
             <img
               alt="logo sign"
               style={{ objectFit: "contain" }}

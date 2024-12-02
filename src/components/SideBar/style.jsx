@@ -66,7 +66,7 @@ export const DrawerStyle = styled(MuiDrawer, {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      borderBottom: "1px solid var(--border-1)",
+      // borderBottom: "1px solid var(--border-1)",
       "& .logo": {
         // display: open ? "flex" : "none",
         // opacity: open ? 1 : 0,
