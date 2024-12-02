@@ -25,7 +25,7 @@ import Shadow from "./shadow.png";
 import BgMsgFrame3 from "./MsgFrame3.png";
 import SullyDog from "./dog3.png";
 import MsgFrame1 from "./Msgframe1.png";
-import LogoSign from "./LogoSign.png";
+import LogoSign from "./logoSign.png";
 import LogoText from "./LogoTextImg.png";
 export {
   LogoText,
