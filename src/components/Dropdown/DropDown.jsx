@@ -4,12 +4,14 @@ import OutlinedButton from "components/OutlinedButton";
 import { DotIcon } from "sullyIcons";
 import { DropdownWrapper, StyledMenu, StyledMenuItem } from "./style";
 import PropTypes from "prop-types";
+import SullyTypography from "../SullyTypography";
 
 export default function DropDown({
   menuItems = [],
   icon = <DotIcon />,
   className,
   width,
+  children,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -33,6 +35,7 @@ export default function DropDown({
         className="dot_icon_option"
         variant="contained"
       >
+        {children}
         {icon}
       </OutlinedButton>
       <StyledMenu

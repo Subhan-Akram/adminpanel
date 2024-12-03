@@ -66,15 +66,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
         <Box className="logoRoot">
           <Box className="menu_icon" onClick={handleNavigate}>
             {!openSidebar && <img src={LogoText} />}
-            {/* <MenuIcon
-              onClick={() => {
-                setOpenSidebar((prev) => !prev);
-              }}
-            /> */}
           </Box>
-          {/* <Box className="logo" onClick={handleNavigate}>
-            <Logo />
-          </Box>  */}
         </Box>
         <Box className="profileRoot">
           <Box className="icon_text coint_point">
@@ -95,22 +87,19 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
           </Box>
 
           <Box className="icon_text drop_down_Box" onClick={handleToggle}>
-            <Box className="profile_icon">
-              <img alt="profile icon" src={ProfileIcon}></img>
-            </Box>
             <Box>
-              <SullyTypography classNameProps="caption">
+              {/* <SullyTypography classNameProps="caption">
                 <SullyTypography
                   variant={"span"}
                   classNameProps="text-capitalize"
                 >
-                  {name?.toLowerCase() ?? "Twg"}
+                  {name?.toLowerCase()}
                 </SullyTypography>
-              </SullyTypography>
+              </SullyTypography> */}
             </Box>
             <DropDown
               className={"show_only_icon "}
-              icon={<KeyboardArrowDownIcon />}
+              icon={null}
               menuItems={[
                 {
                   label: "Logout",
@@ -118,46 +107,20 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
                   onClick: handleLogout,
                 },
               ]}
-            ></DropDown>
-            {/* <Box ref={anchorRef} className="arrow_icon">
-              <KeyboardArrowDownIcon />
-
-              <Popper
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                placement="bottom-start"
-                transition
-                sx={{ zIndex: 1000 }}
-                disablePortal
-              >
-                {({ TransitionProps, placement }) => (
-                  <Grow
-                    sx={{ zIndex: 1000 }}
-                    {...TransitionProps}
-                    style={{
-                      transformOrigin:
-                        placement === "bottom-start"
-                          ? "left top"
-                          : "left bottom",
-                    }}
-                  >
-                    <Paper sx={{ zIndex: 1000 }}>
-                      <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList
-                          autoFocusItem={open}
-                          id="composition-menu"
-                          aria-labelledby="composition-button"
-                          onKeyDown={handleListKeyDown}
-                        >
-                          <SignOut />
-                        </MenuList>
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>
-            </Box> */}
+            >
+              <Box className="icon_text drop_down_Box">
+                <Box className="profile_icon">
+                  <img alt="profile icon" src={ProfileIcon}></img>
+                </Box>
+                <SullyTypography
+                  variant={"span"}
+                  classNameProps="text-capitalize"
+                >
+                  {name?.toLowerCase() || "twg"}
+                </SullyTypography>
+                <KeyboardArrowDownIcon />
+              </Box>
+            </DropDown>
           </Box>
         </Box>
       </ToolBar>
