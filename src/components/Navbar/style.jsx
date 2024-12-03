@@ -31,7 +31,8 @@ const closedMixin = (theme) => {
 export const ToolBar = styled(MuiToolBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  backgroundColor: "var( --sidenav-background)",
+
+  backgroundColor: "var(--sidenav-background)",
   borderBottom: "1px solid var(--sidenav-border)",
   width: "calc(100% - 50px)",
   height: "100%",

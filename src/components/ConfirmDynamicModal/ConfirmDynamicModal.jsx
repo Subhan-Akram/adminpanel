@@ -3,8 +3,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { ConfirmModalWrapper } from "./Style";
 import PropTypes from "prop-types";
-import { IconButton } from "@mui/material";
 import { CloseIcon } from "sullyIcons";
+import { IconButton } from "@mui/material";
+
 import { OutlinedButton, PrimaryButton, SullyTypography } from "components";
 
 export default function ConfirmModal({

@@ -14,10 +14,8 @@ export default function Table({
 
   // Media queries to detect screen size
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  console.log("is small", isSmallScreen);
   const [pageSize, setPageSize] = useState(5); // Default page size
 
-  console.log("page", pageSize, "isMediumScreen");
   return (
     <TableWrapper
       slots={{
