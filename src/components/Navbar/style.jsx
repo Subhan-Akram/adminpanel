@@ -33,7 +33,7 @@ export const ToolBar = styled(MuiToolBar, {
 })(({ theme, open }) => ({
   backgroundColor: "var( --sidenav-background)",
   borderBottom: "1px solid var(--sidenav-border)",
-  width: "96.3%",
+  width: "calc(100% - 50px)",
   height: "100%",
   overflow: "hidden",
   display: "flex",
@@ -48,6 +48,7 @@ export const AppBar = styled(MuiAppBar, {
 })(({ theme, open }) => ({
   zIndex: 150,
   height: navbarHeight,
+  border: "1px solid red",
 
   backgroundColor: "var(--sidenav-background)",
   ...(open && {
