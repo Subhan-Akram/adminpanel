@@ -11,7 +11,11 @@ import {
 } from "@mui/material";
 import { Grid } from "@mui/material";
 import { FormWrapper } from "./style";
-import { OutlinedButton, PrimaryButton } from "../../../../components";
+import {
+  OutlinedButton,
+  PrimaryButton,
+  SullyTypography,
+} from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import {
   InputLabelWrapper,
@@ -208,12 +212,7 @@ function ModelForm({
         </Grid>
 
         {/* License Field */}
-        <Grid
-          sx={{ marginBottom: "16px", position: "relative" }}
-          item
-          xs={12}
-          md={12}
-        >
+        <Grid item xs={12} md={12}>
           <FormControl fullWidth>
             <InputLabelWrapper
               className="InputLabelWrapper_text"
@@ -366,6 +365,7 @@ function ModelForm({
     </FormWrapper>
   );
 }
+
 ModelForm.propTypes = {
   isEdit: PropTypes.bool,
   initialValues: PropTypes.object,

@@ -10,8 +10,7 @@ export const FormWrapper = styled(Box)`
     margin-top: -10px;
   }
   & .autocomplete_tags {
-    height: 37.5px !important;
-    margin-top: 2px !important;
+    margin-top: 6px;
     & .MuiOutlinedInput-root {
       padding-right: 3px !important;
       padding-left: 3px !important;
