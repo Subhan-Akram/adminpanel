@@ -105,6 +105,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
         {type === "edit" && (
           <Box className="drawer_content">
             <ModelForm
+              setType={setType}
               isEdit={true}
               isLoading={crudLoading}
               handleSubmit={handleSubmit}

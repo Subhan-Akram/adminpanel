@@ -40,7 +40,13 @@ const validationSchema = Yup.object().shape({
   license: Yup.string(),
 });
 
-function ModelForm({ initialValues, handleSubmit, isLoading, isEdit = false }) {
+function ModelForm({
+  initialValues,
+  handleSubmit,
+  isLoading,
+  isEdit = false,
+  setType,
+}) {
   const { tags } = useSelector((state) => state.models);
 
   const [selectedTags, setSelectedTags] = useState(initialValues.tags);
@@ -338,10 +344,11 @@ function ModelForm({ initialValues, handleSubmit, isLoading, isEdit = false }) {
             }}
           >
             <OutlinedButton
-              type="submit"
+              onClick={() => {
+                setType("view");
+              }}
               variant="contained"
               color="primary"
-              isLoading={isLoading}
             >
               Cancel
             </OutlinedButton>
@@ -364,5 +371,6 @@ ModelForm.propTypes = {
   initialValues: PropTypes.object,
   handleSubmit: PropTypes.func,
   isLoading: PropTypes.bool,
+  setType: PropTypes.func,
 };
 export default ModelForm;
