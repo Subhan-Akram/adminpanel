@@ -201,8 +201,9 @@ function DrawerView({ data }) {
           </SullyTypography>
         </Grid>
         <Grid item xs={6} sm={9}>
+          {!tags.length && "-"}
           <Box className="chips_box">
-            {tags.slice(0, 3).map((val) => (
+            {(0, 3).map((val) => (
               <Chip
                 classNameProps="modal_card_chips "
                 key={val.name}
