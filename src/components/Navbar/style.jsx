@@ -141,7 +141,8 @@ export const AppBar = styled(MuiAppBar, {
       // height: "35px",
     },
     "&.MuiBox-root > :nth-of-type(1)": {
-      height: "23px",
+      // height: "23px",
+      width: "165px",
     },
   },
   [theme.breakpoints.down("sm")]: {
