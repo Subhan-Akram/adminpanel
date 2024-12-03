@@ -203,7 +203,7 @@ function DrawerView({ data }) {
         <Grid item xs={6} sm={9}>
           {!tags.length && "-"}
           <Box className="chips_box">
-            {(0, 3).map((val) => (
+            {tags.slice(0, 3).map((val) => (
               <Chip
                 classNameProps="modal_card_chips "
                 key={val.name}
