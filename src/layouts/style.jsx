@@ -59,6 +59,7 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
     marginLeft: "0",
   },
   "@media screen and (max-width:1024px)": {
+    zIndex: "60 !important",
     "& .page_spacing": {
       marginTop: "34px",
       paddingLeft: "24px",

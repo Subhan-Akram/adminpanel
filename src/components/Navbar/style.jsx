@@ -31,7 +31,6 @@ const closedMixin = (theme) => {
 export const ToolBar = styled(MuiToolBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-
   backgroundColor: "var(--sidenav-background)",
   borderBottom: "1px solid var(--sidenav-border)",
   width: "calc(100% - 50px)",
@@ -105,10 +104,14 @@ export const AppBar = styled(MuiAppBar, {
     alignItems: "center",
     justifyContent: "flex-start",
     gap: "30px",
-    "& .menu_icon": {
+    "& .tablet_toggle_btn": {
+      display: "none",
+    },
+    "& .logo_text": {
       cursor: "pointer",
     },
     "& .logo": {
+      display: "none",
       cursor: "pointer",
       marginTop: "6px",
       "& svg": {
@@ -127,11 +130,7 @@ export const AppBar = styled(MuiAppBar, {
         fill: "var(--logo)",
       },
     },
-    "@media screen and (min-width:1025px)": {
-      "& .menu_icon": {
-        // display: "none",
-      },
-    },
+
     "& img": {
       width: "100% !important",
       height: "100% !important",
@@ -147,5 +146,19 @@ export const AppBar = styled(MuiAppBar, {
   },
   [theme.breakpoints.down("sm")]: {
     "& .profileRoot": {},
+  },
+  "@media (max-width: 1024px)": {
+    width: "100%",
+    "& .logoRoot": {
+      "& .logo_text": {
+        display: "none",
+      },
+      "& .logo": {
+        display: "block",
+      },
+      "& .tablet_toggle_btn": {
+        display: "block",
+      },
+    },
   },
 }));

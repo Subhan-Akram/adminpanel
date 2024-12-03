@@ -14,11 +14,13 @@ import { sideBarOptions } from "constants";
 import { useOutsideClick } from "hooks";
 import { useRef } from "react";
 import { LogoSign } from "../../assets";
+import useViewportWidth from "../../hooks/useViewportWidth";
 
 const SideBar = ({ openSidebar, setOpenSidebar }) => {
   const sidebarRef = useRef();
+  const width = useViewportWidth();
   useOutsideClick(sidebarRef, "app_bar", () => {
-    // if (openSidebar) setOpenSidebar(false);
+    if (openSidebar && width < 1025) setOpenSidebar(false);
   });
   const navigate = useNavigate();
 

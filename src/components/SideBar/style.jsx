@@ -103,7 +103,7 @@ export const DrawerStyle = styled(MuiDrawer, {
     height: `100%`,
     padding: "0px",
     "@media screen and (max-width:1024px)": {
-      transition: "transform 0.3s ease-in-out",
+      transition: "transform 0.2s ease-in-out",
       transform: open ? "translateX(0%)" : "translateX(-150px)",
       opacity: 1,
     },
