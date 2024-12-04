@@ -3,7 +3,6 @@ import { BannerWrapper } from "../styles";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import { Box, Card, Divider, Grid } from "@mui/material";
 import { SullyTypography } from "components";
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { BannerDog } from "assets";
 import { styled, Typography } from "@mui/material";
 import { ArrowUp, LlmModelIcon } from "../sullyIcons/SullyIcons";
@@ -133,19 +132,40 @@ export const data = [
   {
     title: "LLM's Models",
     stats: "1,240",
-    icon: <AddBusiness sx={{ color: "var(--icon-brand)", fontSize: "20px" }} />,
+    icon: (
+      <CreditCard
+        sx={{
+          color: "var(--icon-brand)",
+          fontSize: "20px",
+        }}
+      />
+    ),
   },
   {
     title: "Companies",
     stats: "5,240",
-    icon: <CreditCard sx={{ color: "var(--icon-brand)", fontSize: "20px" }} />,
+    icon: (
+      <ApartmentIcon sx={{ color: "var(--icon-brand)", fontSize: "20px" }} />
+    ),
   },
   {
     title: "Organization",
     stats: "3,240",
     icon: (
-      <AccountBalanceIcon
+      <CorporateFareIcon
         sx={{ color: "var(--icon-brand)", fontSize: "20px" }}
+      />
+    ),
+  },
+  {
+    title: "Credits",
+    stats: "1,540",
+    icon: (
+      <CreditCard
+        sx={{
+          color: "var(--icon-brand)",
+          fontSize: "20px",
+        }}
       />
     ),
   },
