@@ -28,7 +28,7 @@ function Layout({ children }) {
             <KeyboardArrowRightRoundedIcon />
           )}
         </Box>
-        {children}
+        <Box className="main_content">{children}</Box>
       </MainContent>
     </Box>
   );

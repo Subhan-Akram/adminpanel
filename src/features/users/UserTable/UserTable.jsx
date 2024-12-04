@@ -16,6 +16,8 @@ import { triggerAlert } from "slice/alertSlice";
 import { PrimaryButton } from "../../../components";
 import getUserByEmail from "../services/getUserByEmail";
 import { getUsers } from "../services";
+import { BannerWrapper } from "../../../styles";
+import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 
 export default function UsersTable() {
   const { users, isLoading } = useSelector((state) => state.users);
@@ -32,6 +34,24 @@ export default function UsersTable() {
     rating: 2,
     modelCard: "23",
   });
+  const CustomToolbar = () => (
+    <GridToolbarContainer
+      sx={{
+        padding: "10px",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "10px",
+      }}
+    >
+      <SullyTypography classNameProps={"modaltitle1"}>
+        All Users
+      </SullyTypography>
+      <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
+        {/* <GridToolbarExport /> */}
+        <GridToolbarQuickFilter placeholder="Search LLM Models" />
+      </Box>
+    </GridToolbarContainer>
+  );
   const dispatch = useDispatch();
   const handleDelete = async () => {
     const { model } = deletePopover;
@@ -79,7 +99,7 @@ export default function UsersTable() {
       />
 
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
-        <Box className="model_drawer_box">
+        <BannerWrapper>
           <SullyTypography
             sx={{ fontSize: "1.5rem" }}
             classNameProps={"medium_title"}
@@ -102,9 +122,9 @@ export default function UsersTable() {
               {/* <CreateModelDrawer /> */}
             </Box>
           </Box>
-        </Box>
+        </BannerWrapper>
         <Card sx={{ padding: 0 }}>
-          <Box className="card_header">
+          {/* <Box className="card_header">
             <SullyTypography classNameProps={"modaltitle1"}>
               All Users
             </SullyTypography>
@@ -112,8 +132,9 @@ export default function UsersTable() {
               placeholder="Search By Email"
               handleAction={handleSearch}
             />
-          </Box>
+          </Box> */}
           <Table
+            CustomToolbar={CustomToolbar}
             isLoading={isLoading}
             rows={users}
             columns={columns({ handleView, setDeletePopover })}

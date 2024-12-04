@@ -33,14 +33,14 @@ export default function Table({
       columns={columns}
       getRowId={(row) => row.extId} // Custom row ID
       rows={rows}
-      autoPageSize={true}
-      initialState={{
-        pagination: {
-          paginationModel: {
-            pageSize: pageSize,
-          },
-        },
-      }}
+      // autoPageSize={true}
+      // initialState={{
+      //   pagination: {
+      //     paginationModel: {
+      //       pageSize: pageSize,
+      //     },
+      //   },
+      // }}
       pageSizeOptions={[5, 10, 15]}
       disableRowSelectionOnClick={true}
       disableColumnSelector

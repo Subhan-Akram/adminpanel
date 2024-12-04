@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { ModelTableWrapper } from "./style";
 import Table from "../../../../components/Table";
+import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import columns from "./columns";
 import { Box, Card } from "@mui/material";
 import { useState } from "react";
@@ -19,6 +20,7 @@ import { triggerAlert } from "../../../../slice/alertSlice";
 import CreateCompanyModal from "../CreateCompanyModal";
 import CompanyModal from "../CompanyModal";
 import JoinOrganizationModal from "../JoinOrganizationModal";
+import { BannerWrapper } from "globalStyles/BannerWrapper";
 
 export default function CompaniesTable() {
   const [open, setOpen] = useState(false);
@@ -31,6 +33,25 @@ export default function CompaniesTable() {
   console.log("companies", companies);
   const [company, setCompany] = useState({});
   const dispatch = useDispatch();
+  const CustomToolbar = () => (
+    <GridToolbarContainer
+      sx={{
+        padding: "10px",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "10px",
+      }}
+    >
+      <SullyTypography classNameProps={"modaltitle1"}>
+        All Companies
+      </SullyTypography>
+      <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
+        {/* <GridToolbarExport /> */}
+        <GridToolbarQuickFilter placeholder="Search Companies" />
+      </Box>
+    </GridToolbarContainer>
+  );
+
   const handleDelete = async () => {
     const { value } = deletePopover;
     const { payload } = await dispatch(
@@ -86,7 +107,7 @@ export default function CompaniesTable() {
       )}
 
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
-        <Box className="model_drawer_box">
+        <BannerWrapper>
           <SullyTypography
             sx={{ fontSize: "1.5rem" }}
             classNameProps={"medium_title"}
@@ -111,17 +132,12 @@ export default function CompaniesTable() {
               {/* <CreateModelDrawer /> */}
             </Box>
           </Box>
-        </Box>
+        </BannerWrapper>
         <Card sx={{ padding: 0 }}>
-          <Box className="card_header">
-            <SullyTypography classNameProps={"modaltitle1"}>
-              All Companies
-            </SullyTypography>
-            <SearchBar placeholder={"Search"} />
-          </Box>
           <Table
             isLoading={isLoading}
             rows={companies}
+            CustomToolbar={CustomToolbar}
             columns={columns({
               handleView,
               setDeletePopover,

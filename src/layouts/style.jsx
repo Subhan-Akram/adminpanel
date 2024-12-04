@@ -50,6 +50,9 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
       fontSize: "18px",
     },
   },
+  "& .main_content": {
+    padding: "1.5rem",
+  },
   ".page_title_box": {
     marginTop: "8px",
     marginBottom: "16px",

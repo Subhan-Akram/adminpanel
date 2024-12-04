@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteModel, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
+import { BannerWrapper } from "../../../../styles/BannerWrapper";
 
 export default function ModelTable() {
   const [open, setOpen] = useState(false);
@@ -109,7 +110,7 @@ export default function ModelTable() {
         model={model}
       />
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
-        <Box className="model_drawer_box">
+        <BannerWrapper>
           <SullyTypography classNameProps={"card_title1"}>
             LLMs Models
           </SullyTypography>
@@ -127,7 +128,7 @@ export default function ModelTable() {
               <CreateModelDrawer />
             </Box>
           </Box>
-        </Box>
+        </BannerWrapper>
         <Card sx={{ padding: 0 }}>
           <Table
             isLoading={isLoading}
