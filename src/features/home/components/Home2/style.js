@@ -5,24 +5,24 @@ export const HomeWrapper = styled(Box)`
   margin-top: 2.8rem;
 
   & .banner {
-    padding: 1rem;
+    padding: 6px 16px;
     margin-left: 1.5rem;
     & .banner_text {
-      font-size: 1.2rem;
+      font-size: 16px;
     }
   }
   & .banner_img {
     width: 52px;
     height: 52px;
     position: absolute;
-    top: 6px;
+    top: -2px;
     left: 4px;
     img {
       object-fit: contain;
     }
   }
   & .home_content {
-    margin-top: 2rem;
+    margin-top: 24px;
   }
   & .stats_cards {
     /* display: flex;
@@ -30,6 +30,6 @@ export const HomeWrapper = styled(Box)`
     gap: 16px;
     align-items: center;
     flex-wrap: wrap; */
-    margin-top: 1rem;
+    margin-top: 2px;
   }
 `;

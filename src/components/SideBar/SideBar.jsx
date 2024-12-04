@@ -39,6 +39,9 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
   };
   return (
     <DrawerStyle ref={sidebarRef} variant="permanent" open={openSidebar}>
+      {/* <Box className="toggle_icon">
+        <KeyboardArrowRightRoundedIcon />
+      </Box> */}
       <Box className="sidebar_header">
         {openSidebar ? (
           <Box

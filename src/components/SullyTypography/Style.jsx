@@ -45,7 +45,7 @@ export const TypographyWrapper = styled(Typography)(() => ({
   },
   "&.title_lg_brand": {
     color: "var(--text-brand)",
-    fontSize: "28px",
+    fontSize: "22px",
     fontStyle: "normal",
     fontWeight: "700",
     lineHeight: "42px",
@@ -69,6 +69,12 @@ export const TypographyWrapper = styled(Typography)(() => ({
     fontSize: "20px",
     fontStyle: "normal",
     fontWeight: "400",
+  },
+  "&.text_terrtiary_bold": {
+    color: "var(--text-tertiary)",
+    fontSize: "16x",
+    fontStyle: "normal",
+    fontWeight: "500",
   },
 
   "& form": {
