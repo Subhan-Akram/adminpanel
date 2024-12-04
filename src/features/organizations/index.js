@@ -1,3 +1,3 @@
 import { Organizations } from "./components";
-
-export { Organizations };
+import OrganizationReducer from "./slice";
+export { Organizations, OrganizationReducer };

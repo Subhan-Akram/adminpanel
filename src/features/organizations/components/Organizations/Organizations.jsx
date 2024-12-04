@@ -1,11 +1,11 @@
 import React from "react";
-import UsersTable from "../../../users/UserTable";
 import { Box } from "@mui/material";
+import OrganizationTable from "../OrganizationTable";
 
 function Organizations() {
   return (
     <Box>
-      <UsersTable />
+      <OrganizationTable />
     </Box>
   );
 }

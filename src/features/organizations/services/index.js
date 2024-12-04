@@ -1,6 +1,13 @@
-import addUser from "./addUser";
-import deleteUser from "./deleteUser";
-import getUsers from "./getUsers";
-import updateUser from "./updateUser";
+import createOrganization from "./createOrganization";
+import deleteOrganization from "./deleteOrganization";
+import getOrganizations from "./getOrganizations";
+import joinCompanies from "./joinCompanies";
+import updateOrganization from "./updateOrganization";
 
-export { addUser, deleteUser, updateUser, getUsers };
+export {
+  getOrganizations,
+  createOrganization,
+  updateOrganization,
+  deleteOrganization,
+  joinCompanies,
+};

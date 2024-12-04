@@ -8,9 +8,10 @@ import { integrationReducer } from "features/integration";
 import { ModelsReducer } from "features/models";
 import { UserReducer } from "../features/users";
 import { CompanyReducer } from "../features/companies";
-
+import { OrganizationReducer } from "../features/organizations";
 const store = configureStore({
   reducer: {
+    organizations: OrganizationReducer,
     companies: CompanyReducer,
     auth: LoginReducer,
     users: UserReducer,

@@ -1,14 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { triggerAlert } from "slice/alertSlice";
-import { deleteUser as deleteUserApi } from "apiTwg/usersController";
+import { joinCompanies as joinCompaniesApi } from "../../../apiTwg";
 
-const deleteUser = createAsyncThunk(
-  "deleteUser",
+const joinCompanies = createAsyncThunk(
+  "joinOrganization",
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
-      const { data } = await deleteUserApi(payload);
+      const { extId, companyExtIds } = payload;
+
+      const { data } = await joinCompaniesApi(extId, companyExtIds);
+      console.log("create=====data", data);
       return data;
     } catch (error) {
+      console.log("err", error);
       dispatch(
         triggerAlert({
           title: "Api Failed",
@@ -21,4 +25,4 @@ const deleteUser = createAsyncThunk(
   }
 );
 
-export default deleteUser;
+export default joinCompanies;

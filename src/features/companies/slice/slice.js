@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   companies: [],
-  isLoading: true,
+  isLoading: false,
   crudLoading: false,
   error: "",
 };

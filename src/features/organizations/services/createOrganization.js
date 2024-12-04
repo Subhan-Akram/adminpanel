@@ -1,12 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { triggerAlert } from "slice/alertSlice";
-import { updateUser as updateUserApi } from "apiTwg/usersController";
+import { createOrganization as createOrganizationApi } from "../../../apiTwg";
 
-const updateUser = createAsyncThunk(
-  "updateUser",
+const createOrganization = createAsyncThunk(
+  "createOrganization",
   async ({ dispatch, payload }, { rejectWithValue }) => {
+    debugger;
     try {
-      const { data } = await updateUserApi(payload);
+      const { data } = await createOrganizationApi(payload);
+      console.log("create=====data", data);
       return data;
     } catch (error) {
       dispatch(
@@ -21,4 +23,4 @@ const updateUser = createAsyncThunk(
   }
 );
 
-export default updateUser;
+export default createOrganization;

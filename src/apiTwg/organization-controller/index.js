@@ -1,13 +1,15 @@
 import {
-  createOrganzation,
+  createOrganization,
   deleteOrganization,
   getOrganizations,
-  updateOrganzation,
+  updateOrganization,
+  joinCompanies,
 } from "./OrganzationController";
 
 export {
-  createOrganzation,
+  joinCompanies,
+  createOrganization,
   deleteOrganization,
   getOrganizations,
-  updateOrganzation,
+  updateOrganization,
 };

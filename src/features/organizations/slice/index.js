@@ -1,8 +1,5 @@
-// import { addUser, deleteUser, updateUser } from "../../../apiTwg/usersController/UsersController";
-// import slice from "./slice";
-// addUser,updateUser,deleteUser
-// export const {
+import slice from "./slice";
 
-// } = slice.actions;
+export const {} = slice.actions;
 
-// export default slice.reducer;
+export default slice.reducer;
