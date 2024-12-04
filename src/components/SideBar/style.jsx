@@ -118,7 +118,7 @@ export const StyledList = styled(List, {
     gap: "12px",
     padding: "0 16px",
     "& .MuiListItemButton-root": {
-      padding: "6px 4px 6px 8px",
+      padding: "6px 32px 6px 8px",
       justifyContent: "center",
       "&:hover": {
         background: "none",
