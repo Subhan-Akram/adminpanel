@@ -4,7 +4,7 @@ import OrganizationTable from "../OrganizationTable";
 
 function Organizations() {
   return (
-    <Box>
+    <Box className="main_content">
       <OrganizationTable />
     </Box>
   );

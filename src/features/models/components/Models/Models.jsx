@@ -6,7 +6,7 @@ import { getAllModels } from "../../services";
 
 function Models() {
   return (
-    <ModelWrapper>
+    <ModelWrapper className="main_content">
       <ModelTable />
     </ModelWrapper>
   );

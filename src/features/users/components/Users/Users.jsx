@@ -13,7 +13,7 @@ function Users() {
     dispatch(getUsers({ dispatch }));
   }, [dispatch]);
   return (
-    <UserWrapper>
+    <UserWrapper className="main_content">
       <UsersTable />
     </UserWrapper>
   );

@@ -10,7 +10,7 @@ function Comapnies() {
     dispatch(getCompanies({ dispatch }));
   }, [dispatch]);
   return (
-    <CompaniesWrapper>
+    <CompaniesWrapper className="main_content">
       <CompaniesTable />
     </CompaniesWrapper>
   );
