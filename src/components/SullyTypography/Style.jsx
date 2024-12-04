@@ -1,3 +1,4 @@
+import { fontWeight } from "@mui/system";
 import "../../fonts/fonts.css";
 import { styled, Typography } from "@mui/material";
 
@@ -16,6 +17,11 @@ export const TypographyWrapper = styled(Typography)(() => ({
     fontSize: "14px",
     fontStyle: "normal",
     fontWeight: "500",
+  },
+  "&.green_title": {
+    color: "#2DC653",
+    fontSize: "24px",
+    fontWeight: "500px",
   },
   "&.sub_title_2_regular": {
     color: "var(--text-secondary)",
@@ -39,10 +45,17 @@ export const TypographyWrapper = styled(Typography)(() => ({
   },
   "&.title_lg_brand": {
     color: "var(--text-brand)",
-    fontSize: "32px",
+    fontSize: "28px",
     fontStyle: "normal",
     fontWeight: "700",
     lineHeight: "42px",
+  },
+  "&.title_brand": {
+    color: "var(--text-brand)",
+    fontSize: "18px",
+    fontStyle: "normal",
+    fontWeight: "500",
+    // lineHeight: "42px",
   },
   "&.title_medium": {
     color: "var(--text-primary)",
@@ -132,7 +145,21 @@ export const TypographyWrapper = styled(Typography)(() => ({
     fontWeight: "400",
     lineHeight: "normal",
   },
+  "&.card_text_bold": {
+    color: "var(--text-tertiary)",
+    fontSize: "14px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "normal",
+  },
   "&.card_text_2": {
+    color: "var(--text-tertiary)",
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "normal",
+  },
+  "&.card_text_2_bold": {
     color: "var(--text-tertiary)",
     fontSize: "16px",
     fontStyle: "normal",

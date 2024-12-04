@@ -1,4 +1,4 @@
-import { Home } from "./components";
+import { Home, Home2 } from "./components";
 import HomeReducer from "./slice";
 import {
   addModelTag,
@@ -12,7 +12,7 @@ import { homePath } from "./constants";
 export {
   //components
   Home,
-
+  Home2,
   //slice
   HomeReducer,
   setSearchDone,
