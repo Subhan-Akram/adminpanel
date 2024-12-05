@@ -4,12 +4,7 @@ import { TableWrapper } from "./style";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
-export default function Table({
-  rows,
-  columns,
-  isLoading,
-  CustomToolbar = null,
-}) {
+export default function Table({ rows, columns, isLoading, CustomToolbar }) {
   const theme = useTheme();
 
   // Media queries to detect screen size
@@ -27,20 +22,22 @@ export default function Table({
           quickFilterProps: { debounceMs: 500 },
         },
       }}
-      rowHeight={58}
+      // rowHeight={}
       loading={isLoading}
       sortingOrder={["desc", "asc"]}
       columns={columns}
-      getRowId={(row) => row.extId} // Custom row ID
+      getRowId={(row) => {
+        return row.extId;
+      }} // Custom row ID
       rows={rows}
       autoPageSize={true}
-      // initialState={{
-      //   pagination: {
-      //     paginationModel: {
-      //       pageSize: pageSize,
-      //     },
-      //   },
-      // }}
+      initialState={{
+        pagination: {
+          paginationModel: {
+            pageSize: pageSize,
+          },
+        },
+      }}
       pageSizeOptions={[5, 10, 15]}
       disableRowSelectionOnClick={true}
       disableColumnSelector
