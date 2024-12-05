@@ -40,10 +40,10 @@ const HomePage = () => {
           Overview
         </SullyTypography>
         {/* <Divider sx={{ marginTop: "10px", marginBottom: "10px" }} /> */}
-        <Grid container spacing={"18px"} className="stats_cards">
+        <Grid container spacing={"24px"} className="stats_cards">
           {data.map(({ title, icon, stats }) => {
             return (
-              <Grid item xs={12} sm={3} key={title}>
+              <Grid item xs={12} sm={4} xl={3} key={title}>
                 {" "}
                 <StatsCard icon={icon} title={title} stats={stats}></StatsCard>
               </Grid>
@@ -103,7 +103,7 @@ export const StatsCard = ({ icon, title, stats }) => {
           <SullyTypography classNameProps="text_terrtiary_bold ">
             {title}
           </SullyTypography>
-          <SullyTypography classNameProps="sideBarTitle">
+          <SullyTypography classNameProps="title_primary_md">
             {stats}
           </SullyTypography>
         </Box>

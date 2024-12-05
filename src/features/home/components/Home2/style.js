@@ -1,7 +1,7 @@
 import { Box, styled } from "@mui/material";
 export const HomeWrapper = styled(Box)`
   /* border: 1px solid red; */
-  padding: 1rem;
+  padding: 32px;
   margin-top: 2.8rem;
 
   & .banner {

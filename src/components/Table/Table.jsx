@@ -33,7 +33,7 @@ export default function Table({
       columns={columns}
       getRowId={(row) => row.extId} // Custom row ID
       rows={rows}
-      // autoPageSize={true}
+      autoPageSize={true}
       // initialState={{
       //   pagination: {
       //     paginationModel: {

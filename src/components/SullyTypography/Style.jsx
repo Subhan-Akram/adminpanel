@@ -12,6 +12,12 @@ export const TypographyWrapper = styled(Typography)(() => ({
     fontStyle: "normal",
     fontWeight: "400",
   },
+  "&.title_primary_md": {
+    color: "var(--text-primary)",
+    fontSize: "22px",
+    fontStyle: "normal",
+    fontWeight: "500",
+  },
   "&.sub_title_2": {
     color: "var(--text-secondary)",
     fontSize: "14px",
