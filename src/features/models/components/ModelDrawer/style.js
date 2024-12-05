@@ -34,6 +34,9 @@ export const DrawerWrapper = styled(Drawer)`
     display: flex;
     justify-content: flex-start;
     gap: 12px;
+    & .MuiIconButton-root {
+      padding: 16px;
+    }
   }
 
   & .chips_box {

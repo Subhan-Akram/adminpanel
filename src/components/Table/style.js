@@ -32,7 +32,7 @@ export const TableWrapper = styled(DataGrid)`
   }
   & .MuiDataGrid-filler {
     border-radius: none !important;
-    background-color: #1d2431;
+    background-color: var(--table-column-filler);
     /* border-bottom: 1px solid var(--border-2) !important; */
     border: none !important;
     div {
@@ -44,7 +44,7 @@ export const TableWrapper = styled(DataGrid)`
   & .MuiDataGrid-columnHeader {
     border-radius: none !important;
     /* border-bottom: 1px solid var(--border-2) !important; */
-    background-color: #1d2431;
+    background-color: var(--table-column-filler);
 
     border: none !important;
     & .MuiDataGrid-columnHeaderTitle {
