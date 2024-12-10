@@ -13,7 +13,6 @@ import AddCard from "./AddCard";
 import LogoFrame from "./LogoFrame";
 import DropDown from "./Dropdown";
 import ModelBanner from "./ModelBanner";
-import SearchBox from "./SearchBox";
 import ZeroStateComponent from "./ZeroStateComponent";
 import ConfirmDynamicModal from "./ConfirmDynamicModal";
 import TagsAutocomplete, { TagTooltip } from "./TagsAutoComplete";
@@ -30,7 +29,6 @@ import {
   CodeSkeleton,
   PromptModelCardSkeleton,
   CodeTabSkeleton,
-  ModelDescriptionSkeleton,
 } from "./skeleton";
 import CopyText from "./CopyText";
 import { Table } from "@mui/material";
@@ -42,7 +40,6 @@ export {
   ConfirmPopover,
   CopyText,
   Table,
-  ModelDescriptionSkeleton,
   Rating,
   CodeTabSkeleton,
   TagsAutocomplete,
@@ -71,7 +68,6 @@ export {
   OutlinedButton,
   TabComponent,
   ModelBanner,
-  SearchBox,
   CopyButton,
   TagTooltip,
 };

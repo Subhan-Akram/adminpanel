@@ -1,4 +1,4 @@
-import { Models, ModelDescription } from "./components";
+import { Models } from "./components";
 import ModelsReducer from "./slice";
 import { getSearchModels } from "./services";
 import { removeSelectedModel, addSelectedModel } from "./slice";
@@ -7,7 +7,6 @@ import { modelPath } from "./constants";
 export {
   //components
   Models,
-  ModelDescription,
 
   //slice
   removeSelectedModel,

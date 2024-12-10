@@ -9,11 +9,7 @@ import {
   UserPage,
   CompanyPage,
 } from "./pages";
-import { FeatureComparision, PromptComparison } from "features/compare";
 import { Alert } from "components";
-import Layout from "./layouts/Layout";
-import OrganzationPage from "./pages/OrganizationPage";
-import Layout2 from "./layouts/Layout2";
 
 const routes = [
   { path: "/", element: <HomePage /> },
@@ -23,16 +19,7 @@ const routes = [
   {
     path: "/organizations/*",
     element: <OrganizationPage />,
-    children: [
-      {
-        path: ":organizationId/organization-settings",
-        element: <FeatureComparision />,
-      },
-      {
-        path: ":organizationId/companies/:companyId",
-        element: <PromptComparison />,
-      },
-    ],
+    children: [],
   },
 
   { path: "*", element: <ErrorPage /> },

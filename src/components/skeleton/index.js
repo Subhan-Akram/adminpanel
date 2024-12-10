@@ -9,7 +9,6 @@ import CodeSkeleton from "./CodeSkeleton";
 import PromptCompareSkeleton from "./PromptCompareSkeleton";
 import PromptModelCardSkeleton from "./PromptModelCardSkeleton";
 import CodeTabSkeleton from "./CodeTabSkeleton";
-import ModelDescriptionSkeleton from "./ModelDescriptionSkeleton";
 
 export {
   CodeTabSkeleton,
@@ -23,5 +22,4 @@ export {
   ChatSkeleton,
   PromptCompareSkeleton,
   PromptModelCardSkeleton,
-  ModelDescriptionSkeleton,
 };
