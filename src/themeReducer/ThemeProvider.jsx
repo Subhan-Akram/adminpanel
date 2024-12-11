@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material";
 import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 

@@ -24,6 +24,7 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import FeatureEditor from "../FeatureEditor";
 // Validation Schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -332,7 +333,9 @@ function ModelForm({
             />
           </FormControl>
         </Grid>
-
+        <Grid item xs={12} md={12}>
+          <FeatureEditor />
+        </Grid>
         {/* Submit Button */}
         <Grid item xs={12}>
           <Box

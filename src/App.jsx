@@ -10,9 +10,11 @@ import {
   CompanyPage,
 } from "./pages";
 import { Alert } from "components";
+import FeatureEditor from "./features/models/components/FeatureEditor";
 
 const routes = [
   { path: "/", element: <HomePage /> },
+
   { path: "/users", element: <UserPage /> },
   { path: "/models", element: <ModelsPage /> },
   { path: "/companies", element: <CompanyPage /> },
@@ -32,14 +34,15 @@ function App() {
       <Router>
         <Routes>
           <Route path={"/login"} element={<LoginPage />} />
+          <Route path={"/feature"} element={<FeatureEditor />} />
           {/* <Route
-            path={"/organizations"}
+            path={"/feature"}
             element={
-              <Layout2>
+              <Layout>
                 <OrganzationPage />
-              </Layout2>
-            }
-          /> */}
+              </Layout>
+            } */}
+          />
           <Route path="/" element={<PrivateRoute />}>
             {routes.map(({ path, element, index, children }) => (
               <Route key={path} path={path} element={element} index={index}>
