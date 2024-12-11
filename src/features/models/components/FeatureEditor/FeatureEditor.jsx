@@ -11,7 +11,12 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import * as Yup from "yup";
-import { PrimaryButton, TextButton } from "../../../../components";
+import { InputLabelWrapper } from "globalStyles";
+import {
+  PrimaryButton,
+  SullyTypography,
+  TextButton,
+} from "../../../../components";
 
 const validationSchema = Yup.object({
   pricing: Yup.array()
@@ -46,92 +51,95 @@ const FeatureEditor = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 2,
+
             // maxWidth: "70%",
-            margin: "2rem auto",
           }}
         >
-          {featureKeys.map((val) => (
+          {featureKeys.map((val, i) => (
             <>
-              <Typography variant="h6">{val} Items</Typography>
+              <SullyTypography classNameProps={"page_title"}>
+                {val} Items
+              </SullyTypography>
               <FieldArray name={val}>
                 {(arrayHelpers) => (
-                  <Box>
+                  <ul style={{ listStyle: "none" }}>
                     {formik.values[val].map((item, index) => (
-                      <Grid
-                        spacing={"16px"}
-                        container
-                        key={index}
-                        sx={{
-                          mb: 2,
-                          // border: "1px solid lightgray",
-                          position: "relative",
-                        }}
-                      >
-                        <Grid xs={12} sm={12} item>
-                          <label>Title</label>
-                          <TextField
-                            size="small"
-                            fullWidth
-                            name={`${val}.${index}.title`}
-                            placeholder="Enter Title"
-                            value={item.title || ""}
-                            onChange={formik.handleChange}
-                            error={
-                              formik.touched[val] &&
-                              formik.errors[val] &&
-                              Boolean(formik.errors.val[index]?.title)
-                            }
-                            helperText={
-                              formik.touched[val] &&
-                              formik.errors[val] &&
-                              formik.errors[val][index]?.title
-                            }
-                          />
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} sx={{}}>
-                          <label>Description</label>
-                          <TextField
-                            size="small"
-                            fullWidth
-                            name={`${val}.${index}.description`}
-                            placeholder="Enter Description"
-                            value={item.description || ""}
-                            onChange={formik.handleChange}
-                            error={
-                              formik.touched[val] &&
-                              formik.errors[val] &&
-                              Boolean(formik.errors[val][index]?.description)
-                            }
-                            helperText={
-                              formik.touched[val] &&
-                              formik.errors[val] &&
-                              formik.errors[val][index]?.description
-                            }
-                            multiline
-                            maxRows={4}
-                          />
-                        </Grid>
-
-                        <Box
+                      <li>
+                        <Grid
+                          // spacing={"16px"}
+                          container
+                          key={index}
                           sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            position: "absolute",
-                            bottom: "-30px",
-                            right: "-10px",
-                            // marginLeft: "4px",
+                            mb: 2,
+                            // border: "1px solid lightgray",
+                            position: "relative",
                           }}
                         >
-                          <IconButton
-                            onClick={() => arrayHelpers.remove(index)}
-                            disabled={formik.values[val].length === 1}
+                          <Grid xs={12} sm={12} item>
+                            <InputLabelWrapper>Title</InputLabelWrapper>
+                            <TextField
+                              size="small"
+                              fullWidth
+                              name={`${val}.${index}.title`}
+                              placeholder="Enter Title"
+                              value={item.title || ""}
+                              onChange={formik.handleChange}
+                              error={
+                                formik.touched[val] &&
+                                formik.errors[val] &&
+                                Boolean(formik.errors.val[index]?.title)
+                              }
+                              helperText={
+                                formik.touched[val] &&
+                                formik.errors[val] &&
+                                formik.errors[val][index]?.title
+                              }
+                            />
+                          </Grid>
+
+                          <Grid item xs={12} sm={12} sx={{}}>
+                            <InputLabelWrapper>Description</InputLabelWrapper>
+                            <TextField
+                              size="small"
+                              fullWidth
+                              name={`${val}.${index}.description`}
+                              placeholder="Enter Description"
+                              value={item.description || ""}
+                              onChange={formik.handleChange}
+                              error={
+                                formik.touched[val] &&
+                                formik.errors[val] &&
+                                Boolean(formik.errors[val][index]?.description)
+                              }
+                              helperText={
+                                formik.touched[val] &&
+                                formik.errors[val] &&
+                                formik.errors[val][index]?.description
+                              }
+                              multiline
+                              maxRows={4}
+                            />
+                          </Grid>
+
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              position: "absolute",
+                              bottom: "-30px",
+                              right: "-10px",
+                              // marginLeft: "4px",
+                            }}
                           >
-                            <DeleteIcon />
-                          </IconButton>
-                        </Box>
-                      </Grid>
+                            <IconButton
+                              onClick={() => arrayHelpers.remove(index)}
+                              disabled={formik.values[val].length === 1}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </Box>
+                        </Grid>
+                      </li>
                     ))}
 
                     <TextButton
@@ -143,16 +151,16 @@ const FeatureEditor = () => {
                     >
                       Add {val} Item
                     </TextButton>
-                  </Box>
+                  </ul>
                 )}
               </FieldArray>
             </>
           ))}
 
           {/* Submit Button */}
-          <PrimaryButton type="submit" variant="contained" color="primary">
+          {/* <PrimaryButton type="submit" variant="contained" color="primary">
             Submit
-          </PrimaryButton>
+          </PrimaryButton> */}
         </Box>
       </form>
     </FormikProvider>

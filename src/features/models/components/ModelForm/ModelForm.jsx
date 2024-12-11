@@ -333,9 +333,11 @@ function ModelForm({
             />
           </FormControl>
         </Grid>
-        <Grid item xs={12} md={12}>
-          <FeatureEditor />
-        </Grid>
+        {isEdit && (
+          <Grid item xs={12} md={12}>
+            <FeatureEditor />
+          </Grid>
+        )}
         {/* Submit Button */}
         <Grid item xs={12}>
           <Box
