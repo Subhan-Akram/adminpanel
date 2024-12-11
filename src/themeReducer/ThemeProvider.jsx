@@ -3,6 +3,7 @@ import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
+import { fontSize } from "@mui/system";
 const getDesignTokens = (mode) => {
   const theme = createTheme();
   return {
@@ -324,18 +325,17 @@ const getDesignTokens = (mode) => {
       MuiSelect: {
         styleOverrides: {
           root: {
-            // border: "1px solid red",
+            "&.Mui-focused fieldset": {
+              borderColor: "white", // Focused state border color
+              border: ".5px solid var(--border-2) !important", // Focused state border thickness
+            },
             width: "100%", // Full width
+            "&:hover fieldset": {
+              borderColor: "var(--border-2)", // Hover state border color
+            },
             "& .MuiOutlinedInput-root": {
               borderRadius: "4px", // Rounded corners
-              borderColor: "red !important", // Default border color
-              "&:hover fieldset": {
-                borderColor: "var(--border-2)", // Hover state border color
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "white", // Focused state border color
-                border: ".5px solid var(--border-2)", // Focused state border thickness
-              },
+              borderColor: "green !important", // Default border color
             },
           },
         },
@@ -367,6 +367,23 @@ const getDesignTokens = (mode) => {
           colorPrimary: {
             "&.Mui-checked": {
               color: "#fdd847",
+            },
+          },
+        },
+      },
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            fontSize: "14px",
+            borderBottom: "1px solid var(--border-1)",
+            "&:hover": {
+              backgroundColor: "var(--surface-l1)", // Hover background color
+            },
+            "&.Mui-selected": {
+              backgroundColor: "var(--surface-l1)", // Selected background color
+            },
+            "&.Mui-selected:hover": {
+              backgroundColor: "var(--surface-l1)", // Selected hove
             },
           },
         },

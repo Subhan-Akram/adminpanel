@@ -129,40 +129,18 @@ const UserForm = forwardRef(
                 error={formik.touched.roles && Boolean(formik.errors.roles)}
                 helperText={formik.touched.roles && formik.errors.roles}
               >
-                <MenuItem value="admin">Admin</MenuItem>
-                <MenuItem value="manager">Manager</MenuItem>
-                <MenuItem value="user">User</MenuItem>
+                <MenuItem sx={{ fontSize: "14px" }} value="admin">
+                  Admin
+                </MenuItem>
+                <MenuItem sx={{ fontSize: "14px" }} value="manager">
+                  Manager
+                </MenuItem>
+                <MenuItem sx={{ fontSize: "14px" }} value="user">
+                  User
+                </MenuItem>
               </Select>
             </FormControl>
           </Grid>
-          {/* Roles Field */}
-          {/* <Grid item xs={12} md={6}>
-            <FormControl
-              fullWidth
-              error={formik.touched.roles && Boolean(formik.errors.roles)}
-            >
-              <InputLabel htmlFor="roles">Roles</InputLabel>
-              <TextField
-                select
-                size="small"
-                // label="Roles"
-                id="roles"
-                name="roles"
-                multiple
-                value={formik.values.roles}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                renderValue={(selected) => selected.join(", ")}
-              >
-                <MenuItem value="admin">Admin</MenuItem>
-                <MenuItem value="manager">Manager</MenuItem>
-                <MenuItem value="user">User</MenuItem>
-              </TextField>
-              {formik.touched.roles && formik.errors.roles && (
-                <FormHelperText>{formik.errors.roles}</FormHelperText>
-              )}
-            </FormControl>
-          </Grid> */}
 
           {/* Status Field */}
           <Grid item xs={12} md={6}>
