@@ -70,7 +70,17 @@ function ModelForm({
       onSubmit={formik.handleSubmit}
       sx={{ display: "flex", flexDirection: "column", gap: 2 }}
     >
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          overflow: "auto",
+          height: isEdit ? "calc(100vh - 152px)" : "calc(100vh - 132px)",
+          borderBottom: "1px solid var(--border-1)",
+          padding: "12px 24px",
+          marginTop: "1px",
+        }}
+      >
         {/* Name Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
@@ -333,34 +343,39 @@ function ModelForm({
             />
           </FormControl>
         </Grid>
-        {/* Submit Button */}
-        <Grid item xs={12}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              gap: 2, // Adds spacing between buttons
+      </Grid>
+      {/* Submit Button */}
+      <Grid
+        container
+        sx={{ padding: "1rem", display: "flex", justifyContent: "flex-end" }}
+        spacing={2}
+        xs={12}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: 2, // Adds spacing between buttons
+          }}
+        >
+          <OutlinedButton
+            onClick={() => {
+              setType("view");
             }}
+            variant="contained"
+            color="primary"
           >
-            <OutlinedButton
-              onClick={() => {
-                setType("view");
-              }}
-              variant="contained"
-              color="primary"
-            >
-              Cancel
-            </OutlinedButton>
-            <PrimaryButton
-              type="submit"
-              variant="contained"
-              color="primary"
-              isLoading={isLoading}
-            >
-              Save
-            </PrimaryButton>
-          </Box>
-        </Grid>
+            Cancel
+          </OutlinedButton>
+          <PrimaryButton
+            type="submit"
+            variant="contained"
+            color="primary"
+            isLoading={isLoading}
+          >
+            Save
+          </PrimaryButton>
+        </Box>
       </Grid>
     </FormWrapper>
   );

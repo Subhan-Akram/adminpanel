@@ -20,7 +20,7 @@ export const DrawerWrapper = styled(Drawer)`
     }
   }
   & .drawer_content {
-    padding: 1rem 12px;
-    overflow: auto;
+    /* padding: 1rem 12px; */
+    /* overflow: auto; */
   }
 `;
