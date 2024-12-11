@@ -428,7 +428,7 @@ const getDesignTokens = (mode) => {
         styleOverrides: {
           root: {
             padding: "16px",
-
+            borderTop: "1px solid var(--border-1)",
             "& .button_loader": {
               marginLeft: "6px",
             },

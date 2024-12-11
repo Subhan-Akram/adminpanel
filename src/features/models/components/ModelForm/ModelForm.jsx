@@ -8,6 +8,7 @@ import {
   FormControl,
   Box,
   Autocomplete,
+  Divider,
 } from "@mui/material";
 import { Grid } from "@mui/material";
 import { FormWrapper } from "./style";
@@ -332,7 +333,6 @@ function ModelForm({
             />
           </FormControl>
         </Grid>
-
         {/* Submit Button */}
         <Grid item xs={12}>
           <Box
@@ -357,7 +357,7 @@ function ModelForm({
               color="primary"
               isLoading={isLoading}
             >
-              {isEdit ? "Edit" : "Save"}
+              Save
             </PrimaryButton>
           </Box>
         </Grid>

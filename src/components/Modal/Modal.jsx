@@ -39,7 +39,7 @@ const Modal = ({ children, open, setOpen, title, isLoading, formRef }) => {
             Cancel
           </OutlinedButton>
           <PrimaryButton isLoading={isLoading} onClick={handleFormSubmit}>
-            Submit
+            Save
           </PrimaryButton>
         </DialogActions>
       </Dialog>

@@ -68,7 +68,7 @@ const OrganizationModal = ({ open, setOpen, organization }) => {
             Cancel
           </OutlinedButton>
           <PrimaryButton isLoading={crudLoading} onClick={handleFormSubmit}>
-            Submit
+            Save
           </PrimaryButton>
         </DialogActions>
       </Dialog>
