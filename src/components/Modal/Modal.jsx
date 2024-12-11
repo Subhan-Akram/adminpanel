@@ -8,28 +8,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 import { OutlinedButton, PrimaryButton } from "components";
-import { useDispatch, useSelector } from "react-redux";
-import { triggerAlert } from "slice/alertSlice";
 
-const Modal = ({ children, open, setOpen, title, isLoading }) => {
-  const formRef = useRef(null);
-  const dispatch = useDispatch();
+const Modal = ({ children, open, setOpen, title, isLoading, formRef }) => {
   const handleModal = (val) => {
     setOpen(val);
-  };
-  const handleSubmit = async (val) => {
-    const { payload } = await dispatch();
-    //   updateCompany({ dispatch, payload: val })
-    if (payload) {
-      dispatch(
-        triggerAlert({
-          title: "Success",
-          text: "Company Updated Successfully",
-          alertType: "success",
-        })
-      );
-      setOpen(false);
-    }
   };
 
   const handleFormSubmit = () => {

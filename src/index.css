@@ -611,3 +611,9 @@ img {
 .MuiPopover-paper:hover{
   background: red;
 }
+
+label{
+  font-size: 14px;
+  font-family: "satoshi";
+  font-weight: 500;
+}

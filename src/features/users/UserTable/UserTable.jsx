@@ -38,14 +38,7 @@ export default function UsersTable() {
     model: "",
   });
   const { model, element } = deletePopover;
-  console.log("users", deletePopover);
 
-  const [user, setUser] = useState({
-    model: "ns",
-    description: "s",
-    rating: 2,
-    modelCard: "23",
-  });
   const CustomToolbar = () => (
     <GridToolbarContainer
       sx={{
@@ -80,7 +73,6 @@ export default function UsersTable() {
   };
   const handleView = (row) => {
     console.log("row", row);
-    setUser(row);
     setOpen(true);
     console.log("view ticket ");
   };
@@ -94,11 +86,6 @@ export default function UsersTable() {
     console.log("Form submitted with values:", values);
   };
 
-  const handleSubmitForm = () => {
-    if (formRef.current) {
-      formRef.current.submitForm(); // Calls the submit function from formik
-    }
-  };
   return (
     <>
       <ConfirmDynamicModal
@@ -118,9 +105,16 @@ export default function UsersTable() {
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
-      <Modal title="Edit User" isEdit={true} setOpen={setOpen} open={open}>
+      <Modal
+        formRef={formRef}
+        title="Edit User"
+        isEdit={true}
+        setOpen={setOpen}
+        open={open}
+      >
         <UserForm
-          ref={formRef}
+          setOpen={setOpen}
+          formRef={formRef}
           initialValues={initialValues}
           handleSubmit={handleSubmit}
         />
