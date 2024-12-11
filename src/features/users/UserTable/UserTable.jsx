@@ -47,7 +47,7 @@ export default function UsersTable() {
         All Users
       </SullyTypography>
       <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
-        <GridToolbarQuickFilter placeholder="Search LLM Models" />
+        <GridToolbarQuickFilter placeholder="Search Users" />
       </Box>
     </GridToolbarContainer>
   );
