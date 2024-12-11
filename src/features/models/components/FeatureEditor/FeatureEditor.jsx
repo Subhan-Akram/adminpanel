@@ -30,12 +30,12 @@ const validationSchema = Yup.object({
 });
 const initialValues = {
   // name: "",
-  Pricing: [],
-  Weakness: [],
-  "Key Features": [],
+  Pricing: [""],
+  Weakness: [""],
+  "Key Features": [""],
 };
 const featureKeys = ["Pricing", "Weakness", "Key Features"];
-const FeatureEditor = () => {
+const FeatureEditor = ({ initialShow = 0 }) => {
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -64,13 +64,13 @@ const FeatureEditor = () => {
                 {(arrayHelpers) => (
                   <ul style={{ listStyle: "none" }}>
                     {formik.values[val].map((item, index) => (
-                      <li>
+                      <li style={{}}>
                         <Grid
                           // spacing={"16px"}
                           container
                           key={index}
+                          spacing={"12px"}
                           sx={{
-                            mb: 2,
                             // border: "1px solid lightgray",
                             position: "relative",
                           }}
@@ -143,6 +143,7 @@ const FeatureEditor = () => {
                     ))}
 
                     <TextButton
+                      sx={{ marginTop: "12px" }}
                       startIcon={<AddIcon />}
                       onClick={() =>
                         arrayHelpers.push({ title: "", description: "" })

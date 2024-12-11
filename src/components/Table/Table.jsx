@@ -22,7 +22,7 @@ export default function Table({ rows, columns, isLoading, CustomToolbar }) {
           quickFilterProps: { debounceMs: 500 },
         },
       }}
-      // rowHeight={}
+      rowHeight={58}
       loading={isLoading}
       sortingOrder={["desc", "asc"]}
       columns={columns}

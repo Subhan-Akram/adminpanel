@@ -7,7 +7,12 @@ import React, { useState } from "react";
 import { Avatar, Box } from "@mui/material";
 import { DropDown, LogoFrame } from "../../../../components";
 
-const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
+const useColumns = ({
+  handleView,
+  setDeletePopover,
+  handleEdit,
+  handleFeatureEdit,
+}) => {
   return [
     {
       field: "name",
@@ -80,6 +85,13 @@ const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
               icon: <EditIcon />,
               onClick: () => {
                 handleEdit(row);
+              },
+            },
+            {
+              label: "Add Features",
+              icon: <EditIcon />,
+              onClick: () => {
+                handleFeatureEdit(row);
               },
             },
             {

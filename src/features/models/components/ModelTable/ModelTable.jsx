@@ -16,10 +16,13 @@ import { deleteModel, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { BannerWrapper } from "../../../../styles/BannerWrapper";
+import ModelFeatureDrawer from "../ModelFeatureDrawer";
 
 export default function ModelTable() {
   const [open, setOpen] = useState(false);
+  const [featureDarwerOpen, setFeatureDarwerOpen] = useState(false);
   const [type, setType] = useState("view");
+
   const [deletePopover, setDeletePopover] = useState({
     element: null,
     model: "",
@@ -56,6 +59,10 @@ export default function ModelTable() {
     setType("edit");
     setModel(row);
     setOpen(true);
+  };
+  const handleFeatureEdit = (row) => {
+    setModel(row);
+    setFeatureDarwerOpen(true);
   };
   const CustomToolbar = () => (
     <GridToolbarContainer
@@ -100,7 +107,12 @@ export default function ModelTable() {
         isLoading={crudLoading}
         confirmBtnText="Delete"
       />
-
+      <ModelFeatureDrawer
+        open={featureDarwerOpen}
+        setOpen={setFeatureDarwerOpen}
+        model={model}
+        setModel={setModel}
+      />
       <ModelDrawer
         setModel={setModel}
         open={open}
@@ -135,7 +147,12 @@ export default function ModelTable() {
             showTableSearch={true}
             rows={models}
             CustomToolbar={CustomToolbar}
-            columns={columns({ handleView, setDeletePopover, handleEdit })}
+            columns={columns({
+              handleView,
+              setDeletePopover,
+              handleEdit,
+              handleFeatureEdit,
+            })}
           />
         </Card>
       </ModelTableWrapper>

@@ -1,61 +1,45 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import * as React from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import { CloseIcon } from "sullyIcons";
 import Box from "@mui/material/Box";
+import { CloseIcon } from "sullyIcons";
 import { DrawerWrapper } from "./style";
-import {
-  LogoFrame,
-  SullyTypography,
-  TextButton,
-  OutlinedButton,
-  Chip,
-  TagTooltip,
-} from "../../../../components";
-import ModelForm from "../ModelForm";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllModelTags, updateModel } from "../../services";
-import { modelInitialValues } from "../../constants";
-import { triggerAlert } from "slice/alertSlice";
+import { LogoFrame, SullyTypography, TextButton } from "../../../../components";
+import { useDispatch } from "react-redux";
+import { getAllModelTags } from "../../services";
 
-import DrawerView from "../DrawerView";
-import { IconButton } from "@mui/material";
-import { fontSize } from "@mui/system";
+import FeatureEditor from "../FeatureEditor";
 
-const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
+const ModelFeatureDrawer = ({ model, open, setOpen, setModel }) => {
   const { logoUrl, name } = model;
   // const [type, setType] = React.useState("view");
 
-  const { crudLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
 
   const toggleDrawer = (open) => () => {
     setOpen(open);
-    setType("view");
   };
-  const handleSubmit = async (values) => {
-    console.log("values=", values);
-    const { payload } = await dispatch(
-      updateModel({ payload: values, dispatch })
-    );
-    console.log("payload====", payload);
-    if (payload) {
-      dispatch(
-        triggerAlert({
-          title: "Success",
-          text: "Model Updated Successfully",
-          alertType: "success",
-        })
-      );
-      setType("view");
+  // const handleSubmit = async (values) => {
+  //   console.log("values=", values);
+  //   const { payload } = await dispatch(
+  //     updateModel({ payload: values, dispatch })
+  //   );
+  //   console.log("payload====", payload);
+  //   if (payload) {
+  //     dispatch(
+  //       triggerAlert({
+  //         title: "Success",
+  //         text: "Model Updated Successfully",
+  //         alertType: "success",
+  //       })
+  //     );
 
-      setModel(payload);
-    }
-  };
+  //     setModel(payload);
+  //   }
+  // };
   React.useEffect(() => {
     dispatch(getAllModelTags());
-  }, []);
+  }, [dispatch]);
   return (
     <React.Fragment>
       <DrawerWrapper anchor={"right"} open={open} onClose={toggleDrawer(false)}>
@@ -73,59 +57,38 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
               {name}
             </SullyTypography>
           </Box>
-          {type === "view" && (
-            <Box className="btn_group">
-              <IconButton
-                onClick={() => {
-                  setType("edit");
-                }}
-              >
-                <EditIcon />
-              </IconButton>
-            </Box>
-          )}
-          {type === "edit" && (
-            <TextButton
-              className="close"
-              onClick={() => {
-                setType("view");
+          {/* <Box className="btn_group">
+            <IconButton onClick={() => {}}>
+              <EditIcon />
+            </IconButton>
+          </Box> */}
+          <TextButton className="close" onClick={toggleDrawer(false)}>
+            <CloseIcon
+              style={{
+                width: "22px",
+                height: "22px",
+                fontSize: "32px !important",
               }}
-            >
-              <CloseIcon
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  fontSize: "32px !important",
-                }}
-              />
-            </TextButton>
-          )}
-        </Box>
-        {type === "view" && <DrawerView data={model} />}
-        {type === "edit" && (
-          <Box className="drawer_content">
-            <ModelForm
-              setType={setType}
-              isEdit={true}
-              isLoading={crudLoading}
-              handleSubmit={handleSubmit}
-              initialValues={{ ...modelInitialValues, ...model }}
             />
-          </Box>
-        )}
+          </TextButton>
+        </Box>
+
+        <Box className="drawer_content">
+          <FeatureEditor initialShow={1} />
+        </Box>
       </DrawerWrapper>
     </React.Fragment>
   );
 };
 
-ModelDrawer.propTypes = {
+ModelFeatureDrawer.propTypes = {
   model: PropTypes.object,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   setModel: PropTypes.func,
 };
 
-export default ModelDrawer;
+export default ModelFeatureDrawer;
 
 export const initialModel = {
   name: "Amazon Titan Express",
