@@ -34,8 +34,10 @@ import CopyText from "./CopyText";
 import { Table } from "@mui/material";
 import ConfirmPopover from "./ConfirmPopover";
 import SearchBar from "./SearchBar";
+import Modal from "./Modal";
 
 export {
+  Modal,
   SearchBar,
   ConfirmPopover,
   CopyText,

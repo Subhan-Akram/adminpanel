@@ -2,7 +2,7 @@ import { ModelTableWrapper } from "./style";
 import Table from "components/Table";
 import columns from "./columns";
 import { Box, Card } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import {
   ConfirmDynamicModal,
@@ -13,21 +13,33 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteModel } from "../../models/services";
 import { triggerAlert } from "slice/alertSlice";
-import { PrimaryButton } from "../../../components";
+import { Modal, PrimaryButton } from "../../../components";
 import getUserByEmail from "../services/getUserByEmail";
 import { getUsers } from "../services";
 import { BannerWrapper } from "../../../styles";
 import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
+import UserForm from "../components/UserForm/UserForm";
 
 export default function UsersTable() {
   const { users, isLoading } = useSelector((state) => state.users);
-  console.log("users", users);
+  const formRef = useRef(null);
+
+  const initialValues = {
+    name: "John Doe",
+    fullName: "Johnathan Doe",
+    email: "johndoe@example.com",
+    roles: ["admin", "user"],
+    status: "active", // active or inactive
+  };
+
   const [open, setOpen] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
     element: null,
     model: "",
   });
-  // eslint-disable-next-line no-unused-vars
+  const { model, element } = deletePopover;
+  console.log("users", deletePopover);
+
   const [user, setUser] = useState({
     model: "ns",
     description: "s",
@@ -77,25 +89,42 @@ export default function UsersTable() {
     if (value) return dispatch(getUserByEmail({ email: value, dispatch }));
     dispatch(getUsers({ dispatch }));
   };
+
+  const handleSubmit = (values) => {
+    console.log("Form submitted with values:", values);
+  };
+
+  const handleSubmitForm = () => {
+    if (formRef.current) {
+      formRef.current.submitForm(); // Calls the submit function from formik
+    }
+  };
   return (
     <>
       <ConfirmDynamicModal
-        isConfirmModalOpen={deletePopover.element}
+        isConfirmModalOpen={element}
         handleSubmit={handleDelete}
         setIsConfirmModalOpen={setDeletePopover}
-        title={`Delete - ${deletePopover?.model?.name || ""}`}
+        title={`Delete - ${model?.fullName || model?.username}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
             Are you sure you want to delete{" "}
             <SullyTypography variant="span" classNameProps="model_name">
-              {deletePopover?.model?.name || ""}
+              {model?.fullName || model?.username}
             </SullyTypography>{" "}
-            from Models ?
+            from Company ?
           </SullyTypography>
         }
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
+      <Modal title="Edit User" isEdit={true} setOpen={setOpen} open={open}>
+        <UserForm
+          ref={formRef}
+          initialValues={initialValues}
+          handleSubmit={handleSubmit}
+        />
+      </Modal>
 
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <BannerWrapper>

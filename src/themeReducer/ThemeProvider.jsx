@@ -321,6 +321,25 @@ const getDesignTokens = (mode) => {
           },
         },
       },
+      MuiSelect: {
+        styleOverrides: {
+          root: {
+            // border: "1px solid red",
+            width: "100%", // Full width
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "4px", // Rounded corners
+              borderColor: "red !important", // Default border color
+              "&:hover fieldset": {
+                borderColor: "var(--border-2)", // Hover state border color
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "white", // Focused state border color
+                border: ".5px solid var(--border-2)", // Focused state border thickness
+              },
+            },
+          },
+        },
+      },
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
