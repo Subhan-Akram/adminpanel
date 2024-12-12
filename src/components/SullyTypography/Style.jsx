@@ -291,7 +291,7 @@ export const TypographyWrapper = styled(Typography)(() => ({
     lineHeight: "var(--Typography-Fontsize-1XL, 20px)",
   },
   "&.key_copy": {
-    color: "var(--blue-800)",
+    color: "var(--text-primary)",
     fontSize: "14px",
     fontStyle: "normal",
     fontWeight: "500",

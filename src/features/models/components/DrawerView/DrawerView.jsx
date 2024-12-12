@@ -24,6 +24,7 @@ function DrawerView({ data }) {
     ssbxCode,
     tags = [],
   } = data;
+  console.log("data", data, "license", license);
   return (
     <DrawerWrapper role="presentation">
       <Grid container sx={{ marginTop: "0rem" }} spacing={3}>
@@ -86,7 +87,14 @@ function DrawerView({ data }) {
 
         {/* Origin URL with Ellipsis and Copy Button */}
         <Grid item xs={12} sm={9}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              gap: "12px",
+            }}
+          >
             <SullyTypography
               variant="body2"
               classNameProps={"modaltitle1"}
@@ -99,10 +107,9 @@ function DrawerView({ data }) {
             >
               {originUrl}
             </SullyTypography>
-
-            <TagTooltip title="Copy URL">
-              <CopyIcon />
-            </TagTooltip>
+            <Box>
+              <CopyButton title="Origin Url" text={originUrl}></CopyButton>
+            </Box>
           </Box>
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -120,32 +127,26 @@ function DrawerView({ data }) {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "flex-start",
               alignItems: "center",
-              gap: "6px",
-              width: "70%",
+              justifyContent: "flex-start",
+              gap: "12px",
             }}
           >
             <SullyTypography
-              // variant="body2"
-
-              className="modaltitle1"
+              variant="body2"
+              classNameProps={"modaltitle1"}
               sx={{
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
-                // width: "300px", // Adjust width to leave room for the button
+                maxWidth: "calc(100% - 40px)",
               }}
             >
-              {logoUrl.slice(0, 30)}...
+              {logoUrl.slice(0, 39)}
             </SullyTypography>
-
-            <TagTooltip title="Copy URL">
-              <Box>
-                {" "}
-                <CopyIcon />
-              </Box>
-            </TagTooltip>
+            <Box>
+              <CopyButton title="Logo Url" text={logoUrl}></CopyButton>
+            </Box>
           </Box>
         </Grid>
         {/* License */}
@@ -160,7 +161,7 @@ function DrawerView({ data }) {
         </Grid>
         <Grid item xs={12} sm={9}>
           <SullyTypography variant="body2" className="modaltitle1">
-            {license ?? "None"}
+            {license ? license : "None"}
           </SullyTypography>
         </Grid>
         {/* Rating */}

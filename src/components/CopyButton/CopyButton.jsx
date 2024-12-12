@@ -4,20 +4,21 @@ import TextButton from "../TextButton";
 import { CopyIcon } from "sullyIcons";
 import PropTypes from "prop-types";
 
-const CopyButton = ({ item }) => {
+const CopyButton = ({ title, text }) => {
   const { copyToClipboard, isCopied } = useCopyText();
 
-  if (isCopied) return <CopyText text={"Code Copied"} />;
+  if (isCopied) return <CopyText text={`${title} Copied`} />;
 
   return (
-    <TextButton onClick={() => copyToClipboard(item)} className="medium_btn">
-      <CopyIcon /> Copy Code
+    <TextButton onClick={() => copyToClipboard(text)} className="medium_btn">
+      <CopyIcon />
     </TextButton>
   );
 };
 
 CopyButton.propTypes = {
-  item: PropTypes.any,
+  text: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default CopyButton;

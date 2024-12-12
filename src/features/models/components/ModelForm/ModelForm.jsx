@@ -51,6 +51,7 @@ function ModelForm({
   isLoading,
   isEdit = false,
   setType,
+  setOpen,
 }) {
   const { tags } = useSelector((state) => state.models);
 
@@ -75,10 +76,10 @@ function ModelForm({
         spacing={2}
         sx={{
           overflow: "auto",
-          height: isEdit ? "calc(100vh - 152px)" : "calc(100vh - 132px)",
+          height: isEdit ? "calc(100vh - 151px)" : "calc(100vh - 132px)",
           borderBottom: "1px solid var(--border-1)",
-          padding: "12px 24px",
-          marginTop: "1px",
+          padding: "0px 16px 16px 16px",
+          marginTop: "0rem",
         }}
       >
         {/* Name Field */}
@@ -305,6 +306,8 @@ function ModelForm({
               Rating:
             </Typography>
             <Rating
+              size="large"
+              sx={{ fontSize: "22px !important", width: "220px" }}
               name="rating"
               value={formik.values.rating}
               onChange={(_, value) => formik.setFieldValue("rating", value)}
@@ -360,7 +363,9 @@ function ModelForm({
         >
           <OutlinedButton
             onClick={() => {
-              setType("view");
+              {
+                isEdit ? setType("view") : setOpen(false);
+              }
             }}
             variant="contained"
             color="primary"

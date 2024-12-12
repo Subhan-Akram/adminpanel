@@ -1,8 +1,16 @@
 import { Box, styled } from "@mui/material";
 
 export const FormWrapper = styled(Box)`
+  & .rating_box {
+    & .MuiRating-root {
+      label {
+        font-size: 22px !important;
+        margin-top: 4px;
+      }
+    }
+  }
   & .InputLabelWrapper_text {
-    font-size: 14px;
+    font-size: 14px !important;
     font-family: "satoshi";
     font-weight: 500;
   }

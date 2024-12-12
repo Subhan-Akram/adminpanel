@@ -64,6 +64,7 @@ const CreateModelDrawer = () => {
             handleSubmit={handleSubmit}
             initialValues={modelInitialValues}
             isLoading={crudLoading}
+            setOpen={setOpen}
           />
         </Box>
       </DrawerWrapper>
