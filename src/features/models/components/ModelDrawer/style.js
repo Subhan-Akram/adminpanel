@@ -33,9 +33,10 @@ export const DrawerWrapper = styled(Drawer)`
   & .btn_group {
     display: flex;
     justify-content: flex-start;
-    gap: 12px;
+    gap: 0px;
     & .MuiIconButton-root {
       padding: 16px;
+      margin-top: -8px;
     }
   }
 

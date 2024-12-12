@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import * as React from "react";
 import EditIcon from "@mui/icons-material/Edit";
-import { CloseIcon } from "sullyIcons";
+import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import { DrawerWrapper } from "./style";
 import {
@@ -12,6 +12,7 @@ import {
   OutlinedButton,
   Chip,
   TagTooltip,
+  PrimaryButton,
 } from "../../../../components";
 import ModelForm from "../ModelForm";
 import { useDispatch, useSelector } from "react-redux";
@@ -72,16 +73,32 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
             >
               {name}
             </SullyTypography>
-          </Box>
-          {type === "view" && (
-            <Box className="btn_group">
+            {type === "view" && (
               <IconButton
                 onClick={() => {
                   setType("edit");
                 }}
               >
-                <EditIcon />
+                <EditIcon sx={{ fontSize: "20px" }} />
               </IconButton>
+            )}
+          </Box>
+          {type === "view" && (
+            <Box className="btn_group">
+              <TextButton
+                className="close"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon
+                  style={{
+                    width: "22px",
+                    height: "22px",
+                    fontSize: "32px !important",
+                  }}
+                />
+              </TextButton>
             </Box>
           )}
           {type === "edit" && (
