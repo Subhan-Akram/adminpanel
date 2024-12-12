@@ -11,6 +11,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import { DashboardIcon, SettingIcon, IntegrationIcon } from "sullyIcons";
+import { Link, useNavigate } from "react-router-dom";
 // import { StatsCard } from "./StatsCard/StatsCard";
 const HomePage = () => {
   return (
@@ -41,11 +42,11 @@ const HomePage = () => {
         </SullyTypography>
         {/* <Divider sx={{ marginTop: "10px", marginBottom: "10px" }} /> */}
         <Grid container spacing={"24px"} className="stats_cards">
-          {data.map(({ title, icon, stats }) => {
+          {data.map((val) => {
             return (
-              <Grid item xs={12} sm={4} xl={3} key={title}>
+              <Grid item xs={12} sm={4} xl={3} key={val.title}>
                 {" "}
-                <StatsCard icon={icon} title={title} stats={stats}></StatsCard>
+                <StatsCard data={val}></StatsCard>
               </Grid>
             );
           })}
@@ -90,7 +91,10 @@ export const StatsWrapper = styled(Card)`
   }
 `;
 
-export const StatsCard = ({ icon, title, stats }) => {
+export const StatsCard = ({ data }) => {
+  const { icon, title, stats, link } = data;
+  const navigate = useNavigate();
+
   return (
     <StatsWrapper>
       {/* <Box className="header">
@@ -108,7 +112,12 @@ export const StatsCard = ({ icon, title, stats }) => {
           </SullyTypography>
         </Box>
       </Box>
-      <Box className="footer_end">
+      <Box
+        className="footer_end"
+        onClick={() => {
+          navigate(link);
+        }}
+      >
         <SullyTypography variant={"span"} classNameProps="modaltitle1_regular">
           View all
         </SullyTypography>
@@ -121,6 +130,7 @@ export const data = [
   {
     title: "Users",
     stats: "2,240",
+    link: "/users",
     icon: (
       <PeopleAltIcon sx={{ color: "var(--text-tertiary)", fontSize: "36px" }} />
     ),
@@ -128,6 +138,7 @@ export const data = [
   {
     title: "LLM's Models",
     stats: "1,240",
+    link: "/models",
     icon: (
       <CreditCard
         sx={{
@@ -140,6 +151,7 @@ export const data = [
   {
     title: "Companies",
     stats: "5,240",
+    link: "/companies",
     icon: (
       <ApartmentIcon sx={{ color: "var(--text-tertiary)", fontSize: "36px" }} />
     ),
@@ -147,6 +159,7 @@ export const data = [
   {
     title: "Organization",
     stats: "3,240",
+    link: "/organizations",
     icon: (
       <CorporateFareIcon
         sx={{ color: "var(--text-tertiary)", fontSize: "36px" }}
@@ -156,6 +169,7 @@ export const data = [
   {
     title: "Credits",
     stats: "1,540",
+    link: "/",
     icon: (
       <CreditCard sx={{ color: "var(--text-tertiary)", fontSize: "36px" }} />
     ),
