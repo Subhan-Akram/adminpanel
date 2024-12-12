@@ -5,7 +5,6 @@ import { createOrganization as createOrganizationApi } from "../../../apiTwg";
 const createOrganization = createAsyncThunk(
   "createOrganization",
   async ({ dispatch, payload }, { rejectWithValue }) => {
-    debugger;
     try {
       const { data } = await createOrganizationApi(payload);
       console.log("create=====data", data);

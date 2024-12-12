@@ -5,10 +5,11 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import PropTypes from "prop-types";
 import OrganizationForm from "../OrganizationForm/OrganizationForm";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { OutlinedButton, PrimaryButton } from "../../../../components";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import { createOrganization } from "../../services";
+import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { organizationInitialValues } from "../../constants";
 
@@ -60,6 +61,14 @@ const CreateOrganizationModal = ({ children }) => {
         }}
       >
         <DialogTitle>Create Organization</DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={() => {
+            handleModal(false);
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
         <DialogContent>
           <Box sx={{ marginTop: "1rem" }}>
             <OrganizationForm

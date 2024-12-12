@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
-import { fontSize } from "@mui/system";
+import { fontSize, positions } from "@mui/system";
 const getDesignTokens = (mode) => {
   const theme = createTheme();
   return {
@@ -402,6 +402,11 @@ const getDesignTokens = (mode) => {
                   fill: "var(--icon-primary)",
                 },
               },
+            },
+            "& .MuiIconButton-root": {
+              top: "12px",
+              right: "16px",
+              position: "absolute",
             },
           },
         },
