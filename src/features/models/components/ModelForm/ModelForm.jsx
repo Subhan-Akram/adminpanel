@@ -78,7 +78,8 @@ function ModelForm({
           overflow: "auto",
           height: isEdit ? "calc(100vh - 151px)" : "calc(100vh - 132px)",
           borderBottom: "1px solid var(--border-1)",
-          padding: "0px 16px 16px 16px",
+          padding: "16px 24px",
+          paddingTop: "0",
           marginTop: "0rem",
         }}
       >

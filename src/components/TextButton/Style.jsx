@@ -10,6 +10,7 @@ export const TextButtonWrapper = styled(Button)(() => {
     fontFamily: "satoshi",
     padding: "0",
     lineHeight: "24px",
+    minWidth: "auto",
     "& svg": {
       marginLeft: "6px",
       fontSize: "18px",

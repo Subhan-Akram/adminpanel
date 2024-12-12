@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
-import { fontSize, positions } from "@mui/system";
+import { fontSize, minWidth, positions } from "@mui/system";
 const getDesignTokens = (mode) => {
   const theme = createTheme();
   return {
@@ -395,6 +395,7 @@ const getDesignTokens = (mode) => {
             "& .close": {
               padding: "0",
               position: "absolute",
+
               "& svg": {
                 width: "24px",
                 height: "24px",
@@ -405,6 +406,8 @@ const getDesignTokens = (mode) => {
             },
             "& .MuiIconButton-root": {
               top: "12px",
+              minWidth: "auto",
+              border: "1px solid red",
               right: "16px",
               position: "absolute",
             },

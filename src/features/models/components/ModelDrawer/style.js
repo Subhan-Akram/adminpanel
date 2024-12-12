@@ -9,7 +9,7 @@ export const DrawerWrapper = styled(Drawer)`
     background-image: none;
   }
   & .drawer_header {
-    padding: 1rem;
+    padding: 1rem 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
