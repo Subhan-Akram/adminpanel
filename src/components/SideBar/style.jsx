@@ -44,7 +44,6 @@ export const DrawerStyle = styled(MuiDrawer, {
 
   opacity: 1, // Opacity transition for larger screens
   "& .toggle_icon": {
-    border: "1px solid red",
     position: "absolute",
     top: "5rem",
     right: "-1rem",

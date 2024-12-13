@@ -250,7 +250,6 @@ const getDesignTokens = (mode) => {
         styleOverrides: {
           root: {
             "& .MuiAutocomplete-listbox": {
-              border: "1px solid red",
               background: "var(--surface-l1) !important",
             },
             "& .MuiFilledInput-root": {
@@ -407,7 +406,6 @@ const getDesignTokens = (mode) => {
             "& .MuiIconButton-root": {
               top: "12px",
               minWidth: "auto",
-              border: "1px solid red",
               right: "16px",
               position: "absolute",
             },

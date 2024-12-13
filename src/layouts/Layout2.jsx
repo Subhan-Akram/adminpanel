@@ -187,7 +187,6 @@ export default function Layout2({ children }) {
         sx={{
           flexGrow: 1,
           p: 3,
-          border: "1px solid red",
           width: `20px`,
         }}
       >

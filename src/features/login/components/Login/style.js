@@ -123,7 +123,6 @@ export const LoginWrapper = styled(Box, {
   },
   "& .red_shadow": {
     position: "fixed",
-    border: "1px solid red",
     width: "320px",
     height: "320px",
     background:

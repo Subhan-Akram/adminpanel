@@ -48,7 +48,6 @@ export const AppBar = styled(MuiAppBar, {
 })(({ theme, open }) => ({
   zIndex: 150,
   height: navbarHeight,
-  border: "1px solid red",
 
   backgroundColor: "var(--sidenav-background)",
   ...(open && {
@@ -89,7 +88,6 @@ export const AppBar = styled(MuiAppBar, {
       "&.MuiBox-root :nth-of-type(3)": {
         marginLeft: "-3px",
         marginTop: "8px",
-        border: "1px solid red",
       },
     },
   },
