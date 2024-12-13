@@ -42,21 +42,21 @@ const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
       field: "modelCard",
       headerName: "Model Card",
       sortable: false,
-      width: 180,
+      width: 220,
     },
     {
       field: "ssbxCode",
       headerName: "Ssbx Code",
       sortable: false,
-      width: 200,
+      width: 220,
     },
     {
       field: "license",
       headerName: "License",
       sortable: false,
-      width: 180,
+      width: 120,
       valueGetter: (params) => {
-        return params ?? "-";
+        return params ?? "None";
       },
     },
     {
