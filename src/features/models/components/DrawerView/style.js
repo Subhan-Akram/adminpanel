@@ -8,7 +8,7 @@ export const DrawerWrapper = styled(Box)`
     align-items: center;
     gap: 8px;
   }
-  padding: 1rem 24px;
+  padding: 0rem 24px;
   /* overflow: auto; */
   & .logo_frame_box {
     margin-top: 6px;
