@@ -23,3 +23,7 @@ export function getModelById(extId) {
 export function searchModelsByTags(tagNames) {
   return axios.post("/api/v1/model/search", { tagNames });
 }
+
+export function updateModelTags({ extId, tags }) {
+  return axios.put(`/admin/api/v1/model/${extId}/tags`, { tags: tags });
+}
