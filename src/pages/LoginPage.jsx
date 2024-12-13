@@ -4,9 +4,9 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const LoginPage = () => {
   const location = useLocation();
-  const { token } = useSelector((state) => state.auth);
+  const { access_token } = useSelector((state) => state.auth);
 
-  if (token) return <Navigate to="/" state={{ from: location }} />;
+  if (access_token) return <Navigate to="/" state={{ from: location }} />;
 
   return <Login />;
 };

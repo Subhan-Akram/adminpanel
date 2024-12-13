@@ -35,7 +35,7 @@ const slice = createSlice({
       .addCase(signIn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
-        state.token = action.payload.access_token;
+        state.access_token = action.payload.access_token;
       })
       .addCase(signIn.rejected, (state, action) => {
         state.isLoading = false;

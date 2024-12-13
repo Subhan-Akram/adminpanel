@@ -17,17 +17,17 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem("access_token");
-    if (token) {
+    const accessToken = sessionStorage.getItem("access_token");
+    if (accessToken) {
       config.headers["Content-type"] = "application/json; charset=utf-8";
-      config.headers.Authorization = "Bearer " + token;
+      config.headers.Authorization = "Bearer " + accessToken;
       config.headers.Accept = "application/json; charset=utf-8";
     }
     return config;
   },
   (error) => {
     return Promise.reject(error);
-  },
+  }
 );
 
 instance.interceptors.response.use(
@@ -45,7 +45,7 @@ instance.interceptors.response.use(
       });
     }
     return Promise.reject(error);
-  },
+  }
 );
 
 export default instance;
