@@ -13,26 +13,27 @@ import {
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteModel, getAllModels } from "../../services";
+import { deleteModel as deleteModelAction, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import TableToolbar from "../../../../components/TableToolbar";
 
 export default function ModelTable() {
   const [open, setOpen] = useState(false);
   const [type, setType] = useState("view");
-  const [deletePopover, setDeletePopover] = useState({
-    element: null,
-    model: "",
+  const [deleteModel, setDeleteModel] = useState({
+    confirmModalContent: {},
+    isConfirmModalOpen: false,
   });
-  const { element, model: selectedModel } = deletePopover;
+  const { isConfirmModalOpen, confirmModalContent: { name, extId } = {} } =
+    deleteModel;
   const { models, crudLoading, isLoading } = useSelector(
     (state) => state.models
   );
   const [model, setModel] = useState({});
   const dispatch = useDispatch();
+
   const handleDelete = async () => {
-    const { model } = deletePopover;
-    const { payload } = await dispatch(deleteModel({ extId: model.extId }));
+    const { payload } = await dispatch(deleteModelAction({ extId }));
     if (payload) {
       dispatch(
         triggerAlert({
@@ -41,18 +42,15 @@ export default function ModelTable() {
           alertType: "success",
         })
       );
-      setDeletePopover({ element: null, extId: "" });
+      setDeleteModel({ isDeleteModalOpen: false, confirmModalContent: {} });
     }
   };
-  const handleView = (row) => {
+  const handleDrawer = ({ row, type }) => {
+    setType(type);
     setModel(row);
     setOpen(true);
   };
-  const handleEdit = (row) => {
-    setType("edit");
-    setModel(row);
-    setOpen(true);
-  };
+
   const Toolbar = () => (
     <TableToolbar placeholder={"Search LLM Models"} title="All Models" />
   );
@@ -64,15 +62,15 @@ export default function ModelTable() {
   return (
     <>
       <ConfirmDynamicModal
-        isConfirmModalOpen={element}
+        isConfirmModalOpen={isConfirmModalOpen}
         handleSubmit={handleDelete}
-        setIsConfirmModalOpen={setDeletePopover}
-        title={`Delete - ${selectedModel?.name || ""}`}
+        setIsConfirmModalOpen={setDeleteModel}
+        title={`Delete - ${name || ""}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
             Are you sure you want to delete{" "}
             <SullyTypography variant="span" classNameProps="model_name">
-              {selectedModel?.name || ""}
+              {name || ""}
             </SullyTypography>{" "}
             from Models ?
           </SullyTypography>
@@ -103,7 +101,7 @@ export default function ModelTable() {
           showTableSearch={true}
           rows={models}
           CustomToolbar={Toolbar}
-          columns={columns({ handleView, setDeletePopover, handleEdit })}
+          columns={columns({ handleDrawer, setDeleteModel })}
         />
       </ModelTableWrapper>
     </>

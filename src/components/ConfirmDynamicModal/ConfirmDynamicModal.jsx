@@ -18,7 +18,7 @@ export default function ConfirmModal({
   isLoading,
 }) {
   const handleClose = () => {
-    setIsConfirmModalOpen(false);
+    setIsConfirmModalOpen((prev) => ({ ...prev, isConfirmModalOpen: false }));
   };
 
   return (

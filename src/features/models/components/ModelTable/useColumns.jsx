@@ -7,7 +7,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { DropDown, LogoFrame } from "../../../../components";
 
-const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
+const useColumns = ({ handleDrawer, setDeleteModel }) => {
   return [
     {
       field: "name",
@@ -72,21 +72,24 @@ const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
               label: "View Details",
               icon: <VisibilityIcon />,
               onClick: () => {
-                handleView(row);
+                handleDrawer({ row, type: "view" });
               },
             },
             {
               label: "Edit",
               icon: <EditIcon />,
               onClick: () => {
-                handleEdit(row);
+                handleDrawer({ row, type: "edit" });
               },
             },
             {
               label: "Delete",
               icon: <DeleteOutline />,
               onClick: (e) => {
-                setDeletePopover({ element: e.currentTarget, model: row });
+                setDeleteModel({
+                  confirmModalContent: row,
+                  isConfirmModalOpen: true,
+                });
               },
             },
           ]}
