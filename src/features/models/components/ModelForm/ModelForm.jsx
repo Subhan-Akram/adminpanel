@@ -65,7 +65,6 @@ function ModelForm({
       setSubmitting(false);
     },
   });
-  console.log("model form", formik.values);
   return (
     <FormikProvider value={formik}>
       <FormWrapper

@@ -1,28 +1,14 @@
-import React from "react";
-import { useFormik, FormikProvider, FieldArray } from "formik";
-import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  IconButton,
-  Grid,
-  Divider,
-} from "@mui/material";
+import React, { memo } from "react";
+import { FieldArray } from "formik";
+import { Box, TextField, IconButton, Grid } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import * as Yup from "yup";
 import { InputLabelWrapper } from "globalStyles";
-import {
-  PrimaryButton,
-  SullyTypography,
-  TextButton,
-} from "../../../../components";
+import { SullyTypography, TextButton } from "../../../../components";
 import { FeatureEditorWrapper } from "./style";
 
 const featureKeys = ["Pricing", "Weakness", "Key Features"];
-const FeatureEditor = ({ formik }) => {
-  console.log("formik_________", formik.values);
+const FeatureEditor = memo(({ formik }) => {
   return (
     <FeatureEditorWrapper>
       {featureKeys.map((val, i) => (
@@ -129,6 +115,6 @@ const FeatureEditor = ({ formik }) => {
       ))}
     </FeatureEditorWrapper>
   );
-};
+});
 
 export default FeatureEditor;

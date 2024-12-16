@@ -27,11 +27,9 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
     setType("view");
   };
   const handleSubmit = async (values) => {
-    console.log("values=", values);
     const { payload } = await dispatch(
       updateModel({ payload: values, dispatch })
     );
-    console.log("payload====", payload);
     if (payload) {
       dispatch(
         triggerAlert({
