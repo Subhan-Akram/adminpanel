@@ -70,20 +70,9 @@ function ModelForm({
     <FormWrapper
       component="form"
       onSubmit={formik.handleSubmit}
-      sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+      isEdit={isEdit}
     >
-      <Grid
-        container
-        spacing={2}
-        sx={{
-          overflow: "auto",
-          height: isEdit ? "calc(100vh - 151px)" : "calc(100vh - 132px)",
-          borderBottom: "1px solid var(--border-1)",
-          padding: "16px 24px",
-          paddingTop: "0",
-          marginTop: "0rem",
-        }}
-      >
+      <Grid className="form_container" container spacing={2} sx={{}}>
         {/* Name Field */}
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
@@ -354,9 +343,7 @@ function ModelForm({
             <Typography className="InputLabelWrapper_text" variant="body1">
               Features
             </Typography>
-            <Box sx={{ marginTop: "6px" }}>
-              <FeatureEditor />
-            </Box>
+            <FeatureEditor />
           </Grid>
         )}
       </Grid>
@@ -366,7 +353,7 @@ function ModelForm({
           display: "flex",
           justifyContent: "flex-end",
           gap: 2,
-          padding: "0 24px",
+          padding: "1rem 24px",
         }}
       >
         <OutlinedButton

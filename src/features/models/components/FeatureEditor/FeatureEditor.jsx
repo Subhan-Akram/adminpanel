@@ -52,6 +52,7 @@ const FeatureEditor = ({ showScroll = false }) => {
           height: "calc(100vh - 186px)",
           padding: "0rem 0px",
           overflow: showScroll ? "auto" : "hide",
+          marginTop: "6px",
         }}
         onSubmit={formik.handleSubmit}
       >
