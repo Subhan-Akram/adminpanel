@@ -100,15 +100,13 @@ export default function ModelTable() {
             <CreateModelDrawer />
           </Box>
         </ModelBanner>
-        <Card>
-          <Table
-            isLoading={isLoading}
-            showTableSearch={true}
-            rows={models}
-            CustomToolbar={Toolbar}
-            columns={columns({ handleView, setDeletePopover, handleEdit })}
-          />
-        </Card>
+        <Table
+          isLoading={isLoading}
+          showTableSearch={true}
+          rows={models}
+          CustomToolbar={Toolbar}
+          columns={columns({ handleView, setDeletePopover, handleEdit })}
+        />
       </ModelTableWrapper>
     </>
   );

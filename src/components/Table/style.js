@@ -1,6 +1,12 @@
-import { styled } from "@mui/material";
+import { Card, styled } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
+export const CardWrapper = styled(Card)`
+  height: calc(100vh - 190px);
+  border: 1px solid var(--border-1);
+  margin-top: 32px;
+  padding: 0;
+`;
 export const TableWrapper = styled(DataGrid)`
   overflow-x: auto;
   border-radius: 0 !important;
@@ -9,6 +15,7 @@ export const TableWrapper = styled(DataGrid)`
   border: none !important;
   min-height: 250px;
   min-width: 500px;
+
   & .MuiDataGrid-main {
     width: 100%;
     background-color: var(--surface-l2);

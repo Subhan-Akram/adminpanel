@@ -10,12 +10,7 @@ export const ModelTableWrapper = styled(Box)`
     gap: 12px;
     align-items: center;
   }
-  & .MuiCard-root {
-    height: calc(100vh - 190px);
-    border: 1px solid var(--border-1);
-    margin-top: 32px;
-    padding: 0;
-  }
+
   & .card_header {
     padding: 1rem;
     display: flex;
