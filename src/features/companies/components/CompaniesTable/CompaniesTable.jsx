@@ -133,18 +133,16 @@ export default function CompaniesTable() {
             </Box>
           </Box>
         </BannerWrapper>
-        <Card sx={{ padding: 0 }}>
-          <Table
-            isLoading={isLoading}
-            rows={companies}
-            CustomToolbar={CustomToolbar}
-            columns={columns({
-              handleView,
-              setDeletePopover,
-              handleOrgnization,
-            })}
-          />
-        </Card>
+        <Table
+          isLoading={isLoading}
+          rows={companies}
+          CustomToolbar={CustomToolbar}
+          columns={columns({
+            handleView,
+            setDeletePopover,
+            handleOrgnization,
+          })}
+        />
       </ModelTableWrapper>
     </>
   );

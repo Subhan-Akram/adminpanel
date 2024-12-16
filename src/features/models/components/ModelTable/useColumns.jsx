@@ -3,8 +3,8 @@
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/Edit";
-import React, { useState } from "react";
-import { Avatar, Box } from "@mui/material";
+import React from "react";
+import { Box } from "@mui/material";
 import { DropDown, LogoFrame } from "../../../../components";
 
 const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
@@ -92,57 +92,6 @@ const useColumns = ({ handleView, setDeletePopover, handleEdit }) => {
           ]}
         />
       ),
-      //  ({ row }) => {
-      //   // State to handle menu open/close
-
-      //   const open = Boolean(anchorEl);
-
-      //   const handleMenuOpen = (event) => {
-      //     setAnchorEl(event.currentTarget);
-      //   };
-
-      //   const handleMenuClose = () => {
-      //     setAnchorEl(null);
-      //   };
-
-      //   return (
-      //     <>
-      //       <IconButton
-      //         aria-label="more options"
-      //         aria-controls={`menu-${row.id}`}
-      //         aria-haspopup="true"
-      //         onClick={handleMenuOpen}
-      //       >
-      //         <MoreVert />
-      //       </IconButton>
-      //       <Menu
-      //         id={`menu-${row.id}`}
-      //         anchorEl={anchorEl}
-      //         open={open}
-      //         onClose={handleMenuClose}
-      //       >
-      //         <MenuItem
-      //           onClick={() => {
-      //             handleMenuClose();
-      //             handleView(row);
-      //           }}
-      //         >
-      //           <Visibility sx={{ marginRight: 1 }} />
-      //           View
-      //         </MenuItem>
-      //         <MenuItem
-      //           onClick={(e) => {
-      //             handleMenuClose();
-      //             setDeletePopover({ element: e.currentTarget, model: row });
-      //           }}
-      //         >
-      //           <Delete sx={{ marginRight: 1 }} />
-      //           Delete
-      //         </MenuItem>
-      //       </Menu>
-      //     </>
-      //   );
-      // },
     },
   ];
 };

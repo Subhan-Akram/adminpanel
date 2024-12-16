@@ -145,8 +145,7 @@ export default function UsersTable() {
             </Box>
           </Box>
         </BannerWrapper>
-        <Card sx={{ padding: 0 }}>
-          {/* <Box className="card_header">
+        {/* <Box className="card_header">
             <SullyTypography classNameProps={"modaltitle1"}>
               All Users
             </SullyTypography>
@@ -155,14 +154,13 @@ export default function UsersTable() {
               handleAction={handleSearch}
             />
           </Box> */}
-          <Table
-            CustomToolbar={CustomToolbar}
-            showTableSearch={true}
-            isLoading={isLoading}
-            rows={users}
-            columns={columns({ handleView, setDeletePopover })}
-          />
-        </Card>
+        <Table
+          CustomToolbar={CustomToolbar}
+          showTableSearch={true}
+          isLoading={isLoading}
+          rows={users}
+          columns={columns({ handleView, setDeletePopover })}
+        />
       </ModelTableWrapper>
     </>
   );

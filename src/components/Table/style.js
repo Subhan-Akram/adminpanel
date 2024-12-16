@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 export const CardWrapper = styled(Card)`
   height: calc(100vh - 190px);
   border: 1px solid var(--border-1);
-  margin-top: 32px;
+  margin-top: 26px;
   padding: 0;
 `;
 export const TableWrapper = styled(DataGrid)`

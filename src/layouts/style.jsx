@@ -52,6 +52,7 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
   },
   "& .main_content": {
     padding: "32px",
+    paddingBottom: "0",
   },
   ".page_title_box": {
     marginTop: "8px",

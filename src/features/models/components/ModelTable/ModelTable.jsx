@@ -1,8 +1,8 @@
 import { ModelTableWrapper } from "./style";
 import Table from "../../../../components/Table";
 import columns from "./useColumns";
-import ModelDrawer, { initialModel } from "../ModelDrawer/ModelDrawer";
-import { Box, Card } from "@mui/material";
+import ModelDrawer from "../ModelDrawer/ModelDrawer";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
@@ -15,8 +15,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteModel, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
-import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
-import { BannerWrapper } from "../../../../styles/BannerWrapper";
 import TableToolbar from "../../../../components/TableToolbar";
 
 export default function ModelTable() {

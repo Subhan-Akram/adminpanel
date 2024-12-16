@@ -141,18 +141,16 @@ export default function OrganziationTable() {
             </Box>
           </Box>
         </BannerWrapper>
-        <Card sx={{ padding: 0 }}>
-          <Table
-            isLoading={isLoading}
-            rows={organizations}
-            CustomToolbar={CustomToolbar}
-            columns={columns({
-              handleView,
-              setDeletePopover,
-              handleOrgnization,
-            })}
-          />
-        </Card>
+        <Table
+          isLoading={isLoading}
+          rows={organizations}
+          CustomToolbar={CustomToolbar}
+          columns={columns({
+            handleView,
+            setDeletePopover,
+            handleOrgnization,
+          })}
+        />
       </ModelTableWrapper>
     </>
   );

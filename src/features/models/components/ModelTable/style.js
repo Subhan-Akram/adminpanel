@@ -6,9 +6,10 @@ export const ModelTableWrapper = styled(Box)`
 
   & .btn_group {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     gap: 12px;
     align-items: center;
+    width: 100%;
   }
 
   & .card_header {
@@ -19,6 +20,6 @@ export const ModelTableWrapper = styled(Box)`
   }
 
   @media screen and (max-width: 1024px) {
-    margin-top: 3.5rem;
+    margin-top: 39px;
   }
 `;
