@@ -10,6 +10,7 @@ import { createModel } from "../../services";
 import { triggerAlert } from "slice/alertSlice";
 import { IconButton } from "@mui/material";
 import { CloseIcon } from "sullyIcons";
+import { DrawerHeaderWrapper, DrawerContentWrapper } from "../../../../styles";
 const CreateModelDrawer = () => {
   const [open, setOpen] = useState(false);
   const { crudLoading } = useSelector((state) => state.models);
@@ -45,7 +46,7 @@ const CreateModelDrawer = () => {
         Create Model
       </PrimaryButton>
       <DrawerWrapper anchor={"right"} open={open} onClose={toggleDrawer(false)}>
-        <Box className="drawer_header">
+        <DrawerHeaderWrapper>
           <SullyTypography classNameProps={"page_title"}>
             Create Model
           </SullyTypography>
@@ -58,15 +59,15 @@ const CreateModelDrawer = () => {
           >
             <CloseIcon />
           </IconButton>
-        </Box>
-        <Box className="drawer_content">
+        </DrawerHeaderWrapper>
+        <DrawerContentWrapper className="drawer_content">
           <ModelForm
             handleSubmit={handleSubmit}
             initialValues={modelInitialValues}
             isLoading={crudLoading}
             setOpen={setOpen}
           />
-        </Box>
+        </DrawerContentWrapper>
       </DrawerWrapper>
     </>
   );

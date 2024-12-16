@@ -478,6 +478,15 @@ const getDesignTokens = (mode) => {
           },
         },
       },
+      MuiDrawer: {
+        styleOverrides: {
+          paper: {
+            width: "700px",
+            backgroundColor: "var(--surface-l1)",
+            backgroundImage: "none",
+          },
+        },
+      },
       MuiAccordionDetails: {
         styleOverrides: {
           root: {

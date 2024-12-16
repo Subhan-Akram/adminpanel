@@ -5,15 +5,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import { DrawerWrapper } from "./style";
-import {
-  LogoFrame,
-  SullyTypography,
-  TextButton,
-  OutlinedButton,
-  Chip,
-  TagTooltip,
-  PrimaryButton,
-} from "../../../../components";
+import { LogoFrame, SullyTypography, TextButton } from "../../../../components";
 import ModelForm from "../ModelForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllModelTags, updateModel } from "../../services";
@@ -22,11 +14,10 @@ import { triggerAlert } from "slice/alertSlice";
 
 import DrawerView from "../DrawerView";
 import { IconButton } from "@mui/material";
-import { fontSize } from "@mui/system";
-
+import { DrawerHeaderWrapper } from "globalStyles";
+import { DrawerContentWrapper } from "../../../../styles/DrawerContentWrapper";
 const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
   const { logoUrl, name } = model;
-  // const [type, setType] = React.useState("view");
 
   const { crudLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
@@ -60,7 +51,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
   return (
     <React.Fragment>
       <DrawerWrapper anchor={"right"} open={open} onClose={toggleDrawer(false)}>
-        <Box className="drawer_header">
+        <DrawerHeaderWrapper>
           <Box className="logo_name">
             <LogoFrame
               className={"logo_frame_drawer"}
@@ -85,42 +76,32 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
           </Box>
           {type === "view" && (
             <Box className="btn_group">
-              <TextButton
+              <IconButton
                 className="close"
+                aria-label="close"
                 onClick={() => {
                   setOpen(false);
                 }}
               >
-                <CloseIcon
-                  style={{
-                    width: "22px",
-                    height: "22px",
-                    fontSize: "32px !important",
-                  }}
-                />
-              </TextButton>
+                <CloseIcon />
+              </IconButton>
             </Box>
           )}
           {type === "edit" && (
-            <TextButton
+            <IconButton
               className="close"
+              aria-label="close"
               onClick={() => {
-                setType("view");
+                setOpen(false);
               }}
             >
-              <CloseIcon
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  fontSize: "32px !important",
-                }}
-              />
-            </TextButton>
+              <CloseIcon />
+            </IconButton>
           )}
-        </Box>
+        </DrawerHeaderWrapper>
         {type === "view" && <DrawerView data={model} />}
         {type === "edit" && (
-          <Box className="drawer_content">
+          <DrawerContentWrapper>
             <ModelForm
               setType={setType}
               isEdit={true}
@@ -128,7 +109,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
               handleSubmit={handleSubmit}
               initialValues={{ ...modelInitialValues, ...model }}
             />
-          </Box>
+          </DrawerContentWrapper>
         )}
       </DrawerWrapper>
     </React.Fragment>

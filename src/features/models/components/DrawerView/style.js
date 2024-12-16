@@ -17,4 +17,11 @@ export const DrawerWrapper = styled(Box)`
     font-size: 20px !important;
     margin-top: -10px;
   }
+  & .chips_box {
+    display: flex;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-top: 0px;
+    flex-wrap: wrap;
+  }
 `;
