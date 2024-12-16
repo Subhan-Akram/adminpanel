@@ -8,6 +8,7 @@ import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
 import {
   ConfirmDynamicModal,
+  ModelBanner,
   OutlinedButton,
   SullyTypography,
 } from "../../../../components";
@@ -16,6 +17,7 @@ import { deleteModel, getAllModels } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { BannerWrapper } from "../../../../styles/BannerWrapper";
+import TableToolbar from "../../../../components/TableToolbar";
 
 export default function ModelTable() {
   const [open, setOpen] = useState(false);
@@ -24,15 +26,11 @@ export default function ModelTable() {
     element: null,
     model: "",
   });
+  const { element, model: selectedModel } = deletePopover;
   const { models, crudLoading, isLoading } = useSelector(
     (state) => state.models
   );
-  const [model, setModel] = useState({
-    model: "",
-    description: "",
-    rating: 0,
-    modelCard: "",
-  });
+  const [model, setModel] = useState({});
   const dispatch = useDispatch();
   const handleDelete = async () => {
     const { model } = deletePopover;
@@ -57,25 +55,9 @@ export default function ModelTable() {
     setModel(row);
     setOpen(true);
   };
-  const CustomToolbar = () => (
-    <GridToolbarContainer
-      sx={{
-        padding: "10px",
-        display: "flex",
-        justifyContent: "space-between",
-        gap: "10px",
-      }}
-    >
-      <SullyTypography classNameProps={"modaltitle1"}>
-        All Models
-      </SullyTypography>
-      <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
-        {/* <GridToolbarExport /> */}
-        <GridToolbarQuickFilter placeholder="Search LLM Models" />
-      </Box>
-    </GridToolbarContainer>
+  const Toolbar = () => (
+    <TableToolbar placeholder={"Search LLM Models"} title="All Models" />
   );
-
   useEffect(() => {
     if (!models.length) {
       dispatch(getAllModels({ dispatch }));
@@ -84,15 +66,15 @@ export default function ModelTable() {
   return (
     <>
       <ConfirmDynamicModal
-        isConfirmModalOpen={deletePopover.element}
+        isConfirmModalOpen={element}
         handleSubmit={handleDelete}
         setIsConfirmModalOpen={setDeletePopover}
-        title={`Delete - ${deletePopover?.model?.name || ""}`}
+        title={`Delete - ${selectedModel?.name || ""}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
             Are you sure you want to delete{" "}
             <SullyTypography variant="span" classNameProps="model_name">
-              {deletePopover?.model?.name || ""}
+              {selectedModel?.name || ""}
             </SullyTypography>{" "}
             from Models ?
           </SullyTypography>
@@ -109,32 +91,21 @@ export default function ModelTable() {
         setOpen={setOpen}
         model={model}
       />
-      <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
-        <BannerWrapper>
-          <SullyTypography classNameProps={"card_title1"}>
-            LLMs Models
-          </SullyTypography>
-          <Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-start",
-                gap: "12px",
-              }}
-            >
-              <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
-                Export Csv
-              </OutlinedButton>
-              <CreateModelDrawer />
-            </Box>
+      <ModelTableWrapper>
+        <ModelBanner text={"LLM Models"}>
+          <Box className="btn_group">
+            <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
+              Export Csv
+            </OutlinedButton>
+            <CreateModelDrawer />
           </Box>
-        </BannerWrapper>
-        <Card sx={{ padding: 0 }}>
+        </ModelBanner>
+        <Card>
           <Table
             isLoading={isLoading}
             showTableSearch={true}
             rows={models}
-            CustomToolbar={CustomToolbar}
+            CustomToolbar={Toolbar}
             columns={columns({ handleView, setDeletePopover, handleEdit })}
           />
         </Card>

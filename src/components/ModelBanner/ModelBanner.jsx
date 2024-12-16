@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { ModelBannerWrapper } from "./style";
 import { BannerDog } from "assets";
 import PropTypes from "prop-types";
+import SullyTypography from "../SullyTypography";
 
 const ModelBanner = ({ text, children }) => {
   return (
@@ -11,7 +12,11 @@ const ModelBanner = ({ text, children }) => {
         <Box className="banner_dog">
           <img alt="" src={BannerDog} />
         </Box>
-        <Box className="banner_text">{text}</Box>
+        <Box className="banner_text">
+          <SullyTypography classNameProps={"card_title_1"}>
+            {text}
+          </SullyTypography>
+        </Box>
       </Box>
       {children}
     </ModelBannerWrapper>

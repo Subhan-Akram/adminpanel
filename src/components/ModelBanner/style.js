@@ -31,8 +31,8 @@ export const ModelBannerWrapper = styled(
   boxSizing: "border-box",
   position: "relative",
   height: "51px",
-  background:
-    "linear-gradient(to right, var(--banner-shadow) 3.53%, var(--surface-l1) 14.63%)",
+  background: "linear-gradient(to right, #4f4827 3.53%, var(--surface-l1) 52%)",
+
   "& .banner_text1": {
     lineHeight: "18px",
   },
