@@ -26,6 +26,11 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
   // marginLeft: openSidebar ? fullDrawerWidth : drawerWidth,
   marginTop: "69px",
   // width: `calc(100% - 147px)`,
+  "& .main_container": {
+    height: "calc(100vh - 71px)",
+    overflow: "auto",
+    // border: "1px solid red",
+  },
   // background: "#070B11 !important",
   "& .page_spacing": {
     paddingTop: "31px",
