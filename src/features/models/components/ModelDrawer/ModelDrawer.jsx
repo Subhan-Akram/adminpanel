@@ -107,7 +107,15 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
               isEdit={true}
               isLoading={crudLoading}
               handleSubmit={handleSubmit}
-              initialValues={{ ...modelInitialValues, ...model }}
+              initialValues={{
+                ...modelInitialValues,
+                ...model,
+                features: {
+                  Pricing: [""],
+                  Weakness: [""],
+                  "Key Features": [""],
+                },
+              }}
             />
           </DrawerContentWrapper>
         )}
