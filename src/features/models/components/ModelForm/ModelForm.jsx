@@ -361,44 +361,34 @@ function ModelForm({
         )}
       </Grid>
       {/* Submit Button */}
-      <Grid
-        container
+      <Box
         sx={{
-          padding: "1rem 24px",
           display: "flex",
           justifyContent: "flex-end",
+          gap: 2,
+          padding: "0 24px",
         }}
-        spacing={2}
-        xs={12}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: 2, // Adds spacing between buttons
+        <OutlinedButton
+          onClick={() => {
+            {
+              isEdit ? setType("view") : setOpen(false);
+            }
           }}
+          variant="contained"
+          color="primary"
         >
-          <OutlinedButton
-            onClick={() => {
-              {
-                isEdit ? setType("view") : setOpen(false);
-              }
-            }}
-            variant="contained"
-            color="primary"
-          >
-            Cancel
-          </OutlinedButton>
-          <PrimaryButton
-            type="submit"
-            variant="contained"
-            color="primary"
-            isLoading={isLoading}
-          >
-            Save
-          </PrimaryButton>
-        </Box>
-      </Grid>
+          Cancel
+        </OutlinedButton>
+        <PrimaryButton
+          type="submit"
+          variant="contained"
+          color="primary"
+          isLoading={isLoading}
+        >
+          Save
+        </PrimaryButton>
+      </Box>
     </FormWrapper>
   );
 }
