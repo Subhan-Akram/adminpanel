@@ -49,18 +49,16 @@ const FeatureEditor = ({ showScroll = false }) => {
     <FormikProvider value={formik}>
       <form
         style={{
-          height: "calc(100vh - 186px)",
-          padding: "0rem 0px",
-          overflow: showScroll ? "auto" : "hide",
+          // height: "calc(100vh - 186px)",
+          // padding: "0rem 0px",
+          // overflow: showScroll ? "auto" : "hide",
           marginTop: "6px",
         }}
-        onSubmit={formik.handleSubmit}
       >
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-
             // maxWidth: "70%",
           }}
         >
@@ -68,25 +66,32 @@ const FeatureEditor = ({ showScroll = false }) => {
             <Box
               sx={{
                 border: "1px solid var(--border-1)",
-                padding: "1rem",
+                padding: "16px 24px",
                 marginBottom: "16px",
-
                 borderRadius: "8px",
               }}
             >
-              <SullyTypography classNameProps={"modaltitle1"}>
-                {val}
-              </SullyTypography>
               <FieldArray name={val}>
                 {(arrayHelpers) => (
-                  <ul style={{ listStyle: "none", paddingInlineStart: "0" }}>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      paddingInlineStart: "0",
+                      margin: "0",
+                    }}
+                  >
+                    <SullyTypography classNameProps={"modaltitle1"}>
+                      {val}
+                    </SullyTypography>
                     {formik.values[val].map((item, index) => (
                       <>
                         <li
                           style={{
-                            marginTop: "18px",
+                            marginBottom: "16px",
+                            marginTop: "8px",
                             border: "5px dotted var(--border-1)",
                             padding: "24px",
+                            paddingTop: "16px",
                             borderRadius: "12px",
                             background: "var(--surface-l2)",
                           }}
@@ -95,10 +100,8 @@ const FeatureEditor = ({ showScroll = false }) => {
                             // spacing={"16px"}
                             container
                             key={index}
-                            spacing={"12px"}
-                            sx={{
-                              position: "relative",
-                            }}
+                            spacing={"16px"}
+                            sx={{ position: "relative" }}
                           >
                             <Grid xs={12} sm={12} item>
                               <InputLabelWrapper>Title</InputLabelWrapper>
@@ -178,7 +181,7 @@ const FeatureEditor = ({ showScroll = false }) => {
                     ))}
 
                     <TextButton
-                      sx={{ marginTop: "12px", fontSize: "14px" }}
+                      sx={{ fontSize: "14px" }}
                       startIcon={
                         <AddIcon
                           sx={{
