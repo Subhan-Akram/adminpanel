@@ -16,7 +16,7 @@ const FeatureEditor = memo(({ formik }) => {
   return (
     <FeatureEditorWrapper>
       {featureKeys.map((val, i) => (
-        <Box className="feature_item_box">
+        <Box key={val} className="feature_item_box">
           <FieldArray name={`features.${val}`}>
             {(arrayHelpers) => (
               <ul>
@@ -25,7 +25,7 @@ const FeatureEditor = memo(({ formik }) => {
                 </SullyTypography>
                 {formik.values.features?.[val]?.map((item, index) => (
                   <>
-                    <li style={{}}>
+                    <li key={`features.${val}.${index}.title`} style={{}}>
                       <Grid
                         container
                         key={index}

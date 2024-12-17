@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { FormikProvider, useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -8,14 +7,12 @@ import {
   FormControl,
   Box,
   Autocomplete,
-  Divider,
 } from "@mui/material";
 import { Grid } from "@mui/material";
 import { FormWrapper } from "./style";
 import {
   OutlinedButton,
   PrimaryButton,
-  SullyTypography,
   TextFastFieldWrapper,
 } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
@@ -27,6 +24,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import FeatureEditor from "../FeatureEditor";
+
 // Validation Schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -56,8 +54,8 @@ function ModelForm({
   setOpen,
 }) {
   const { tags } = useSelector((state) => state.models);
-
   const [selectedTags, setSelectedTags] = useState(initialValues.tags);
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -66,6 +64,7 @@ function ModelForm({
       setSubmitting(false);
     },
   });
+
   return (
     <FormikProvider value={formik}>
       <FormWrapper
@@ -73,7 +72,7 @@ function ModelForm({
         onSubmit={formik.handleSubmit}
         isEdit={isEdit}
       >
-        <Grid className="form_container" container spacing={2} sx={{}}>
+        <Grid className="form_container" container spacing={2}>
           {/* Name Field */}
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
@@ -239,6 +238,7 @@ function ModelForm({
               />
             </FormControl>
           </Grid>
+
           {isEdit && (
             <Grid item xs={12} md={12}>
               <InputLabelWrapper
@@ -263,35 +263,22 @@ function ModelForm({
                   setSelectedTags(val);
                   formik.setFieldValue("tags", val);
                 }}
-                sx={{ width: "100%" }}
                 PopperComponent={(props) => (
                   <AutoCompleteStyledPopperWrapper
                     {...props}
-                    // anchorEl={box1Ref.current}
-                    // width={`${searchBoxWidth}px`}
                     placement="bottom-start"
                   />
                 )}
                 ChipProps={{
-                  deleteIcon: (
-                    <CloseOutlinedIcon
-                      style={{
-                        color: "var(--tag-text-icon-selected)",
-                        fontSize: "15px",
-                      }}
-                    />
-                  ),
+                  deleteIcon: <CloseOutlinedIcon className="close_chip_icon" />,
                 }}
                 renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    // InputLabelWrapper="filterSelectedOptions"
-                    placeholder="Add Tags"
-                  />
+                  <TextField {...params} placeholder="Add Tags" />
                 )}
               />
             </Grid>
           )}
+
           {/* Rating Field */}
           <Grid item xs={12}>
             <Box className="rating_box">
@@ -300,7 +287,6 @@ function ModelForm({
               </Typography>
               <Rating
                 size="large"
-                sx={{ fontSize: "22px !important", width: "220px" }}
                 name="rating"
                 value={formik.values.rating}
                 onChange={(_, value) => formik.setFieldValue("rating", value)}
@@ -350,15 +336,9 @@ function ModelForm({
             </Grid>
           )}
         </Grid>
+
         {/* Submit Button */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: 2,
-            padding: "1rem 24px",
-          }}
-        >
+        <Box className="form_buttons">
           <OutlinedButton
             onClick={() => {
               {

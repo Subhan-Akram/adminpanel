@@ -17,7 +17,7 @@ export const FormWrapper = styled(Box, {
   & .rating_box {
     & .MuiRating-root {
       label {
-        font-size: 22px !important;
+        font-size: 20px !important;
         margin-top: 4px;
       }
     }
@@ -30,12 +30,26 @@ export const FormWrapper = styled(Box, {
   & .rating_error {
     margin-top: -10px;
   }
+
   & .autocomplete_tags {
     margin-top: 6px;
+    width: 100%;
     & .MuiOutlinedInput-root {
       padding-right: 3px !important;
       padding-left: 3px !important;
     }
+    & .close_chip_icon {
+      color: var(--tag-text-icon-selected) !important;
+      font-size: 12px !important;
+      margin-top: 1.4px !important;
+      margin-left: -4px !important;
+    }
+  }
+  & .form_buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 1rem 24px;
   }
   @media screen and (max-width: 960px) {
     & .rating_box {
