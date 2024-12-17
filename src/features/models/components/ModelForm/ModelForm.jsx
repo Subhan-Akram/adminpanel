@@ -14,7 +14,7 @@ import {
   OutlinedButton,
   PrimaryButton,
   TextFastFieldWrapper,
-} from "../../../../components";
+} from "components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import {
   InputLabelWrapper,
@@ -327,6 +327,7 @@ function ModelForm({
               />
             </FormControl>
           </Grid>
+
           {isEdit && (
             <Grid item xs={12} md={12}>
               <Typography className="InputLabelWrapper_text" variant="body1">
@@ -337,7 +338,6 @@ function ModelForm({
           )}
         </Grid>
 
-        {/* Submit Button */}
         <Box className="form_buttons">
           <OutlinedButton
             onClick={() => {

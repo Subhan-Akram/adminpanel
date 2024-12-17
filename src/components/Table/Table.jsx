@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import { CardWrapper, TableWrapper } from "./style";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { Card } from "@mui/material";
 
-export default function Table({ rows, columns, isLoading, CustomToolbar }) {
+const Table = ({ rows, columns, isLoading, CustomToolbar }) => {
   const theme = useTheme();
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -47,7 +46,9 @@ export default function Table({ rows, columns, isLoading, CustomToolbar }) {
       />
     </CardWrapper>
   );
-}
+};
+
+export default Table;
 
 Table.propTypes = {
   rows: PropTypes.array,

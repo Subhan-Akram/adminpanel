@@ -5,7 +5,6 @@ import Spin from "./Spin";
 import SullyTypography from "./SullyTypography";
 import PrimaryButton from "./PrimaryButton";
 import OutlinedButton from "./OutlinedButton";
-
 import TabComponent from "./TabComponent";
 import TextButton from "./TextButton";
 import ConfirmModal from "./ConfirmModal";
@@ -32,13 +31,15 @@ import {
   CodeTabSkeleton,
 } from "./skeleton";
 import CopyText from "./CopyText";
-import { Table } from "@mui/material";
+import Table from "./Table";
 import ConfirmPopover from "./ConfirmPopover";
 import SearchBar from "./SearchBar";
 import Modal from "./Modal";
 import TextFastFieldWrapper from "./TextFastFieldWrapper";
+import TableToolbar from "./TableToolbar/TableToolbar";
 
 export {
+  TableToolbar,
   TextFastFieldWrapper,
   Modal,
   SearchBar,

@@ -4,14 +4,11 @@ import { Box, TextField, IconButton, Grid } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { InputLabelWrapper } from "globalStyles";
-import {
-  SullyTypography,
-  TextButton,
-  TextFastFieldWrapper,
-} from "../../../../components";
+import { SullyTypography, TextButton, TextFastFieldWrapper } from "components";
 import { FeatureEditorWrapper } from "./style";
 
 const featureKeys = ["Pricing", "Weakness", "Key Features"];
+
 const FeatureEditor = memo(({ formik }) => {
   return (
     <FeatureEditorWrapper>

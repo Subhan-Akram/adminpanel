@@ -1,5 +1,4 @@
 import { ModelTableWrapper } from "./style";
-import Table from "../../../../components/Table";
 import columns from "./useColumns";
 import ModelDrawer from "../ModelDrawer/ModelDrawer";
 import { Box } from "@mui/material";
@@ -11,26 +10,30 @@ import {
   ModelBanner,
   OutlinedButton,
   SullyTypography,
-} from "../../../../components";
+  Table,
+  TableToolbar,
+} from "components";
+
 import { useDispatch, useSelector } from "react-redux";
 import { deleteModel as deleteModelAction, getAllModels } from "../../services";
-import { triggerAlert } from "../../../../slice/alertSlice";
-import TableToolbar from "../../../../components/TableToolbar";
+import { triggerAlert } from "slice/alertSlice";
 
-export default function ModelTable() {
+const ModelTable = () => {
   const [open, setOpen] = useState(false);
   const [type, setType] = useState("view");
+  const [model, setModel] = useState({});
   const [deleteModel, setDeleteModel] = useState({
     confirmModalContent: {},
     isConfirmModalOpen: false,
   });
-  const { isConfirmModalOpen, confirmModalContent: { name, extId } = {} } =
-    deleteModel;
+
+  const dispatch = useDispatch();
   const { models, crudLoading, isLoading } = useSelector(
     (state) => state.models
   );
-  const [model, setModel] = useState({});
-  const dispatch = useDispatch();
+
+  const { isConfirmModalOpen, confirmModalContent: { name, extId } = {} } =
+    deleteModel;
 
   const handleDelete = async () => {
     const { payload } = await dispatch(deleteModelAction({ extId }));
@@ -54,11 +57,13 @@ export default function ModelTable() {
   const Toolbar = () => (
     <TableToolbar placeholder={"Search LLM Models"} title="All Models" />
   );
+
   useEffect(() => {
     if (!models.length) {
       dispatch(getAllModels({ dispatch }));
     }
   }, []);
+
   return (
     <>
       <ConfirmDynamicModal
@@ -106,4 +111,6 @@ export default function ModelTable() {
       </ModelTableWrapper>
     </>
   );
-}
+};
+
+export default ModelTable;

@@ -1,18 +1,9 @@
-/* eslint-disable react/prop-types */
-import { Box, Grid, IconButton } from "@mui/material";
-import { CopyIcon } from "sullyIcons";
+import { Box, Grid } from "@mui/material";
 import React from "react";
-import {
-  Chip,
-  CopyButton,
-  LogoFrame,
-  SullyTypography,
-  TagTooltip,
-} from "../../../../components";
+import { Chip, CopyButton, SullyTypography, TagTooltip } from "components";
 import { DrawerWrapper } from "./style";
-import { fontSize } from "@mui/system";
 
-function DrawerView({ data }) {
+const DrawerView = ({ data }) => {
   const {
     name,
     description,
@@ -24,11 +15,10 @@ function DrawerView({ data }) {
     ssbxCode,
     tags = [],
   } = data;
-  console.log("data", data, "license", license);
+
   return (
     <DrawerWrapper role="presentation">
       <Grid container sx={{ marginTop: "0rem" }} spacing={3}>
-        {/* Name */}
         <Grid item xs={12} sm={3}>
           <SullyTypography
             variant="body1"
@@ -38,12 +28,13 @@ function DrawerView({ data }) {
             Name
           </SullyTypography>
         </Grid>
+
         <Grid item xs={12} sm={9}>
           <SullyTypography variant="body2" classNameProps={" modaltitle1"}>
             {name}
           </SullyTypography>
         </Grid>
-        {/* Model Card */}
+
         <Grid item xs={12} sm={3}>
           <SullyTypography
             variant="body1"
@@ -149,6 +140,7 @@ function DrawerView({ data }) {
             </Box>
           </Box>
         </Grid>
+
         {/* License */}
         <Grid item xs={12} sm={3}>
           <SullyTypography
@@ -164,6 +156,7 @@ function DrawerView({ data }) {
             {license ? license : "None"}
           </SullyTypography>
         </Grid>
+
         {/* Rating */}
         <Grid item xs={12} sm={3}>
           <SullyTypography
@@ -179,6 +172,7 @@ function DrawerView({ data }) {
             {rating}
           </SullyTypography>
         </Grid>
+
         {/* Description */}
         <Grid item xs={12} sm={3}>
           <SullyTypography
@@ -193,6 +187,7 @@ function DrawerView({ data }) {
             {description}
           </SullyTypography>
         </Grid>
+
         <Grid item xs={12} sm={3}>
           <SullyTypography
             classNameProps="card_text"
@@ -247,6 +242,6 @@ function DrawerView({ data }) {
       </Grid>
     </DrawerWrapper>
   );
-}
+};
 
 export default DrawerView;

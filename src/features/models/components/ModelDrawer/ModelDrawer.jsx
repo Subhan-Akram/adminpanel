@@ -1,21 +1,19 @@
-/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
-import * as React from "react";
+import React, { useEffect } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import { DrawerWrapper } from "./style";
-import { LogoFrame, SullyTypography, TextButton } from "../../../../components";
+import { LogoFrame, SullyTypography, TextButton } from "components";
 import ModelForm from "../ModelForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllModelTags, updateModel } from "../../services";
 import { modelInitialValues } from "../../constants";
 import { triggerAlert } from "slice/alertSlice";
-
 import DrawerView from "../DrawerView";
 import { IconButton } from "@mui/material";
-import { DrawerHeaderWrapper } from "globalStyles";
-import { DrawerContentWrapper } from "../../../../styles/DrawerContentWrapper";
+import { DrawerHeaderWrapper, DrawerContentWrapper } from "globalStyles";
+
 const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
   const { logoUrl, name } = model;
 
@@ -43,9 +41,11 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
       setModel(payload);
     }
   };
-  React.useEffect(() => {
+
+  useEffect(() => {
     dispatch(getAllModelTags());
   }, []);
+
   return (
     <React.Fragment>
       <DrawerWrapper anchor={"right"} open={open} onClose={toggleDrawer(false)}>
@@ -56,7 +56,6 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
               imgLink={logoUrl}
             ></LogoFrame>
             <SullyTypography
-              // sx={{ marginTop: "4px", fontSize: "20px !important" }}
               variant="body2"
               classNameProps={"sub_title_1_lg drawer_text"}
             >
@@ -68,7 +67,7 @@ const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
                   setType("edit");
                 }}
               >
-                <EditIcon sx={{ fontSize: "20px" }} />
+                <EditIcon className="edit_icon" sx={{ fontSize: "20px" }} />
               </IconButton>
             )}
           </Box>

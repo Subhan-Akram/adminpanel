@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
-
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DeleteOutline } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/Edit";
 import React from "react";
 import { Box } from "@mui/material";
-import { DropDown, LogoFrame } from "../../../../components";
+import { DropDown, LogoFrame } from "components";
 
 const useColumns = ({ handleDrawer, setDeleteModel }) => {
   return [

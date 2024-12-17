@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import { DrawerWrapper } from "./style";
-import { PrimaryButton, SullyTypography } from "../../../../components";
+import { PrimaryButton, SullyTypography } from "components";
 import ModelForm from "../ModelForm";
 import { modelInitialValues } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +9,8 @@ import { createModel } from "../../services";
 import { triggerAlert } from "slice/alertSlice";
 import { IconButton } from "@mui/material";
 import { CloseIcon } from "sullyIcons";
-import { DrawerHeaderWrapper, DrawerContentWrapper } from "../../../../styles";
+import { DrawerHeaderWrapper, DrawerContentWrapper } from "globalStyles";
+
 const CreateModelDrawer = () => {
   const [open, setOpen] = useState(false);
   const { crudLoading } = useSelector((state) => state.models);
