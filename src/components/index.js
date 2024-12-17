@@ -5,6 +5,7 @@ import Spin from "./Spin";
 import SullyTypography from "./SullyTypography";
 import PrimaryButton from "./PrimaryButton";
 import OutlinedButton from "./OutlinedButton";
+
 import TabComponent from "./TabComponent";
 import TextButton from "./TextButton";
 import ConfirmModal from "./ConfirmModal";
@@ -35,8 +36,10 @@ import { Table } from "@mui/material";
 import ConfirmPopover from "./ConfirmPopover";
 import SearchBar from "./SearchBar";
 import Modal from "./Modal";
+import TextFastFieldWrapper from "./TextFastFieldWrapper";
 
 export {
+  TextFastFieldWrapper,
   Modal,
   SearchBar,
   ConfirmPopover,

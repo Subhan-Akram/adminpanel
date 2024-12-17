@@ -16,6 +16,7 @@ import {
   OutlinedButton,
   PrimaryButton,
   SullyTypography,
+  TextFastFieldWrapper,
 } from "../../../../components";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import {
@@ -77,8 +78,7 @@ function ModelForm({
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper>Name</InputLabelWrapper>
-
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 variant="outlined"
                 placeholder="Model Name"
@@ -97,7 +97,7 @@ function ModelForm({
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper>SSBX Code</InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 variant="outlined"
                 placeholder="SSBX Code"
@@ -123,7 +123,7 @@ function ModelForm({
               >
                 Model Card
               </InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 variant="outlined"
                 placeholder="Model Card"
@@ -149,7 +149,7 @@ function ModelForm({
               >
                 Origin URL
               </InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 placeholder="Origin URL"
                 variant="outlined"
@@ -175,7 +175,7 @@ function ModelForm({
               >
                 Logo URL
               </InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 placeholder="Logo URL"
                 variant="outlined"
@@ -199,7 +199,7 @@ function ModelForm({
               >
                 Created By
               </InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 placeholder="Created By"
                 variant="outlined"
@@ -225,7 +225,7 @@ function ModelForm({
               >
                 License
               </InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 size="small"
                 variant="outlined"
                 placeholder="License"
@@ -321,7 +321,7 @@ function ModelForm({
               <InputLabelWrapper htmlFor="description">
                 Description
               </InputLabelWrapper>
-              <TextField
+              <TextFastFieldWrapper
                 variant="outlined"
                 placeholder="Description"
                 id="description"
