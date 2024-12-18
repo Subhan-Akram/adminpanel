@@ -31,10 +31,9 @@ const useColumns = ({ handleDrawer, setDeleteModel }) => {
     {
       field: "rating",
       headerName: "Rating",
-      type: "number",
       width: 100,
-      headerAlign: "left",
-      cellClassName: "custom-align-left",
+      // headerAlign: "left",
+      // cellClassName: "custom-align-left",
     },
     {
       field: "modelCard",
