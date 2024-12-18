@@ -134,12 +134,30 @@ const UserForm = ({ initialValues, isEdit = false, formRef, setOpen }) => {
               select
               size="small"
               variant="outlined"
-              placeholder="Full Name"
+              placeholder="Roles"
               id="roles"
               name="roles"
+              displayEmpty={true}
               multiple
               value={formik.values.roles}
               onChange={formik.handleChange}
+              renderValue={(selected) => {
+                if (selected.length === 0) {
+                  return (
+                    <em
+                      style={{
+                        color: "#7e7f82",
+                        fontSize: "13px",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Select Roles
+                    </em>
+                  );
+                }
+
+                return selected.join(", ");
+              }}
               onBlur={formik.handleBlur}
               error={formik.touched.roles && Boolean(formik.errors.roles)}
               helperText={formik.touched.roles && formik.errors.roles}

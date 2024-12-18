@@ -3,6 +3,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Avatar, Box, Chip } from "@mui/material";
 import { TagsGroupStyle } from "globalStyles";
 import EditIcon from "@mui/icons-material/Edit";
+import { DropDown } from "../../../components";
 // import { Avatar, Box } from "@mui/material";
 
 const columns = ({ handleView, setDeletePopover }) => [
@@ -100,22 +101,29 @@ const columns = ({ handleView, setDeletePopover }) => [
     headerName: "Actions",
     width: 100,
     cellClassName: "actions",
-    getActions: ({ row }) => [
-      <GridActionsCellItem
-        key={"1"}
-        icon={<EditIcon sx={{ color: "var(--icon-primary)" }} />}
-        label="edit user"
-        onClick={() => handleView(row)}
-      />,
-      <GridActionsCellItem
-        key={"2"}
-        icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
-        label="delete User"
-        onClick={(e) => {
-          setDeletePopover({ isConfirmModalOpen: true, model: row });
-        }}
-      />,
-    ],
+    renderCell: ({ row }) => (
+      <DropDown
+        width={"170px"}
+        className="medium"
+        menuItems={[
+          {
+            label: "Edit",
+            icon: <EditIcon />,
+            onClick: () => {
+              handleView(row);
+            },
+          },
+
+          {
+            label: "Delete",
+            icon: <DeleteOutline />,
+            onClick: (e) => {
+              setDeletePopover({ isConfirmModalOpen: true, model: row });
+            },
+          },
+        ]}
+      />
+    ),
   },
 ];
 

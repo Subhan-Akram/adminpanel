@@ -31,8 +31,16 @@ export default function UsersTable() {
     roles: ["admin", "user"],
     status: "active", // active or inactive
   };
+  const userInitialValues = {
+    name: "",
+    fullName: "",
+    email: "",
+    roles: [],
+    status: "false", // active or inactive
+  };
 
   const [open, setOpen] = useState(false);
+  const [createUserModal, setCreateUserModal] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
     isConfirmModalOpen: null,
     model: "",
@@ -119,6 +127,20 @@ export default function UsersTable() {
           handleSubmit={handleSubmit}
         />
       </Modal>
+      <Modal
+        formRef={formRef}
+        title="Create User"
+        isEdit={false}
+        setOpen={setCreateUserModal}
+        open={createUserModal}
+      >
+        <UserForm
+          setOpen={setOpen}
+          formRef={formRef}
+          initialValues={userInitialValues}
+          handleSubmit={handleSubmit}
+        />
+      </Modal>
 
       <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
         <BannerWrapper>
@@ -140,7 +162,13 @@ export default function UsersTable() {
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
                 Export Csv
               </OutlinedButton>
-              <PrimaryButton>Create User</PrimaryButton>
+              <PrimaryButton
+                onClick={() => {
+                  setCreateUserModal(true);
+                }}
+              >
+                Create User
+              </PrimaryButton>
               {/* <CreateModelDrawer /> */}
             </Box>
           </Box>

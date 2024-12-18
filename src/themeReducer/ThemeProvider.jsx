@@ -325,7 +325,7 @@ const getDesignTokens = (mode) => {
         styleOverrides: {
           root: {
             border: "1px solid none",
-            "& .Mui-focused fieldset": {
+            "&.Mui-focused fieldset": {
               borderColor: "red", // Focused state border color
               border: ".5px solid var(--border-2) !important", // Focused state border thickness
             },
