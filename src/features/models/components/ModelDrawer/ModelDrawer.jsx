@@ -13,6 +13,7 @@ import { triggerAlert } from "slice/alertSlice";
 import DrawerView from "../DrawerView";
 import { IconButton } from "@mui/material";
 import { DrawerHeaderWrapper, DrawerContentWrapper } from "globalStyles";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const ModelDrawer = ({ model, open, setOpen, setModel, type, setType }) => {
   const { logoUrl, name } = model;

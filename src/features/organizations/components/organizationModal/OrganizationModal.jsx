@@ -59,7 +59,7 @@ const OrganizationModal = ({ open, setOpen, organization }) => {
           <CloseIcon />
         </IconButton>
         <DialogContent>
-          <Box sx={{ marginTop: "1rem" }}>
+          <Box>
             <OrganizationForm
               isEdit={true}
               ref={formRef}

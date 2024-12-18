@@ -37,7 +37,7 @@ const Modal = ({ children, open, setOpen, title, isLoading, formRef }) => {
           <CloseIcon />
         </IconButton>
         <DialogContent>
-          <Box sx={{ marginTop: "1rem" }}>{children}</Box>
+          <Box>{children}</Box>
         </DialogContent>
         <DialogActions>
           <OutlinedButton

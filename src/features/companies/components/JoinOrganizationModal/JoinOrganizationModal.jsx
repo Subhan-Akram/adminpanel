@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Box, Typography, Autocomplete, TextField } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  Box,
+  Typography,
+  Autocomplete,
+  TextField,
+  IconButton,
+} from "@mui/material";
 import {
   OutlinedButton,
   PrimaryButton,
@@ -81,6 +88,14 @@ const JoinOrganizationModal = ({
       }}
     >
       <DialogTitle>Join Organization</DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={() => {
+          handleModal(false);
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
       <DialogContent>
         <Box>
           <SullyTypography classNameProps={"modaltitle1 modal_title"}>
@@ -130,7 +145,7 @@ const JoinOrganizationModal = ({
           Cancel
         </OutlinedButton>
         <PrimaryButton isLoading={crudLoading} onClick={handleSubmit}>
-          Submit
+          Save
         </PrimaryButton>
       </DialogActions>
     </JoinOrganizationWrapper>

@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
-import { fontSize, minWidth, positions } from "@mui/system";
+import { fontSize, minWidth, positions, width } from "@mui/system";
 const getDesignTokens = (mode) => {
   const theme = createTheme();
   return {
@@ -324,13 +324,14 @@ const getDesignTokens = (mode) => {
       MuiSelect: {
         styleOverrides: {
           root: {
-            "&.Mui-focused fieldset": {
-              borderColor: "white", // Focused state border color
+            border: "1px solid none",
+            "& .Mui-focused fieldset": {
+              borderColor: "red", // Focused state border color
               border: ".5px solid var(--border-2) !important", // Focused state border thickness
             },
             width: "100%", // Full width
             "&:hover fieldset": {
-              borderColor: "var(--border-2)", // Hover state border color
+              border: "1px solid var(--border-2) !important",
             },
             "& .MuiOutlinedInput-root": {
               borderRadius: "4px", // Rounded corners
@@ -393,11 +394,13 @@ const getDesignTokens = (mode) => {
             background: "var(--surface-l0)",
             "& .close": {
               padding: "0",
+              width: "24px",
+              height: "24px",
               position: "absolute",
 
               "& svg": {
-                width: "24px",
-                height: "24px",
+                width: "20px",
+                height: "20px",
                 "& path": {
                   fill: "var(--icon-primary)",
                 },
@@ -408,6 +411,8 @@ const getDesignTokens = (mode) => {
               minWidth: "auto",
               right: "16px",
               position: "absolute",
+              width: "32px",
+              height: "32px",
             },
           },
         },
@@ -415,7 +420,7 @@ const getDesignTokens = (mode) => {
       MuiDialogTitle: {
         styleOverrides: {
           root: {
-            padding: "16px",
+            padding: "16px 24px",
             fontFamily: "satoshi",
             color: "var(--text-primary)",
             borderBottom: "1px solid var(--border-1)",
@@ -427,13 +432,16 @@ const getDesignTokens = (mode) => {
       },
       MuiDialogContent: {
         styleOverrides: {
-          root: {},
+          root: {
+            padding: "16px 24px",
+            minHeight: "120px",
+          },
         },
       },
       MuiDialogActions: {
         styleOverrides: {
           root: {
-            padding: "16px",
+            padding: "16px 24px",
             borderTop: "1px solid var(--border-1)",
             "& .button_loader": {
               marginLeft: "6px",
