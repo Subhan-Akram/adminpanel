@@ -21,6 +21,10 @@ const Table = ({ rows, columns, isLoading, CustomToolbar }) => {
             showQuickFilter: true,
             quickFilterProps: { debounceMs: 500 },
           },
+          loadingOverlay: {
+            variant: "skeleton",
+            noRowsVariant: "skeleton",
+          },
         }}
         rowHeight={58}
         loading={isLoading}
