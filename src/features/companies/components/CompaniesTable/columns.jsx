@@ -42,7 +42,7 @@ const columns = ({ handleView, setDeletePopover, handleOrgnization }) => [
     field: "organizations",
     headerName: "Organizations",
     sortable: false,
-    width: 300,
+    width: 350,
     renderCell: ({ row }) => {
       return (
         <>

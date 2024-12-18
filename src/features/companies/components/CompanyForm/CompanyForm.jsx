@@ -73,6 +73,7 @@ const CompanyForm = forwardRef(
                 <TextField
                   variant="outlined"
                   placeholder="Company Domain"
+                  size="small"
                   id="domain"
                   name="domain"
                   value={formik.values.domain}

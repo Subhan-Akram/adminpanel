@@ -32,7 +32,7 @@ const useColumns = ({ handleView, setDeletePopover, handleOrgnization }) => [
     field: "companies",
     headerName: "Companies",
     sortable: false,
-    width: 300,
+    width: 350,
     renderCell: ({ row }) => {
       return (
         <>

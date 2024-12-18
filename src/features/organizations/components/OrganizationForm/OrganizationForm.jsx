@@ -46,7 +46,7 @@ const OrganizationForm = forwardRef(
       >
         <Grid container spacing={2}>
           {/* Name Field */}
-          <Grid item xs={12} md={12}>
+          <Grid sx={{ paddingTop: "0 !important" }} item xs={12} md={12}>
             <FormControl fullWidth>
               <label htmlFor="name">Name</label>
               <TextField
@@ -70,6 +70,7 @@ const OrganizationForm = forwardRef(
               <FormControl fullWidth>
                 <label htmlFor="domain">Domain</label>
                 <TextField
+                  size="small"
                   variant="outlined"
                   placeholder="Organization Domain"
                   id="domain"
