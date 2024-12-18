@@ -1,3 +1,4 @@
+import { borderBottom } from "@mui/system";
 import "../../fonts/fonts.css";
 import { Box, Menu, MenuItem, styled } from "@mui/material";
 
@@ -41,13 +42,15 @@ export const StyledMenu = styled(Menu, {
     flexDirection: "column",
     borderRadius: "8px",
     marginTop: "4px",
-    border: "1px solid var(--border-1) !important",
+    border: "1px solid var(--border-1) ",
+    borderBottom: "none",
     background: "var(--surface-l1)",
-    "& .MuiMenuItem-root": {
-      "&:not(:last-child)": {
-        borderBottom: "1px solid var(--border-1) !important",
-      },
-    },
+    // "& .MuiMenuItem-root": {
+    //   "&:not(:last-child)": {
+    //     borderBottom: "1px solid var(--border-1) !important",
+    //   },
+    // },
+
     "& .MuiList-root": {
       padding: "0",
     },

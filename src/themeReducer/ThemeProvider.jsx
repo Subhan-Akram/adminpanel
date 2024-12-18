@@ -3,7 +3,14 @@ import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
-import { fontSize, minWidth, positions, width } from "@mui/system";
+import {
+  border,
+  borderRadius,
+  fontSize,
+  minWidth,
+  positions,
+  width,
+} from "@mui/system";
 const getDesignTokens = (mode) => {
   const theme = createTheme();
   return {
@@ -382,7 +389,9 @@ const getDesignTokens = (mode) => {
         styleOverrides: {
           root: {
             fontSize: "14px",
+            borderRadius: "4px",
             borderBottom: "1px solid var(--border-1)",
+            zIndex: 100,
             "&:hover": {
               backgroundColor: "var(--surface-l1)", // Hover background color
             },
@@ -391,6 +400,21 @@ const getDesignTokens = (mode) => {
             },
             "&.Mui-selected:hover": {
               backgroundColor: "var(--surface-l1)", // Selected hove
+            },
+          },
+        },
+      },
+      MuiMenu: {
+        styleOverrides: {
+          root: {
+            "& .MuiList-root": {
+              padding: "0",
+            },
+            "& .MuiPopover-paper": {
+              border: "1px solid var(--border-1)",
+              borderBottom: "none",
+              borderRadius: "4px",
+              marginTop: "4px",
             },
           },
         },
