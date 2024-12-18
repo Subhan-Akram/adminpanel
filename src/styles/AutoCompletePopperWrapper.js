@@ -22,6 +22,9 @@ export const AutoCompleteStyledPopperWrapper = styled(Popper)(({
       borderBottom: "none",
       padding: 0,
       fontFamily: "satoshi",
+      "&:hover": {
+        // backgroundColor: "red",
+      },
       "& .MuiAutocomplete-option": {
         fontSize: "14px",
       },
@@ -32,13 +35,20 @@ export const AutoCompleteStyledPopperWrapper = styled(Popper)(({
       overflow: "hidden",
       marginLeft: "0rem !important",
     },
+    '& .MuiAutocomplete-option[aria-selected="true"]': {
+      backgroundColor: "var(--surface-l2) !important",
+      "&.Mui-focused": {
+        backgroundColor: "var(--surface-l2) !important",
+      },
+    },
     "& .MuiAutocomplete-option": {
       borderBottom: "1px solid var(--border-1)",
       "&:hover": {
-        backgroundColor: "var(--surface-l1)",
+        backgroundColor: "var(--surface-l2) !important",
       },
-      '&[aria-selected="true"]': {
-        backgroundColor: "var(--surface-l2)",
+
+      "&.Mui-focused ": {
+        backgroundColor: "var(--surface-l2) !important",
       },
     },
     "& .MuiAutocomplete-noOptions": {

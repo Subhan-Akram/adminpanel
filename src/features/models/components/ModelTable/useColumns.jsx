@@ -54,7 +54,7 @@ const useColumns = ({ handleDrawer, setDeleteModel }) => {
       sortable: false,
       width: 120,
       valueGetter: (params) => {
-        return params ?? "None";
+        return params ? params : "None";
       },
     },
     {
