@@ -5,7 +5,6 @@ export function getModelFeature(modelExtIds) {
 }
 
 export const getModelTags = () => {
-  console.log("===running");
   return axios.get("/admin/api/v1/model/tags");
 };
 

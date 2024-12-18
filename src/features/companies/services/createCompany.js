@@ -7,7 +7,6 @@ const createCompany = createAsyncThunk(
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
       const { data } = await createCompanyApi(payload);
-      console.log("create=====data", data);
       return data;
     } catch (error) {
       dispatch(

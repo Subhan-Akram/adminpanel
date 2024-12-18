@@ -29,7 +29,6 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
   };
 
   const { pathname } = useLocation();
-  console.log("open sidebar", openSidebar);
   const getPath = () => {
     if (pathname.includes("home")) {
       return "";

@@ -9,7 +9,6 @@ const joinCompanies = createAsyncThunk(
       const { extId, companyExtIds } = payload;
 
       const { data } = await joinCompaniesApi(extId, companyExtIds);
-      console.log("create=====data", data);
       return data;
     } catch (error) {
       console.log("err", error);

@@ -30,7 +30,6 @@ export default function CompaniesTable() {
     value: {},
   });
   const { companies, isLoading } = useSelector((state) => state.companies);
-  console.log("companies", companies);
   const [company, setCompany] = useState({});
   const dispatch = useDispatch();
   const CustomToolbar = () => (
@@ -71,7 +70,6 @@ export default function CompaniesTable() {
   const handleView = (row) => {
     setCompany(row);
     setOpen(true);
-    console.log("view ticket ");
   };
   const handleOrgnization = (row) => {
     setCompany(row);

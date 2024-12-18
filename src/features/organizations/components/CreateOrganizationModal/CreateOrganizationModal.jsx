@@ -22,11 +22,9 @@ const CreateOrganizationModal = ({ children }) => {
     setOpen(val);
   };
   const handleSubmit = async (val) => {
-    debugger;
     const { payload } = await dispatch(
       createOrganization({ dispatch, payload: val })
     );
-    console.log("payload", payload);
     if (payload) {
       dispatch(
         triggerAlert({

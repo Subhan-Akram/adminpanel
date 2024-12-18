@@ -7,7 +7,6 @@ const createOrganization = createAsyncThunk(
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
       const { data } = await createOrganizationApi(payload);
-      console.log("create=====data", data);
       return data;
     } catch (error) {
       dispatch(

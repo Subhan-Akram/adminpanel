@@ -32,7 +32,6 @@ export default function OrganziationTable() {
   const { organizations, isLoading } = useSelector(
     (state) => state.organizations
   );
-  console.log("companies", organizations);
   const [organization, setOrganization] = useState({});
   const dispatch = useDispatch();
   const CustomToolbar = () => (
@@ -72,7 +71,6 @@ export default function OrganziationTable() {
   const handleView = (row) => {
     setOrganization(row);
     setOpen(true);
-    console.log("view ticket");
   };
   const handleOrgnization = (row) => {
     setOrganization(row);
@@ -81,7 +79,6 @@ export default function OrganziationTable() {
   useEffect(() => {
     dispatch(getOrganizations({ dispatch }));
   }, []);
-  console.log("organizations", organizations);
   return (
     <>
       <ConfirmDynamicModal

@@ -19,11 +19,9 @@ const CreateModelDrawer = () => {
     setOpen(open);
   };
   const handleSubmit = async (values) => {
-    console.log("values", values);
     const { payload } = await dispatch(
       createModel({ dispatch, payload: values })
     );
-    console.log("payload===", payload);
     if (payload) {
       dispatch(
         triggerAlert({
@@ -35,7 +33,6 @@ const CreateModelDrawer = () => {
       setOpen(false);
     }
   };
-  console.log("crudLoading", crudLoading);
   return (
     <>
       <PrimaryButton

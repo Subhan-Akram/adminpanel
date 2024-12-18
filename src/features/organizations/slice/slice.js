@@ -27,7 +27,6 @@ export const slice = createSlice({
       .addCase(createOrganization.fulfilled, (state, action) => {
         const organization = action.payload;
         state.crudLoading = false;
-        console.log("orgaiuznation===============", organization);
         state.organizations = [organization, ...state.organizations];
       })
       .addCase(createOrganization.rejected, (state) => {

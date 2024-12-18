@@ -43,7 +43,6 @@ const UserForm = ({ initialValues, isEdit = false, formRef, setOpen }) => {
     },
   });
   const dispatch = useDispatch();
-  console.log("initial values", initialValues);
   // Attach submit function to ref
   const handleSubmit = async (val) => {
     // const { payload } = await dispatch(updateCompany({ dispatch, payload: val }));

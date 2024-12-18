@@ -4,6 +4,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
+
 import {
   Box,
   Typography,
@@ -17,8 +18,10 @@ import {
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { joinOrganization, updateCompany } from "../../services";
+import { joinOrganization } from "../../services";
+import { deleteOrganization, getOrganizations } from "features/organizations";
 import { triggerAlert } from "../../../../slice/alertSlice";
+
 import { JoinOrganizationWrapper } from "./style";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { AutoCompleteStyledPopperWrapper } from "globalStyles";
@@ -27,22 +30,23 @@ const JoinOrganizationModal = ({
   open,
   setOpen,
   row,
-  availableOrganizations = [
-    {
-      name: "ThisWay Global",
-      extId: "4c829bca-5976-4812-900d-f14a088fbf07",
-      enabled: true,
-      subscriber: false,
-    },
-    {
-      name: "Alerois Corp",
-      extId: "353b66d6-7c9c-47d5-b0bc-3dd6fd61d73e",
-      enabled: true,
-      subscriber: false,
-    },
-  ],
+  // availableOrganizations = [
+  //   {
+  //     name: "ThisWay Global",
+  //     extId: "4c829bca-5976-4812-900d-f14a088fbf07",
+  //     enabled: true,
+  //     subscriber: false,
+  //   },
+  //   {
+  //     name: "Alerois Corp",
+  //     extId: "353b66d6-7c9c-47d5-b0bc-3dd6fd61d73e",
+  //     enabled: true,
+  //     subscriber: false,
+  //   },
+  // ],
 }) => {
   const { crudLoading } = useSelector((state) => state.companies);
+  const { organizations } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
 
   const [selectedOrganization, setSelectedOrganization] = useState(
@@ -52,8 +56,6 @@ const JoinOrganizationModal = ({
   const handleModal = (val) => {
     setOpen(val);
   };
-
-  console.log("selectedOrganization", selectedOrganization, "row", row);
 
   const handleSubmit = async () => {
     const { extId } = row;
@@ -67,7 +69,6 @@ const JoinOrganizationModal = ({
         payload,
       })
     );
-    console.log("payload__", payload);
     if (res.payload) {
       dispatch(
         triggerAlert({
@@ -79,6 +80,11 @@ const JoinOrganizationModal = ({
       setOpen(false);
     }
   };
+  useEffect(() => {
+    if (!organizations.length) {
+      dispatch(getOrganizations({ dispatch }));
+    }
+  }, []);
 
   return (
     <JoinOrganizationWrapper
@@ -106,7 +112,7 @@ const JoinOrganizationModal = ({
             multiple
             size="small"
             id="tags-outlined"
-            options={availableOrganizations}
+            options={organizations}
             getOptionLabel={(option) => option.name}
             isOptionEqualToValue={(option, value) => option.name === value.name}
             value={selectedOrganization}

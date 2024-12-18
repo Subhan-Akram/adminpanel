@@ -80,12 +80,9 @@ export default function UsersTable() {
     }
   };
   const handleView = (row) => {
-    console.log("row", row);
     setOpen(true);
-    console.log("view ticket ");
   };
   const handleSearch = async (value) => {
-    console.log("val", value);
     if (value) return dispatch(getUserByEmail({ email: value, dispatch }));
     dispatch(getUsers({ dispatch }));
   };

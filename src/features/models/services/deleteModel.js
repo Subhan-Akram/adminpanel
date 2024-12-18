@@ -7,7 +7,6 @@ const deleteModel = createAsyncThunk(
   async ({ dispatch, extId }, { rejectWithValue }) => {
     try {
       const { data } = await deleteModelApi(extId);
-      console.log("data", data);
       return data;
     } catch (error) {
       dispatch(

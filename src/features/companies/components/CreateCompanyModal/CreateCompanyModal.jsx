@@ -24,7 +24,6 @@ const CreateCompanyModal = ({ children }) => {
     const { payload } = await dispatch(
       createCompany({ dispatch, payload: val })
     );
-    console.log("payload", payload);
     if (payload) {
       dispatch(
         triggerAlert({
