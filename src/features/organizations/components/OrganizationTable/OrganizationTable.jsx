@@ -26,7 +26,7 @@ export default function OrganziationTable() {
   const [open, setOpen] = useState(false);
   const [organizationModal, setOrganizationModal] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
-    element: null,
+    isConfirmModalOpen: false,
     value: {},
   });
   const { organizations, isLoading } = useSelector(
@@ -66,7 +66,7 @@ export default function OrganziationTable() {
           alertType: "success",
         })
       );
-      setDeletePopover({ element: null, value: {} });
+      setDeletePopover({ isConfirmModalOpen: false, value: {} });
     }
   };
   const handleView = (row) => {
@@ -85,7 +85,7 @@ export default function OrganziationTable() {
   return (
     <>
       <ConfirmDynamicModal
-        isConfirmModalOpen={deletePopover.element}
+        isConfirmModalOpen={deletePopover.isConfirmModalOpen}
         handleSubmit={handleDelete}
         setIsConfirmModalOpen={setDeletePopover}
         title={`Delete - ${deletePopover?.value?.name || ""}`}

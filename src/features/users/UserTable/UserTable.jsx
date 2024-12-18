@@ -34,10 +34,10 @@ export default function UsersTable() {
 
   const [open, setOpen] = useState(false);
   const [deletePopover, setDeletePopover] = useState({
-    element: null,
+    isConfirmModalOpen: null,
     model: "",
   });
-  const { model, element } = deletePopover;
+  const { model, isConfirmModalOpen } = deletePopover;
 
   const CustomToolbar = () => (
     <GridToolbarContainer
@@ -68,7 +68,7 @@ export default function UsersTable() {
           alertType: "success",
         })
       );
-      setDeletePopover({ element: null, extId: "" });
+      setDeletePopover({ isConfirmModalOpen: false, extId: "" });
     }
   };
   const handleView = (row) => {
@@ -89,7 +89,7 @@ export default function UsersTable() {
   return (
     <>
       <ConfirmDynamicModal
-        isConfirmModalOpen={element}
+        isConfirmModalOpen={isConfirmModalOpen}
         handleSubmit={handleDelete}
         setIsConfirmModalOpen={setDeletePopover}
         title={`Delete - ${model?.fullName || model?.username}`}

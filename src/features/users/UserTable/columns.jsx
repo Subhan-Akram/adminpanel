@@ -112,7 +112,7 @@ const columns = ({ handleView, setDeletePopover }) => [
         icon={<DeleteOutline sx={{ color: "var(--icon-primary)" }} />}
         label="delete User"
         onClick={(e) => {
-          setDeletePopover({ element: e.currentTarget, model: row });
+          setDeletePopover({ isConfirmModalOpen: true, model: row });
         }}
       />,
     ],

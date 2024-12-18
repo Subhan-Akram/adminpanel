@@ -47,12 +47,13 @@ const CompanyForm = forwardRef(
       >
         <Grid container spacing={2}>
           {/* Name Field */}
-          <Grid item xs={12} md={12}>
+          <Grid sx={{ paddingTop: "0 !important" }} item xs={12} md={12}>
             <FormControl fullWidth>
               <label htmlFor="name">Name</label>
               <TextField
                 variant="outlined"
                 placeholder="Company Name"
+                size="small"
                 id="name"
                 name="name"
                 value={formik.values.name}

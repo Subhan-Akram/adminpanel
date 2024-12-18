@@ -51,6 +51,7 @@ const OrganizationForm = forwardRef(
               <label htmlFor="name">Name</label>
               <TextField
                 variant="outlined"
+                size="small"
                 placeholder="Organization Name"
                 id="name"
                 name="name"

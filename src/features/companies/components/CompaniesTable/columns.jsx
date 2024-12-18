@@ -85,7 +85,7 @@ const columns = ({ handleView, setDeletePopover, handleOrgnization }) => [
             label: "Delete",
             icon: <DeleteOutline />,
             onClick: (e) => {
-              setDeletePopover({ element: e.currentTarget, value: row });
+              setDeletePopover({ isConfirmModalOpen: true, value: row });
             },
           },
         ]}
