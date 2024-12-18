@@ -360,6 +360,13 @@ const getDesignTokens = (mode) => {
           },
         },
       },
+      MuiCircularProgress: {
+        styleOverrides: {
+          root: {
+            color: "white", // Customize the color here
+          },
+        },
+      },
 
       MuiRadio: {
         styleOverrides: {
