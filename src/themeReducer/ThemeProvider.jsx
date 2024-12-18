@@ -389,8 +389,11 @@ const getDesignTokens = (mode) => {
         styleOverrides: {
           root: {
             fontSize: "14px",
-            borderRadius: "4px",
-            borderBottom: "1px solid var(--border-1)",
+            // borderRadius: "4px",
+
+            "&:not(:last-child)": {
+              borderBottom: "1px solid var(--border-1)",
+            },
             zIndex: 100,
             "&:hover": {
               backgroundColor: "var(--surface-l1)", // Hover background color
@@ -409,10 +412,11 @@ const getDesignTokens = (mode) => {
           root: {
             "& .MuiList-root": {
               padding: "0",
+              // border: "1px solid red",
+              borderRadius: "4px",
             },
             "& .MuiPopover-paper": {
               border: "1px solid var(--border-1)",
-              borderBottom: "none",
               borderRadius: "4px",
               marginTop: "4px",
             },

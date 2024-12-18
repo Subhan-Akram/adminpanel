@@ -42,8 +42,7 @@ export const StyledMenu = styled(Menu, {
     flexDirection: "column",
     borderRadius: "8px",
     marginTop: "4px",
-    border: "1px solid var(--border-1) ",
-    borderBottom: "none",
+
     background: "var(--surface-l1)",
     // "& .MuiMenuItem-root": {
     //   "&:not(:last-child)": {
