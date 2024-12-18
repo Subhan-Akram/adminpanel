@@ -52,7 +52,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
           <Box className="icon_text coint_point">
             <ThemeToggleBox
               onClick={() => {
-                dispatch(setThemeMode(mode === "dark" ? "light" : "dark"));
+                // dispatch(setThemeMode(mode === "dark" ? "light" : "dark"));
               }}
             >
               <ThemeToggleContainer mode={mode}>
