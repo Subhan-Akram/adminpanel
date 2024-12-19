@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 import React from "react";
 import { Chip, CopyButton, SullyTypography, TagTooltip } from "components";
 import { DrawerWrapper } from "./style";
+import ModelFeatures from "../ModelFeatures";
 
 const DrawerView = ({ data }) => {
   const {
@@ -238,6 +239,17 @@ const DrawerView = ({ data }) => {
             )}
             {!tags.length && <Box className="tags_not_available"></Box>}
           </Box>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <SullyTypography
+            classNameProps="card_text"
+            sx={{ mb: 1, fontWeight: 500 }}
+          >
+            Features
+          </SullyTypography>
+        </Grid>
+        <Grid item xs={6} sm={9}>
+          <ModelFeatures />
         </Grid>
       </Grid>
     </DrawerWrapper>
