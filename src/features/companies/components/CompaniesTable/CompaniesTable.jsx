@@ -122,7 +122,7 @@ export default function CompaniesTable() {
               }}
             >
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
-                Export Csv
+                Export CSV
               </OutlinedButton>
               <CreateCompanyModal>
                 <PrimaryButton>Create Company</PrimaryButton>

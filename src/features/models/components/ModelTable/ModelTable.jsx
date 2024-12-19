@@ -96,7 +96,7 @@ const ModelTable = () => {
         <ModelBanner text={"LLM Models"}>
           <Box className="btn_group">
             <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
-              Export Csv
+              Export CSV
             </OutlinedButton>
             <CreateModelDrawer />
           </Box>

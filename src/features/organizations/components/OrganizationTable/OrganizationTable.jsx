@@ -129,7 +129,7 @@ export default function OrganziationTable() {
               }}
             >
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
-                Export Csv
+                Export CSV
               </OutlinedButton>
               <CreateOrganizationModal>
                 <PrimaryButton>Create Organization</PrimaryButton>

@@ -157,7 +157,7 @@ export default function UsersTable() {
               }}
             >
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
-                Export Csv
+                Export CSV
               </OutlinedButton>
               <PrimaryButton
                 onClick={() => {

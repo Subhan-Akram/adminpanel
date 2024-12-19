@@ -29,10 +29,10 @@ const HomePage = () => {
             variant={"span"}
             classNameProps="title_brand text-capitalize"
           >
-            &nbsp;Subhan Akram
+            &nbsp;Subhan Akram,
           </SullyTypography>{" "}
           <SullyTypography classNameProps="banner_text" variant={"span"}>
-            ,to Sully Admin Panel
+            to Sully Admin Panel
           </SullyTypography>
         </Box>
       </BannerWrapper>
