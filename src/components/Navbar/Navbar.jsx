@@ -41,7 +41,6 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
             {!openSidebar && <img src={LogoText} />}
           </Box>
           <IconButton className="tablet_toggle_btn" onClick={handleToggle}>
-            {" "}
             <MenuIcon />
           </IconButton>
           <Box className="logo" onClick={handleNavigate}>

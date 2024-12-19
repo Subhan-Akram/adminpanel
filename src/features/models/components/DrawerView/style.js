@@ -9,6 +9,7 @@ export const DrawerWrapper = styled(Box)`
     gap: 8px;
   }
   padding: 0rem 24px;
+  padding-bottom: 24px;
   height: calc(100vh - 85px);
 
   overflow: auto;
