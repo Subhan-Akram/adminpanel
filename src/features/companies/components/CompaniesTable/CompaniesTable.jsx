@@ -16,7 +16,7 @@ import { deleteCompany } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import CompanyCreate from "../CompanyCreate";
 import CompanyModal from "../CompanyEdit";
-import JoinOrganizationModal from "../JoinOrganizationModal";
+import JoinOrganization from "../JoinOrganization";
 import { BannerWrapper } from "globalStyles/BannerWrapper";
 
 export default function CompaniesTable() {
@@ -93,7 +93,7 @@ export default function CompaniesTable() {
       />
       <CompanyModal company={company} open={open} setOpen={setOpen} />
       {organizationModal && (
-        <JoinOrganizationModal
+        <JoinOrganization
           row={company}
           open={organizationModal}
           setOpen={setOrganizationModal}

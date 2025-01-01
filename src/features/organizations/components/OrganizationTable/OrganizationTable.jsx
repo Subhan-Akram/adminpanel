@@ -6,7 +6,6 @@ import columns from "./columns";
 import { Box, Card } from "@mui/material";
 import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-// import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
 import {
   ConfirmDynamicModal,
   OutlinedButton,
@@ -16,11 +15,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteOrganization, getOrganizations } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
-
-import JoinCompaniesModal from "../JoinCompaniesModal";
+import JoinCompanies from "../JoinCompanies";
 import { BannerWrapper } from "globalStyles/BannerWrapper";
-import OrganizationModal from "../organizationModal";
-import CreateOrganizationModal from "../CreateOrganizationModal/CreateOrganizationModal";
+import OrganizationEdit from "../OrganizationEdit";
+import OrganizationCreate from "../OrganizationCreate/OrganizationCreate";
 
 export default function OrganziationTable() {
   const [open, setOpen] = useState(false);
@@ -98,13 +96,13 @@ export default function OrganziationTable() {
         isLoading={isLoading}
         confirmBtnText="Delete"
       />
-      <OrganizationModal
+      <OrganizationEdit
         organization={organization}
         open={open}
         setOpen={setOpen}
       />
       {organizationModal && (
-        <JoinCompaniesModal
+        <JoinCompanies
           row={organization}
           open={organizationModal}
           setOpen={setOrganizationModal}
@@ -131,9 +129,9 @@ export default function OrganziationTable() {
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
                 Export CSV
               </OutlinedButton>
-              <CreateOrganizationModal>
+              <OrganizationCreate>
                 <PrimaryButton>Create Organization</PrimaryButton>
-              </CreateOrganizationModal>
+              </OrganizationCreate>
               {/* <CreateModelDrawer /> */}
             </Box>
           </Box>

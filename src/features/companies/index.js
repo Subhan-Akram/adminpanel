@@ -1,12 +1,12 @@
 import { Companies } from "./components";
-import JoinOrganizationModal from "./components/JoinOrganizationModal";
+import JoinOrganization from "./components/JoinOrganization";
 import { deleteCompany, getCompanies } from "./services";
 import CompanyReducer from "./slice";
 
 export {
   Companies,
   CompanyReducer,
-  JoinOrganizationModal,
+  JoinOrganization,
   deleteCompany,
   getCompanies,
 };

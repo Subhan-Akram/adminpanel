@@ -4,7 +4,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
-
 import {
   Box,
   Typography,
@@ -18,39 +17,20 @@ import {
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { joinOrganization } from "../../services";
-import { deleteOrganization, getOrganizations } from "features/organizations";
+import { joinCompanies } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
-
 import { JoinOrganizationWrapper } from "./style";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { AutoCompleteStyledPopperWrapper } from "globalStyles";
+import { deleteCompany, getCompanies } from "features/companies";
 
-const JoinOrganizationModal = ({
-  open,
-  setOpen,
-  row,
-  // availableOrganizations = [
-  //   {
-  //     name: "ThisWay Global",
-  //     extId: "4c829bca-5976-4812-900d-f14a088fbf07",
-  //     enabled: true,
-  //     subscriber: false,
-  //   },
-  //   {
-  //     name: "Alerois Corp",
-  //     extId: "353b66d6-7c9c-47d5-b0bc-3dd6fd61d73e",
-  //     enabled: true,
-  //     subscriber: false,
-  //   },
-  // ],
-}) => {
-  const { crudLoading } = useSelector((state) => state.companies);
-  const { organizations } = useSelector((state) => state.organizations);
+const JoinCompanies = ({ open, setOpen, row }) => {
+  const { crudLoading } = useSelector((state) => state.organizations);
+  const { companies } = useSelector((state) => state.companies);
   const dispatch = useDispatch();
 
   const [selectedOrganization, setSelectedOrganization] = useState(
-    row?.organizations
+    row?.companies
   );
 
   const handleModal = (val) => {
@@ -61,10 +41,10 @@ const JoinOrganizationModal = ({
     const { extId } = row;
     const payload = {
       extId,
-      organizationExtIds: selectedOrganization.map((val) => val.extId),
+      companyExtIds: selectedOrganization.map((val) => val.extId),
     };
     const res = await dispatch(
-      joinOrganization({
+      joinCompanies({
         dispatch,
         payload,
       })
@@ -81,11 +61,10 @@ const JoinOrganizationModal = ({
     }
   };
   useEffect(() => {
-    if (!organizations.length) {
-      dispatch(getOrganizations({ dispatch }));
+    if (!companies.length) {
+      dispatch(getCompanies({ dispatch }));
     }
   }, []);
-
   return (
     <JoinOrganizationWrapper
       open={open}
@@ -93,7 +72,7 @@ const JoinOrganizationModal = ({
         handleModal(false);
       }}
     >
-      <DialogTitle>Join Organization</DialogTitle>
+      <DialogTitle>Join Companies</DialogTitle>
       <IconButton
         aria-label="close"
         onClick={() => {
@@ -105,14 +84,14 @@ const JoinOrganizationModal = ({
       <DialogContent>
         <Box>
           <SullyTypography classNameProps={"modaltitle1 modal_title"}>
-            Add New Organization
+            Add New Companies
           </SullyTypography>
           <Autocomplete
             className="autocomplete_tags"
             multiple
             size="small"
             id="tags-outlined"
-            options={organizations}
+            options={companies}
             getOptionLabel={(option) => option.name}
             isOptionEqualToValue={(option, value) => option.name === value.name}
             value={selectedOrganization}
@@ -137,7 +116,7 @@ const JoinOrganizationModal = ({
               ),
             }}
             renderInput={(params) => (
-              <TextField {...params} placeholder="Add Organization" />
+              <TextField {...params} placeholder="Add Company" />
             )}
           />
         </Box>
@@ -158,4 +137,4 @@ const JoinOrganizationModal = ({
   );
 };
 
-export default JoinOrganizationModal;
+export default JoinCompanies;

@@ -13,7 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { organizationInitialValues } from "../../constants";
 
-const CreateOrganizationModal = ({ children }) => {
+const OrganizationCreate = ({ children }) => {
   const [open, setOpen] = React.useState(false);
   const formRef = useRef(null);
   const dispatch = useDispatch();
@@ -93,8 +93,8 @@ const CreateOrganizationModal = ({ children }) => {
   );
 };
 
-CreateOrganizationModal.propTypes = {
+OrganizationCreate.propTypes = {
   children: PropTypes.node,
 };
 
-export default CreateOrganizationModal;
+export default OrganizationCreate;

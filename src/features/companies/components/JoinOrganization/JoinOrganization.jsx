@@ -4,6 +4,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
+
 import {
   Box,
   Typography,
@@ -17,20 +18,38 @@ import {
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { joinCompanies } from "../../services";
+import { joinOrganization } from "../../services";
+import { deleteOrganization, getOrganizations } from "features/organizations";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import { JoinOrganizationWrapper } from "./style";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { AutoCompleteStyledPopperWrapper } from "globalStyles";
-import { deleteCompany, getCompanies } from "features/companies";
 
-const JoinCompaniesModal = ({ open, setOpen, row }) => {
-  const { crudLoading } = useSelector((state) => state.organizations);
-  const { companies } = useSelector((state) => state.companies);
+const JoinOrganization = ({
+  open,
+  setOpen,
+  row,
+  // availableOrganizations = [
+  //   {
+  //     name: "ThisWay Global",
+  //     extId: "4c829bca-5976-4812-900d-f14a088fbf07",
+  //     enabled: true,
+  //     subscriber: false,
+  //   },
+  //   {
+  //     name: "Alerois Corp",
+  //     extId: "353b66d6-7c9c-47d5-b0bc-3dd6fd61d73e",
+  //     enabled: true,
+  //     subscriber: false,
+  //   },
+  // ],
+}) => {
+  const { crudLoading } = useSelector((state) => state.companies);
+  const { organizations } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
 
   const [selectedOrganization, setSelectedOrganization] = useState(
-    row?.companies
+    row?.organizations
   );
 
   const handleModal = (val) => {
@@ -41,10 +60,10 @@ const JoinCompaniesModal = ({ open, setOpen, row }) => {
     const { extId } = row;
     const payload = {
       extId,
-      companyExtIds: selectedOrganization.map((val) => val.extId),
+      organizationExtIds: selectedOrganization.map((val) => val.extId),
     };
     const res = await dispatch(
-      joinCompanies({
+      joinOrganization({
         dispatch,
         payload,
       })
@@ -61,10 +80,11 @@ const JoinCompaniesModal = ({ open, setOpen, row }) => {
     }
   };
   useEffect(() => {
-    if (!companies.length) {
-      dispatch(getCompanies({ dispatch }));
+    if (!organizations.length) {
+      dispatch(getOrganizations({ dispatch }));
     }
   }, []);
+
   return (
     <JoinOrganizationWrapper
       open={open}
@@ -72,7 +92,7 @@ const JoinCompaniesModal = ({ open, setOpen, row }) => {
         handleModal(false);
       }}
     >
-      <DialogTitle>Join Companies</DialogTitle>
+      <DialogTitle>Join Organization</DialogTitle>
       <IconButton
         aria-label="close"
         onClick={() => {
@@ -84,14 +104,14 @@ const JoinCompaniesModal = ({ open, setOpen, row }) => {
       <DialogContent>
         <Box>
           <SullyTypography classNameProps={"modaltitle1 modal_title"}>
-            Add New Companies
+            Add New Organization
           </SullyTypography>
           <Autocomplete
             className="autocomplete_tags"
             multiple
             size="small"
             id="tags-outlined"
-            options={companies}
+            options={organizations}
             getOptionLabel={(option) => option.name}
             isOptionEqualToValue={(option, value) => option.name === value.name}
             value={selectedOrganization}
@@ -116,7 +136,7 @@ const JoinCompaniesModal = ({ open, setOpen, row }) => {
               ),
             }}
             renderInput={(params) => (
-              <TextField {...params} placeholder="Add Company" />
+              <TextField {...params} placeholder="Add Organization" />
             )}
           />
         </Box>
@@ -137,4 +157,4 @@ const JoinCompaniesModal = ({ open, setOpen, row }) => {
   );
 };
 
-export default JoinCompaniesModal;
+export default JoinOrganization;

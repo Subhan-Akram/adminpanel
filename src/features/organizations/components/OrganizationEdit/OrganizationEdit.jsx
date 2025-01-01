@@ -14,7 +14,7 @@ import { triggerAlert } from "../../../../slice/alertSlice";
 import OrganizationForm from "../OrganizationForm";
 import CloseIcon from "@mui/icons-material/Close";
 
-const OrganizationModal = ({ open, setOpen, organization }) => {
+const OrganizationEdit = ({ open, setOpen, organization }) => {
   const formRef = useRef(null);
   const { crudLoading } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
@@ -85,11 +85,11 @@ const OrganizationModal = ({ open, setOpen, organization }) => {
   );
 };
 
-OrganizationModal.propTypes = {
+OrganizationEdit.propTypes = {
   children: PropTypes.node,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   type: PropTypes.string,
 };
 
-export default OrganizationModal;
+export default OrganizationEdit;
