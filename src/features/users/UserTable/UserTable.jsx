@@ -153,7 +153,6 @@ export default function UsersTable() {
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "12px",
-                // width: "200px",
               }}
             >
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
@@ -166,19 +165,9 @@ export default function UsersTable() {
               >
                 Create User
               </PrimaryButton>
-              {/* <CreateModelDrawer /> */}
             </Box>
           </Box>
         </BannerWrapper>
-        {/* <Box className="card_header">
-            <SullyTypography classNameProps={"modaltitle1"}>
-              All Users
-            </SullyTypography>
-            <SearchBar
-              placeholder="Search By Email"
-              handleAction={handleSearch}
-            />
-          </Box> */}
         <Table
           CustomToolbar={CustomToolbar}
           showTableSearch={true}

@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 
-export const ModelTableWrapper = styled(Box)`
+export const CompaniesTableWrapper = styled(Box)`
   width: 100% !important;
   margin: auto auto;
   align-items: center;

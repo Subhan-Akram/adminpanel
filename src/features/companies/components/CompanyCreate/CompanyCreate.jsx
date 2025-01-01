@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -12,6 +11,7 @@ import { triggerAlert } from "../../../../slice/alertSlice";
 import { createCompany } from "../../services";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
+import { CompanyCreateWrapper } from "./style";
 const CreateCompanyModal = ({ children }) => {
   const [open, setOpen] = React.useState(false);
   const formRef = useRef(null);
@@ -51,7 +51,7 @@ const CreateCompanyModal = ({ children }) => {
       >
         {children}
       </div>
-      <Dialog
+      <CompanyCreateWrapper
         open={open}
         onClose={() => {
           handleModal(false);
@@ -87,7 +87,7 @@ const CreateCompanyModal = ({ children }) => {
             Submit
           </PrimaryButton>
         </DialogActions>
-      </Dialog>
+      </CompanyCreateWrapper>
     </React.Fragment>
   );
 };

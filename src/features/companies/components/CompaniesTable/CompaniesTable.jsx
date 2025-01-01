@@ -1,24 +1,21 @@
-/* eslint-disable no-unused-vars */
-import { ModelTableWrapper } from "./style";
+import { CompaniesTableWrapper } from "./style";
 import Table from "../../../../components/Table";
 import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import columns from "./columns";
-import { Box, Card } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-// import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
 import {
   ConfirmDynamicModal,
   OutlinedButton,
   PrimaryButton,
-  SearchBar,
   SullyTypography,
 } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCompany } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
-import CreateCompanyModal from "../CreateCompanyModal";
-import CompanyModal from "../CompanyModal";
+import CompanyCreate from "../CompanyCreate";
+import CompanyModal from "../CompanyEdit";
 import JoinOrganizationModal from "../JoinOrganizationModal";
 import { BannerWrapper } from "globalStyles/BannerWrapper";
 
@@ -45,7 +42,6 @@ export default function CompaniesTable() {
         All Companies
       </SullyTypography>
       <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
-        {/* <GridToolbarExport /> */}
         <GridToolbarQuickFilter placeholder="Search Companies" />
       </Box>
     </GridToolbarContainer>
@@ -104,7 +100,7 @@ export default function CompaniesTable() {
         />
       )}
 
-      <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
+      <CompaniesTableWrapper sx={{ height: 400, width: "100%" }}>
         <BannerWrapper>
           <SullyTypography
             sx={{ fontSize: "1.5rem" }}
@@ -118,16 +114,14 @@ export default function CompaniesTable() {
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "12px",
-                // width: "200px",
               }}
             >
               <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
                 Export CSV
               </OutlinedButton>
-              <CreateCompanyModal>
+              <CompanyCreate>
                 <PrimaryButton>Create Company</PrimaryButton>
-              </CreateCompanyModal>
-              {/* <CreateModelDrawer /> */}
+              </CompanyCreate>
             </Box>
           </Box>
         </BannerWrapper>
@@ -141,7 +135,7 @@ export default function CompaniesTable() {
             handleOrgnization,
           })}
         />
-      </ModelTableWrapper>
+      </CompaniesTableWrapper>
     </>
   );
 }

@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useRef } from "react";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -13,8 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCompany } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import CloseIcon from "@mui/icons-material/Close";
+import { CompanyEditWrapper } from "./style";
 
-const CompanyModal = ({ open, setOpen, company }) => {
+const CompanyEdit = ({ open, setOpen, company }) => {
   const formRef = useRef(null);
   const { crudLoading } = useSelector((state) => state.companies);
   const dispatch = useDispatch();
@@ -42,54 +40,52 @@ const CompanyModal = ({ open, setOpen, company }) => {
   };
 
   return (
-    <React.Fragment>
-      <Dialog
-        open={open}
-        onClose={() => {
+    <CompanyEditWrapper
+      open={open}
+      onClose={() => {
+        handleModal(false);
+      }}
+    >
+      <DialogTitle>{"Edit Company"}</DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={() => {
           handleModal(false);
         }}
       >
-        <DialogTitle>{"Edit Company"}</DialogTitle>
-        <IconButton
-          aria-label="close"
+        <CloseIcon />
+      </IconButton>
+      <DialogContent>
+        <Box sx={{ marginTop: "1rem" }}>
+          <CompanyForm
+            isEdit={true}
+            ref={formRef}
+            initialValues={company}
+            handleSubmit={handleSubmit}
+          />
+        </Box>
+      </DialogContent>
+      <DialogActions>
+        <OutlinedButton
           onClick={() => {
             handleModal(false);
           }}
         >
-          <CloseIcon />
-        </IconButton>
-        <DialogContent>
-          <Box sx={{ marginTop: "1rem" }}>
-            <CompanyForm
-              isEdit={true}
-              ref={formRef}
-              initialValues={company}
-              handleSubmit={handleSubmit}
-            />
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <OutlinedButton
-            onClick={() => {
-              handleModal(false);
-            }}
-          >
-            Cancel
-          </OutlinedButton>
-          <PrimaryButton isLoading={crudLoading} onClick={handleFormSubmit}>
-            Save
-          </PrimaryButton>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+          Cancel
+        </OutlinedButton>
+        <PrimaryButton isLoading={crudLoading} onClick={handleFormSubmit}>
+          Save
+        </PrimaryButton>
+      </DialogActions>
+    </CompanyEditWrapper>
   );
 };
 
-CompanyModal.propTypes = {
+CompanyEdit.propTypes = {
   children: PropTypes.node,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   type: PropTypes.string,
 };
 
-export default CompanyModal;
+export default CompanyEdit;
