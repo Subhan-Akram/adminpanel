@@ -1,25 +1,14 @@
-import { DeleteOutline } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import BusinessIcon from "@mui/icons-material/Business";
-import EditIcon from "@mui/icons-material/Edit";
-import { Chip, DropDown } from "../../../../components";
+
+import { DotIcon } from "sullyIcons";
+import { Chip, DropDown } from "components";
 import { TagsGroupStyle } from "globalStyles";
-const columns = ({ handleView, setDeletePopover, handleOrgnization }) => [
-  // { field: "id", headerName: "ID", width: 90 },
+import { companyTableActions } from "features/companies/constants";
+const columns = ({ handleDrawer, setDeleteCompany }) => [
   {
     field: "name",
     headerName: "Name",
     width: 200,
-    alignItems: "center",
-    renderCell: (params) => {
-      return (
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <span style={{ fontWeight: 500, width: "120px" }}>
-            {params.row.name}
-          </span>
-        </Box>
-      );
-    },
   },
   {
     field: "subscriber",
@@ -47,7 +36,7 @@ const columns = ({ handleView, setDeletePopover, handleOrgnization }) => [
       return (
         <>
           <TagsGroupStyle>
-            {[...row?.organizations].map(({ name }, index) => (
+            {row?.organizations.map(({ name }, index) => (
               <Chip classNameProps="more_chips" key={index} label={name} />
             ))}
           </TagsGroupStyle>
@@ -64,32 +53,11 @@ const columns = ({ handleView, setDeletePopover, handleOrgnization }) => [
     cellClassName: "actions",
     renderCell: ({ row }) => (
       <DropDown
-        width={"170px"}
         className="medium"
-        menuItems={[
-          {
-            label: "Edit",
-            icon: <EditIcon />,
-            onClick: () => {
-              handleView(row);
-            },
-          },
-          {
-            label: "Join Organization",
-            icon: <BusinessIcon />,
-            onClick: () => {
-              handleOrgnization(row);
-            },
-          },
-          {
-            label: "Delete",
-            icon: <DeleteOutline />,
-            onClick: (e) => {
-              setDeletePopover({ isConfirmModalOpen: true, value: row });
-            },
-          },
-        ]}
-      />
+        menuItems={companyTableActions({ row, handleDrawer, setDeleteCompany })}
+      >
+        <DotIcon />
+      </DropDown>
     ),
   },
 ];

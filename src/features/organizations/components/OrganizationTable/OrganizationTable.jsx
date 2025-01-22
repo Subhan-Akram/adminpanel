@@ -1,152 +1,111 @@
-/* eslint-disable no-unused-vars */
-import { ModelTableWrapper } from "./style";
-import Table from "../../../../components/Table";
-import { GridToolbarContainer, GridToolbarQuickFilter } from "@mui/x-data-grid";
-import columns from "./columns";
-import { Box, Card } from "@mui/material";
+import { OrganziationTableWrapper } from "./style";
+import { columns } from "features/organizations/constants";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import {
-  ConfirmDynamicModal,
+  Banner,
+  ConfirmationModal,
   OutlinedButton,
-  PrimaryButton,
   SullyTypography,
-} from "../../../../components";
+  Table,
+  TableToolbar,
+} from "components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrganization, getOrganizations } from "../../services";
-import { triggerAlert } from "../../../../slice/alertSlice";
+import {
+  deleteOrganization as deleteOrganizationAction,
+  getOrganizations,
+} from "../../services";
 import JoinCompanies from "../JoinCompanies";
-import { BannerWrapper } from "globalStyles/BannerWrapper";
 import OrganizationEdit from "../OrganizationEdit";
-import OrganizationCreate from "../OrganizationCreate/OrganizationCreate";
+import OrganizationCreate from "../OrganizationCreate";
 
 export default function OrganziationTable() {
-  const [open, setOpen] = useState(false);
-  const [organizationModal, setOrganizationModal] = useState(false);
-  const [deletePopover, setDeletePopover] = useState({
-    isConfirmModalOpen: false,
-    value: {},
-  });
-  const { organizations, isLoading } = useSelector(
-    (state) => state.organizations
-  );
   const [organization, setOrganization] = useState({});
-  const dispatch = useDispatch();
-  const CustomToolbar = () => (
-    <GridToolbarContainer
-      sx={{
-        padding: "10px",
-        display: "flex",
-        justifyContent: "space-between",
-        gap: "10px",
-      }}
-    >
-      <SullyTypography classNameProps={"modaltitle1"}>
-        All Organization
-      </SullyTypography>
-      <Box sx={{ display: "flex", justifyContent: "flex-start", gap: "10px" }}>
-        <GridToolbarQuickFilter placeholder="Search Organizations" />
-      </Box>
-    </GridToolbarContainer>
+  const [edit, setEdit] = useState(false);
+  const [joinCompaniesModal, setJoinCompaniesModal] = useState(false);
+  const [isDeleteOrganization, setIsDeleteOrganization] = useState(false);
+  const { name, extId } = organization;
+  const { organizations, isLoading, crudLoading } = useSelector(
+    (state) => state.organizations,
   );
 
-  const handleDelete = async () => {
-    const { value } = deletePopover;
-    const { payload } = await dispatch(
-      deleteOrganization({ dispatch, extId: value.extId })
-    );
-    if (payload) {
-      dispatch(
-        triggerAlert({
-          title: "Success",
-          text: "Model Deleted Successfully",
-          alertType: "success",
-        })
-      );
-      setDeletePopover({ isConfirmModalOpen: false, value: {} });
-    }
+  const dispatch = useDispatch();
+  const Toolbar = () => (
+    <TableToolbar
+      placeholder={"Search Organizations"}
+      title=" All Organizations"
+    />
+  );
+
+  const handleDelete = () => {
+    dispatch(deleteOrganizationAction({ dispatch, extId }))
+      .unwrap()
+      .then(() => {
+        setIsDeleteOrganization(false);
+      });
   };
-  const handleView = (row) => {
+
+  const onDropDownChange = (row, type) => {
     setOrganization(row);
-    setOpen(true);
+    if (type === "edit") return setEdit({ isEdit: true, organization: row });
+    if (type === "joinCompanies") return setJoinCompaniesModal(true);
+    if (type === "delete") return setIsDeleteOrganization(true);
   };
-  const handleOrgnization = (row) => {
-    setOrganization(row);
-    setOrganizationModal(true);
-  };
+
   useEffect(() => {
     dispatch(getOrganizations({ dispatch }));
-  }, []);
+  }, [dispatch]);
   return (
     <>
-      <ConfirmDynamicModal
-        isConfirmModalOpen={deletePopover.isConfirmModalOpen}
+      <ConfirmationModal
+        isConfirmModalOpen={isDeleteOrganization}
         handleSubmit={handleDelete}
-        setIsConfirmModalOpen={setDeletePopover}
-        title={`Delete - ${deletePopover?.value?.name || ""}`}
+        setIsConfirmModalOpen={setIsDeleteOrganization}
+        title={`Delete - ${name || ""}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
             Are you sure you want to delete{" "}
             <SullyTypography variant="span" classNameProps="model_name">
-              {deletePopover?.value?.name || ""}
+              {name || ""}
             </SullyTypography>{" "}
             from system ?
           </SullyTypography>
         }
-        isLoading={isLoading}
+        isLoading={crudLoading}
         confirmBtnText="Delete"
       />
       <OrganizationEdit
         organization={organization}
-        open={open}
-        setOpen={setOpen}
+        edit={edit}
+        setEdit={setEdit}
       />
-      {organizationModal && (
+      {joinCompaniesModal && (
         <JoinCompanies
           row={organization}
-          open={organizationModal}
-          setOpen={setOrganizationModal}
+          open={joinCompaniesModal}
+          setOpen={setJoinCompaniesModal}
         />
       )}
 
-      <ModelTableWrapper sx={{ height: 400, width: "100%" }}>
-        <BannerWrapper>
-          <SullyTypography
-            sx={{ fontSize: "1.5rem" }}
-            classNameProps={"medium_title"}
-          >
-            Organization List
-          </SullyTypography>
-          <Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-start",
-                gap: "12px",
-                // width: "200px",
-              }}
-            >
-              <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
-                Export CSV
-              </OutlinedButton>
-              <OrganizationCreate>
-                <PrimaryButton>Create Organization</PrimaryButton>
-              </OrganizationCreate>
-              {/* <CreateModelDrawer /> */}
-            </Box>
+      <OrganziationTableWrapper>
+        <Banner text={"Organizations"}>
+          <Box className="btn_group">
+            <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
+              Export CSV
+            </OutlinedButton>
+            <OrganizationCreate />
           </Box>
-        </BannerWrapper>
+        </Banner>
         <Table
           isLoading={isLoading}
           rows={organizations}
-          CustomToolbar={CustomToolbar}
+          CustomToolbar={Toolbar}
           columns={columns({
-            handleView,
-            setDeletePopover,
-            handleOrgnization,
+            onDropDownChange,
           })}
         />
-      </ModelTableWrapper>
+      </OrganziationTableWrapper>
     </>
   );
 }

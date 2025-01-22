@@ -1,5 +1,15 @@
-import { drawerWidth, navbarHeight } from "./drawerAndNavbarHeight";
+import {
+  drawerWidth,
+  fullDrawerWidth,
+  navbarHeight,
+} from "./drawerAndNavbarHeight";
 import labelLookup from "./labelLookup";
 import sideBarOptions from "./sideBarOptions";
 
-export { drawerWidth, navbarHeight, sideBarOptions, labelLookup };
+export {
+  drawerWidth,
+  navbarHeight,
+  sideBarOptions,
+  labelLookup,
+  fullDrawerWidth,
+};

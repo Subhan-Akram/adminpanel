@@ -4,9 +4,10 @@ import {
   drawerWidth,
   fullDrawerWidth,
 } from "../constants/drawerAndNavbarHeight";
-import { borderRadius, display, fontSize } from "@mui/system";
 
-export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
+export const MainContent = styled(Box, {
+  shouldForwardProp: (props) => props !== "openSidebar",
+})(({ theme, openSidebar }) => ({
   position: "relative",
   zIndex: "100 !important",
   transition: theme.transitions.create(["width", "margin"], {
@@ -69,6 +70,8 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
   },
   "@media screen and (max-width:1024px)": {
     zIndex: "60 !important",
+    width: "100%",
+    marginLeft: "0",
     "& .main_container": {
       height: "auto",
     },
@@ -76,6 +79,9 @@ export const MainContent = styled(Box)(({ theme, openSidebar }) => ({
       marginTop: "34px",
       paddingLeft: "24px",
       paddingRight: "24px",
+    },
+    "& .toggle_icon": {
+      display: "none",
     },
   },
   "@media screen and (max-width:930px)": {

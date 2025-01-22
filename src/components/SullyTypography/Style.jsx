@@ -1,4 +1,3 @@
-import { fontWeight } from "@mui/system";
 import "../../fonts/fonts.css";
 import { styled, Typography } from "@mui/material";
 
@@ -28,6 +27,11 @@ export const TypographyWrapper = styled(Typography)(() => ({
     color: "#2DC653",
     fontSize: "24px",
     fontWeight: "500px",
+  },
+  "&.label": {
+    fontSize: "14px",
+    fontFamily: "satoshi",
+    fontWeight: "500",
   },
   "&.sub_title_2_regular": {
     color: "var(--text-secondary)",
@@ -313,6 +317,7 @@ export const TypographyWrapper = styled(Typography)(() => ({
   },
   "&.card_title_3": {
     fontWeight: "400",
+    fontSize: "14px",
   },
   "&.line-height-22": { lineHeight: "22px" },
   "&.button_primary_text": {
@@ -323,6 +328,12 @@ export const TypographyWrapper = styled(Typography)(() => ({
     lineHeight: "20px",
   },
   // styles
+  "&.trim_url": {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "300px",
+  },
   "&.text_underline": {
     textDecoration: "underline",
     textUnderlineOffset: "4px",
@@ -341,20 +352,6 @@ export const TypographyWrapper = styled(Typography)(() => ({
   "&.bold-500": { fontWeight: 500 },
   "&.bold-600": { fontWeight: 600 },
   //    colors
-  "&.text-primary": { color: "var(--primary-text)" },
-  "&.text-secondary": {},
-  "&.text-primary-1": { color: "var(--primary-color-1)" },
-  "&.text-primary-2": {},
-  "&.text-primary-6": { color: "var(--primary-color-6)" },
-  "&.text-primary-5": { color: "var(--primary-color-5)" },
-  "&.text-primary-8": { color: "var(--primary-color-8)" },
-  "&.text-primary-10": { color: "var(--primary-color-10)" },
-  "&.text-primary-15": { color: "var(--primary-color-15)" },
-  "&.text-primary-19": { color: "var(--primary-color-19)" },
-  "&.text-primary-16": { color: "var(--primary-color-16)" },
-  "&.text-primary-3": { color: "var(--primary-color-3)" },
-  "&.text-primary-17": { color: "var(--primary-color-17)" },
-  "&.text-primary-21": { color: "var(--primary-color-21)" },
   "@media screen and (max-width:1024px)": {
     "&.card_title_1": {
       fontSize: "16px",

@@ -4,11 +4,13 @@ import {
   getCompanies,
   updateCompany,
   deleteCompany,
-  joinOrganization,
+  addOrganization,
+  getOrganizations,
 } from "../services";
 
 const initialState = {
   companies: [],
+  organizations: [],
   isLoading: false,
   crudLoading: false,
   error: "",
@@ -52,7 +54,7 @@ export const slice = createSlice({
         const company = action.payload;
         state.crudLoading = false;
         const findIndex = state.companies.findIndex(
-          (val) => val.extId === company.extId
+          (val) => val.extId === company.extId,
         );
         state.companies[findIndex] = company;
       })
@@ -60,33 +62,45 @@ export const slice = createSlice({
         state.crudLoading = false;
       })
       .addCase(deleteCompany.pending, (state) => {
-        state.isLoading = true;
+        state.crudLoading = true;
         state.error = null;
       })
       .addCase(deleteCompany.fulfilled, (state, action) => {
         const company = action.payload;
         state.companies = state.companies.filter(
-          (val) => val.extId !== company.extId
+          (val) => val.extId !== company.extId,
         );
-        state.isLoading = false;
+        state.crudLoading = false;
       })
       .addCase(deleteCompany.rejected, (state) => {
-        state.isLoading = false;
+        state.crudLoading = false;
       })
-      .addCase(joinOrganization.pending, (state) => {
+      .addCase(addOrganization.pending, (state) => {
         state.crudLoading = true;
         state.error = null;
       })
-      .addCase(joinOrganization.fulfilled, (state, action) => {
+      .addCase(addOrganization.fulfilled, (state, action) => {
         const company = action.payload;
         state.crudLoading = false;
         const findIndex = state.companies.findIndex(
-          (val) => val.extId === company.extId
+          (val) => val.extId === company.extId,
         );
         state.companies[findIndex] = company;
       })
-      .addCase(joinOrganization.rejected, (state) => {
+      .addCase(addOrganization.rejected, (state) => {
         state.crudLoading = false;
+      })
+      .addCase(getOrganizations.pending, (state) => {
+        state.organizationLoading = true;
+        state.error = null;
+      })
+      .addCase(getOrganizations.fulfilled, (state, action) => {
+        const organizations = action.payload;
+        state.organizationLoading = false;
+        state.organizations = organizations;
+      })
+      .addCase(getOrganizations.rejected, (state) => {
+        state.organizationLoading = false;
       });
   },
 });

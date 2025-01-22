@@ -5,19 +5,19 @@ export const FormWrapper = styled(Box, {
 })`
   display: flex;
   flex-direction: column;
-  gap: 2;
+  align-items: space-between;
+  justify-content: space-between;
+  height: ${({ isEdit }) => `calc(100vh - ${isEdit ? "79px" : "65px"})`};
   & .form_container {
     overflow: auto;
-    height: ${({ isEdit }) => `calc(100vh - ${isEdit ? "151px" : "137px"})`};
-    border-bottom: 1px solid var(--border-1);
-    padding: 16px 24px;
+    padding: 24px;
     padding-top: 0;
-    margin-top: 0rem;
+    margin-top: 0;
   }
   & .rating_box {
     & .MuiRating-root {
       label {
-        font-size: 20px !important;
+        font-size: 22px !important;
         margin-top: 4px;
       }
     }
@@ -50,6 +50,7 @@ export const FormWrapper = styled(Box, {
     justify-content: flex-end;
     gap: 12px;
     padding: 1rem 24px;
+    border-top: 1px solid var(--border-1);
   }
   @media screen and (max-width: 960px) {
     & .rating_box {

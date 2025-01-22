@@ -1,19 +1,11 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Fade from "@mui/material/Fade";
 import OutlinedButton from "components/OutlinedButton";
-import { DotIcon } from "sullyIcons";
 import { DropdownWrapper, StyledMenu, StyledMenuItem } from "./style";
 import PropTypes from "prop-types";
-import SullyTypography from "../SullyTypography";
 
-export default function DropDown({
-  menuItems = [],
-  icon = <DotIcon />,
-  className,
-  width,
-  children,
-}) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export default function DropDown({ menuItems, className, children }) {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -36,10 +28,8 @@ export default function DropDown({
         variant="contained"
       >
         {children}
-        {icon}
       </OutlinedButton>
       <StyledMenu
-        width={width}
         className={className}
         id="fade-menu"
         MenuListProps={{
@@ -70,5 +60,4 @@ DropDown.propTypes = {
   icon: PropTypes.node,
   menuItems: PropTypes.array,
   className: PropTypes.string,
-  width: PropTypes.any,
 };

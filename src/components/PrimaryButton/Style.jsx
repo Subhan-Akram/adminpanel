@@ -6,7 +6,7 @@ export const PrimaryButtonWrapper = styled(Button, {
 })(() => {
   return {
     fontFamily: "satoshi",
-    boxSizing: "border-box !important",
+    boxSizing: "border-box",
     height: "40px",
     fontSize: "16px",
     background: "var(--brand-button-bg)",
@@ -16,9 +16,6 @@ export const PrimaryButtonWrapper = styled(Button, {
     fontWeight: "500 !important",
     borderRadius: "8px",
     boxShadow: "none",
-    display: "inline-flex", // Use inline-flex instead of flex
-    alignItems: "center", // Keep this line to vertically center the content
-    justifyContent: "center",
     gap: "12px",
     padding: "8px 16px !important",
     "&:hover": {

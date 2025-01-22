@@ -7,6 +7,13 @@ const createOrganization = createAsyncThunk(
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
       const { data } = await createOrganizationApi(payload);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          text: "Organization Created Successfully",
+          alertType: "success",
+        })
+      );
       return data;
     } catch (error) {
       dispatch(

@@ -3,7 +3,7 @@ import {
   deleteCompany,
   getCompanies,
   updateCompany,
-  joinOrganization,
+  addOrganization,
 } from "./CompanyController";
 
 export {
@@ -11,5 +11,5 @@ export {
   deleteCompany,
   getCompanies,
   updateCompany,
-  joinOrganization,
+  addOrganization,
 };

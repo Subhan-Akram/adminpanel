@@ -1,5 +1,4 @@
 import { FormikProvider, useFormik } from "formik";
-import * as Yup from "yup";
 import {
   TextField,
   Typography,
@@ -23,31 +22,12 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import FeatureEditor from "../FeatureEditor";
-
-// Validation Schema
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  description: Yup.string().required("Description is required"),
-  ssbxCode: Yup.string().required("SSBX Code is required"),
-  modelCard: Yup.string().required("Model Card is required"),
-  originUrl: Yup.string()
-    .url("Invalid URL format")
-    .required("Origin URL is required"),
-  logoUrl: Yup.string()
-    .url("Invalid URL format")
-    .required("Logo URL is required"),
-  rating: Yup.number()
-    .min(1, "Rating must be at least 1")
-    .max(5, "Rating must not exceed 5")
-    .required("Rating is required"),
-  createdBy: Yup.string().required("Created By is required"),
-  license: Yup.string(),
-});
+import ModelFeaturesForm from "./ModelFeaturesForm";
+import { modelFormValidationSchema } from "features/models/constants";
 
 function ModelForm({
   initialValues,
-  handleSubmit,
+  handleSubmit: apiHandleSubmit,
   isLoading,
   isEdit = false,
   setType,
@@ -58,22 +38,26 @@ function ModelForm({
 
   const formik = useFormik({
     initialValues,
-    validationSchema,
+    validationSchema: modelFormValidationSchema,
     onSubmit: (values, { setSubmitting }) => {
-      handleSubmit(values);
+      apiHandleSubmit(values);
       setSubmitting(false);
     },
   });
+  const {
+    handleSubmit,
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    setFieldValue,
+  } = formik;
 
   return (
     <FormikProvider value={formik}>
-      <FormWrapper
-        component="form"
-        onSubmit={formik.handleSubmit}
-        isEdit={isEdit}
-      >
-        <Grid className="form_container" container spacing={2}>
-          {/* Name Field */}
+      <FormWrapper component="form" onSubmit={handleSubmit} isEdit={isEdit}>
+        <Grid className="form_container" container spacing={"24px"}>
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper>Name</InputLabelWrapper>
@@ -83,16 +67,15 @@ function ModelForm({
                 placeholder="Model Name"
                 id="name"
                 name="name"
-                value={formik.values.name}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.name && Boolean(formik.errors.name)}
-                helperText={formik.touched.name && formik.errors.name}
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.name && Boolean(errors.name)}
+                helperText={touched.name && errors.name}
               />
             </FormControl>
           </Grid>
 
-          {/* SSBX Code Field */}
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper>SSBX Code</InputLabelWrapper>
@@ -102,18 +85,15 @@ function ModelForm({
                 placeholder="SSBX Code"
                 id="ssbxCode"
                 name="ssbxCode"
-                value={formik.values.ssbxCode}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.ssbxCode && Boolean(formik.errors.ssbxCode)
-                }
-                helperText={formik.touched.ssbxCode && formik.errors.ssbxCode}
+                value={values.ssbxCode}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.ssbxCode && Boolean(errors.ssbxCode)}
+                helperText={touched.ssbxCode && errors.ssbxCode}
               />
             </FormControl>
           </Grid>
 
-          {/* Model Card Field */}
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper
@@ -128,18 +108,15 @@ function ModelForm({
                 placeholder="Model Card"
                 id="modelCard"
                 name="modelCard"
-                value={formik.values.modelCard}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.modelCard && Boolean(formik.errors.modelCard)
-                }
-                helperText={formik.touched.modelCard && formik.errors.modelCard}
+                value={values.modelCard}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.modelCard && Boolean(errors.modelCard)}
+                helperText={touched.modelCard && errors.modelCard}
               />
             </FormControl>
           </Grid>
 
-          {/* Origin URL Field */}
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper
@@ -154,18 +131,15 @@ function ModelForm({
                 variant="outlined"
                 id="originUrl"
                 name="originUrl"
-                value={formik.values.originUrl}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.originUrl && Boolean(formik.errors.originUrl)
-                }
-                helperText={formik.touched.originUrl && formik.errors.originUrl}
+                value={values.originUrl}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.originUrl && Boolean(errors.originUrl)}
+                helperText={touched.originUrl && errors.originUrl}
               />
             </FormControl>
           </Grid>
 
-          {/* Logo URL Field */}
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper
@@ -180,16 +154,15 @@ function ModelForm({
                 variant="outlined"
                 id="logoUrl"
                 name="logoUrl"
-                value={formik.values.logoUrl}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.logoUrl && Boolean(formik.errors.logoUrl)}
-                helperText={formik.touched.logoUrl && formik.errors.logoUrl}
+                value={values.logoUrl}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.logoUrl && Boolean(errors.logoUrl)}
+                helperText={touched.logoUrl && errors.logoUrl}
               />
             </FormControl>
           </Grid>
 
-          {/* Created By Field */}
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabelWrapper
@@ -204,18 +177,15 @@ function ModelForm({
                 variant="outlined"
                 id="createdBy"
                 name="createdBy"
-                value={formik.values.createdBy}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.createdBy && Boolean(formik.errors.createdBy)
-                }
-                helperText={formik.touched.createdBy && formik.errors.createdBy}
+                value={values.createdBy}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.createdBy && Boolean(errors.createdBy)}
+                helperText={touched.createdBy && errors.createdBy}
               />
             </FormControl>
           </Grid>
 
-          {/* License Field */}
           <Grid item xs={12} md={12}>
             <FormControl fullWidth>
               <InputLabelWrapper
@@ -230,11 +200,11 @@ function ModelForm({
                 placeholder="License"
                 id="license"
                 name="license"
-                value={formik.values.license}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.license && Boolean(formik.errors.license)}
-                helperText={formik.touched.license && formik.errors.license}
+                value={values.license}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.license && Boolean(errors.license)}
+                helperText={touched.license && errors.license}
               />
             </FormControl>
           </Grid>
@@ -261,7 +231,7 @@ function ModelForm({
                 value={selectedTags}
                 onChange={(_, val) => {
                   setSelectedTags(val);
-                  formik.setFieldValue("tags", val);
+                  setFieldValue("tags", val);
                 }}
                 PopperComponent={(props) => (
                   <AutoCompleteStyledPopperWrapper
@@ -279,7 +249,6 @@ function ModelForm({
             </Grid>
           )}
 
-          {/* Rating Field */}
           <Grid item xs={12}>
             <Box className="rating_box">
               <Typography className="InputLabelWrapper_text" variant="body1">
@@ -288,19 +257,18 @@ function ModelForm({
               <Rating
                 size="large"
                 name="rating"
-                value={formik.values.rating}
-                onChange={(_, value) => formik.setFieldValue("rating", value)}
+                value={values.rating}
+                onChange={(_, value) => setFieldValue("rating", value)}
               />
               <Box className="rating_error">
-                {formik.touched.rating && formik.errors.rating && (
+                {touched.rating && errors.rating && (
                   <Typography variant="caption" color="error">
-                    {formik.errors.rating}
+                    {errors.rating}
                   </Typography>
                 )}
               </Box>
             </Box>
           </Grid>
-          {/* Description Field */}
 
           <Grid item xs={12} md={12}>
             <FormControl fullWidth>
@@ -312,18 +280,13 @@ function ModelForm({
                 placeholder="Description"
                 id="description"
                 name="description"
-                value={formik.values.description}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                value={values.description}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 multiline
                 rows={4}
-                error={
-                  formik.touched.description &&
-                  Boolean(formik.errors.description)
-                }
-                helperText={
-                  formik.touched.description && formik.errors.description
-                }
+                error={touched.description && Boolean(errors.description)}
+                helperText={touched.description && errors.description}
               />
             </FormControl>
           </Grid>
@@ -333,7 +296,7 @@ function ModelForm({
               <Typography className="InputLabelWrapper_text" variant="body1">
                 Features
               </Typography>
-              <FeatureEditor formik={formik} />
+              <ModelFeaturesForm formik={formik} />
             </Grid>
           )}
         </Grid>
@@ -341,9 +304,7 @@ function ModelForm({
         <Box className="form_buttons">
           <OutlinedButton
             onClick={() => {
-              {
-                isEdit ? setType("view") : setOpen(false);
-              }
+              isEdit ? setType("view") : setOpen(false);
             }}
             variant="contained"
             color="primary"

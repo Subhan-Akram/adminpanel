@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  getSearchModels,
   getModel,
   createModel,
   getAllModels,
@@ -46,7 +45,7 @@ export const slice = createSlice({
     removeSelectedModel: (state, action) => {
       const { payload } = action;
       state.selectedModels = state.selectedModels.filter(
-        (val) => val.extId !== payload
+        (val) => val.extId !== payload,
       );
     },
   },
@@ -84,28 +83,12 @@ export const slice = createSlice({
         const model = action.payload;
         state.crudLoading = false;
         const findModelIndex = state.models.findIndex(
-          (val) => val.extId === model.extId
+          (val) => val.extId === model.extId,
         );
         state.models[findModelIndex] = model;
       })
       .addCase(updateModel.rejected, (state) => {
         state.crudLoading = false;
-      })
-      .addCase(getSearchModels.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(getSearchModels.fulfilled, (state, action) => {
-        const { models, isModal } = action.payload;
-        state.isLoading = false;
-        if (isModal) {
-          state.modalModels = models;
-        } else {
-          state.models = models;
-        }
-      })
-      .addCase(getSearchModels.rejected, (state) => {
-        state.isLoading = false;
       })
       .addCase(getModel.pending, (state) => {
         state.isLoading = true;
@@ -132,16 +115,16 @@ export const slice = createSlice({
         state.crudLoading = false;
       })
       .addCase(getAllModelTags.pending, (state) => {
-        state.isLoading = true;
+        state.modelTagsLoading = true;
         state.error = null;
       })
       .addCase(getAllModelTags.fulfilled, (state, action) => {
         const tags = action.payload;
-        state.isLoading = false;
+        state.modelTagsLoading = false;
         state.tags = tags;
       })
       .addCase(getAllModelTags.rejected, (state) => {
-        state.isLoading = false;
+        state.modelTagsLoading = false;
       });
   },
 });

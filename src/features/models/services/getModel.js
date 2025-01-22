@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getModelById } from "apiTwg";
+import { getModelById } from "apis";
 import { triggerAlert } from "slice/alertSlice";
 
 const getModel = createAsyncThunk(

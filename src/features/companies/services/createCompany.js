@@ -7,6 +7,13 @@ const createCompany = createAsyncThunk(
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
       const { data } = await createCompanyApi(payload);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          text: "Company Created Successfully",
+          alertType: "success",
+        }),
+      );
       return data;
     } catch (error) {
       dispatch(
@@ -14,11 +21,11 @@ const createCompany = createAsyncThunk(
           title: "Api Failed",
           text: error?.message,
           alertType: "error",
-        })
+        }),
       );
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export default createCompany;

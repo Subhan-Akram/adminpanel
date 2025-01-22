@@ -4,7 +4,7 @@ export function createCompany(payload) {
   return axios.post("/admin/api/v1/company", payload);
 }
 
-export function joinOrganization(extId, organizationExtIds) {
+export function addOrganization(extId, organizationExtIds) {
   return axios.post(`/admin/api/v1/company/${extId}/join`, {
     organizationExtIds,
   });

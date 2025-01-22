@@ -7,6 +7,13 @@ const deleteUser = createAsyncThunk(
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
       const { data } = await deleteUserApi(payload);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          text: "User Deleted Successfully",
+          alertType: "success",
+        }),
+      );
       return data;
     } catch (error) {
       dispatch(
@@ -14,11 +21,11 @@ const deleteUser = createAsyncThunk(
           title: "Api Failed",
           text: error?.message,
           alertType: "error",
-        })
+        }),
       );
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export default deleteUser;

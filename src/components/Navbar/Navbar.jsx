@@ -1,44 +1,37 @@
 import { Box, IconButton } from "@mui/material";
 import { ProfileIcon } from "assets";
+import { Logout } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ToolBar, AppBar } from "./style";
-import SullyTypography from "../SullyTypography";
 import PropTypes from "prop-types";
 import { MoonIcon, SunIcon } from "sullyIcons";
 import { Logo } from "sullyIcons";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useDispatch, useSelector } from "react-redux";
-import { ThemeToggleBox, ThemeToggleContainer } from "../SideBar/style";
-import { setThemeMode } from "../../themeReducer/ThemeReducer";
-import { LogoText } from "../../assets";
-import DropDown from "../Dropdown";
-import useSignOut from "../../features/login/components/SignOut";
-import { Logout } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import { ThemeToggleBox, ThemeToggleContainer } from "./style";
+import { LogoText } from "assets";
+import { useSignOut } from "features/login";
+import { SullyTypography, DropDown } from "components";
 
 const Navbar = ({ openSidebar, setOpenSidebar }) => {
   const { mode } = useSelector((state) => state.theme);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { handleLogout } = useSignOut();
   const {
     user: { name },
   } = useSelector((state) => state.auth);
 
-  const handleToggle = () => {
-    setOpenSidebar((prevOpen) => !prevOpen);
-  };
+  const handleToggle = () => setOpenSidebar((prevOpen) => !prevOpen);
 
-  const handleNavigate = () => {
-    navigate("/");
-  };
+  const handleNavigate = () => navigate("/");
 
   return (
     <AppBar id="app_bar" position="fixed" open={openSidebar}>
       <ToolBar open={openSidebar}>
         <Box className="logoRoot">
           <Box className="logo_text" onClick={handleNavigate}>
-            {!openSidebar && <img src={LogoText} />}
+            {!openSidebar && <img alt="logo" src={LogoText} />}
           </Box>
           <IconButton className="tablet_toggle_btn" onClick={handleToggle}>
             <MenuIcon />
@@ -49,11 +42,7 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
         </Box>
         <Box className="profileRoot">
           <Box className="icon_text coint_point">
-            <ThemeToggleBox
-              onClick={() => {
-                // dispatch(setThemeMode(mode === "dark" ? "light" : "dark"));
-              }}
-            >
+            <ThemeToggleBox onClick={() => {}}>
               <ThemeToggleContainer mode={mode}>
                 <Box className="iconContainer-sun">
                   <SunIcon />
@@ -68,7 +57,6 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
           <Box className="icon_text drop_down_Box">
             <DropDown
               className={"show_only_icon "}
-              icon={null}
               menuItems={[
                 {
                   label: "Logout",

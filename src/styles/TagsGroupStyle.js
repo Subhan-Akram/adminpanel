@@ -3,7 +3,6 @@ import { Box, styled } from "@mui/material";
 const TagsGroupStyle = styled(Box)`
   display: flex;
   justify-content: flex-start;
-  /* flex-wrap: wrap; */
   overflow-x: auto;
   width: 100%;
   gap: 4px;
@@ -16,9 +15,7 @@ const TagsGroupStyle = styled(Box)`
     box-sizing: border-box;
     font-weight: 500;
     font-family: satoshi;
-    /* padding: 0 !important; */
-    height: 30px !important;
-    /* margin-top: -16px; */
+    height: 25px !important;
     background: var(--model-icon-bg) !important;
     border: 1px solid var(--model-icon-bg);
     color: var(--text-brand);

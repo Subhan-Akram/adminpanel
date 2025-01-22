@@ -1,7 +1,5 @@
-import { Compare } from "features/compare";
-
 const ComparisonPage = () => {
-  return <Compare />;
+  return <h1>Comparision page</h1>;
 };
 
 export default ComparisonPage;

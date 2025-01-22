@@ -1,16 +1,8 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
-
 import { useSelector } from "react-redux";
-import {
-  border,
-  borderRadius,
-  fontSize,
-  minWidth,
-  positions,
-  width,
-} from "@mui/system";
+
 const getDesignTokens = (mode) => {
   const theme = createTheme();
   return {
@@ -244,18 +236,16 @@ const getDesignTokens = (mode) => {
               textDecoration: "none",
               cursor: "pointer",
             },
-            // "& svg": {
-            //   fontSize: "16px",
-            //   "& path": {
-            //     fill: "var(--primary-1)",
-            //   },
-            // },
           },
         },
       },
       MuiAutocomplete: {
         styleOverrides: {
           root: {
+            "& .close_chip": {
+              color: "var(--tag-text-icon-selected) !important",
+              fontSize: "15px",
+            },
             "& .MuiAutocomplete-listbox": {
               background: "var(--surface-l1) !important",
             },
@@ -263,15 +253,12 @@ const getDesignTokens = (mode) => {
               border: "none",
               overflow: "hidden",
               height: "56px",
-              // paddingRight: "0 !important",
 
               background: "#080B11",
               displayu: "flex",
               justifyContent: "flex-start",
               gap: "10px",
               padding: "10px  0 !important",
-
-              // border:"1px solid red",
 
               "&:hover fieldset": {
                 border: "none",
@@ -299,7 +286,7 @@ const getDesignTokens = (mode) => {
               display: "none",
             },
             "& .MuiAutocomplete-tag": {
-              fontSize: "12px",
+              fontSize: "13px",
               fontWeight: "500",
               fontFamily: "satoshi",
               borderRadius: "30px",
@@ -333,16 +320,16 @@ const getDesignTokens = (mode) => {
           root: {
             border: "1px solid none",
             "&.Mui-focused fieldset": {
-              borderColor: "red", // Focused state border color
-              border: ".5px solid var(--border-2) !important", // Focused state border thickness
+              borderColor: "red",
+              border: ".5px solid var(--border-2) !important",
             },
-            width: "100%", // Full width
+            width: "100%",
             "&:hover fieldset": {
               border: "1px solid var(--border-2) !important",
             },
             "& .MuiOutlinedInput-root": {
               borderRadius: "4px", // Rounded corners
-              borderColor: "green !important", // Default border color
+              borderColor: "green !important",
             },
           },
         },
@@ -355,14 +342,14 @@ const getDesignTokens = (mode) => {
             // height: "38px",
             borderRadius: "4px",
             "& fieldset": {
-              borderColor: "var(--border-2)", // Default border color
+              borderColor: "var(--border-2)",
             },
             "&:hover fieldset": {
-              borderColor: "var(--border-2)", // Hover state border color
+              borderColor: "var(--border-2)",
             },
             "&.Mui-focused fieldset": {
-              borderColor: "var(--border-2)", // Focused state border color
-              borderWidth: "0.5px", // Custom border width
+              borderColor: "var(--border-2)",
+              borderWidth: "0.5px",
             },
           },
         },
@@ -370,7 +357,7 @@ const getDesignTokens = (mode) => {
       MuiCircularProgress: {
         styleOverrides: {
           root: {
-            color: "white", // Customize the color here
+            color: "white",
           },
         },
       },
@@ -389,20 +376,19 @@ const getDesignTokens = (mode) => {
         styleOverrides: {
           root: {
             fontSize: "14px",
-            // borderRadius: "4px",
 
             "&:not(:last-child)": {
               borderBottom: "1px solid var(--border-1)",
             },
             zIndex: 100,
             "&:hover": {
-              backgroundColor: "var(--surface-l1)", // Hover background color
+              backgroundColor: "var(--surface-l1)",
             },
             "&.Mui-selected": {
-              backgroundColor: "var(--surface-l1)", // Selected background color
+              backgroundColor: "var(--surface-l1)",
             },
             "&.Mui-selected:hover": {
-              backgroundColor: "var(--surface-l1)", // Selected hove
+              backgroundColor: "var(--surface-l1)",
             },
           },
         },
@@ -412,7 +398,7 @@ const getDesignTokens = (mode) => {
           root: {
             "& .MuiList-root": {
               padding: "0",
-              // border: "1px solid red",
+
               borderRadius: "4px",
             },
             "& .MuiPopover-paper": {
@@ -468,7 +454,8 @@ const getDesignTokens = (mode) => {
       MuiDialogContent: {
         styleOverrides: {
           root: {
-            padding: "16px 24px",
+            overflow: "hidden",
+            padding: "24px",
             minHeight: "120px",
           },
         },
@@ -513,9 +500,7 @@ const getDesignTokens = (mode) => {
       MuiAccordionSummary: {
         styleOverrides: {
           root: {
-            "&.Mui-expanded": {
-              // borderBottom: "0p",
-            },
+            "&.Mui-expanded": {},
             ".MuiAccordionSummary-content": {},
             "& .MuiAccordionSummary-expandIconWrapper": {},
           },
@@ -536,24 +521,23 @@ const getDesignTokens = (mode) => {
             background: "var(--surface-l0)",
             borderRadius: "8px",
             padding: "16px",
-            // .MuiDivier
           },
         },
       },
       MuiSwitch: {
         styleOverrides: {
           switchBase: {
-            color: "var(--surface-l4)", // Thumb color when unchecked
+            color: "var(--surface-l4)",
             "&.Mui-checked": {
-              color: "var(--green)", // Thumb color when checked
+              color: "var(--green)",
               "& + .MuiSwitch-track": {
                 opacity: "1",
-                backgroundColor: "#bdbdbd", // Track color when checked
+                backgroundColor: "#bdbdbd",
               },
             },
           },
           track: {
-            backgroundColor: "#bdbdbd", // Track color when unchecked
+            backgroundColor: "#bdbdbd",
             opacity: 1,
           },
         },

@@ -1,46 +1,27 @@
-import {
-  Box,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
+import { Box } from "@mui/material";
 import { Logo } from "sullyIcons";
 import { DrawerStyle, StyledList } from "./style";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { sideBarOptions } from "constants";
-import { useOutsideClick } from "hooks";
-import { useRef } from "react";
-import { LogoSign } from "../../assets";
-import useViewportWidth from "../../hooks/useViewportWidth";
+import { useOutsideClick, useViewportWidth } from "hooks";
+import React, { useRef } from "react";
+import { LogoSign } from "assets";
+import SidebarList from "components/SidebarList";
 
 const SideBar = ({ openSidebar, setOpenSidebar }) => {
   const sidebarRef = useRef();
+
   const width = useViewportWidth();
   useOutsideClick(sidebarRef, "app_bar", () => {
     if (openSidebar && width < 1025) setOpenSidebar(false);
   });
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/");
-  };
+  const handleNavigate = () => navigate("/");
 
-  const { pathname } = useLocation();
-  const getPath = () => {
-    if (pathname.includes("home")) {
-      return "";
-    } else {
-      return pathname.split("/")[1].replace("/", "");
-    }
-  };
   return (
     <DrawerStyle ref={sidebarRef} variant="permanent" open={openSidebar}>
-      {/* <Box className="toggle_icon">
-        <KeyboardArrowRightRoundedIcon />
-      </Box> */}
       <Box className="sidebar_header">
         {openSidebar ? (
           <Box
@@ -65,26 +46,24 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
         )}
       </Box>
       <StyledList open={openSidebar}>
-        {sideBarOptions.map(({ title, Icon, path, activeTabValue }) => (
-          <ListItem
-            className={activeTabValue === getPath() ? "listItemActive" : ""}
-            key={title}
-            disablePadding
-          >
-            <ListItemButton
-              onClick={() => {
-                navigate(`/${path}`);
-              }}
-            >
-              <ListItemIcon>{<Icon />}</ListItemIcon>
-              <ListItemText primary={title} />
-            </ListItemButton>
-          </ListItem>
+        {sideBarOptions.map((menuList) => (
+          <React.Fragment key={menuList.path}>
+            <SidebarList openSidebar={openSidebar} data={menuList} />
+            {menuList?.children?.map((subMenuList) => (
+              <SidebarList
+                key={subMenuList.path}
+                openSidebar={openSidebar}
+                subMenu={"subMenu"}
+                data={subMenuList}
+              />
+            ))}
+          </React.Fragment>
         ))}
       </StyledList>
     </DrawerStyle>
   );
 };
+
 SideBar.propTypes = {
   openSidebar: PropTypes.bool,
   setOpenSidebar: PropTypes.func,

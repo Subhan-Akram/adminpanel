@@ -1,15 +1,16 @@
 import {
-  getModelFeature,
-  createSingleModelSet,
   createModel,
   getModels,
   deleteModel,
   updateModel,
   addModelTags,
+  getModelTags,
+  getModelById,
 } from "./AiModelController";
+
 export {
-  getModelFeature,
-  createSingleModelSet,
+  getModelById,
+  getModelTags,
   createModel,
   getModels,
   deleteModel,

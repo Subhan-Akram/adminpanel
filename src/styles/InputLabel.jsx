@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { styled } from "@mui/material";
 
 const Label = ({ children, ...props }) => {

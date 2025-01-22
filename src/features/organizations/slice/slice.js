@@ -5,10 +5,12 @@ import {
   updateOrganization,
   deleteOrganization,
   joinCompanies,
+  getCompanies,
 } from "../services";
 
 const initialState = {
   organizations: [],
+  companies: [],
   isLoading: false,
   crudLoading: false,
   error: "",
@@ -87,6 +89,18 @@ export const slice = createSlice({
       })
       .addCase(joinCompanies.rejected, (state) => {
         state.crudLoading = false;
+      })
+      .addCase(getCompanies.pending, (state) => {
+        state.companiesLoading = true;
+        state.error = null;
+      })
+      .addCase(getCompanies.fulfilled, (state, action) => {
+        const companies = action.payload;
+        state.companiesLoading = false;
+        state.companies = companies;
+      })
+      .addCase(getCompanies.rejected, (state) => {
+        state.companiesLoading = false;
       });
   },
 });

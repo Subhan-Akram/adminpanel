@@ -1,6 +1,6 @@
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import { DashboardIcon, SettingIcon, IntegrationIcon } from "sullyIcons";
+import { DashboardIcon, IntegrationIcon } from "sullyIcons";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 const sideBarOptions = [
   {
@@ -25,18 +25,18 @@ const sideBarOptions = [
     activeTabValue: "users",
   },
   {
-    title: "Organizations",
-    path: "organizations",
-    Icon: CorporateFareIcon,
-    active: false,
-    activeTabValue: "organizations",
-  },
-  {
     title: "Companies",
     path: "companies",
     Icon: ApartmentIcon,
     active: false,
     activeTabValue: "companies",
+  },
+  {
+    title: "Organizations",
+    path: "organizations",
+    Icon: CorporateFareIcon,
+    active: false,
+    activeTabValue: "organizations",
   },
 ];
 

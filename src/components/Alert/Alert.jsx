@@ -22,8 +22,7 @@ const Alert = () => {
       dispatch(removeAlert());
     }, 1700);
     return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAlert]);
+  }, [isAlert, dispatch]);
 
   if (!isAlert) return null;
 

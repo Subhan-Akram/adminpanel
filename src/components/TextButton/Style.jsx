@@ -3,7 +3,7 @@ import { Button, styled } from "@mui/material";
 export const TextButtonWrapper = styled(Button)(() => {
   return {
     boxSizing: "border-box",
-    fontSize: "14px",
+    fontSize: "16px",
     color: "var(--text-button-icon)",
     textTransform: "capitalize",
     fontWeight: "500 !important",
@@ -18,7 +18,6 @@ export const TextButtonWrapper = styled(Button)(() => {
         fill: "var(--text-button-icon)",
       },
     },
-
     "&.lg_btn": {
       fontSize: "24px",
       fontFamily: "satoshi",

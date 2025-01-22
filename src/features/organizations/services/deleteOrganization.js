@@ -7,6 +7,13 @@ const deleteOrganization = createAsyncThunk(
   async ({ dispatch, extId }, { rejectWithValue }) => {
     try {
       const { data } = await deleteOrganizationApi(extId);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          text: "Organization Deleted Successfully",
+          alertType: "success",
+        })
+      );
       return data;
     } catch (error) {
       dispatch(

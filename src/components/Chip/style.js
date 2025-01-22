@@ -126,7 +126,7 @@ export const ChipWrapper = styled(Chip)(({ theme }) => ({
     fontWeight: "500",
     fontFamily: "satoshi",
     padding: "8px 16px ",
-    height: "32px",
+    height: "36px",
     background: "var(--model-icon-bg) !important",
     border: "1px solid var(--model-icon-bg)",
     color: "var(--text-brand)",

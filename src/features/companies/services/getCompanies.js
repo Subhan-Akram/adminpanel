@@ -14,11 +14,11 @@ const getCompanies = createAsyncThunk(
           title: "Api Failed",
           text: error?.message,
           alertType: "error",
-        })
+        }),
       );
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export default getCompanies;

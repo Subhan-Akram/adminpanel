@@ -1,13 +1,8 @@
-/* eslint-disable no-unused-vars */
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-import { Box } from "@mui/material";
 import { drawerWidth } from "constants";
-import { navbarHeight } from "constants";
 import { fullDrawerWidth } from "../../constants/drawerAndNavbarHeight";
-import { borderBottom, display } from "@mui/system";
-import zIndex from "@mui/material/styles/zIndex";
 
 const openedMixin = (theme) => ({
   width: fullDrawerWidth,
@@ -34,16 +29,20 @@ const closedMixin = (theme) => {
   };
 };
 
-export const DrawerStyle = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open" || prop !== "active",
-})(({ theme, open }) => ({
+export const DrawerStyle = styled(
+  MuiDrawer,
+  { shouldForwardProp: (props) => props !== "open" },
+  {
+    shouldForwardProp: (prop) => prop !== "open" || prop !== "active",
+  },
+)(({ theme, open }) => ({
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  // backgroundColor: "var(--sidenav-background)",
 
-  opacity: 1, // Opacity transition for larger screens
+  opacity: 1,
   "& .toggle_icon": {
+    border: "1px solid red",
     position: "absolute",
     top: "5rem",
     right: "-1rem",
@@ -65,10 +64,7 @@ export const DrawerStyle = styled(MuiDrawer, {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      // borderBottom: "1px solid var(--border-1)",
       "& .logo": {
-        // display: open ? "flex" : "none",
-        // opacity: open ? 1 : 0,
         cursor: "pointer",
         marginTop: "6px",
         "& svg": {
@@ -94,7 +90,6 @@ export const DrawerStyle = styled(MuiDrawer, {
     borderTop: "1px solid var(--sidenav-border)",
     marginTop: 0,
     display: "flex",
-    // width: open ? fullDrawerWidth : drawerWidth,
     flexDirection: "column",
     justifyContent: "flex-start",
     gap: "32px",
@@ -108,104 +103,18 @@ export const DrawerStyle = styled(MuiDrawer, {
     },
   },
 }));
-export const StyledList = styled(List, {
-  shouldForwardProp: (prop) => prop !== "open" || prop !== "active",
-})(({ open }) => {
+
+export const StyledList = styled(
+  List,
+  { shouldForwardProp: (props) => props !== "open" },
+  {
+    shouldForwardProp: (prop) => prop !== "open" || prop !== "active",
+  },
+)(({ open }) => {
   return {
     display: "flex",
     flexDirection: "column",
     gap: "12px",
     padding: "0 16px",
-    "& .MuiListItemButton-root": {
-      padding: open ? "6px 32px 6px 8px" : "6px 8px 6px 8px",
-      justifyContent: "center",
-      "&:hover": {
-        background: "none",
-      },
-    },
-
-    "& .MuiListItemIcon-root": {
-      minWidth: 0,
-
-      justifyContent: "center",
-      "& svg": {
-        width: "24px",
-        height: "24px",
-      },
-      "& svg > path": {
-        fill: "var(--sidenav-icon)",
-      },
-    },
-    "& .MuiListItemText-root": {
-      marginLeft: open ? "22px" : "0",
-
-      "& .MuiTypography-root": {
-        fontSize: "16px",
-      },
-      display: open ? "block" : "none",
-    },
-    "& .listItemActive": {
-      borderRadius: "3px",
-      background: "var(--sidenav-bg-selected)",
-      "& svg > path": {
-        fill: "var(--sidenav-icon-selected)",
-      },
-    },
   };
-});
-
-export const ThemeToggleContainer = styled(Box)(({ mode }) => {
-  return {
-    // display: "none",
-    width: "32px",
-    height: "108px",
-    transform: "rotate(270deg)",
-
-    borderRadius: "50px",
-    background: "var(--switch-bg)",
-    display: "flex",
-    justifyContent: "space-between",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "4px 8px",
-    position: "relative",
-    transition: "padding 0.3s ease-in-out",
-    "& .MuiBox-root": {
-      borderRadius: "20px",
-      padding: "12px 8px",
-      cursor: "pointer",
-      transition: "all 0.3s ease-in-out",
-      position: "absolute",
-      ...(mode === "light" && {
-        "&.iconContainer-moon": {
-          top: "60px",
-          "& svg > path": {
-            fill: "var(--primary-color-5)",
-          },
-        },
-        "&.iconContainer-sun": {
-          top: "4px", // Sun icon on the top for light mode
-          background: "var(--sun-bg)",
-          "& svg > g > path": {
-            fill: "var(--sun-icon)",
-          },
-        },
-      }),
-      ...(mode === "dark" && {
-        "&.iconContainer-sun": {
-          top: "60px", // Move sun icon to the bottom in dark mode
-        },
-        "&.iconContainer-moon": {
-          padding: "12px 8px",
-          top: "4px", // Moon icon on the top for dark mode
-          background: "var(--bg-active)",
-        },
-      }),
-    },
-  };
-});
-
-export const ThemeToggleBox = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
 });

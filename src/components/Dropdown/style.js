@@ -1,4 +1,3 @@
-import { borderBottom } from "@mui/system";
 import "../../fonts/fonts.css";
 import { Box, Menu, MenuItem, styled } from "@mui/material";
 
@@ -32,24 +31,14 @@ export const DropdownWrapper = styled(Box)`
   }
 `;
 
-export const StyledMenu = styled(Menu, {
-  shouldForwardProp: (props) => props !== "width",
-})(({ width }) => ({
+export const StyledMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
-    width: width ?? "125px",
-    position: "relative",
     display: "flex",
+    minWidth: "125px",
     flexDirection: "column",
     borderRadius: "8px",
     marginTop: "4px",
-
     background: "var(--surface-l1)",
-    // "& .MuiMenuItem-root": {
-    //   "&:not(:last-child)": {
-    //     borderBottom: "1px solid var(--border-1) !important",
-    //   },
-    // },
-
     "& .MuiList-root": {
       padding: "0",
     },

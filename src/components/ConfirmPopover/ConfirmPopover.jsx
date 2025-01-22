@@ -1,4 +1,4 @@
-import { Box, Popover, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import PropTypes from "prop-types";
 import { PopoverWrapper } from "./style";
 import PrimaryButton from "../PrimaryButton";

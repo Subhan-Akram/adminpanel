@@ -1,28 +1,25 @@
 import { Box, styled } from "@mui/material";
 
-export const ModelTableWrapper = styled(Box)`
+export const OrganziationTableWrapper = styled(Box)`
   width: 100% !important;
   margin: auto auto;
-  align-items: center;
 
-  & .model_drawer_box {
+  & .btn_group {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 12px;
     align-items: center;
-    margin-bottom: 8px;
+    width: 100%;
   }
-  & .MuiCard-root {
-    /* border: none; */
-    height: calc(100vh - 190px);
-    margin-top: 1rem;
-  }
+
   & .card_header {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  @media screen and (max-width: 1024px) {
-    margin-top: 3.5rem;
+  & .empty_cell {
+    margin-left: 2.5rem;
+    /* border: 1px solid red; */
   }
 `;

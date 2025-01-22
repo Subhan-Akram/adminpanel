@@ -1,12 +1,12 @@
 import Login from "./components/Login";
-import SignOut from "./components/SignOut";
+import { useSignOut } from "./hooks";
 import LoginReducer, { logout } from "./slice";
 import { signIn } from "./services";
 
 export {
   //component
   Login,
-  SignOut,
+  useSignOut,
 
   //slice
   LoginReducer,

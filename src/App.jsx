@@ -32,14 +32,6 @@ function App() {
       <Router>
         <Routes>
           <Route path={"/login"} element={<LoginPage />} />
-          {/* <Route
-            path={"/organizations"}
-            element={
-              <Layout2>
-                <OrganzationPage />
-              </Layout2>
-            }
-          /> */}
           <Route path="/" element={<PrivateRoute />}>
             {routes.map(({ path, element, index, children }) => (
               <Route key={path} path={path} element={element} index={index}>

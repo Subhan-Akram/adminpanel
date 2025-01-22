@@ -3,7 +3,6 @@ const useViewportWidth = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    // Handler to update width
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };

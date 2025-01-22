@@ -1,36 +1,26 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  Box,
-  Typography,
-  Autocomplete,
-  TextField,
-  IconButton,
-} from "@mui/material";
-import {
-  OutlinedButton,
-  PrimaryButton,
-  SullyTypography,
-} from "../../../../components";
+import { Box, Autocomplete, TextField, IconButton } from "@mui/material";
+import { OutlinedButton, PrimaryButton, SullyTypography } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { joinCompanies } from "../../services";
 import { triggerAlert } from "../../../../slice/alertSlice";
 import { JoinOrganizationWrapper } from "./style";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { AutoCompleteStyledPopperWrapper } from "globalStyles";
-import { deleteCompany, getCompanies } from "features/companies";
+import { getCompanies } from "../../services";
 
 const JoinCompanies = ({ open, setOpen, row }) => {
-  const { crudLoading } = useSelector((state) => state.organizations);
-  const { companies } = useSelector((state) => state.companies);
+  const { companies, crudLoading } = useSelector(
+    (state) => state.organizations,
+  );
   const dispatch = useDispatch();
 
   const [selectedOrganization, setSelectedOrganization] = useState(
-    row?.companies
+    row?.companies,
   );
 
   const handleModal = (val) => {
@@ -47,7 +37,7 @@ const JoinCompanies = ({ open, setOpen, row }) => {
       joinCompanies({
         dispatch,
         payload,
-      })
+      }),
     );
     if (res.payload) {
       dispatch(
@@ -55,7 +45,7 @@ const JoinCompanies = ({ open, setOpen, row }) => {
           title: "Success",
           text: "Organizations Joined Successfully",
           alertType: "success",
-        })
+        }),
       );
       setOpen(false);
     }
@@ -64,7 +54,7 @@ const JoinCompanies = ({ open, setOpen, row }) => {
     if (!companies.length) {
       dispatch(getCompanies({ dispatch }));
     }
-  }, []);
+  }, [companies.length, dispatch]);
   return (
     <JoinOrganizationWrapper
       open={open}
@@ -98,7 +88,6 @@ const JoinCompanies = ({ open, setOpen, row }) => {
             onChange={(_, val) => {
               setSelectedOrganization(val);
             }}
-            sx={{ width: "100%" }}
             PopperComponent={(props) => (
               <AutoCompleteStyledPopperWrapper
                 {...props}
@@ -106,14 +95,7 @@ const JoinCompanies = ({ open, setOpen, row }) => {
               />
             )}
             ChipProps={{
-              deleteIcon: (
-                <CloseOutlinedIcon
-                  style={{
-                    color: "var(--tag-text-icon-selected)",
-                    fontSize: "15px",
-                  }}
-                />
-              ),
+              deleteIcon: <CloseOutlinedIcon className="close_chip" />,
             }}
             renderInput={(params) => (
               <TextField {...params} placeholder="Add Company" />

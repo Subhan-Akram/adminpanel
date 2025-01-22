@@ -1,15 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { CardWrapper, TableWrapper } from "./style";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 
 const Table = ({ rows, columns, isLoading, CustomToolbar }) => {
-  const theme = useTheme();
-
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [pageSize, setPageSize] = useState(5); // Default page size
-
   return (
     <CardWrapper>
       <TableWrapper
@@ -30,15 +23,13 @@ const Table = ({ rows, columns, isLoading, CustomToolbar }) => {
         loading={isLoading}
         sortingOrder={["desc", "asc"]}
         columns={columns}
-        getRowId={(row) => {
-          return row.extId;
-        }} // Custom row ID
+        getRowId={(row) => row.extId}
         rows={rows}
         autoPageSize={true}
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: pageSize,
+              pageSize: 5,
             },
           },
         }}

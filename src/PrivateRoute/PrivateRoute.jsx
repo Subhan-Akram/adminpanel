@@ -1,20 +1,14 @@
 import Layout from "layouts";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const PrivateRoute = () => {
-  const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const location = useLocation();
+  const { access_token } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (!user?.access_token) return navigate("/login");
-  }, [navigate, user?.access_token]);
+  if (!access_token) return <Navigate to="/login" state={{ from: location }} />;
 
-  useEffect(() => {
-    if (!user?.access_token) return navigate("/login");
-  }, [navigate, user?.access_token]);
-  if (user?.access_token) {
+  if (access_token) {
     return (
       <Layout>
         <Outlet />

@@ -4,13 +4,13 @@ import {
   getUsers,
   updateUser,
   getUserByEmail,
-  addUser,
+  createUser,
 } from "./UsersController";
 export {
   deleteUser,
   getUserById,
   getUsers,
   updateUser,
-  addUser,
+  createUser,
   getUserByEmail,
 };

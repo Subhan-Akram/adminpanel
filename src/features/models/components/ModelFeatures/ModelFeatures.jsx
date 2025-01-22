@@ -1,7 +1,7 @@
 import React from "react";
 import { ModelFeatureWrapper } from "./style";
-import { SullyTypography } from "../../../../components";
-import { Box, List, ListItem } from "@mui/material";
+import { SullyTypography } from "components";
+import { Box } from "@mui/material";
 
 const data = [
   {
@@ -50,13 +50,13 @@ const ModelFeatures = () => {
     <ModelFeatureWrapper>
       {data.map(({ title, data }) => (
         <Box className="feature-section" key={title}>
-          <SullyTypography classNameProps="card_title_1">
+          <SullyTypography classNameProps="modaltitle1">
             {title}
           </SullyTypography>
           <ul className="feature-list">
             {data.map(({ title, description }) => (
               <li className="feature-item" key={title}>
-                <SullyTypography classNameProps="card_title_2">
+                <SullyTypography classNameProps="sub_title_2">
                   {title}:
                 </SullyTypography>
                 <SullyTypography classNameProps="card_title_3">

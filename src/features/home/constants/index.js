@@ -1,2 +1,2 @@
-import homePath from "./homePath";
-export { homePath };
+import statsData from "./statsData";
+export default statsData;

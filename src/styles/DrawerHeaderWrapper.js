@@ -28,9 +28,9 @@ export const DrawerHeaderWrapper = styled(Box)`
     display: flex;
     justify-content: flex-start;
     gap: 0px;
-    /* & .MuiIconButton-root {
-      padding: 16px;
-      margin-top: -8px;
-    } */
+  }
+  & .edit {
+    width: 32px;
+    height: 32px;
   }
 `;

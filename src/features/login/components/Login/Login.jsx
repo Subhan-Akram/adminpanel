@@ -2,16 +2,10 @@ import { Box, CircularProgress, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { SullyTypography } from "components";
-import { Apple, Google, OvalLogin } from "assets";
+import { OvalLogin } from "assets";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  AppBar,
-  LoginButton,
-  LoginSubmitButton,
-  LoginWrapper,
-  ToolBar,
-} from "./style";
+import { AppBar, LoginSubmitButton, LoginWrapper, ToolBar } from "./style";
 import { SullyLogo } from "assets";
 import EastIcon from "@mui/icons-material/East";
 import { signIn } from "features/login/services";

@@ -1,7 +1,7 @@
-import { Organizations } from "../features/organizations";
+import { Organizations } from "features/organizations";
 
-function OrganzationPage() {
+const OrganzationPage = () => {
   return <Organizations />;
-}
+};
 
 export default OrganzationPage;

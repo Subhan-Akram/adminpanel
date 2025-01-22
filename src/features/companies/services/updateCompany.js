@@ -8,6 +8,13 @@ const updateCompany = createAsyncThunk(
     try {
       const { extId } = payload;
       const { data } = await updateCompanyApi(extId, payload);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          alertType: "success",
+          text: "Company Updated Successfully",
+        }),
+      );
       return data;
     } catch (error) {
       dispatch(
@@ -15,11 +22,11 @@ const updateCompany = createAsyncThunk(
           title: "Api Failed",
           text: error?.message,
           alertType: "error",
-        })
+        }),
       );
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export default updateCompany;

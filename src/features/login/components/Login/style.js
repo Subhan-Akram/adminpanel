@@ -123,6 +123,7 @@ export const LoginWrapper = styled(Box, {
   },
   "& .red_shadow": {
     position: "fixed",
+    border: "1px solid red",
     width: "320px",
     height: "320px",
     background:
@@ -130,29 +131,6 @@ export const LoginWrapper = styled(Box, {
     filter: "blur(137.9550018310547px)",
     bottom: "0",
     right: "0",
-  },
-}));
-
-export const LoginButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(() => ({
-  padding: "20px 24px",
-  height: "52px",
-  borderRadius: "10px",
-  border: "1px solid var(--Borders-Border-2, #364152)",
-  background: "rgba(13, 18, 28, 0.50)",
-  color: "#E3E8EF",
-  fontFamily: "satoshi",
-  fontSize: "18px",
-  fontStyle: " normal",
-  fontWeight: "500",
-  lineHeight: "150%",
-  textTransform: "capitalize",
-  marginBottom: "16px",
-  "& .MuiButton-startIcon": {
-    marginRight: "12px",
-    width: "24px",
-    height: "24px",
   },
 }));
 

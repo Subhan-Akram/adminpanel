@@ -22,7 +22,7 @@ export function getUserByEmail(email) {
   return axios.get(`/admin/api/v1/user/email/${email}`);
 }
 
-export function addUser({ associationExtid, companyExtid }) {
+export function createUser({ associationExtid, companyExtid }) {
   return axios.post(
     `/admin/api/v1/association/${associationExtid}/company/${companyExtid}/user`
   );

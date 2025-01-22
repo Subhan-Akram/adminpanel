@@ -5,9 +5,10 @@ import { fileURLToPath } from "url";
 import React from "@vitejs/plugin-react";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 export default defineConfig({
   server: {
-    port: 3000,
+    port: 8080,
   },
 
   plugins: [React(), eslint()],
@@ -24,20 +25,24 @@ export default defineConfig({
       store: path.resolve(__dirname, "./src/store"),
       utils: path.resolve(__dirname, "./src/utils"),
       hooks: path.resolve(__dirname, "./src/hooks"),
-      theme: path.resolve(__dirname, "./src/theme"),
+      theme: path.resolve(__dirname, "./src/themeReducer"),
       "styles-components": path.resolve(__dirname, "./src/styles-components"),
       "routes-components": path.resolve(__dirname, "./src/routes-components"),
       lib: path.resolve(__dirname, "./src/lib"),
       features: path.resolve(__dirname, "./src/features"),
       assets: path.resolve(__dirname, "./src/assets"),
       helper: path.resolve(__dirname, "./src/helper"),
-      apis: path.resolve(__dirname, "./src/apis"),
-
+      apis: path.resolve(__dirname, "./src/apiTwg"),
       slice: path.resolve(__dirname, "./src/slice"),
       globalStyles: path.resolve(__dirname, "./src/styles"),
     },
   },
   optimizeDeps: {
-    include: ["@emotion/react", "@emotion/styled", "@mui/material/Tooltip"],
+    include: [
+      "@emotion/react",
+      "@emotion/styled",
+      "@mui/material/Tooltip",
+      "@mui/material/Box",
+    ],
   },
 });

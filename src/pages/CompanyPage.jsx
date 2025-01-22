@@ -1,7 +1,7 @@
-import { Companies } from "../features/companies";
+import { Companies } from "features/companies";
 
-function CompanyPage() {
+const CompanyPage = () => {
   return <Companies />;
-}
+};
 
 export default CompanyPage;

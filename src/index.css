@@ -10,18 +10,14 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
- 
-  /* background-color: var(--primary-background); */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --primary-text-light: #070a13;
   --primary-text-dark: #eef2f6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
     --brand-primary:#FDD847;
     --brand-secondary:#EF4444;
-   
     --blue-25:#F8FAFC;
    --blue-50: #EEF2F6;
    --blue-100: #E3E8EF;
@@ -365,22 +361,7 @@ body.dark-mode {
   --secondary-color-2: var(--secondary-color-2-dark);
   --secondary-color-3: var(--secondary-color-3-dark);
   --primary-linear: var(--primary-linear-gradient-dark);
-  --primary-color-1: var(--primary-color-1-dark);
-  --primary-color-2: var(--primary-color-2-dark);
-  --primary-color-3: var(--primary-color-3-dark);
-  --primary-color-4: var(--primary-color-4-dark);
-  --primary-color-5: var(--primary-color-5-dark);
-  --primary-color-6: var(--primary-color-6-dark);
-  --primary-color-7: var(--primary-color-7-dark);
-  --primary-color-8: var(--primary-color-8-dark);
-  --primary-color-9: var(--primary-color-9-dark);
-  --primary-color-10: var(--primary-color-10-dark);
-  --primary-color-11: var(--primary-color-11-dark);
-  --primary-color-12: var(--primary-color-12-dark);
-  --primary-color-13: var(--primary-color-13-dark);
-  --primary-color-14: var(--primary-color-14-dark);
-  --primary-color-15: var(--primary-color-15-dark);
-  --primary-color-16: var(--primary-color-16-dark);
+ 
 
   --text-color: var(--text-dark);
   --chip-bg: var(--chip-bg-dark);
@@ -478,22 +459,6 @@ body.light-mode {
   --secondary-color-3: var(--secondary-color-3-light);
   --primary-linear: var(--primary-linear-gradient-light);
   --primary-color-1: var(--primary-color-1-light);
-  --primary-color-2: var(--primary-color-2-light);
-  --primary-color-3: var(--primary-color-3-light);
-  --primary-color-4: var(--primary-color-4-light);
-  --text-color: var(--text-light);
-  --primary-color-5: var(--primary-color-5-light);
-  --primary-color-6: var(--primary-color-6-light);
-  --primary-color-7: var(--primary-color-7-light);
-  --primary-color-8: var(--primary-color-8-light);
-  --primary-color-9: var(--primary-color-9-light);
-  --primary-color-10: var(--primary-color-10-light);
-  --primary-color-11: var(--primary-color-11-light);
-  --primary-color-12: var(--primary-color-12-light);
-  --primary-color-13: var(--primary-color-13-light);
-  --primary-color-14: var(--primary-color-14-light);
-  --primary-color-15: var(--primary-color-15-light);
-  --primary-color-16: var(--primary-color-16-light);
   --chip-bg: var(--chip-bg-light);
   --primary-color-7: var(--primary-color-7-light);
   --primary-linear-2-gradient: var(--primary-linear-2-gradient-light);
@@ -553,14 +518,13 @@ body.light-mode {
 
 
 body {
-  /* background:#070B11; */
   background-color: var(--surface-l0);
   --sidenav-border:var(--border-1);
- 
   padding: 0;
   margin: 0;
   font-family: "satoshi";
   box-sizing: border-box;
+  display: block !important;
 }
 ::-webkit-scrollbar {
   width: 4px;

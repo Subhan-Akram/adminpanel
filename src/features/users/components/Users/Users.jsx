@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-// import { useEffect } from "react";
-import UsersTable from "../../UserTable";
+import UsersTable from "../UserTable";
 import { UserWrapper } from "./style";
 import { useDispatch } from "react-redux";
 import { getUsers } from "../../services";

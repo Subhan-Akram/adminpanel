@@ -1,4 +1,4 @@
-import { Box, Dialog, styled } from "@mui/material";
+import { Dialog, styled } from "@mui/material";
 
 export const JoinOrganizationWrapper = styled(Dialog)`
   & .MuiDialogContent-root {
@@ -7,5 +7,4 @@ export const JoinOrganizationWrapper = styled(Dialog)`
       margin-bottom: 6px;
     }
   }
-  /* width: 300px; */
 `;

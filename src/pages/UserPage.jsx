@@ -1,7 +1,7 @@
-import { Users } from "../features/users";
+import { Users } from "features/users";
 
-function UserPage() {
+const UserPage = () => {
   return <Users />;
-}
+};
 
 export default UserPage;

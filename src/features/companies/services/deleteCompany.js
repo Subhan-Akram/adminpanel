@@ -7,6 +7,13 @@ const deleteCompany = createAsyncThunk(
   async ({ dispatch, extId }, { rejectWithValue }) => {
     try {
       const { data } = await deleteCompanyApi(extId);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          text: "Company Deleted Successfully",
+          alertType: "success",
+        }),
+      );
       return data;
     } catch (error) {
       dispatch(
@@ -14,11 +21,11 @@ const deleteCompany = createAsyncThunk(
           title: "Api Failed",
           text: error?.message,
           alertType: "error",
-        })
+        }),
       );
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export default deleteCompany;

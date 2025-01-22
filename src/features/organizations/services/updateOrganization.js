@@ -8,6 +8,13 @@ const updateOrganization = createAsyncThunk(
     try {
       const { extId } = payload;
       const { data } = await updateOrganizationApi(extId, payload);
+      dispatch(
+        triggerAlert({
+          title: "Success",
+          alertType: "success",
+          text: "Company Updated Successfully",
+        })
+      );
       return data;
     } catch (error) {
       dispatch(

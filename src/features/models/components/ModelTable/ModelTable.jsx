@@ -1,56 +1,43 @@
 import { ModelTableWrapper } from "./style";
-import columns from "./useColumns";
-import ModelDrawer from "../ModelDrawer/ModelDrawer";
+import { columns } from "features/models/constants";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import CreateModelDrawer from "../CreateModelDrawer/CreateModelDrawer";
+import ModelCreate from "../ModelCreate";
 import {
-  ConfirmDynamicModal,
-  ModelBanner,
+  ConfirmationModal,
+  Banner,
   OutlinedButton,
   SullyTypography,
   Table,
   TableToolbar,
 } from "components";
-
 import { useDispatch, useSelector } from "react-redux";
 import { deleteModel as deleteModelAction, getAllModels } from "../../services";
-import { triggerAlert } from "slice/alertSlice";
+import ModelDetails from "../ModelDetails";
 
 const ModelTable = () => {
   const [open, setOpen] = useState(false);
   const [type, setType] = useState("view");
   const [model, setModel] = useState({});
-  const [deleteModel, setDeleteModel] = useState({
-    confirmModalContent: {},
-    isConfirmModalOpen: false,
-  });
-
+  const [isDeleteModel, setIsDeleteModel] = useState(false);
   const dispatch = useDispatch();
   const { models, crudLoading, isLoading } = useSelector(
-    (state) => state.models
+    (state) => state.models,
   );
+  const { name, extId } = model;
 
-  const { isConfirmModalOpen, confirmModalContent: { name, extId } = {} } =
-    deleteModel;
-
-  const handleDelete = async () => {
-    const { payload } = await dispatch(deleteModelAction({ extId }));
-    if (payload) {
-      dispatch(
-        triggerAlert({
-          title: "Success",
-          text: "Model Deleted Successfully",
-          alertType: "success",
-        })
-      );
-      setDeleteModel({ isDeleteModalOpen: false, confirmModalContent: {} });
-    }
+  const handleDelete = () => {
+    dispatch(deleteModelAction({ extId }))
+      .unwrap()
+      .then(() => {
+        setIsDeleteModel(false);
+      });
   };
-  const handleDrawer = ({ row, type }) => {
+  const onDropDownChange = ({ row, type }) => {
     setType(type);
     setModel(row);
+    if (type === "delete") return setIsDeleteModel(true);
     setOpen(true);
   };
 
@@ -62,14 +49,14 @@ const ModelTable = () => {
     if (!models.length) {
       dispatch(getAllModels({ dispatch }));
     }
-  }, []);
+  }, [dispatch, models.length]);
 
   return (
     <>
-      <ConfirmDynamicModal
-        isConfirmModalOpen={isConfirmModalOpen}
+      <ConfirmationModal
+        isConfirmModalOpen={isDeleteModel}
         handleSubmit={handleDelete}
-        setIsConfirmModalOpen={setDeleteModel}
+        setIsConfirmModalOpen={setIsDeleteModel}
         title={`Delete - ${name || ""}`}
         description={
           <SullyTypography classNameProps="confirm_modal_text">
@@ -84,7 +71,7 @@ const ModelTable = () => {
         confirmBtnText="Delete"
       />
 
-      <ModelDrawer
+      <ModelDetails
         setModel={setModel}
         open={open}
         type={type}
@@ -93,20 +80,20 @@ const ModelTable = () => {
         model={model}
       />
       <ModelTableWrapper>
-        <ModelBanner text={"LLM Models"}>
+        <Banner text={"LLM Models"}>
           <Box className="btn_group">
             <OutlinedButton startIcon={<FileDownloadOutlinedIcon />}>
               Export CSV
             </OutlinedButton>
-            <CreateModelDrawer />
+            <ModelCreate />
           </Box>
-        </ModelBanner>
+        </Banner>
         <Table
           isLoading={isLoading}
           showTableSearch={true}
           rows={models}
           CustomToolbar={Toolbar}
-          columns={columns({ handleDrawer, setDeleteModel })}
+          columns={columns({ onDropDownChange })}
         />
       </ModelTableWrapper>
     </>

@@ -1,6 +1,6 @@
-import addUser from "./addUser";
+import createUser from "./createUser";
 import deleteUser from "./deleteUser";
 import getUsers from "./getUsers";
 import updateUser from "./updateUser";
 
-export { addUser, deleteUser, updateUser, getUsers };
+export { createUser, deleteUser, updateUser, getUsers };

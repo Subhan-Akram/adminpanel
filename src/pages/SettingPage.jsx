@@ -1,7 +1,5 @@
-import { Settings } from "features/settings";
-
-function SettingPage() {
-  return <Settings />;
-}
+const SettingPage = () => {
+  return <h1>settings page</h1>;
+};
 
 export default SettingPage;

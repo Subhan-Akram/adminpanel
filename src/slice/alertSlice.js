@@ -21,7 +21,6 @@ const alertSlice = createSlice({
 
     removeAlert: (state, action) => {
       state.isAlert = false;
-      // return initialState;
     },
   },
 });

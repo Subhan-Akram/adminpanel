@@ -20,6 +20,5 @@ export const ModelTableWrapper = styled(Box)`
   }
 
   @media screen and (max-width: 1024px) {
-    margin-top: 39px;
   }
 `;

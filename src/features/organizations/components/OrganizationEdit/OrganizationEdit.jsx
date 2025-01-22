@@ -1,95 +1,43 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useRef } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import PropTypes from "prop-types";
-import { Box, IconButton } from "@mui/material";
-import { OutlinedButton, PrimaryButton } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrganization } from "../../services";
-import { triggerAlert } from "../../../../slice/alertSlice";
 import OrganizationForm from "../OrganizationForm";
-import CloseIcon from "@mui/icons-material/Close";
+import { Drawer } from "components";
 
-const OrganizationEdit = ({ open, setOpen, organization }) => {
+const OrganizationEdit = ({ edit, setEdit, organization }) => {
   const formRef = useRef(null);
   const { crudLoading } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
-  const handleModal = (val) => {
-    setOpen(val);
-  };
-  const handleSubmit = async (val) => {
-    const { payload } = await dispatch(
-      updateOrganization({ dispatch, payload: val })
-    );
-    if (payload) {
-      dispatch(
-        triggerAlert({
-          title: "Success",
-          text: "Organization Updated Successfully",
-          alertType: "success",
-        })
-      );
-      setOpen(false);
-    }
-  };
 
-  const handleFormSubmit = () => {
-    formRef.current?.submitForm();
+  const handleSubmit = (val) => {
+    dispatch(updateOrganization({ dispatch, payload: val }))
+      .unwrap()
+      .then(() => {
+        setEdit(false);
+      });
   };
-
   return (
-    <React.Fragment>
-      <Dialog
-        open={open}
-        onClose={() => {
-          handleModal(false);
-        }}
-      >
-        <DialogTitle>{"Edit Organization"}</DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={() => {
-            handleModal(false);
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-        <DialogContent>
-          <Box>
-            <OrganizationForm
-              isEdit={true}
-              ref={formRef}
-              initialValues={organization}
-              handleSubmit={handleSubmit}
-            />
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <OutlinedButton
-            onClick={() => {
-              handleModal(false);
-            }}
-          >
-            Cancel
-          </OutlinedButton>
-          <PrimaryButton isLoading={crudLoading} onClick={handleFormSubmit}>
-            Save
-          </PrimaryButton>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+    <Drawer
+      formRef={formRef}
+      title="Edit Organiztion"
+      setOpen={setEdit}
+      open={edit}
+      isLoading={crudLoading}
+    >
+      <OrganizationForm
+        formRef={formRef}
+        initialValues={organization}
+        handleSubmit={handleSubmit}
+        isEdit={true}
+      />
+    </Drawer>
   );
 };
 
 OrganizationEdit.propTypes = {
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  setOpen: PropTypes.func,
-  type: PropTypes.string,
+  edit: PropTypes.bool,
+  setEdit: PropTypes.func,
 };
 
 export default OrganizationEdit;
