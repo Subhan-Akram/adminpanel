@@ -6,6 +6,9 @@ import {
   FormControl,
   Switch,
   FormControlLabel,
+  RadioGroup,
+  Radio,
+  Box,
 } from "@mui/material";
 import { CompanyFormWrapper } from "./style";
 import PropTypes from "prop-types";
@@ -38,7 +41,6 @@ const CompanyForm = ({
   useImperativeHandle(formRef, () => ({
     submitForm: submitForm,
   }));
-
   return (
     <CompanyFormWrapper
       component="form"
@@ -82,46 +84,76 @@ const CompanyForm = ({
           </FormControl>
         </Grid>
 
-        <Grid className="switches_items" item xs={12} md={12}>
-          <FormControlLabel
-            control={
-              <Switch
-                id="enabled"
-                name="enabled"
-                checked={values.enabled}
-                onChange={(e) => setFieldValue("enabled", e.target.checked)}
-              />
-            }
-            label="Enabled"
-          />
+        <Grid className="switches_items" item xs={12} md={6}>
+          <label>Status</label>
+          <div className="label_div">
+            <FormControlLabel
+              control={
+                <Switch
+                  id="enabled"
+                  name="enabled"
+                  checked={values.enabled}
+                  onChange={(e) => setFieldValue("enabled", e.target.checked)}
+                />
+              }
+              label="Enabled"
+            />
+          </div>
         </Grid>
 
-        <Grid className="switches_items" item xs={12} md={12}>
-          <FormControlLabel
-            control={
-              <Switch
-                id="subscriber"
-                name="subscriber"
-                checked={values.subscriber}
-                onChange={(e) => setFieldValue("subscriber", e.target.checked)}
+        <Grid item xs={12} md={6}>
+          <Box>
+            <label>Subscriber</label>
+            <RadioGroup
+              value={values.subscriber}
+              onChange={(e) => {
+                const { value } = e.target;
+                setFieldValue("subscriber", value);
+              }}
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel
+                className="radio_btn"
+                value={true}
+                control={<Radio />}
+                label="Yes"
               />
-            }
-            label="Subscriber"
-          />
+              <FormControlLabel
+                className="radio_btn"
+                value={false}
+                control={<Radio />}
+                label="No"
+              />
+            </RadioGroup>
+          </Box>
         </Grid>
-
-        <Grid className="switches_items" item xs={12} md={12}>
-          <FormControlLabel
-            control={
-              <Switch
-                id="privateData"
-                name="privateData"
-                checked={values.privateData}
-                onChange={(e) => setFieldValue("privateData", e.target.checked)}
-              />
-            }
-            label="Private Data"
-          />
+        <Grid item xs={6} md={6}>
+          <label>Private Data</label>
+          <RadioGroup
+            value={values.privateData}
+            onChange={(e) => {
+              const { value } = e.target;
+              setFieldValue("privateData", value);
+            }}
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+          >
+            <FormControlLabel
+              className="radio_btn"
+              value={true}
+              control={<Radio />}
+              label="Yes"
+            />
+            <FormControlLabel
+              className="radio_btn"
+              value={false}
+              control={<Radio />}
+              label="No"
+            />
+          </RadioGroup>
         </Grid>
       </Grid>
     </CompanyFormWrapper>

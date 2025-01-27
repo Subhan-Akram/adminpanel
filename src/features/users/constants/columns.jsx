@@ -42,6 +42,14 @@ const columns = ({ onDropDownChange }) => [
     width: 350,
   },
   {
+    field: "enabled",
+    headerName: "Status",
+    flex: 1,
+    valueGetter: (enable) => {
+      return enable ? "Enabled" : "Disabled";
+    },
+  },
+  {
     field: "company",
     headerName: "Company",
     sortable: false,

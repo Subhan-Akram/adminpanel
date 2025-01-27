@@ -3,8 +3,10 @@ import { Box, Grid } from "@mui/material";
 import { Banner, SullyTypography } from "components";
 import statsData from "features/home/constants";
 import StatsCard from "../StatsCard";
+import { useUserInfo } from "hooks";
 
 const Home = () => {
+  const name = useUserInfo();
   const text = (
     <>
       <SullyTypography variant={"span"}> Welcome</SullyTypography>
@@ -12,7 +14,7 @@ const Home = () => {
         variant={"span"}
         classNameProps="title_brand text-capitalize"
       >
-        &nbsp;Subhan Akram,
+        &nbsp;{name?.toLowerCase()},
       </SullyTypography>{" "}
       <SullyTypography variant={"span"}>to Sully Admin Panel</SullyTypography>
     </>

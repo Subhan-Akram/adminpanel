@@ -4,21 +4,24 @@ import { DropDown, LogoFrame } from "components";
 import { modelTableActions } from "features/models/constants";
 import { DotIcon } from "sullyIcons";
 const columns = ({ onDropDownChange }) => {
+  const ModelName = (params) => {
+    return (
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <LogoFrame
+          imgLink={params.row.logoUrl}
+          className={"logo_frame_small"}
+        ></LogoFrame>
+        {params.row.name}
+      </Box>
+    );
+  };
   return [
     {
       field: "name",
       headerName: "Name",
       flex: 1,
       renderCell: (params) => {
-        return (
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <LogoFrame
-              imgLink={params.row.logoUrl}
-              className={"logo_frame_small"}
-            ></LogoFrame>
-            {params.row.name}
-          </Box>
-        );
+        return ModelName(params);
       },
     },
     {

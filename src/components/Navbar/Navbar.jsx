@@ -13,14 +13,13 @@ import { ThemeToggleBox, ThemeToggleContainer } from "./style";
 import { LogoText } from "assets";
 import { useSignOut } from "features/login";
 import { SullyTypography, DropDown } from "components";
+import { useUserInfo } from "hooks";
 
 const Navbar = ({ openSidebar, setOpenSidebar }) => {
   const { mode } = useSelector((state) => state.theme);
+  const name = useUserInfo();
   const navigate = useNavigate();
   const { handleLogout } = useSignOut();
-  const {
-    user: { name },
-  } = useSelector((state) => state.auth);
 
   const handleToggle = () => setOpenSidebar((prevOpen) => !prevOpen);
 

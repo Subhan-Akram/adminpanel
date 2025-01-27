@@ -23,7 +23,7 @@ const columns = ({ onDropDownChange }) => [
     headerName: "Status",
     flex: 1,
     valueGetter: (enable) => {
-      return enable ? "Yes" : "No";
+      return enable ? "Enabled" : "Disabled";
     },
   },
 

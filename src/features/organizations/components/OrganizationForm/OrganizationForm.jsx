@@ -6,6 +6,8 @@ import {
   FormControl,
   Switch,
   FormControlLabel,
+  RadioGroup,
+  Radio,
 } from "@mui/material";
 import { OrganizationFormWrapper } from "./style";
 import PropTypes from "prop-types";
@@ -60,33 +62,49 @@ const OrganizationForm = ({
           </FormControl>
         </Grid>
 
-        <Grid className="switches_items" item xs={12} md={12}>
-          <FormControlLabel
-            control={
-              <Switch
-                id="subscriber"
-                name="subscriber"
-                checked={values.subscriber}
-                onChange={(e) => setFieldValue("subscriber", e.target.checked)}
-              />
-            }
-            label="Subscriber"
-          />
+        <Grid item xs={6} md={6}>
+          <label>Subscriber</label>
+          <RadioGroup
+            value={values.subscriber}
+            onChange={(e) => {
+              const { value } = e.target;
+              setFieldValue("subscriber", value);
+            }}
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+          >
+            <FormControlLabel
+              className="radio_btn"
+              value={true}
+              control={<Radio />}
+              label="Yes"
+            />
+            <FormControlLabel
+              className="radio_btn"
+              value={false}
+              control={<Radio />}
+              label="No"
+            />
+          </RadioGroup>
         </Grid>
 
         {isEdit && (
-          <Grid className="switches_items" item xs={12} md={12}>
-            <FormControlLabel
-              control={
-                <Switch
-                  id="enabled"
-                  name="enabled"
-                  checked={values.enabled}
-                  onChange={(e) => setFieldValue("enabled", e.target.checked)}
-                />
-              }
-              label="Enabled"
-            />
+          <Grid item xs={12} md={6}>
+            <label>Status</label>
+            <div>
+              <FormControlLabel
+                control={
+                  <Switch
+                    id="enabled"
+                    name="enabled"
+                    checked={values.enabled}
+                    onChange={(e) => setFieldValue("enabled", e.target.checked)}
+                  />
+                }
+                label={values.enabled ? "Enabled" : "Disabled"}
+              />
+            </div>
           </Grid>
         )}
       </Grid>

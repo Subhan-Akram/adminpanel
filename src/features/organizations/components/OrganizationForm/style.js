@@ -12,4 +12,7 @@ export const OrganizationFormWrapper = styled(Box)`
       height: 22px;
     }
   }
+  & .radio_btn {
+    height: 33px;
+  }
 `;

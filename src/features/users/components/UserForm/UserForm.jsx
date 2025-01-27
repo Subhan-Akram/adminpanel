@@ -70,7 +70,7 @@ const UserForm = ({
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <FormControl fullWidth>
             <label htmlFor="email">Email</label>
             <TextField
@@ -89,20 +89,22 @@ const UserForm = ({
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <FormControlLabel
-            className="user_active"
-            control={
-              <Switch
-                id="status"
-                name="status"
-                checked={values.status}
-                onChange={(e) => {
-                  setFieldValue("status", e.target.checked);
-                }}
-              />
-            }
-            label={values.status ? "Enabled" : "Disabled"}
-          />
+          <label htmlFor="username">Status</label>
+          <div>
+            <FormControlLabel
+              control={
+                <Switch
+                  id="status"
+                  name="status"
+                  checked={values.enabled}
+                  onChange={(e) => {
+                    setFieldValue("status", e.target.checked);
+                  }}
+                />
+              }
+              label={values.enabled ? "Enabled" : "Disabled"}
+            />
+          </div>
         </Grid>
       </Grid>
     </UserFormWrapper>
