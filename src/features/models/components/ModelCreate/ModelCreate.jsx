@@ -6,7 +6,7 @@ import ModelForm from "../ModelForm";
 import { modelInitialValues } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { createModel } from "../../services";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { CloseIcon } from "sullyIcons";
 import { DrawerHeaderWrapper, DrawerContentWrapper } from "globalStyles";
 
