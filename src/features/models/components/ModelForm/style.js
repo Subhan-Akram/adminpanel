@@ -10,7 +10,6 @@ export const FormWrapper = styled(Box, {
   height: ${({ isEdit }) => `calc(100vh - ${isEdit ? "79px" : "65px"})`};
   & .form_container {
     overflow: auto;
-    padding: 24px;
     padding-top: 0;
     margin-top: 0;
   }
