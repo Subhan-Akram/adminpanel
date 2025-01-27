@@ -52,14 +52,14 @@ const ModelCreate = () => {
             <CloseIcon />
           </IconButton>
         </DrawerHeaderWrapper>
-        <DrawerContentWrapper className="drawer_content">
+        <Box>
           <ModelForm
             handleSubmit={handleSubmit}
             initialValues={modelInitialValues}
             isLoading={crudLoading}
             setOpen={setOpen}
           />
-        </DrawerContentWrapper>
+        </Box>
       </ModelCreateWrapper>
     </>
   );
