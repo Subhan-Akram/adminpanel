@@ -6,7 +6,7 @@ import {
   addModelTags,
   getModelTags,
   getModelById,
-} from "./AiModelController";
+} from "./aiModelController";
 
 export {
   getModelById,
