@@ -7,6 +7,7 @@ const modelInitialValues = {
   createdBy: "",
   ssbxCode: "",
   logoUrl: "",
+  tags: [],
   originUrl: "",
 };
 

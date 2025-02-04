@@ -1,11 +1,15 @@
 import { HomeWrapper } from "./style";
 import { Box, Grid } from "@mui/material";
 import { Banner, SullyTypography } from "components";
-import statsData from "features/home/constants";
 import StatsCard from "../StatsCard";
 import { useUserInfo } from "hooks";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getStats } from "features/home/services";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { stats } = useSelector((state) => state.home);
   const name = useUserInfo();
   const text = (
     <>
@@ -19,6 +23,12 @@ const Home = () => {
       <SullyTypography variant={"span"}>to Sully Admin Panel</SullyTypography>
     </>
   );
+  const handleGetStats = () => {
+    dispatch(getStats({ dispatch }));
+  };
+  useEffect(() => {
+    handleGetStats();
+  }, []);
   return (
     <HomeWrapper>
       <Banner text={text}></Banner>
@@ -27,10 +37,9 @@ const Home = () => {
           Overview
         </SullyTypography>
         <Grid container spacing={"24px"} className="stats_cards">
-          {statsData.map((val) => {
+          {stats.map((val) => {
             return (
               <Grid item xs={12} sm={4} xl={3} key={val.title}>
-                {" "}
                 <StatsCard data={val}></StatsCard>
               </Grid>
             );

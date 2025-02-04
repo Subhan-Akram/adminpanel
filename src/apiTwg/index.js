@@ -4,3 +4,4 @@ export * from "./usersController";
 export * from "./organization-controller";
 export * from "./company-controller";
 export * from "./aiModelController";
+export * from "./operationController";

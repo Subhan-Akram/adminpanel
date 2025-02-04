@@ -34,7 +34,6 @@ function ModelForm({
   setOpen,
 }) {
   const { tags } = useSelector((state) => state.models);
-  const [selectedTags, setSelectedTags] = useState(initialValues.tags);
 
   const formik = useFormik({
     initialValues,
@@ -53,7 +52,6 @@ function ModelForm({
     handleChange,
     setFieldValue,
   } = formik;
-
   return (
     <FormikProvider value={formik}>
       <FormWrapper component="form" onSubmit={handleSubmit} isEdit={isEdit}>
@@ -209,45 +207,43 @@ function ModelForm({
             </FormControl>
           </Grid>
 
-          {isEdit && (
-            <Grid item xs={12} md={12}>
-              <InputLabelWrapper
-                className="InputLabelWrapper_text"
-                htmlFor="createdBy"
-              >
-                Tags
-              </InputLabelWrapper>
-              <Autocomplete
-                className="autocomplete_tags"
-                multiple
-                size="small"
-                id="tags-outlined"
-                options={tags}
-                getOptionLabel={(option) => option.name}
-                defaultValue={[...selectedTags, ...selectedTags]}
-                isOptionEqualToValue={(option, value) =>
-                  option.name === value.name
-                }
-                value={selectedTags}
-                onChange={(_, val) => {
-                  setSelectedTags(val);
-                  setFieldValue("tags", val);
-                }}
-                PopperComponent={(props) => (
-                  <AutoCompleteStyledPopperWrapper
-                    {...props}
-                    placement="bottom-start"
-                  />
-                )}
-                ChipProps={{
-                  deleteIcon: <CloseOutlinedIcon className="close_chip_icon" />,
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} placeholder="Add Tags" />
-                )}
-              />
-            </Grid>
-          )}
+          <Grid item xs={12} md={12}>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="createdBy"
+            >
+              Tags
+            </InputLabelWrapper>
+            <Autocomplete
+              className="autocomplete_tags"
+              multiple
+              size="small"
+              id="tags-outlined"
+              options={tags.map((val) => val.name)}
+              getOptionLabel={(option) => {
+                return option;
+              }}
+              isOptionEqualToValue={(option, value) => {
+                return option === value;
+              }}
+              value={values.tags}
+              onChange={(_, val) => {
+                setFieldValue("tags", val);
+              }}
+              PopperComponent={(props) => (
+                <AutoCompleteStyledPopperWrapper
+                  {...props}
+                  placement="bottom-start"
+                />
+              )}
+              ChipProps={{
+                deleteIcon: <CloseOutlinedIcon className="close_chip_icon" />,
+              }}
+              renderInput={(params) => (
+                <TextField {...params} placeholder="Add Tags" />
+              )}
+            />
+          </Grid>
 
           <Grid item xs={12}>
             <Box className="rating_box">

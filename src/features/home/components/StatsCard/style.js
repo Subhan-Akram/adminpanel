@@ -20,7 +20,7 @@ export const StatsCardWrapper = styled(Card)`
     margin-top: 12px;
     padding: 12px 16px;
     background-color: var(--surface-l2);
-    cursor: pointer;
+    cursor: pointer !important;
   }
   &:hover {
     border: 1px solid var(--border-2);

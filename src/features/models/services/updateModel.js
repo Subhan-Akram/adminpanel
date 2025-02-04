@@ -6,11 +6,6 @@ const updateModel = createAsyncThunk(
   "updateModel",
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
-      const { extId, tags } = payload;
-      await updateModelTags({
-        extId,
-        tags: tags.map((val) => val.name),
-      });
       const { data } = await updateModelApi(payload);
       dispatch(
         triggerAlert({

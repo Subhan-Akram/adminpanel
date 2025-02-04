@@ -1,2 +1,3 @@
 import { Home } from "./components";
-export { Home };
+import HomeReducer from "./slice";
+export { Home, HomeReducer };

@@ -1,24 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ModelForm from "../ModelForm";
 import { modelInitialValues } from "features/models/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllModelTags, updateModel } from "../../services";
+import { updateModel } from "../../services";
 
 const ModelEdit = ({ setModel, setType, model }) => {
-  const { crudLoading, tags } = useSelector((state) => state.models);
+  const { crudLoading } = useSelector((state) => state.models);
   const dispatch = useDispatch();
   const handleSubmit = async (values) => {
     dispatch(updateModel({ payload: values, dispatch }))
       .unwrap()
-      .then(() => {
+      .then((val) => {
         setType("view");
-        setModel(values);
+        setModel(val);
       });
   };
-
-  useEffect(() => {
-    if (!tags.length) dispatch(getAllModelTags());
-  }, [dispatch, tags.length]);
 
   return (
     <ModelForm
@@ -29,6 +25,7 @@ const ModelEdit = ({ setModel, setType, model }) => {
       initialValues={{
         ...modelInitialValues,
         ...model,
+        tags: model.tags.map(({ name }) => name),
         features: {
           Pricing: [{ title: "" }],
           Weakness: [{ title: "" }],

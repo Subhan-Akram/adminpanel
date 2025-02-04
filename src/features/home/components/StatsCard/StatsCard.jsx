@@ -12,7 +12,7 @@ const StatsCard = ({ data }) => {
       <Box className="content">
         <Box>{icon}</Box>
         <Box>
-          <SullyTypography classNameProps="text_terrtiary_bold ">
+          <SullyTypography classNameProps="text_terrtiary_bold text-capitalize ">
             {title}
           </SullyTypography>
           <SullyTypography classNameProps="title_primary_md">

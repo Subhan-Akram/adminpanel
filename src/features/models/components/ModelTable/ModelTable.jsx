@@ -13,7 +13,11 @@ import {
   TableToolbar,
 } from "components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteModel as deleteModelAction, getAllModels } from "../../services";
+import {
+  deleteModel as deleteModelAction,
+  getAllModels,
+  getAllModelTags,
+} from "../../services";
 import ModelDetails from "../ModelDetails";
 
 const ModelTable = () => {
@@ -22,7 +26,7 @@ const ModelTable = () => {
   const [model, setModel] = useState({});
   const [isDeleteModel, setIsDeleteModel] = useState(false);
   const dispatch = useDispatch();
-  const { models, crudLoading, isLoading } = useSelector(
+  const { models, crudLoading, isLoading, tags } = useSelector(
     (state) => state.models,
   );
   const { name, extId } = model;
@@ -50,7 +54,9 @@ const ModelTable = () => {
       dispatch(getAllModels({ dispatch }));
     }
   }, [dispatch, models.length]);
-
+  useEffect(() => {
+    if (!tags.length) dispatch(getAllModelTags());
+  }, [dispatch, tags.length]);
   return (
     <>
       <ConfirmationModal

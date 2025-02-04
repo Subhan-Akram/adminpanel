@@ -6,6 +6,8 @@ import { ModelsReducer } from "features/models";
 import { OrganizationReducer } from "features/organizations";
 import { CompanyReducer } from "features/companies";
 import { UserReducer } from "features/users";
+import { HomeReducer } from "features/home";
+
 const store = configureStore({
   reducer: {
     auth: LoginReducer,
@@ -15,7 +17,12 @@ const store = configureStore({
     organizations: OrganizationReducer,
     companies: CompanyReducer,
     users: UserReducer,
+    home: HomeReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;
