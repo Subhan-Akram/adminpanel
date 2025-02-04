@@ -17,6 +17,7 @@ export const ModelFeatureWrapper = styled(Box)`
     flex-direction: column;
     gap: 8px;
     margin: 6px 0;
+    padding: 0 10px !important;
 
     /* list-style-type: disc; */
     /* border: 1px solid red; */

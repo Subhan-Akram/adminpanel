@@ -171,12 +171,12 @@ const ModelView = ({ data }) => {
             {!tags.length && <Box className="tags_not_available"></Box>}
           </Box>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={12}>
           <SullyTypography classNameProps="card_text">
             Features:
           </SullyTypography>
         </Grid>
-        <Grid item sm={9} xs={12}>
+        <Grid item sm={12} xs={12}>
           <ModelFeatures />
         </Grid>
       </Grid>
