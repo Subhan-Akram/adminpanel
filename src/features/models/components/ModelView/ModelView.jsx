@@ -177,7 +177,7 @@ const ModelView = ({ data }) => {
           </SullyTypography>
         </Grid>
         <Grid item sm={12} xs={12}>
-          <ModelFeatures />
+          -{/* <ModelFeatures /> */}
         </Grid>
       </Grid>
     </ModelViewWrapper>
