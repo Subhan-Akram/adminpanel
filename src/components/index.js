@@ -21,8 +21,12 @@ import TextFastFieldWrapper from "./TextFastFieldWrapper";
 import TableToolbar from "./TableToolbar";
 import SidebarList from "./SidebarList";
 import Drawer from "./Drawer";
+import MoreItemsTooltip from "./MoreItemsTooltip";
+import ConfirmDynamicModal from "./ConfirmDynamicModal";
 
 export {
+  MoreItemsTooltip,
+  ConfirmDynamicModal,
   Drawer,
   SidebarList,
   TableToolbar,

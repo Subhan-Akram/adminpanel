@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 
 import { DotIcon } from "sullyIcons";
-import { Chip, DropDown } from "components";
+import { Chip, DropDown, MoreItemsTooltip } from "components";
 import { TagsGroupStyle } from "globalStyles";
 import { companyTableActions } from "features/companies/constants";
 const columns = ({ handleChange }) => [
@@ -41,21 +41,10 @@ const columns = ({ handleChange }) => [
     field: "organizations",
     headerName: "Organizations",
     sortable: false,
-    width: 300,
+    width: 270,
     renderCell: ({ row }) => {
-      return (
-        <>
-          <TagsGroupStyle>
-            {row.organizations.length ? (
-              row.organizations.map(({ name }, index) => (
-                <Chip classNameProps="more_chips" key={index} label={name} />
-              ))
-            ) : (
-              <div className="empty_cell">-</div>
-            )}
-          </TagsGroupStyle>
-        </>
-      );
+      const { organizations } = row;
+      return <MoreItemsTooltip items={organizations} showItemCount={2} />;
     },
   },
 

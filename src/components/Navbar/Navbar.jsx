@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Avatar } from "@mui/material";
 import { ProfileIcon } from "assets";
 import { Logout } from "@mui/icons-material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -66,7 +66,16 @@ const Navbar = ({ openSidebar, setOpenSidebar }) => {
             >
               <Box className="icon_text drop_down_Box">
                 <Box className="profile_icon">
-                  <img alt="profile icon" src={ProfileIcon}></img>
+                  <Avatar clas size="small" className="user_avatar">
+                    {
+                      <SullyTypography
+                        variant={"span"}
+                        classNameProps="text-capitalize"
+                      >
+                        {name?.toLowerCase()[0]}
+                      </SullyTypography>
+                    }
+                  </Avatar>
                 </Box>
                 <SullyTypography
                   variant={"span"}

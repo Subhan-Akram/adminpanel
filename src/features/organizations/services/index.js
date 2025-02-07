@@ -4,6 +4,8 @@ import getOrganizations from "./getOrganizations";
 import joinCompanies from "./joinCompanies";
 import updateOrganization from "./updateOrganization";
 import getCompanies from "./getCompanies";
+import leaveCompany from "./LeaveCompany";
+
 export {
   getCompanies,
   getOrganizations,
@@ -11,4 +13,5 @@ export {
   updateOrganization,
   deleteOrganization,
   joinCompanies,
+  leaveCompany,
 };

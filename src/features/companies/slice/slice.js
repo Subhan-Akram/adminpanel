@@ -6,6 +6,7 @@ import {
   deleteCompany,
   addOrganization,
   getOrganizations,
+  leaveOrganization,
 } from "../services";
 
 const initialState = {
@@ -14,12 +15,18 @@ const initialState = {
   isLoading: false,
   crudLoading: false,
   error: "",
+  leaveOrganizationLoading: false,
+  selectedCompany: {},
 };
 
 export const slice = createSlice({
   name: "companies",
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCompany: (state, action) => {
+      state.selectedCompany = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createCompany.pending, (state) => {
@@ -101,6 +108,22 @@ export const slice = createSlice({
       })
       .addCase(getOrganizations.rejected, (state) => {
         state.organizationLoading = false;
+      })
+      .addCase(leaveOrganization.pending, (state) => {
+        state.leaveOrganizationLoading = true;
+        state.error = null;
+      })
+      .addCase(leaveOrganization.fulfilled, (state, action) => {
+        const company = action.payload;
+        state.leaveOrganizationLoading = false;
+        const findIndex = state.companies.findIndex(
+          (val) => val.extId === company.extId,
+        );
+        state.companies[findIndex] = company;
+        state.selectedCompany = company;
+      })
+      .addCase(leaveOrganization.rejected, (state) => {
+        state.leaveOrganizationLoading = false;
       });
   },
 });

@@ -3,6 +3,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import { drawerWidth } from "constants";
 import { fullDrawerWidth } from "../../constants/drawerAndNavbarHeight";
+import { borderBottom } from "@mui/system";
 
 const openedMixin = (theme) => ({
   width: fullDrawerWidth,
@@ -64,6 +65,7 @@ export const DrawerStyle = styled(
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      borderBottom: "1px solid var(--border-1)",
       "& .logo": {
         cursor: "pointer",
         marginTop: "6px",
@@ -77,6 +79,7 @@ export const DrawerStyle = styled(
         },
       },
     },
+
     ...(open && {
       ...openedMixin(theme),
     }),
@@ -96,6 +99,9 @@ export const DrawerStyle = styled(
     alignItems: "flex-start",
     height: `100%`,
     padding: "0px",
+    "& .short_logo": {
+      cursor: "pointer",
+    },
     "@media screen and (max-width:1024px)": {
       transition: "transform 0.2s ease-in-out",
       transform: open ? "translateX(0%)" : "translateX(-150px)",

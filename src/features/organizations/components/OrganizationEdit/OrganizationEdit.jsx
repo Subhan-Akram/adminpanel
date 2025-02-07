@@ -5,7 +5,7 @@ import { updateOrganization } from "../../services";
 import OrganizationForm from "../OrganizationForm";
 import { Drawer } from "components";
 
-const OrganizationEdit = ({ edit, setEdit, organization }) => {
+const OrganizationEdit = ({ edit, setEdit }) => {
   const formRef = useRef(null);
   const { crudLoading } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
@@ -27,7 +27,6 @@ const OrganizationEdit = ({ edit, setEdit, organization }) => {
     >
       <OrganizationForm
         formRef={formRef}
-        initialValues={organization}
         handleSubmit={handleSubmit}
         isEdit={true}
       />

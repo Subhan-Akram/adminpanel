@@ -1,7 +1,7 @@
 import { CompaniesTableWrapper } from "./style";
 import { columns } from "features/companies/constants";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import {
   Table,
@@ -17,6 +17,7 @@ import { deleteCompany as deleteCompanyAction } from "../../services";
 import CompanyCreate from "../CompanyCreate";
 import CompanyEdit from "../CompanyEdit";
 import CompanyJoinOrganization from "../CompanyJoinOrganization";
+import { getOrganizations } from "features/organizations";
 
 export default function CompaniesTable() {
   const [edit, setEdit] = useState(false);
@@ -24,6 +25,8 @@ export default function CompaniesTable() {
   const [joinOrganizationModal, setJoinOrganizationModal] = useState(false);
   const [isDeleteCompany, setIsDeleteCompany] = useState(false);
   const { name, extId } = company;
+
+  const { organizations } = useSelector((state) => state.organizations);
   const { companies, isLoading, crudLoading } = useSelector(
     (state) => state.companies,
   );
@@ -46,6 +49,12 @@ export default function CompaniesTable() {
     if (type === "joinOrganization") setJoinOrganizationModal(true);
     if (type === "deleteCompany") setIsDeleteCompany(true);
   };
+
+  useEffect(() => {
+    if (!organizations.length) {
+      dispatch(getOrganizations({ dispatch }));
+    }
+  }, [dispatch, organizations.length]);
 
   return (
     <>

@@ -4,9 +4,11 @@ import {
   getOrganizations,
   updateOrganization,
   joinCompanies,
+  leaveCompanies,
 } from "./OrganzationController";
 
 export {
+  leaveCompanies,
   joinCompanies,
   createOrganization,
   deleteOrganization,

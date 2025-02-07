@@ -287,14 +287,14 @@ function ModelForm({
             </FormControl>
           </Grid>
 
-          {isEdit && (
+          {/* {isEdit && (
             <Grid item xs={12} md={12}>
               <Typography className="InputLabelWrapper_text" variant="body1">
                 Features
               </Typography>
               <ModelFeaturesForm formik={formik} />
             </Grid>
-          )}
+          )} */}
         </Grid>
 
         <Box className="form_buttons">

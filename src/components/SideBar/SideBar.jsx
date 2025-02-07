@@ -32,11 +32,7 @@ const SideBar = ({ openSidebar, setOpenSidebar }) => {
             <Logo />
           </Box>
         ) : (
-          <Box
-            onClick={handleNavigate}
-            className="short_logo"
-            sx={{ width: "120px", height: "40px", cursor: "pointer" }}
-          >
+          <Box onClick={handleNavigate} className="short_logo">
             <img
               alt="logo sign"
               style={{ objectFit: "contain" }}

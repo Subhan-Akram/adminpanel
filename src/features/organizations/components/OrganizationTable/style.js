@@ -20,6 +20,5 @@ export const OrganziationTableWrapper = styled(Box)`
   }
   & .empty_cell {
     margin-left: 2.5rem;
-    /* border: 1px solid red; */
   }
 `;

@@ -6,7 +6,7 @@ export const HomeWrapper = styled(Box)`
     margin-top: 24px;
   }
   & .stats_cards {
-    margin-top: 2px;
+    margin-top: -4px;
     & .MuiSvgIcon-root {
       color: var(--text-tertiary);
       font-size: 36px;

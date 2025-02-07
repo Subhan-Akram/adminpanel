@@ -6,11 +6,13 @@ const LogoFrame = ({ imgLink, className }) => {
   return (
     <LogoFrameWrapper>
       <Box className={`logo_frame ${className}`}>
-        <img
-          src={imgLink}
-          style={{ objectFit: "contain", color: "white" }}
-          alt=""
-        />
+        {imgLink && (
+          <img
+            src={imgLink}
+            style={{ objectFit: "contain", color: "white" }}
+            alt=""
+          />
+        )}
       </Box>
     </LogoFrameWrapper>
   );

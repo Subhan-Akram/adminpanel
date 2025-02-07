@@ -10,6 +10,12 @@ export function addOrganization(extId, organizationExtIds) {
   });
 }
 
+export function leaveOrganization(extId, organizationExtIds) {
+  return axios.post(`/admin/api/v1/company/${extId}/leave`, {
+    organizationExtIds,
+  });
+}
+
 export function getCompanies() {
   return axios.get("/admin/api/v1/company");
 }

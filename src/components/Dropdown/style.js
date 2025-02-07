@@ -34,7 +34,7 @@ export const DropdownWrapper = styled(Box)`
 export const StyledMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
     display: "flex",
-    minWidth: "125px",
+    minWidth: "135px",
     flexDirection: "column",
     borderRadius: "8px",
     marginTop: "4px",

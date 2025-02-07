@@ -1,4 +1,4 @@
-import { Chip, DropDown } from "components";
+import { Chip, DropDown, MoreItemsTooltip } from "components";
 import { TagsGroupStyle } from "globalStyles";
 import { DotIcon } from "sullyIcons";
 import { organizationTableAction } from "features/organizations/constants";
@@ -31,21 +31,10 @@ const columns = ({ onDropDownChange }) => [
     field: "companies",
     headerName: "Companies",
     sortable: false,
-    flex: 1,
+    width: 280,
     renderCell: ({ row }) => {
-      return (
-        <>
-          <TagsGroupStyle>
-            {row.companies.length ? (
-              row.companies.map(({ name }, index) => (
-                <Chip classNameProps="more_chips" key={index} label={name} />
-              ))
-            ) : (
-              <div className="empty_cell">-</div>
-            )}
-          </TagsGroupStyle>
-        </>
-      );
+      const { companies } = row;
+      return <MoreItemsTooltip items={companies} showItemCount={2} />;
     },
   },
 

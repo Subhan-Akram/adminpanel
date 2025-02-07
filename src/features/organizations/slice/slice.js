@@ -6,6 +6,7 @@ import {
   deleteOrganization,
   joinCompanies,
   getCompanies,
+  leaveCompany,
 } from "../services";
 
 const initialState = {
@@ -13,13 +14,19 @@ const initialState = {
   companies: [],
   isLoading: false,
   crudLoading: false,
+  leaveCompanyLoading: false,
+  selectedOrganization: {},
   error: "",
 };
 
 export const slice = createSlice({
   name: "organizations",
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedOrganization: (state, action) => {
+      state.selectedOrganization = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createOrganization.pending, (state) => {
@@ -54,8 +61,9 @@ export const slice = createSlice({
         const organization = action.payload;
         state.crudLoading = false;
         const findIndex = state.organizations.findIndex(
-          (val) => val.extId === organization.extId
+          (val) => val.extId === organization.extId,
         );
+
         state.organizations[findIndex] = organization;
       })
       .addCase(updateOrganization.rejected, (state) => {
@@ -68,13 +76,14 @@ export const slice = createSlice({
       .addCase(deleteOrganization.fulfilled, (state, action) => {
         const organization = action.payload;
         state.organizations = state.organizations.filter(
-          (val) => val.extId !== organization.extId
+          (val) => val.extId !== organization.extId,
         );
         state.crudLoading = false;
       })
       .addCase(deleteOrganization.rejected, (state) => {
         state.crudLoading = false;
       })
+
       .addCase(joinCompanies.pending, (state) => {
         state.crudLoading = true;
         state.error = null;
@@ -83,12 +92,28 @@ export const slice = createSlice({
         const organization = action.payload;
         state.crudLoading = false;
         const findIndex = state.organizations.findIndex(
-          (val) => val.extId === organization.extId
+          (val) => val.extId === organization.extId,
         );
         state.organizations[findIndex] = organization;
       })
       .addCase(joinCompanies.rejected, (state) => {
         state.crudLoading = false;
+      })
+      .addCase(leaveCompany.pending, (state) => {
+        state.leaveCompanyLoading = true;
+        state.error = null;
+      })
+      .addCase(leaveCompany.fulfilled, (state, action) => {
+        const organization = action.payload;
+        state.leaveCompanyLoading = false;
+        const findIndex = state.organizations.findIndex(
+          (val) => val.extId === organization.extId,
+        );
+        state.organizations[findIndex] = organization;
+        state.selectedOrganization = organization;
+      })
+      .addCase(leaveCompany.rejected, (state) => {
+        state.leaveCompanyLoading = false;
       })
       .addCase(getCompanies.pending, (state) => {
         state.companiesLoading = true;

@@ -1,10 +1,10 @@
 import { Avatar, Box, Chip } from "@mui/material";
 import { TagsGroupStyle } from "globalStyles";
-import { DropDown } from "../../../components";
+import { DropDown, MoreItemsTooltip } from "../../../components";
 import { DotIcon } from "sullyIcons";
 import { userTableActions } from ".";
 
-const columns = ({ onDropDownChange }) => [
+const columns = [
   {
     field: "fullName",
     headerName: "Full Name",
@@ -18,16 +18,15 @@ const columns = ({ onDropDownChange }) => [
             gap: 1,
           }}
         >
-          {row.fullName && (
-            <Avatar
-              src={row?.logoUrl}
-              alt={row.fullName}
-              className="user_avatar"
-            />
-          )}
-
           {row.fullName ? (
-            <span className="full_name_span">{row.fullName}</span>
+            <>
+              <Avatar
+                src={row?.logoUrl}
+                alt={row.fullName}
+                className="user_avatar"
+              />
+              <span className="full_name_span">{row.fullName}</span>
+            </>
           ) : (
             <div className="empty_cell">-</div>
           )}
@@ -62,35 +61,12 @@ const columns = ({ onDropDownChange }) => [
     field: "teams",
     headerName: "Teams",
     sortable: false,
-    flex: 1,
+    width: 250,
     textAlign: "center",
     renderCell: ({ row }) => {
-      return (
-        <TagsGroupStyle>
-          {row?.teams?.length ? (
-            row.teams.map(({ name }) => <Chip key={{ name }} label={name} />)
-          ) : (
-            <div className="empty_cell">-</div>
-          )}
-        </TagsGroupStyle>
-      );
+      const { teams } = row;
+      return <MoreItemsTooltip items={teams} showItemCount={2} />;
     },
-  },
-
-  {
-    field: "actions",
-    type: "actions",
-    headerName: "Actions",
-    flex: 1,
-    cellClassName: "actions",
-    renderCell: ({ row }) => (
-      <DropDown
-        className="medium"
-        menuItems={userTableActions({ row, onDropDownChange })}
-      >
-        <DotIcon />
-      </DropDown>
-    ),
   },
 ];
 

@@ -3,16 +3,58 @@ import { ModelFeatureWrapper } from "./style";
 import { SullyTypography } from "components";
 import { Box } from "@mui/material";
 
+const data = [
+  {
+    title: "Strength",
+    data: [
+      {
+        title: "Architecture",
+        description: "It's strength lies in its architecture",
+      },
+      {
+        title: "Durability",
+        description: "Built to withstand harsh conditions",
+      },
+    ],
+  },
+  {
+    title: "Performance",
+    data: [
+      {
+        title: "Speed",
+        description: "Fast response time under heavy load",
+      },
+      {
+        title: "Optimization",
+        description: "Optimized for scalability",
+      },
+    ],
+  },
+  {
+    title: "Usability",
+    data: [
+      {
+        title: "User Interface",
+        description: "Intuitive and easy-to-use interface",
+      },
+      {
+        title: "Accessibility",
+        description: "Compliant with accessibility standards",
+      },
+    ],
+  },
+];
+
 const ModelFeatures = () => {
   return (
     <ModelFeatureWrapper>
-      {[].map(({ title, data }) => (
+      {data.map(({ title, data }) => (
         <Box className="feature-section" key={title}>
           <SullyTypography classNameProps="modaltitle1">
             {title}
           </SullyTypography>
           <ul className="feature-list">
-            {[].map(({ title, description }) => (
+            {data.map(({ title, description }) => (
               <li className="feature-item" key={title}>
                 <SullyTypography classNameProps="sub_title_2">
                   {title}:

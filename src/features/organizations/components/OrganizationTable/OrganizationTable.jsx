@@ -19,9 +19,13 @@ import {
 import JoinCompanies from "../JoinCompanies";
 import OrganizationEdit from "../OrganizationEdit";
 import OrganizationCreate from "../OrganizationCreate";
+import { getCompanies } from "features/companies";
+import { setSelectedOrganization } from "features/organizations/slice";
 
 export default function OrganziationTable() {
-  const [organization, setOrganization] = useState({});
+  const { companies, selectedOrganization: organization } = useSelector(
+    (state) => state.organizations,
+  );
   const [edit, setEdit] = useState(false);
   const [joinCompaniesModal, setJoinCompaniesModal] = useState(false);
   const [isDeleteOrganization, setIsDeleteOrganization] = useState(false);
@@ -47,7 +51,7 @@ export default function OrganziationTable() {
   };
 
   const onDropDownChange = (row, type) => {
-    setOrganization(row);
+    dispatch(setSelectedOrganization(row));
     if (type === "edit") return setEdit({ isEdit: true, organization: row });
     if (type === "joinCompanies") return setJoinCompaniesModal(true);
     if (type === "delete") return setIsDeleteOrganization(true);
@@ -56,6 +60,13 @@ export default function OrganziationTable() {
   useEffect(() => {
     dispatch(getOrganizations({ dispatch }));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!companies.length) {
+      dispatch(getCompanies({ dispatch }));
+    }
+  }, [companies.length, dispatch]);
+
   return (
     <>
       <ConfirmationModal

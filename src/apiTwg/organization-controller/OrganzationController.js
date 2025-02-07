@@ -14,6 +14,10 @@ export function joinCompanies(extId, companyExtIds) {
   return axios.post(`/admin/api/v1/org/${extId}/join`, { companyExtIds });
 }
 
+export function leaveCompanies(extId, companyExtIds) {
+  return axios.post(`/admin/api/v1/org/${extId}/leave`, { companyExtIds });
+}
+
 export function deleteOrganization(extId) {
   return axios.delete(`/admin/api/v1/org/${extId}`);
 }

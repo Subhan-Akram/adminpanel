@@ -8,13 +8,16 @@ export const SidebarListWrapper = styled(ListItem, {
       marginLeft: "24px",
       display: open ? "block" : "none",
       backgroundColor: "var(--sidenav-background)",
+
       "& .MuiListItemButton-root": {
         padding: "0px 32px 0px 8px",
       },
     },
     "& .MuiListItemButton-root": {
-      padding: open ? "6px 32px 6px 8px" : "6px 8px",
+      padding: open ? "6px 58px 6px 8px" : "6px 8px",
       justifyContent: "center",
+      width: "100%",
+
       "& .MuiListItemIcon-root": {
         minWidth: 0,
         justifyContent: "center",

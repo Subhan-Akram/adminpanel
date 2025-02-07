@@ -73,6 +73,13 @@ export const AppBar = styled(
       gap: "10px",
     },
     "& .profile_icon": {},
+    "& .user_avatar": {
+      width: "32px",
+      height: "32px",
+      color: "white",
+      fontSize: "16px",
+      background: "var(--border-1)",
+    },
     "& .arrow_icon": {
       marginTop: "8px",
       "&:hover": {
@@ -90,6 +97,9 @@ export const AppBar = styled(
   },
   "& .drop_down_Box": {
     cursor: "pointer",
+    "& .show_only_icon": {
+      border: "1px solid red",
+    },
   },
 
   "& .logoRoot": {

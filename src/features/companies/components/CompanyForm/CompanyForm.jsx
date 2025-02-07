@@ -9,25 +9,41 @@ import {
   RadioGroup,
   Radio,
   Box,
+  Autocomplete,
 } from "@mui/material";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { CompanyFormWrapper } from "./style";
 import PropTypes from "prop-types";
 import { companyValidation } from "features/companies/constants";
+import {
+  AutoCompleteStyledPopperWrapper,
+  InputLabelWrapper,
+} from "globalStyles";
+import { leaveOrganization } from "features/companies/services";
+import { useDispatch, useSelector } from "react-redux";
+import { Chip, ConfirmDynamicModal } from "components";
 
 const CompanyForm = ({
-  initialValues,
   handleSubmit: handleSubmitAction,
   isEdit = false,
   formRef,
 }) => {
+  const { organizations } = useSelector((state) => state.organizations);
+
+  const { companies, selectedOrganization, leaveOrganizationLoading } =
+    useSelector((state) => state.companies);
+
+  const dispatch = useDispatch();
+
   const formik = useFormik({
-    initialValues,
+    initialValues: { ...selectedOrganization, organizations: [] },
     validationSchema: companyValidation,
     onSubmit: (values, { setSubmitting }) => {
       handleSubmitAction(values);
       setSubmitting(false);
     },
   });
+
   const {
     handleSubmit,
     values,
@@ -41,6 +57,17 @@ const CompanyForm = ({
   useImperativeHandle(formRef, () => ({
     submitForm: submitForm,
   }));
+
+  const handleLeaveOrganziation = async (organizationExtIds) => {
+    const { extId } = selectedOrganization;
+    return dispatch(
+      leaveOrganization({
+        dispatch,
+        payload: { extId, organizationExtIds },
+      }),
+    ).unwrap();
+  };
+
   return (
     <CompanyFormWrapper
       component="form"
@@ -155,12 +182,80 @@ const CompanyForm = ({
             />
           </RadioGroup>
         </Grid>
+        <Grid item xs={12} md={12}>
+          <InputLabelWrapper
+            className="InputLabelWrapper_text"
+            htmlFor="organizations"
+          >
+            Add Organizations
+          </InputLabelWrapper>
+          <Autocomplete
+            className="autocomplete_tags"
+            multiple
+            size="small"
+            id="organizations"
+            options={organizations.map((val) => val)}
+            getOptionLabel={(option) => {
+              return option?.name;
+            }}
+            isOptionEqualToValue={(option, value) => {
+              return option.extId === value.extId;
+            }}
+            value={values.organizations}
+            onChange={(_, val) => {
+              setFieldValue("organziations", val);
+            }}
+            PopperComponent={(props) => (
+              <AutoCompleteStyledPopperWrapper
+                {...props}
+                placement="bottom-start"
+              />
+            )}
+            ChipProps={{
+              deleteIcon: <CloseOutlinedIcon className="close_chip_icon" />,
+            }}
+            renderInput={(params) => (
+              <TextField {...params} placeholder="Add Companies" />
+            )}
+          />
+        </Grid>
+        {isEdit && (
+          <Grid item xs={12}>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="organziation"
+            >
+              Joined Organziations
+            </InputLabelWrapper>
+            <Box className="join_organization_container">
+              {selectedOrganization.companies.map(({ name, extId }) => (
+                <ConfirmDynamicModal
+                  key={name}
+                  title="Leave Organization"
+                  description={`Are you sure, you want to leave ${name} Organization ?`}
+                  handleSubmit={() => handleLeaveOrganziation([extId])}
+                  isLoading={leaveOrganizationLoading}
+                >
+                  <Chip
+                    classNameProps="modal_card_chips"
+                    key={name}
+                    label={
+                      <div className="label_chip">
+                        <span>{name}</span>
+                        <CloseOutlinedIcon />
+                      </div>
+                    }
+                  />
+                </ConfirmDynamicModal>
+              ))}
+            </Box>
+          </Grid>
+        )}
       </Grid>
     </CompanyFormWrapper>
   );
 };
 CompanyForm.propTypes = {
-  initialValues: PropTypes.object,
   handleSubmit: PropTypes.func,
   isEdit: PropTypes.bool,
 };

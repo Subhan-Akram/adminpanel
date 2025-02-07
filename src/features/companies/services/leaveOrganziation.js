@@ -1,27 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { triggerAlert } from "slice/alertSlice";
-import {
-  joinCompanies,
-  updateOrganization as updateOrganizationApi,
-} from "../../../apiTwg";
+import { leaveOrganization as leaveOrganizationApi } from "apiTwg";
 
-const updateOrganization = createAsyncThunk(
-  "updateOrganization",
+const leaveOrganization = createAsyncThunk(
+  "leaveOrganziation",
   async ({ dispatch, payload }, { rejectWithValue }) => {
     try {
-      const { extId, companies } = payload;
-      const companyExtIds = companies.map((val) => val.extId);
-      await updateOrganizationApi(extId, payload);
-      const { data: updatedData } = await joinCompanies(extId, companyExtIds);
-
+      const { extId, organizationExtIds } = payload;
+      const { data } = await leaveOrganizationApi(extId, organizationExtIds);
       dispatch(
         triggerAlert({
           title: "Success",
+          text: "Organziations removed from companies Successfully",
           alertType: "success",
-          text: "Company Updated Successfully",
         }),
       );
-      return updatedData;
+      return data;
     } catch (error) {
       dispatch(
         triggerAlert({
@@ -35,4 +29,4 @@ const updateOrganization = createAsyncThunk(
   },
 );
 
-export default updateOrganization;
+export default leaveOrganization;

@@ -1,6 +1,6 @@
 import { HomeWrapper } from "./style";
 import { Box, Grid } from "@mui/material";
-import { Banner, SullyTypography } from "components";
+import { Banner, Spin, SullyTypography } from "components";
 import StatsCard from "../StatsCard";
 import { useUserInfo } from "hooks";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { getStats } from "features/home/services";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { stats } = useSelector((state) => state.home);
+  const { stats, isLoading } = useSelector((state) => state.home);
   const name = useUserInfo();
   const text = (
     <>
@@ -31,6 +31,7 @@ const Home = () => {
   }, []);
   return (
     <HomeWrapper>
+      <Spin loading={isLoading} />
       <Banner text={text}></Banner>
       <Box className="home_content">
         <SullyTypography classNameProps="medium_title">

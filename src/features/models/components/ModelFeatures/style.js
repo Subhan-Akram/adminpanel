@@ -17,18 +17,14 @@ export const ModelFeatureWrapper = styled(Box)`
     flex-direction: column;
     gap: 8px;
     margin: 6px 0;
-    padding: 0 10px !important;
-
-    /* list-style-type: disc; */
-    /* border: 1px solid red; */
+    padding: 0px 12px !important;
   }
 
   .feature-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 0px;
-    /* border: 1px solid var(--border-2); */
+    padding: 4px 0px !important;
     /* border-radius: 4px; */
     /* background-color: var(--background-2); */
   }

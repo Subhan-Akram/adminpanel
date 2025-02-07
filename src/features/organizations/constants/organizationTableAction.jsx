@@ -12,13 +12,6 @@ const organizationTableAction = ({ row, onDropDownChange }) => {
       },
     },
     {
-      label: "Join Companies",
-      icon: <BusinessIcon />,
-      onClick: () => {
-        onDropDownChange(row, "joinCompanies");
-      },
-    },
-    {
       label: "Delete",
       icon: <DeleteOutline />,
       onClick: () => {
