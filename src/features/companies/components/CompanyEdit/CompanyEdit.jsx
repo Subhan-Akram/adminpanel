@@ -5,7 +5,7 @@ import { Drawer } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCompany } from "../../services";
 
-const CompanyEdit = ({ edit, setEdit, company }) => {
+const CompanyEdit = ({ edit, setEdit }) => {
   const formRef = useRef(null);
   const { crudLoading } = useSelector((state) => state.companies);
   const dispatch = useDispatch();
@@ -29,7 +29,6 @@ const CompanyEdit = ({ edit, setEdit, company }) => {
       <CompanyForm
         isEdit={true}
         formRef={formRef}
-        initialValues={company}
         handleSubmit={handleSubmit}
       />
     </Drawer>

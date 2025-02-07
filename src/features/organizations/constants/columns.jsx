@@ -31,7 +31,7 @@ const columns = ({ onDropDownChange }) => [
     field: "companies",
     headerName: "Companies",
     sortable: false,
-    width: 280,
+    width: 310,
     renderCell: ({ row }) => {
       const { companies } = row;
       return <MoreItemsTooltip items={companies} showItemCount={2} />;

@@ -5,6 +5,7 @@ import { Drawer, PrimaryButton } from "components";
 import { createOrganization } from "../../services";
 import { useDispatch, useSelector } from "react-redux";
 import { organizationInitialValues } from "../../constants";
+import { setSelectedOrganization } from "features/organizations/slice";
 
 const OrganizationCreate = () => {
   const [open, setOpen] = React.useState(false);
@@ -25,6 +26,7 @@ const OrganizationCreate = () => {
       <PrimaryButton
         onClick={() => {
           setOpen(true);
+          dispatch(setSelectedOrganization({}));
         }}
       >
         Create Organization
@@ -34,7 +36,7 @@ const OrganizationCreate = () => {
         title="Create Organizaion"
         setOpen={setOpen}
         open={open}
-        isLoading={false}
+        isLoading={crudLoading}
       >
         <OrganizationForm
           isEdit={false}

@@ -23,7 +23,6 @@ function Drawer({ children, open, setOpen, title, isLoading, formRef }) {
       open={open}
       formRef={formRef}
       onClose={handleClose}
-      title="Edit User"
       isEdit={true}
     >
       <DrawerHeaderWrapper>

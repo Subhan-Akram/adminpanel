@@ -30,13 +30,14 @@ const CompanyForm = ({
 }) => {
   const { organizations } = useSelector((state) => state.organizations);
 
-  const { companies, selectedOrganization, leaveOrganizationLoading } =
-    useSelector((state) => state.companies);
+  const { selectedCompany, leaveOrganizationLoading } = useSelector(
+    (state) => state.companies,
+  );
 
   const dispatch = useDispatch();
 
   const formik = useFormik({
-    initialValues: { ...selectedOrganization, organizations: [] },
+    initialValues: { ...selectedCompany, organizations: [] },
     validationSchema: companyValidation,
     onSubmit: (values, { setSubmitting }) => {
       handleSubmitAction(values);
@@ -59,7 +60,7 @@ const CompanyForm = ({
   }));
 
   const handleLeaveOrganziation = async (organizationExtIds) => {
-    const { extId } = selectedOrganization;
+    const { extId } = selectedCompany;
     return dispatch(
       leaveOrganization({
         dispatch,
@@ -110,8 +111,77 @@ const CompanyForm = ({
             />
           </FormControl>
         </Grid>
+        <Grid item xs={12}>
+          <InputLabelWrapper
+            className="InputLabelWrapper_text"
+            htmlFor="organizations"
+          >
+            Add Organizations
+          </InputLabelWrapper>
+          <Autocomplete
+            className="autocomplete_tags"
+            multiple
+            size="small"
+            id="organizations"
+            options={organizations.map((val) => val)}
+            getOptionLabel={(option) => {
+              return option?.name;
+            }}
+            isOptionEqualToValue={(option, value) => {
+              return option.extId === value.extId;
+            }}
+            value={values.organizations}
+            onChange={(_, val) => {
+              setFieldValue("organizations", val);
+            }}
+            PopperComponent={(props) => (
+              <AutoCompleteStyledPopperWrapper
+                {...props}
+                placement="bottom-start"
+              />
+            )}
+            ChipProps={{
+              deleteIcon: <CloseOutlinedIcon className="close_chip_icon" />,
+            }}
+            renderInput={(params) => (
+              <TextField {...params} placeholder="Add Organizations" />
+            )}
+          />
+        </Grid>
 
-        <Grid className="switches_items" item xs={12} md={6}>
+        {isEdit && (
+          <Grid item xs={12}>
+            <InputLabelWrapper
+              className="InputLabelWrapper_text"
+              htmlFor="organziation"
+            >
+              Joined Organziations
+            </InputLabelWrapper>
+            <Box className="join_organization_container">
+              {selectedCompany.organizations.map(({ name, extId }) => (
+                <ConfirmDynamicModal
+                  key={name}
+                  title="Leave Organization"
+                  description={`Are you sure, you want to leave ${name} Organization ?`}
+                  handleSubmit={() => handleLeaveOrganziation([extId])}
+                  isLoading={leaveOrganizationLoading}
+                >
+                  <Chip
+                    classNameProps="modal_card_chips"
+                    key={name}
+                    label={
+                      <div className="label_chip">
+                        <span>{name}</span>
+                        <CloseOutlinedIcon />
+                      </div>
+                    }
+                  />
+                </ConfirmDynamicModal>
+              ))}
+            </Box>
+          </Grid>
+        )}
+        <Grid className="switches_items" item md={4}>
           <label>Status</label>
           <div className="label_div">
             <FormControlLabel
@@ -128,7 +198,7 @@ const CompanyForm = ({
           </div>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={4}>
           <Box>
             <label>Subscriber</label>
             <RadioGroup
@@ -156,7 +226,7 @@ const CompanyForm = ({
             </RadioGroup>
           </Box>
         </Grid>
-        <Grid item xs={6} md={6}>
+        <Grid item xs={4}>
           <label>Private Data</label>
           <RadioGroup
             value={values.privateData}
@@ -182,75 +252,6 @@ const CompanyForm = ({
             />
           </RadioGroup>
         </Grid>
-        <Grid item xs={12} md={12}>
-          <InputLabelWrapper
-            className="InputLabelWrapper_text"
-            htmlFor="organizations"
-          >
-            Add Organizations
-          </InputLabelWrapper>
-          <Autocomplete
-            className="autocomplete_tags"
-            multiple
-            size="small"
-            id="organizations"
-            options={organizations.map((val) => val)}
-            getOptionLabel={(option) => {
-              return option?.name;
-            }}
-            isOptionEqualToValue={(option, value) => {
-              return option.extId === value.extId;
-            }}
-            value={values.organizations}
-            onChange={(_, val) => {
-              setFieldValue("organziations", val);
-            }}
-            PopperComponent={(props) => (
-              <AutoCompleteStyledPopperWrapper
-                {...props}
-                placement="bottom-start"
-              />
-            )}
-            ChipProps={{
-              deleteIcon: <CloseOutlinedIcon className="close_chip_icon" />,
-            }}
-            renderInput={(params) => (
-              <TextField {...params} placeholder="Add Companies" />
-            )}
-          />
-        </Grid>
-        {isEdit && (
-          <Grid item xs={12}>
-            <InputLabelWrapper
-              className="InputLabelWrapper_text"
-              htmlFor="organziation"
-            >
-              Joined Organziations
-            </InputLabelWrapper>
-            <Box className="join_organization_container">
-              {selectedOrganization.companies.map(({ name, extId }) => (
-                <ConfirmDynamicModal
-                  key={name}
-                  title="Leave Organization"
-                  description={`Are you sure, you want to leave ${name} Organization ?`}
-                  handleSubmit={() => handleLeaveOrganziation([extId])}
-                  isLoading={leaveOrganizationLoading}
-                >
-                  <Chip
-                    classNameProps="modal_card_chips"
-                    key={name}
-                    label={
-                      <div className="label_chip">
-                        <span>{name}</span>
-                        <CloseOutlinedIcon />
-                      </div>
-                    }
-                  />
-                </ConfirmDynamicModal>
-              ))}
-            </Box>
-          </Grid>
-        )}
       </Grid>
     </CompanyFormWrapper>
   );

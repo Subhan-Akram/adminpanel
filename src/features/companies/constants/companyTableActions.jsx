@@ -11,13 +11,7 @@ const companyActions = ({ row, handleChange }) => {
         handleChange(row, "edit");
       },
     },
-    {
-      label: "Join Organization",
-      icon: <BusinessIcon />,
-      onClick: () => {
-        handleChange(row, "joinOrganization");
-      },
-    },
+
     {
       label: "Delete",
       icon: <DeleteOutline />,

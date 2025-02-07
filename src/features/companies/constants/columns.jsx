@@ -41,7 +41,7 @@ const columns = ({ handleChange }) => [
     field: "organizations",
     headerName: "Organizations",
     sortable: false,
-    width: 270,
+    width: 360,
     renderCell: ({ row }) => {
       const { organizations } = row;
       return <MoreItemsTooltip items={organizations} showItemCount={2} />;

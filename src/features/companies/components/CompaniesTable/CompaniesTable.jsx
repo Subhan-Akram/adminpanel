@@ -18,18 +18,19 @@ import CompanyCreate from "../CompanyCreate";
 import CompanyEdit from "../CompanyEdit";
 import CompanyJoinOrganization from "../CompanyJoinOrganization";
 import { getOrganizations } from "features/organizations";
+import { setSelectedCompany } from "features/companies/slice";
 
 export default function CompaniesTable() {
   const [edit, setEdit] = useState(false);
-  const [company, setCompany] = useState({});
   const [joinOrganizationModal, setJoinOrganizationModal] = useState(false);
   const [isDeleteCompany, setIsDeleteCompany] = useState(false);
-  const { name, extId } = company;
 
   const { organizations } = useSelector((state) => state.organizations);
+  const { selectedCompany } = useSelector((state) => state.companies);
   const { companies, isLoading, crudLoading } = useSelector(
     (state) => state.companies,
   );
+  const { name, extId } = selectedCompany;
 
   const dispatch = useDispatch();
   const Toolbar = () => (
@@ -44,7 +45,7 @@ export default function CompaniesTable() {
       });
   };
   const handleChange = (row, type) => {
-    setCompany(row);
+    dispatch(setSelectedCompany(row));
     if (type === "edit") setEdit(true);
     if (type === "joinOrganization") setJoinOrganizationModal(true);
     if (type === "deleteCompany") setIsDeleteCompany(true);
@@ -75,10 +76,10 @@ export default function CompaniesTable() {
         isLoading={crudLoading}
         confirmBtnText="Delete"
       />
-      <CompanyEdit company={company} edit={edit} setEdit={setEdit} />
+      <CompanyEdit edit={edit} setEdit={setEdit} />
       {joinOrganizationModal && (
         <CompanyJoinOrganization
-          company={company}
+          company={selectedCompany}
           open={joinOrganizationModal}
           setOpen={setJoinOrganizationModal}
         />

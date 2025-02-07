@@ -4,6 +4,7 @@ import { companyInitialValues } from "../../constants";
 import { createCompany } from "../../services";
 import { useDispatch, useSelector } from "react-redux";
 import { Drawer, PrimaryButton } from "components";
+import { setSelectedCompany } from "features/companies/slice";
 
 const CompanyCreate = () => {
   const [open, setOpen] = React.useState(false);
@@ -23,6 +24,7 @@ const CompanyCreate = () => {
     <>
       <PrimaryButton
         onClick={() => {
+          dispatch(setSelectedCompany({}));
           setOpen(true);
         }}
       >
@@ -33,7 +35,7 @@ const CompanyCreate = () => {
         title="Create Company"
         setOpen={setOpen}
         open={open}
-        isLoading={false}
+        isLoading={crudLoading}
       >
         <CompanyForm
           isEdit={false}

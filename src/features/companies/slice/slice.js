@@ -16,6 +16,7 @@ const initialState = {
   crudLoading: false,
   error: "",
   leaveOrganizationLoading: false,
+  organizationLoading: false,
   selectedCompany: {},
 };
 
