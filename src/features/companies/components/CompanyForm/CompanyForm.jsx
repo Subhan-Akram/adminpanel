@@ -123,7 +123,12 @@ const CompanyForm = ({
             multiple
             size="small"
             id="organizations"
-            options={organizations.map((val) => val)}
+            options={organizations.filter(
+              (val) =>
+                !selectedCompany?.organizations?.some(
+                  (org) => org.extId === val.extId,
+                ),
+            )}
             getOptionLabel={(option) => {
               return option?.name;
             }}

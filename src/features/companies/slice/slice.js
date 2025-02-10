@@ -17,7 +17,7 @@ const initialState = {
   error: "",
   leaveOrganizationLoading: false,
   organizationLoading: false,
-  selectedCompany: {},
+  selectedCompany: { organizations: [] },
 };
 
 export const slice = createSlice({
